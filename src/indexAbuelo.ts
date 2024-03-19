@@ -1,4 +1,5 @@
 import { movies } from './data/dataFetch';
+import './components/indexPadre';
 //aca importo MovieCard
 //aca importo Nav
 //aca importo banner
@@ -14,8 +15,9 @@ class AppContainer extends HTMLElement {
 	}
 
 	render() {
-		if (this.shadowRoot) {
-		}
+		if (this.shadowRoot)
+			this.shadowRoot.innerHTML = `
+      <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."></my-banner>`;
 	}
 }
 

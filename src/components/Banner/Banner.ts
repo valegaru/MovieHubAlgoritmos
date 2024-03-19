@@ -1,56 +1,57 @@
-export enum Attribute { //enum es algo de ts, permiten definir un conjunto de constantes con nombres
+export enum Attribute {
 	'image' = 'image',
 	'message' = 'message',
 }
 
 class Banner extends HTMLElement {
-	image?: string; //los dos puntos despues de cada propiedad y o que viene es para definirlas
+	image?: string;
 	message?: string;
 
-	//igual que en js
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
 	}
 
-	//diferente a js
 	static get observedAttributes() {
 		const attrs: Record<Attribute, null> = {
 			image: null,
 			message: null,
 		};
-		return Object.keys(attrs); // return ['image','name', 'uid', ....]; (es otra forma m[as simple de hacerlo pero a que esta contando es mas rigurosa])
+		return Object.keys(attrs);
 	}
 
 	attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined) {
-		// esta rayita | significa "o", string o undefined
 		switch (propName) {
 			default:
-				this[propName] = newValue; //siempre hay que dejar esta linea
+				this[propName] = newValue;
 				break;
 		}
 		this.render();
 	}
 
-	//igual que en js
 	connectedCallback() {
 		this.render();
 	}
 
-	//diferente a js
 	render() {
 		if (this.shadowRoot) {
-			//si el shadowroot existe entonces se va a hacer lo siguiente
 			this.shadowRoot.innerHTML = `
       <section>
         <img src="${
 					this.image ||
 					'https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg'
-				}"><img>
+				}">
         <h1>${this.message || 'Not working'}</h1>
-        <button type="button">GET AN ACCOUNT - IT'S FREE</button>
-        </section>
-        `;
+        <button type="button" id="accountButton">GET AN ACCOUNT - IT'S FREE</button>
+      </section>
+      `;
+			const button = this.shadowRoot.querySelector('#accountButton');
+			if (button) {
+				button.addEventListener('click', () => {
+					window.location.href =
+						'https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg'; // Reemplazar el enlace por el de sign in
+				});
+			}
 		}
 	}
 }
