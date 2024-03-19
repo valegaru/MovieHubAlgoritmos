@@ -1,3 +1,5 @@
+import styles from './Banner.css';
+
 export enum Attribute {
 	'image' = 'image',
 	'message' = 'message',
@@ -41,7 +43,7 @@ class Banner extends HTMLElement {
         <h1>${this.message || 'Not working'}</h1>
         <button type="button" id="accountButton">GET AN ACCOUNT - IT'S FREE</button>
       </section>
-      `;
+      `; //preguntar si la imagen tiene que venir de la data
 			const button = this.shadowRoot.querySelector('#accountButton');
 			if (button) {
 				button.addEventListener('click', () => {
@@ -50,6 +52,9 @@ class Banner extends HTMLElement {
 				});
 			}
 		}
+		const cssBanner = this.ownerDocument.createElement('style');
+		cssBanner.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssBanner);
 	}
 }
 
