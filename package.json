@@ -50,6 +50,7 @@
     "concat-map": "^0.0.1",
     "content-disposition": "^0.5.2",
     "cross-spawn": "^7.0.3",
+    "css-loader": "^6.10.0",
     "debug": "^2.6.9",
     "deep-extend": "^0.6.0",
     "eastasianwidth": "^0.2.0",
