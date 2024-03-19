@@ -37,10 +37,7 @@ class Banner extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
       <section>
-        <img src="${
-					this.image ||
-					'https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg'
-				}">
+        <img src="${this.image || 'https://tenyearsago.files.wordpress.com/2019/07/500banner.png?w=1200'}">
         <h1>${this.message || 'Not working'}</h1>
         <button type="button" id="accountButton">GET AN ACCOUNT - IT'S FREE</button>
       </section>
