@@ -1,4 +1,9 @@
-const movies = [
+interface DataShape {
+	id: number;
+	image: string;
+}
+
+export const movies: DataShape[] = [
 	{
 		id: 1,
 		image: 'https://pics.filmaffinity.com/Pearl-745024740-large.jpg',
@@ -145,7 +150,7 @@ const movies = [
 	{
 		id: 34,
 		image:
-			"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDCocdzcNgJ76xzG8WDxq8IcVeHL_8JBaUCOtps6mCB0htT-wyulkV5HveyvAZCP8QtyZ7lhI7uLQpa7Qqt55rLlF3StkAnn5SgFC1FJEs79sCbIDBBOHNWbvU75k5vsS8-K4GSQkKuDQk/s1600/Intocables.jpg',
+			'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDCocdzcNgJ76xzG8WDxq8IcVeHL_8JBaUCOtps6mCB0htT-wyulkV5HveyvAZCP8QtyZ7lhI7uLQpa7Qqt55rLlF3StkAnn5SgFC1FJEs79sCbIDBBOHNWbvU75k5vsS8-K4GSQkKuDQk/s1600/Intocables.jpg',
 	},
 	{
 		id: 35,
