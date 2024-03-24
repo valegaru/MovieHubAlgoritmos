@@ -1,10 +1,9 @@
 import { movies } from './data/dataFetch';
-//aca importo MovieCard
-//aca importo Nav
-//aca importo banner
+import './components/indexPadre';
+import MyFilm from './components/MovieCard/MovieCard';
 
 class AppContainer extends HTMLElement {
-	films: MyFilm[] = []; //creo un arreglo de peliculas porque a data tiene varios trabajadores y voy a renderizar de mis componentes film
+	films: MyFilm[] = [];
 
 	constructor() {
 		super();
@@ -12,8 +11,7 @@ class AppContainer extends HTMLElement {
 
 		movies.forEach((user) => {
 			const FilmCard = this.ownerDocument.createElement('my-movie') as MyFilm; //my-movie es la etiqueta del componente que cree en MovieCard
-			filmCard.setAttribute(Attribute.image, user.image); //voy a declarar la imagen como image en MovieCard
-			filmCard.setAttribute(Attribute.uid, String(user.id)); //voy a declarar el id como uid en MovieCard
+			FilmCard.setAttribute('image', user.image); //voy a declarar la imagen como image en MovieCard //voy a declarar el id como uid en MovieCard
 			this.films.push(FilmCard);
 		});
 	}
