@@ -31,5 +31,5 @@ class Navbar extends HTMLElement {
 		}
 	}
 }
-customElements.define('navbar', Navbar);
+customElements.define('navbar"', Navbar);
 export default Navbar;
