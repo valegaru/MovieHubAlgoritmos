@@ -38,6 +38,7 @@ class Banner extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
+			<custom-navbar></custom-navbar>
       <section>
         <img src="${this.image || 'https://tenyearsago.files.wordpress.com/2019/07/500banner.png?w=1200'}">
         <h1>${this.message || 'Not working'}</h1>

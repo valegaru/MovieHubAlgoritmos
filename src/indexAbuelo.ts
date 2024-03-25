@@ -17,8 +17,8 @@ class AppContainer extends HTMLElement {
 	render() {
 		if (this.shadowRoot)
 			this.shadowRoot.innerHTML = `
-		<app-containe></app-containe>
-      <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."></my-banner>`;
+      <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."></my-banner>
+			`;
 	}
 }
 

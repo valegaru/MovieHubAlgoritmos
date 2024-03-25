@@ -10,14 +10,18 @@ module.exports = {
 			},
 
 			{
-				test: /\.ts$/,
+				test: /\.ts?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/,
+			},
+			{
+				test: /\.(png|jpeg|jpg|svg|webp)$/i,
+				type: 'asset',
 			},
 		],
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
+		extensions: ['.ts', '.js'],
 	},
 	output: {
 		filename: 'bundle.js',
