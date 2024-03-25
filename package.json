@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.10.0",
     "serve": "^14.2.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.2",
@@ -50,7 +51,6 @@
     "concat-map": "^0.0.1",
     "content-disposition": "^0.5.2",
     "cross-spawn": "^7.0.3",
-    "css-loader": "^6.10.0",
     "debug": "^2.6.9",
     "deep-extend": "^0.6.0",
     "eastasianwidth": "^0.2.0",
