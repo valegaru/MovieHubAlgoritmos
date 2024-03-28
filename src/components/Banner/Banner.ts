@@ -3,11 +3,13 @@ import styles from './Banner.css';
 export enum Attribute {
 	'image' = 'image',
 	'message' = 'message',
+	'buttonlabel' = 'buttonlabel',
 }
 
 class Banner extends HTMLElement {
 	image?: string;
 	message?: string;
+	buttonlabel?: string;
 
 	constructor() {
 		super();
@@ -18,6 +20,7 @@ class Banner extends HTMLElement {
 		const attrs: Record<Attribute, null> = {
 			image: null,
 			message: null,
+			buttonlabel: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -42,7 +45,7 @@ class Banner extends HTMLElement {
       <section>
         <img src="${this.image || 'https://tenyearsago.files.wordpress.com/2019/07/500banner.png?w=1200'}">
         <h1>${this.message || 'Not working'}</h1>
-        <button type="button" id="accountButton">GET AN ACCOUNT - IT'S FREE</button>
+        <button type="button" id="accountButton">${this.buttonlabel}</button>
       </section>
       `; //preguntar si la imagen tiene que venir de la data
 			const button = this.shadowRoot.querySelector('#accountButton');
