@@ -5,16 +5,9 @@ import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
 //aca importo banner
 
 class AppContainer extends HTMLElement {
-	movies: MoviesCards[] = [];
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-
-		movies.forEach((user) => {
-			const movieProfiles = this.ownerDocument.createElement('movie-card') as MoviesCards;
-			movieProfiles.setAttribute(Attribute.image, user.image);
-			this.movies.push(movieProfiles);
-		});
 	}
 
 	connectedCallback() {
@@ -30,10 +23,6 @@ class AppContainer extends HTMLElement {
 				<category-section name="Películas en tendencia" category="trending"></category-section>
 				<category-section name="Películas clásicas" category="classics"></category-section>
 			`;
-			if (this.shadowRoot)
-				this.movies.forEach((targets) => {
-					this.shadowRoot?.appendChild(targets);
-				});
 		}
 	}
 }

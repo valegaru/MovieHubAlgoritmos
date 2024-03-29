@@ -27,7 +27,7 @@ class CategorySection extends HTMLElement {
 	connectedCallback() {
 		this.render();
 	}
-
+	//se filtran las pelis por categoria y se guarda en la data jiji
 	filterData(category: string) {
 		this.moviesData = movies.filter((movie) => movie.categories.includes(category));
 	}
@@ -38,21 +38,27 @@ class CategorySection extends HTMLElement {
 				this[propName] = newValue;
 				break;
 		}
+		//se llama la funcion filter pq se cambia la categoria y se cambia la data. Cuando se cambia la categoria se cambia la data
+		this.filterData(this.category!);
 		this.render();
 	}
 
+	//aca se usa el map para que itere sobre la data y devuelva un nuevo array de las pelis
+	//se usa el join para q ese array se convierta en una sola cadena de texto
 	render() {
 		if (this.shadowRoot) {
 			const styles = document.createElement('style');
 			styles.textContent = css;
 			const movieElements = this.moviesData != undefined ? this.moviesData : [];
+			console.log(movieElements);
+
 			this.shadowRoot.innerHTML = /*html*/ `
                 <h2>${this.name}</h2>
 				<div id="cards">
 					${movieElements
 						.map(
 							(movie) => /*html*/ `
-						<custom-card img="${movie.image}"></custom-card>
+						<movie-card image="${movie.image}"></movie-card>
 					`
 						)
 						.join('')}
