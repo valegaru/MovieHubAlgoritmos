@@ -43,8 +43,9 @@ class Banner extends HTMLElement {
 			this.shadowRoot.innerHTML = `
 			<custom-navbar></custom-navbar>
       <section>
-        <img src="${this.image || 'https://tenyearsago.files.wordpress.com/2019/07/500banner.png?w=1200'}">
+			<section>
         <h1>${this.message || 'Not working'}</h1>
+				</section>
         <button type="button" id="accountButton">${this.buttonlabel}</button>
       </section>
       `; //preguntar si la imagen tiene que venir de la data

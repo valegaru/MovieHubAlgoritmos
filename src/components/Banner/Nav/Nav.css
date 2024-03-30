@@ -1,14 +1,15 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Noto Traditional Nushu', serif;
 }
 
 header {
 	display: flex;
 	flex-direction: row;
 	width: 1000px;
-	margin: 0 auto;
-	margin-top: 50px;
+	margin: 0;
+	margin-top: 3%;
 	justify-content: space-around;
 	align-items: center;
 	background: none;

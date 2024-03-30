@@ -18,7 +18,7 @@ class AppContainer extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
-			buttonlabel="GET AN ACCOUNT - IT'S FREE"></my-banner>
+			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
 			<category-section name="Películas populares" category="popular"></category-section>
 				<category-section name="Películas de cinema" category="cinema"></category-section>
 				<category-section name="Películas en tendencia" category="trending"></category-section>
