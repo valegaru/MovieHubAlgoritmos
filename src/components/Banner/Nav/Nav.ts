@@ -13,7 +13,7 @@ class Navbar extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
             <header>
 						<nav>
                 <section class="search-bar">

@@ -1,4 +1,4 @@
-interface DataShape {
+export interface DataShape {
 	id: number;
 	image: string;
 	categories: string[]; //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
@@ -42,8 +42,7 @@ export const movies: DataShape[] = [
 	},
 	{
 		id: 7,
-		image:
-			'https://static.wikia.nocookie.net/doblaje/images/9/90/Eterno_resplandor.jpg/revision/latest?cb=20210621152829&path-prefix=es',
+		image: 'https://tecolotito.elsiglodetorreon.com.mx/blogs/163304/2020/02/5e3cb25189f7a.jpg',
 		categories: ['popular'],
 	},
 	{
@@ -54,7 +53,7 @@ export const movies: DataShape[] = [
 	{
 		id: 9,
 		image:
-			'https://static.wikia.nocookie.net/international-entertainment-project/images/2/27/Forrest_Gump_-_poster_%28English%29.jpeg/revision/latest?cb=20230420015018',
+			'https://m.media-amazon.com/images/S/pv-target-images/2d0c9e38968936e6711c7fb2bc7895b82d8bb9178b5a854e14dffa4b17b88487.jpg',
 		categories: ['popular'],
 	},
 	{
@@ -64,7 +63,7 @@ export const movies: DataShape[] = [
 	},
 	{
 		id: 11,
-		image: 'https://pics.filmaffinity.com/Her-481503906-large.jpg',
+		image: 'https://http2.mlstatic.com/D_NQ_NP_768674-MLU70355009620_072023-O.webp',
 		categories: ['popular'],
 	},
 	{
@@ -95,8 +94,7 @@ export const movies: DataShape[] = [
 	},
 	{
 		id: 17,
-		image:
-			'https://static.wikia.nocookie.net/doblaje/images/5/5f/El_ni%C3%B1o_y_la_garza.jpg/revision/latest?cb=20231218203634&path-prefix=es',
+		image: 'https://cl2.buscafs.com/www.tomatazos.com/public/uploads/images/424439/424439.jpg',
 		categories: ['cinema'],
 	},
 	{
@@ -124,7 +122,8 @@ export const movies: DataShape[] = [
 	},
 	{
 		id: 22,
-		image: 'https://pics.filmaffinity.com/American_Psycho-137901124-large.jpg',
+		image:
+			'https://www.atomcomics.pl/environment/cache/images/0_0_productGfx_234928/c15ba70f8752a972cf60dea25c6c325b.jpg',
 		categories: ['trending'],
 	},
 	{
