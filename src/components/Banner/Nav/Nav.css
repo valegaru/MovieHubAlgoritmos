@@ -4,45 +4,50 @@
 	font-family: 'Noto Traditional Nushu', serif;
 }
 
-header {
+nav {
 	display: flex;
 	flex-direction: row;
-	width: 1000px;
-	margin: 0;
-	margin-top: 3%;
+	padding: 3%;
 	justify-content: space-around;
 	align-items: center;
 	background: none;
+	justify-content: space-between; /* Alinear elementos al centro horizontalmente */
 }
 
+/* Asegúrate de que la barra de navegación ocupe el ancho completo */
+nav .search-bar,
+nav .pages {
+	flex: 1; /* Distribuir el espacio disponible */
+}
+
+/* Agrega un espacio del 5% entre .search-bar y .pages */
+nav .search-bar {
+	margin-right: 5%;
+}
+
+/* Ajustes adicionales para la barra de búsqueda */
 .search-bar {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	height: 30px;
 	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	max-width: 600px; /* Puedes ajustar este valor según tus necesidades */
 }
 
 .search-bar input {
-	width: 300px;
+	flex: 1; /* Para que el input ocupe el espacio restante */
 	padding: 0 5px;
 	height: 100%;
 	border: none;
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
-	border-left: 1px solid black;
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
 	outline: none;
+	background-color: transparent; /* Eliminar el color de fondo */
+	color: white;
 }
 
 .icon {
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
-	border-right: 1px solid black;
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-	height: 100%;
 	display: flex;
 	align-items: center;
 }
@@ -52,15 +57,17 @@ header {
 	padding: 0 10px;
 }
 
-nav {
+/* Estilos para la sección de páginas */
+.pages {
 	display: flex;
-	flex-direction: row;
-	gap: 20px;
+	justify-content: center; /* Centra los elementos horizontalmente */
+	margin-right: 0;
 }
 
-nav a {
+.pages a {
+	margin-right: 15%; /* Espacio entre los elementos */
 	text-transform: uppercase;
 	text-decoration: none;
-	color: black;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	color: white;
+	font-size: 14px;
 }

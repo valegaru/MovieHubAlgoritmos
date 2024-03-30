@@ -1,4 +1,4 @@
-import css from '../MovieCard/Movie.css';
+import css from '../MovieCard/MovieCard.css';
 export enum Attribute {
 	'image' = 'image',
 }
@@ -36,7 +36,7 @@ class MovieCard extends HTMLElement {
 			styles.textContent = css;
 			this.shadowRoot.innerHTML = /*html*/ `
       <div>
-				<img src="${this.image}"  width="200">
+				<img src="${this.image}"  width="200" height="300">
 			</div>
       `;
 		}

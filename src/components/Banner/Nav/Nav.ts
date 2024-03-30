@@ -14,13 +14,12 @@ class Navbar extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-            <header>
 						<nav>
                 <section class="search-bar">
-                    <input class="barra" type="text" >
                     <div class="icon">
                         <img src="${SearchIcon}" alt="search logo" draggable="false" />
                     </div>
+										<input class="barra" type="text" placeholder="Enter movie name" >
                 </section>
 <section class="pages">
 										<a href="#">films</a> <!-- aparece siempre de numero 1 -->
@@ -31,7 +30,6 @@ class Navbar extends HTMLElement {
 										</section>
 
                 </nav>
-		    </header>
             `;
 
 			const styles = document.createElement('style');

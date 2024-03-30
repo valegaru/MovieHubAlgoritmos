@@ -1,0 +1,33 @@
+:host {
+	display: block;
+	margin: 3%;
+}
+
+#cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+movie-card {
+	width: calc(16.666% - 10px); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
+	margin-bottom: 20px; /* Espacio entre las filas */
+}
+
+@media (max-width: 768px) {
+	movie-card {
+		width: calc(33.333% - 10px); /* Cambiamos el ancho en pantallas más pequeñas */
+	}
+}
+
+@media (max-width: 576px) {
+	movie-card {
+		width: calc(50% - 10px); /* Cambiamos el ancho en pantallas aún más pequeñas */
+	}
+}
+
+@media (max-width: 400px) {
+	movie-card {
+		width: calc(100% - 10px); /* Cambiamos el ancho en pantallas muy pequeñas */
+	}
+}

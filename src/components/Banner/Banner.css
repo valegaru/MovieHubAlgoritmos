@@ -7,11 +7,11 @@
 	position: relative;
 	background-image: url('https://www.metro951.com/wp-content/uploads/2019/02/500-dias-con-summer.png');
 	background-size: cover;
-	background-position: center top 25%;
+	background-position: center top 30%;
 	margin: 0;
-	padding: 5%;
+	padding: 10%;
 	color: white;
-	height: 60vh;
+	height: 43vh;
 }
 
 /* Agregar un velo solo sobre la imagen de fondo */
@@ -42,9 +42,9 @@ custom-navbar {
 }
 
 h1 {
-	width: 36%;
+	width: 45%;
 	height: 10%;
-	margin-top: 25%; /* Centrar a lo largo */
+	margin-top: 30%; /* Centrar a lo largo */
 	margin-bottom: 1%; /* Espacio entre el mensaje y el botón */
 	font-size: 35px;
 	text-align: center; /* Centrar horizontalmente */
