@@ -54,7 +54,7 @@ class CategorySection extends HTMLElement {
 
 			this.shadowRoot.innerHTML = /*html*/ `
                 <h2>${this.name}</h2>
-				<div id="cards">
+				<section id="cards">
 					${movieElements
 						.map(
 							(movie) => /*html*/ `
@@ -62,7 +62,7 @@ class CategorySection extends HTMLElement {
 					`
 						)
 						.join('')}
-				</div>
+				</section>
 
             `;
 

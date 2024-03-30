@@ -16,9 +16,9 @@ class Navbar extends HTMLElement {
 			this.shadowRoot.innerHTML = /*html*/ `
 						<nav>
                 <section class="search-bar">
-                    <div class="icon">
+                    <section class="icon">
                         <img src="${SearchIcon}" alt="search logo" draggable="false" />
-                    </div>
+                    </section>
 										<input class="barra" type="text" placeholder="Enter movie name" >
                 </section>
 <section class="pages">
