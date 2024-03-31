@@ -59,7 +59,7 @@ class AddMoviesModal extends HTMLElement {
 										<input type="checkbox" id="psychological" value="second-checkbox" />
 										<label for="psychological">Psychological</label>
 								</section>
-								<button type="submit">Enviar</button>
+								<button type="submit">Send</button>
 						</form>
 						</div>
 
