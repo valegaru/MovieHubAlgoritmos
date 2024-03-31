@@ -33,15 +33,17 @@ class MovieCard extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<div class="container">
-        <section class="content">
-            <img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
-            <p>View details</p>
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
-            <p>Like</p>
-        </section>
-    </div>
-    <img class="poster" src="${this.image}" >
+      <section class="movie-content"  >
+				<img src="${this.image}" width="200" height="300" >
+			</section>
+			<section class="content">
+			<img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
+			<p>View details</p>
+			<img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
+			<img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
+			<p>Like</p>
+			</section>
+
       `;
 		}
 		const cssMovieCard = this.ownerDocument.createElement('style');
