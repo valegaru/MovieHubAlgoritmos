@@ -19,31 +19,8 @@ h1 {
 	text-transform: uppercase;
 	color: white;
 	font-family: 'Cairo', sans-serif;
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 768px) {
-	/* Estilos para pantallas más pequeñas */
-	:host {
-		margin: 0; /* Quitamos el margen para ocupar todo el ancho disponible */
-	}
-
-	#cards {
-		flex-direction: column; /* Cambiamos la dirección del contenedor a columnas */
-		align-items: center; /* Centramos los elementos */
-	}
-
-	movie-card {
-		width: calc(50% - 2%); /* Cambiamos el ancho en pantallas más pequeñas */
-		margin-bottom: 10px; /* Reducimos el espacio entre las filas */
-	}
-}
-
-/* Media query para pantallas de celular */
-@media (max-width: 576px) {
-	/* Estilos para pantallas de celular */
-	movie-card {
-		width: calc(50% - 2%); /* Cambiamos el ancho para mostrar dos columnas */
+	@media (max-width: 576px) {
+		font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
 	}
 }
 
@@ -54,4 +31,13 @@ a {
 
 h1:hover {
 	color: rgba(233, 13, 90, 1);
+}
+
+/* Media query para pantallas de celular */
+@media (max-width: 576px) {
+	/* Estilos para pantallas de celular */
+	movie-card {
+		width: calc(50% - 2%); /* Cambiamos el ancho para mostrar tres columnas */
+		margin-bottom: 4%; /* Espacio máximo entre las filas */
+	}
 }
