@@ -71,3 +71,33 @@ nav .search-bar {
 	color: white;
 	font-size: 14px;
 }
+
+.pages a:hover {
+	color: rgba(251, 149, 60, 1);
+	cursor: pointer;
+	transition: color 0.1s ease;
+}
+
+/* media queries */
+@media screen and (max-width: 767px) {
+	nav {
+		flex-direction: row;
+		padding: 3%;
+	}
+
+	nav .search-bar {
+		margin-right: 10px;
+		margin-bottom: 0px;
+		width: 50%;
+		height: 50%;
+	}
+
+	.icon {
+		width: 20%;
+		height: 20%;
+	}
+	.pages a {
+		margin-right: 6px;
+		font-size: 10px;
+	}
+}
