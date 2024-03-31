@@ -1,0 +1,110 @@
+/* CSS básico del banner */
+:host {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background-image: url('https://pbs.twimg.com/media/GJ331yEWQAAtUzN.jpg');
+	background-size: cover;
+	background-position: center top 30%;
+	margin: 0;
+	padding: 10%;
+	color: white;
+	height: 43vh;
+}
+
+/* Agregar un velo solo sobre la imagen de fondo */
+:host::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(30, 21, 22, 0.01);
+	z-index: 1;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+}
+
+custom-navbar {
+	width: 100%; /* Ocupar el 100% del banner */
+	position: absolute; /* Para posicionarlo */
+	top: 0; /* En la parte superior */
+	z-index: 3;
+}
+
+h1 {
+	width: 40%;
+	height: 10%;
+	margin-top: 30%; /* Centrar a lo largo */
+	margin-bottom: 1%; /* Espacio entre el mensaje y el botón */
+	font-size: 200%;
+	text-align: center; /* Centrar horizontalmente */
+	display: flex; /* Añadir para centrado vertical */
+	justify-content: center; /* Centrar verticalmente */
+	align-items: center; /* Centrar verticalmente */
+	font-family: 'Domine', serif;
+}
+
+button {
+	margin-top: 0;
+	width: 20%;
+	height: 45px; /* como lo pongo en porcentajes???? pq no me funciona*/
+	background-color: rgba(251, 149, 60, 1);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 80%;
+	font-family: 'Noto Traditional Nushu', serif;
+}
+
+button span {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+/* Media Queries para hacer responsive el banner */
+@media screen and (max-width: 1024px) {
+	:host {
+		height: 60vh; /* Modifica la altura del banner para pantallas más pequeñas */
+		padding: 5%; /* Reduce el espacio de padding */
+	}
+
+	h1 {
+		width: 60%; /* Ajusta el ancho del mensaje */
+		font-size: 150%; /* Reduce el tamaño del texto */
+	}
+
+	button {
+		width: 30%; /* Ajusta el ancho del botón */
+		height: 40px; /* Modifica la altura del botón */
+		font-size: 70%; /* Reduce el tamaño del texto del botón */
+	}
+}
+
+@media screen and (max-width: 768px) {
+	:host {
+		height: 80vh; /* Modifica la altura del banner para pantallas aún más pequeñas */
+		padding: 2%; /* Reduce más el espacio de padding */
+	}
+
+	h1 {
+		width: 80%; /* Ajusta el ancho del mensaje */
+		font-size: 130%; /* Reduce más el tamaño del texto */
+	}
+
+	button {
+		width: 40%; /* Ajusta el ancho del botón */
+		height: 35px; /* Modifica aún más la altura del botón */
+		font-size: 60%; /* Reduce más el tamaño del texto del botón */
+	}
+}
