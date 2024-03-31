@@ -16,12 +16,13 @@ class AppContainer extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
 			<my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."></my-banner>
-			<category-section name="Películas populares" category="popular"></category-section>
-				<category-section name="Películas de cinema" category="cinema"></category-section>
-				<category-section name="Películas en tendencia" category="trending"></category-section>
-				<category-section name="Películas clásicas" category="classics"></category-section>
+			<modal-movie></modal-movie>
+			<category-section name="POPULAR FILMS IN THE COMMUNITY" category="popular"></category-section>
+				<category-section name="ON CINEMA RIGHT NOW" category="cinema"></category-section>
+				<category-section name="TRENDING THIS WEEK" category="trending"></category-section>
+				<category-section name="CLASSICS" category="classics"></category-section>
 			`;
 		}
 	}

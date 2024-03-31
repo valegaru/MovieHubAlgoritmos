@@ -35,7 +35,7 @@ class MovieCard extends HTMLElement {
 			const styles = document.createElement('style');
 			styles.textContent = css;
 			this.shadowRoot.innerHTML = /*html*/ `
-      <div>
+      <div class = "movies-content">
 				<img src="${this.image}"  width="200">
 			</div>
       `;
