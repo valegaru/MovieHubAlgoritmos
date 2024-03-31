@@ -45,22 +45,3 @@ h1 {
 		width: calc(50% - 10px); /* Cambiamos el ancho para mostrar dos columnas */
 	}
 }
-
-
-/*@media (max-width: 768px) {
-	movie-card {
-		width: calc(33.333% - 10px); /* Cambiamos el ancho en pantallas más pequeñas */
-/*	}
-}
-
-@media (max-width: 576px) {
-	movie-card {
-		width: calc(50% - 10px); /* Cambiamos el ancho en pantallas aún más pequeñas */
-/*	}
-}
-
-@media (max-width: 400px) {
-	movie-card {
-		width: calc(100% - 10px); /* Cambiamos el ancho en pantallas muy pequeñas */
-/*	}
-}

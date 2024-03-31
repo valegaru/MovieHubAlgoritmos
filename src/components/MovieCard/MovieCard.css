@@ -28,30 +28,9 @@ movie-card img {
 	object-fit: cover;
 }
 
-@media (max-width: 1024px) {
-	movie-card {
-		width: calc(16.666% - 10px);
-		height: calc(16.666vw * 1.5);
-	}
-}
-
 @media (max-width: 768px) {
 	movie-card {
 		width: calc(33.333% - 10px);
 		height: calc(33.333vw * 1.5);
-	}
-}
-
-@media (max-width: 576px) {
-	movie-card {
-		width: calc(50% - 10px);
-		height: calc(50vw * 1.5);
-	}
-}
-
-@media (max-width: 400px) {
-	movie-card {
-		width: calc(100% - 10px);
-		height: calc(100vw * 1.5);
 	}
 }

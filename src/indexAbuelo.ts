@@ -17,6 +17,7 @@ class AppContainer extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
+			//el contenido dle banner se esta renderizando por encima de el del modal
 			this.shadowRoot.innerHTML = `
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."

@@ -20,9 +20,10 @@ class AddMoviesModal extends HTMLElement {
 
 					<button id = "ButtonModal">+</button>
 		</section>
-				<section id="myModal" class="modalContainer" style="display: none;">
+				<section class="modalContainer" style="display: none;">
+    <div class="modal-overlay">
 				<section class="modal-content">
-					<form id="myForm">
+					<form class="my-form">
 						<span class = "close">X</span>
 							<h2>Add a movie</h2>
 								<label for="fname">Name movie</label><br>
@@ -60,6 +61,8 @@ class AddMoviesModal extends HTMLElement {
 								</section>
 								<button type="submit">Enviar</button>
 						</form>
+						</div>
+
 		</section>
 		</section>
       `;
@@ -85,7 +88,7 @@ class AddMoviesModal extends HTMLElement {
 				modal.style.display = 'block';
 				// body.style.overflow = 'hidden';
 			});
-			const form = this.shadowRoot.querySelector('#myForm')!;
+			const form = this.shadowRoot.querySelector('.my-form')!;
 			form.addEventListener('submit', (event) => {
 				event.preventDefault();
 				modal.style.display = 'none';
