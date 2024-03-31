@@ -4,11 +4,13 @@ import css from './filterCategories.css';
 export enum Attribute {
 	'name' = 'name',
 	'category' = 'category',
+	'link' = 'link',
 }
 //la variable name se usa para el titulo de cada sección
 class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
+	link?: string;
 	moviesData?: DataShape[];
 
 	constructor() {
@@ -20,6 +22,7 @@ class CategorySection extends HTMLElement {
 		const attrs: Record<Attribute, null> = {
 			name: null,
 			category: null,
+			link: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -53,7 +56,7 @@ class CategorySection extends HTMLElement {
 			console.log(movieElements);
 
 			this.shadowRoot.innerHTML = /*html*/ `
-                <h1>${this.name}</h1>
+                <a href="${this.link}"><h1>${this.name}</h1></a>
 				<section id="cards">
 					${movieElements
 						.map(

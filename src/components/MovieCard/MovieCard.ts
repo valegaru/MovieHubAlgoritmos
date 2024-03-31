@@ -1,4 +1,4 @@
-import css from '../MovieCard/MovieCard.css';
+import styles from './MovieCard.css';
 export enum Attribute {
 	'image' = 'image',
 }
@@ -32,14 +32,23 @@ class MovieCard extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			const styles = document.createElement('style');
-			styles.textContent = css;
 			this.shadowRoot.innerHTML = /*html*/ `
       <section class="movie-content"  >
 				<img src="${this.image}" width="200" height="300" >
 			</section>
+			<section class="content">
+			<img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
+			<p>View details</p>
+			<img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
+			<img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
+			<p>Like</p>
+			</section>
+
       `;
 		}
+		const cssMovieCard = this.ownerDocument.createElement('style');
+		cssMovieCard.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssMovieCard);
 	}
 }
 

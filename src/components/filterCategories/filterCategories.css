@@ -1,16 +1,17 @@
 :host {
 	display: block;
-	margin: 3%;
+	margin: 5%;
 }
 
 #cards {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	gap: 2%; /* Agregamos un espacio entre las columnas */
 }
 
 movie-card {
-	width: calc(16.666% - 10px); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
+	width: calc((100% / 6) - 2%); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
 	margin-bottom: 20px; /* Espacio entre las filas */
 }
 
@@ -33,7 +34,7 @@ h1 {
 	}
 
 	movie-card {
-		width: calc(33.333% - 10px); /* Cambiamos el ancho en pantallas más pequeñas */
+		width: calc(50% - 2%); /* Cambiamos el ancho en pantallas más pequeñas */
 		margin-bottom: 10px; /* Reducimos el espacio entre las filas */
 	}
 }
@@ -42,6 +43,15 @@ h1 {
 @media (max-width: 576px) {
 	/* Estilos para pantallas de celular */
 	movie-card {
-		width: calc(50% - 10px); /* Cambiamos el ancho para mostrar dos columnas */
+		width: calc(50% - 2%); /* Cambiamos el ancho para mostrar dos columnas */
 	}
+}
+
+a {
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+h1:hover {
+	color: rgba(233, 13, 90, 1);
 }

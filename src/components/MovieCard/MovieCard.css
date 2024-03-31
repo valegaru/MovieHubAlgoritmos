@@ -28,6 +28,29 @@ movie-card img {
 	object-fit: cover;
 }
 
+/* Añade estilos para el contenido */
+.content {
+	top: 0;
+	left: 0;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column; /* Corrige la propiedad flex-direction */
+	opacity: 0;
+	transition: opacity 0.6s; /* Ajusta la duración de la transición */
+}
+
+/* Al hacer hover sobre .movie-content, muestra .content */
+.movie-content:hover .content {
+	opacity: 1;
+}
+
+p {
+	color: white;
+}
+
 @media (max-width: 768px) {
 	movie-card {
 		width: calc(33.333% - 10px);
