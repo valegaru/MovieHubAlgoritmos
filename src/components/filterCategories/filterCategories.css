@@ -31,3 +31,9 @@ movie-card {
 		width: calc(100% - 10px); /* Cambiamos el ancho en pantallas muy pequeñas */
 	}
 }
+
+h1 {
+	text-transform: uppercase;
+	color: white;
+	font-family: 'Cairo', sans-serif;
+}

@@ -1,6 +1,7 @@
 import { movies } from './data/dataFetch';
 import './components/indexPadre';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
+import styles from './indexAbuelo.css';
 //aca importo Nav
 //aca importo banner
 
@@ -17,14 +18,19 @@ class AppContainer extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
+			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
 			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
-			<category-section name="Películas populares" category="popular"></category-section>
-				<category-section name="Películas de cinema" category="cinema"></category-section>
-				<category-section name="Películas en tendencia" category="trending"></category-section>
-				<category-section name="Películas clásicas" category="classics"></category-section>
+			<category-section name="Popular films in the community" category="popular"></category-section>
+				<category-section name="On cinema right now" category="cinema"></category-section>
+				<category-section name="Trending this week" category="trending"></category-section>
+				<category-section name="classics" category="classics"></category-section>
+				</body>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 

@@ -53,7 +53,7 @@ class CategorySection extends HTMLElement {
 			console.log(movieElements);
 
 			this.shadowRoot.innerHTML = /*html*/ `
-                <h2>${this.name}</h2>
+                <h1>${this.name}</h1>
 				<section id="cards">
 					${movieElements
 						.map(
