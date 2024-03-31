@@ -13,6 +13,12 @@
 movie-card {
 	width: calc((100% / 6) - 2%); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
 	margin-bottom: 20px; /* Espacio entre las filas */
+
+	/* Ajustes para pantallas de tamaño pequeño */
+	@media (max-width: 576px) {
+		width: calc((100% / 2) - 2%); /* Ancho para mostrar dos columnas */
+		margin-bottom: 4%; /* Espacio máximo entre las filas */
+	}
 }
 
 h1 {
@@ -31,13 +37,4 @@ a {
 
 h1:hover {
 	color: rgba(233, 13, 90, 1);
-}
-
-/* Media query para pantallas de celular */
-@media (max-width: 576px) {
-	/* Estilos para pantallas de celular */
-	movie-card {
-		width: calc(50% - 2%); /* Cambiamos el ancho para mostrar tres columnas */
-		margin-bottom: 4%; /* Espacio máximo entre las filas */
-	}
 }

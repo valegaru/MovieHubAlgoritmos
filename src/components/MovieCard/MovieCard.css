@@ -1,10 +1,3 @@
-:host {
-	display: block;
-	margin: 20px 0;
-	width: 200px; /* Ancho del componente */
-	height: 300px; /* Alto del componente */
-}
-
 img {
 	width: 100%; /* Ocupa todo el ancho disponible dentro del componente */
 	height: 100%; /* Ocupa todo el alto disponible dentro del componente */
@@ -14,12 +7,6 @@ img {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-}
-
-movie-card {
-	width: 200px;
-	height: 300px;
-	margin-bottom: 20px;
 }
 
 movie-card img {
@@ -49,11 +36,4 @@ movie-card img {
 
 p {
 	color: white;
-}
-
-@media (max-width: 768px) {
-	movie-card {
-		width: calc(33.333% - 10px);
-		height: calc(33.333vw * 1.5);
-	}
 }
