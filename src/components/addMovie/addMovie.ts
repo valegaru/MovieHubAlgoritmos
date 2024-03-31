@@ -20,7 +20,7 @@ class AddMoviesModal extends HTMLElement {
 
 					<button id = "ButtonModal">+</button>
 		</section>
-				<section id="myModal" class="modalContainer">
+				<section id="myModal" class="modalContainer" style="display: none;">
 				<section class="modal-content">
 					<form id="myForm">
 						<span class = "close">X</span>
