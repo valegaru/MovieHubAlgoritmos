@@ -5,6 +5,9 @@
 .container {
 	position: relative;
 	object-fit: cover;
+	display: flex;
+	height: 100%;
+	width: 100%;
 }
 
 .poster {
@@ -19,6 +22,7 @@
 	left: 0;
 	position: absolute;
 	width: 100%;
+	height: 100%;
 	background-color: rgba(0, 0, 0, 0.6);
 	display: flex;
 	justify-content: center;
@@ -41,23 +45,58 @@ p {
 .content img,
 .content p {
 	margin: 5px; /* Ajusta el margen entre elementos */
+	text-align: center;
 }
 
 .content img {
-	width: 50%;
-	height: 50%;
+	width: 28%;
+	height: auto;
+	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
 }
 
 button.details {
-	background: url('https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png') no-repeat;
-	background-size: cover;
-	width: 20vw; /* Ancho relativo a la ventana gráfica */
-	height: 20vw; /* Alto relativo a la ventana gráfica */
-	max-width: 90px; /* Ancho máximo en píxeles */
-	max-height: 90px; /* Alto máximo en píxeles */
+	width: 50%; /* Ancho del 50% */
+	height: auto; /* Alto relativo a la ventana gráfica */
 	border: none;
-	padding: 0; /* Elimina el espacio alrededor del contenido */
 	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-	text-indent: -9999px; /* Oculta el texto */
-	overflow: hidden; /* Oculta el texto que pueda desbordarse */
+	background-color: transparent;
+	padding: 1%;
+	margin: 0;
+}
+
+button.details img {
+	height: 35%;
+	width: auto;
+}
+
+.link {
+	display: flex;
+	width: 50%; /* Ancho del 50% */
+	height: 100%;
+	justify-content: center; /* Centra horizontalmente */
+	align-items: center; /* Centra verticalmente */
+}
+
+.dislike,
+.like {
+	display: none; /* Inicialmente oculto */
+}
+
+@media screen and (max-width: 767px) {
+	.content img,
+	.content p {
+		margin: 3px; /* Ajusta el margen entre elementos para dispositivos móviles */
+	}
+
+	.content img {
+		width: 50%; /* Ancho del 50% para dispositivos móviles */
+	}
+
+	button.details {
+		width: 70%; /* Ancho del 70% para dispositivos móviles */
+	}
+
+	.link {
+		width: 70%; /* Ancho del 70% para dispositivos móviles */
+	}
 }
