@@ -93,7 +93,7 @@ nav .search-bar {
 	list-style-type: none;
 }
 
-.pages a:hover + .menu-desplegable {
+a:focus + .menu-desplegable {
 	display: block;
 	color: rgba(233, 13, 90, 1); /* Mostrar el submenu cuando el cursor está sobre el enlace 'films' */
 }

@@ -1,47 +1,40 @@
 :host {
 	display: block;
-	margin: 3%;
+	margin: 5%;
 }
 
 #cards {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	gap: 2%; /* Agregamos un espacio entre las columnas */
 }
 
 movie-card {
-	width: calc(16.666% - 10px); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
+	width: calc((100% / 6) - 2%); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
 	margin-bottom: 20px; /* Espacio entre las filas */
+
+	/* Ajustes para pantallas de tamaño pequeño */
+	@media (max-width: 576px) {
+		width: calc((100% / 2) - 2%); /* Ancho para mostrar dos columnas */
+		margin-bottom: 4%; /* Espacio máximo entre las filas */
+	}
 }
 
 h1 {
 	text-transform: uppercase;
 	color: white;
 	font-family: 'Cairo', sans-serif;
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 768px) {
-	/* Estilos para pantallas más pequeñas */
-	:host {
-		margin: 0; /* Quitamos el margen para ocupar todo el ancho disponible */
-	}
-
-	#cards {
-		flex-direction: column; /* Cambiamos la dirección del contenedor a columnas */
-		align-items: center; /* Centramos los elementos */
-	}
-
-	movie-card {
-		width: calc(33.333% - 10px); /* Cambiamos el ancho en pantallas más pequeñas */
-		margin-bottom: 10px; /* Reducimos el espacio entre las filas */
+	@media (max-width: 576px) {
+		font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
 	}
 }
 
-/* Media query para pantallas de celular */
-@media (max-width: 576px) {
-	/* Estilos para pantallas de celular */
-	movie-card {
-		width: calc(50% - 10px); /* Cambiamos el ancho para mostrar dos columnas */
-	}
+a {
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+h1:hover {
+	color: rgba(233, 13, 90, 1);
 }
