@@ -1,14 +1,17 @@
 import styles from './MovieCard.css';
+
 export enum Attribute {
 	'image' = 'image',
 }
 
 class MovieCard extends HTMLElement {
 	image?: string;
+	isLiked: boolean;
 
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
+		this.isLiked = true; // Inicialmente se muestra el botón de "No me gusta"
 	}
 
 	static get observedAttributes() {
@@ -26,6 +29,7 @@ class MovieCard extends HTMLElement {
 		}
 		this.render();
 	}
+
 	connectedCallback() {
 		this.render();
 	}
@@ -33,17 +37,37 @@ class MovieCard extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<div class="container">
-        <section class="content">
-            <img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
-            <p>View details</p>
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
-            <p>Like</p>
-        </section>
-    </div>
-    <img class="poster" src="${this.image}" >
-      `;
+				<div class="container">
+					<section class="content">
+						<img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
+						<p>View details</p>
+						<img class="dislike" width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
+						<img class="like" width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
+						<p>Like</p>
+					</section>
+				</div>
+				<img class="poster" src="${this.image}" >
+			`;
+			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
+			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
+
+			likeButton.addEventListener('click', () => {
+				this.isLiked = true;
+				likeButton.style.display = 'none';
+				dislikeButton.style.display = 'inline';
+			});
+
+			dislikeButton.addEventListener('click', () => {
+				this.isLiked = false;
+				dislikeButton.style.display = 'none';
+				likeButton.style.display = 'inline';
+			});
+
+			// Mostrar el botón correcto según el estado actual
+			likeButton.style.display = this.isLiked ? 'none' : 'inline';
+			dislikeButton.style.display = this.isLiked ? 'inline' : 'none';
 		}
+
 		const cssMovieCard = this.ownerDocument.createElement('style');
 		cssMovieCard.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssMovieCard);
