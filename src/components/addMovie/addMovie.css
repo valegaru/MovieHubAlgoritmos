@@ -16,18 +16,6 @@
 	color: rgba(233, 13, 90, 1);
 }
 
-.modalContainer .modal-content {
-	overflow: hidden;
-	background-color: rgba(30, 30, 30, 1);
-	color: rgb(255, 255, 255);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 500px;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	border-radius: 6px;
-}
-
 .modalContainer .close {
 	color: rgba(251, 149, 60, 1);
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -74,31 +62,72 @@
 	z-index: -1; /* Coloca el velo detrás del modal */
 }
 
-.modal-content {
-	position: relative;
-	z-index: 10000; /* Asegura que el contenido del modal esté encima del velo y sobre el modal */
-}
-
-.my-form button {
-	width: auto; /* Auto para que ocupe solo el espacio necesario */
-	padding: 10px 20px; /* Ajusta el espaciado interno del botón */
-	border-radius: 25px; /* Hace que el botón sea redondeado */
-	font-size: 16px; /* Tamaño de fuente del botón */
-	background-color: rgba(250, 149, 59, 1); /* Color de fondo del botón */
-	color: white; /* Color del texto del botón */
-	border: none; /* Elimina el borde del botón */
-	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-}
-
-.my-form button:hover {
-	background-color: rgba(255, 255, 255, 1);
-	color: rgba(233, 13, 90, 1);
-}
-
 @media screen and (max-width: 767px) {
 	#ButtonModal {
 		width: 60px;
 		height: 60px;
 		font-size: 40px;
 	}
+}
+
+.modal-content {
+	background-color: rgba(30, 21, 22, 1); /* Cambia el color de fondo del modal */
+	color: #fff; /* Cambia el color del texto del modal */
+	padding: 20px; /* Añade espacio alrededor del contenido del modal */
+	border-radius: 10px; /* Hace que los bordes del modal sean redondeados */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Añade una sombra alrededor del modal */
+	position: relative;
+	z-index: 10000; /* Asegura que el contenido del modal esté encima del velo y sobre el modal */
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Cairo', sans-serif;
+	font-size: 80%;
+}
+
+.my-form label {
+	color: #fff; /* Cambia el color del texto de las etiquetas del formulario */
+}
+
+.my-form input[type='text'] {
+	width: 100%; /* Ajusta el ancho de los campos de texto al 100% */
+	padding: 10px; /* Añade espacio dentro de los campos de texto */
+	margin-bottom: 0; /* Añade espacio entre los campos de texto */
+	border: none; /* Elimina el borde de los campos de texto */
+	background-color: rgba(255, 255, 255, 0.1); /* Cambia el color de fondo de los campos de texto */
+	color: #fff; /* Cambia el color del texto de los campos de texto */
+	border-radius: 5px; /* Hace que los bordes de los campos de texto sean redondeados */
+	box-sizing: border-box; /* Hace que el tamaño total de los campos de texto incluya el relleno y el borde */
+}
+
+.my-form input[type='date'] {
+	width: 100%; /* Ajusta el ancho de los campos de texto al 100% */
+	padding: 10px; /* Añade espacio dentro de los campos de texto */
+	margin-bottom: 0; /* Añade espacio entre los campos de texto */
+	border: none; /* Elimina el borde de los campos de texto */
+	background-color: rgba(255, 255, 255, 0.1); /* Cambia el color de fondo de los campos de texto */
+	color: #fff; /* Cambia el color del texto de los campos de texto */
+	border-radius: 5px; /* Hace que los bordes de los campos de texto sean redondeados */
+	box-sizing: border-box; /* Hace que el tamaño total de los campos de texto incluya el relleno y el borde */
+}
+
+.my-form input[type='checkbox'] {
+	margin-right: 10px; /* Añade espacio entre los checkboxes */
+}
+
+.my-form button {
+	width: 100%; /* Ajusta el ancho del botón al 100% */
+	padding: 10px; /* Añade espacio dentro del botón */
+	margin-top: 20px; /* Añade espacio encima del botón */
+	background-color: rgba(250, 149, 59, 1); /* Color de fondo del botón */
+	color: white; /* Color del texto del botón */
+	border: none; /* Elimina el borde del botón */
+	border-radius: 5px; /* Hace que los bordes del botón sean redondeados */
+	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.my-form button:hover {
+	background-color: rgba(233, 13, 90, 1);
+	color: rgba(255, 255, 255, 1);
 }

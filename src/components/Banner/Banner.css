@@ -60,6 +60,10 @@ button {
 	font-size: 80%;
 	font-family: 'Noto Traditional Nushu', serif;
 }
+button:hover {
+	background-color: rgba(233, 13, 90, 1);
+	color: rgba(255, 255, 255, 1);
+}
 
 button span {
 	display: inline-block;

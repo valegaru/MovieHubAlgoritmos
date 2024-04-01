@@ -30,6 +30,8 @@ class AddMoviesModal extends HTMLElement {
 								<input type="text" id="fname" name="fname"><br><br>
 								<label for="director">Director</label><br>
 								<input type="text" id="directorMovie" name="director"><br><br>
+								<label for="date">Release date</label><br>
+								<input type="date" id="crewMovie" name="date"><br><br>
 								<label for="description">Description</label><br>
 								<input type="text" id="descriptionMovie" name="description"><br><br>
 								<label for="cast">Cast</label><br>
