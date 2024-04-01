@@ -36,17 +36,19 @@ class MovieCard extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = /*html*/ `
-				<div class="container">
-					<section class="content">
-						<img width="50" height="50" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
-						<p>View details</p>
-						<img class="dislike" width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
-						<img class="like" width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
-						<p>Like</p>
-					</section>
-				</div>
-				<img class="poster" src="${this.image}" >
+			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
+			<div class="container">
+			<section class="content">
+				<a href="https://myflixerz.to/" class="link">
+					<button type="button" class="details"></button>
+				</a>
+				<p>View details</p>
+				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
+				<img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
+				<p>Like</p>
+			</section>
+		</div>
+		<img class="poster" src="${this.image}" >
 			`;
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;

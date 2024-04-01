@@ -35,7 +35,7 @@
 
 p {
 	color: white;
-	font-size: 15%;
+	font-size: 100%;
 }
 
 .content img,
@@ -46,4 +46,18 @@ p {
 .content img {
 	width: 50%;
 	height: 50%;
+}
+
+button.details {
+	background: url('https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png') no-repeat;
+	background-size: cover;
+	width: 20vw; /* Ancho relativo a la ventana gráfica */
+	height: 20vw; /* Alto relativo a la ventana gráfica */
+	max-width: 90px; /* Ancho máximo en píxeles */
+	max-height: 90px; /* Alto máximo en píxeles */
+	border: none;
+	padding: 0; /* Elimina el espacio alrededor del contenido */
+	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+	text-indent: -9999px; /* Oculta el texto */
+	overflow: hidden; /* Oculta el texto que pueda desbordarse */
 }
