@@ -41,9 +41,7 @@ class MovieCard extends HTMLElement {
 			<img class="poster" src="${this.image}" >
 			<section class="content">
 				<a href="https://myflixerz.to/" class="link">
-					<button type="button" class="details">
-					<img src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
-					</button>
+					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
 				</a>
 				<p>View details</p>
 				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
