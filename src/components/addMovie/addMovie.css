@@ -5,7 +5,7 @@
 	right: 20px;
 	background-color: rgba(233, 13, 90, 1);
 	color: white;
-	font-size: 25px;
+	font-size: 35px;
 	width: 55px;
 	height: 55px;
 	border-radius: 50%;
@@ -77,4 +77,28 @@
 .modal-content {
 	position: relative;
 	z-index: 10000; /* Asegura que el contenido del modal esté encima del velo y sobre el modal */
+}
+
+.my-form button {
+	width: auto; /* Auto para que ocupe solo el espacio necesario */
+	padding: 10px 20px; /* Ajusta el espaciado interno del botón */
+	border-radius: 25px; /* Hace que el botón sea redondeado */
+	font-size: 16px; /* Tamaño de fuente del botón */
+	background-color: rgba(250, 149, 59, 1); /* Color de fondo del botón */
+	color: white; /* Color del texto del botón */
+	border: none; /* Elimina el borde del botón */
+	cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.my-form button:hover {
+	background-color: rgba(255, 255, 255, 1);
+	color: rgba(233, 13, 90, 1);
+}
+
+@media screen and (max-width: 767px) {
+	#ButtonModal {
+		width: 60px;
+		height: 60px;
+		font-size: 40px;
+	}
 }
