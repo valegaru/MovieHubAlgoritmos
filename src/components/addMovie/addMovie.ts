@@ -40,6 +40,7 @@ class AddMoviesModal extends HTMLElement {
 								<input type="text" id="crewMovie" name="crew"><br><br>
 								<section>
 										<label for="crew">Genres</label><br>
+										<section id="checkboxes">
 										<input type="checkbox" id="romance" value="first-checkbox" />
 										<label for="romance">Romance</label>
 										<input type="checkbox" id="action" value="second-checkbox" />
@@ -60,7 +61,8 @@ class AddMoviesModal extends HTMLElement {
 										<label for="documental">Documental</label>
 										<input type="checkbox" id="psychological" value="second-checkbox" />
 										<label for="psychological">Psychological</label>
-								</section>
+										</section>
+										</section>
 								<button type="submit">Submit</button>
 						</form>
 						</div>
