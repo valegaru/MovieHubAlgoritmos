@@ -78,6 +78,26 @@ nav .search-bar {
 	transition: color 0.1s ease;
 }
 
+.pages {
+	position: relative;
+}
+
+.pages .menu-desplegable {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(250, 149, 59, 1);
+	padding: 10px;
+	border-radius: 5px;
+	list-style-type: none;
+}
+
+.pages a:hover + .menu-desplegable {
+	display: block;
+	color: rgba(233, 13, 90, 1); /* Mostrar el submenu cuando el cursor está sobre el enlace 'films' */
+}
+
 /* media queries */
 @media screen and (max-width: 767px) {
 	nav {
