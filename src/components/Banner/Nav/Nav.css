@@ -78,6 +78,33 @@ nav .search-bar {
 	transition: color 0.1s ease;
 }
 
+.pages {
+	position: relative;
+}
+
+.pages .menu-desplegable {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(250, 149, 59, 1);
+	padding: 10px;
+	border-radius: 5px;
+	list-style-type: none;
+}
+.pages .menu-desplegable a {
+	text-transform: none;
+	display: block;
+	padding: 5px 0;
+}
+.pages .menu-desplegable a:hover {
+	color: rgba(233, 13, 90, 1);
+}
+
+a:focus + .menu-desplegable {
+	display: block;
+}
+
 /* media queries */
 @media screen and (max-width: 767px) {
 	nav {
