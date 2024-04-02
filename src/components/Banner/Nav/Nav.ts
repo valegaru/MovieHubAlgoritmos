@@ -24,7 +24,7 @@ class Navbar extends HTMLElement {
 										<section class="pages">
 										<a href="#">films</a> <!-- aparece siempre de numero 1 -->
 										<ul class = "menu-desplegable">
-											<li><a href="">Classics</a></li>
+											<li><a href="https://www.culturagenial.com/es/peliculas-clasicas/">Classics</a></li>
 											<li><a href="">Popular</a></li>
 											<li><a href="">On cinema</a></li>
 											<li><a href="">Trending</a></li>

@@ -92,10 +92,17 @@ nav .search-bar {
 	border-radius: 5px;
 	list-style-type: none;
 }
+.pages .menu-desplegable a {
+	text-transform: none;
+	display: block;
+	padding: 5px 0;
+}
+.pages .menu-desplegable a:hover {
+	color: rgba(233, 13, 90, 1);
+}
 
 a:focus + .menu-desplegable {
 	display: block;
-	color: rgba(233, 13, 90, 1); /* Mostrar el submenu cuando el cursor está sobre el enlace 'films' */
 }
 
 /* media queries */
