@@ -1,4 +1,5 @@
 import css from './Nav.css';
+// Importación del ícono de búsqueda
 import SearchIcon from '../../../assets/search.svg';
 
 class Navbar extends HTMLElement {
@@ -24,7 +25,7 @@ class Navbar extends HTMLElement {
 										<section class="pages">
 										<a href="#">films</a> <!-- aparece siempre de numero 1 -->
 										<ul class = "menu-desplegable">
-											<li><a href="https://www.culturagenial.com/es/peliculas-clasicas/">Classics</a></li>
+											<li><a href="#">Classics</a></li>
 											<li><a href="">Popular</a></li>
 											<li><a href="">On cinema</a></li>
 											<li><a href="">Trending</a></li>
@@ -46,10 +47,10 @@ class Navbar extends HTMLElement {
 
                 </nav>
             `;
-
+			// Se crea un elemento <style> para aplicar los estilos CSS
 			const styles = document.createElement('style');
 			styles.innerHTML = css;
-
+			// Se añaden los estilos al shadow DOM del componente
 			this.shadowRoot.appendChild(styles);
 		}
 	}

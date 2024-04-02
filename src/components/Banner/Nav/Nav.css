@@ -1,9 +1,11 @@
+/* Reset de estilos */
 * {
 	margin: 0;
 	padding: 0;
 	font-family: 'Noto Traditional Nushu', serif;
 }
 
+/* Estilos generales de la barra de navegación */
 nav {
 	display: flex;
 	flex-direction: row;
@@ -14,7 +16,7 @@ nav {
 	justify-content: space-between; /* Alinear elementos al centro horizontalmente */
 }
 
-/* Asegúrate de que la barra de navegación ocupe el ancho completo */
+/* Estilos para la sección de búsqueda */
 nav .search-bar,
 nav .pages {
 	flex: 1; /* Distribuir el espacio disponible */
@@ -34,7 +36,7 @@ nav .search-bar {
 	box-sizing: border-box;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 5px;
-	max-width: 600px; /* Puedes ajustar este valor según tus necesidades */
+	max-width: 600px;
 }
 
 .search-bar input {
@@ -82,6 +84,7 @@ nav .search-bar {
 	position: relative;
 }
 
+/* Estilos para el menú desplegable */
 .pages .menu-desplegable {
 	display: none;
 	position: absolute;
