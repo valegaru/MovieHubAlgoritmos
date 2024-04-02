@@ -11,7 +11,7 @@ class MovieCard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-		this.isLiked = true; // Inicialmente se muestra el botón de "No me gusta"
+		this.isLiked = true; // Inicialmente se muestra el botón de "Dislike"
 	}
 
 	static get observedAttributes() {
@@ -35,7 +35,9 @@ class MovieCard extends HTMLElement {
 	}
 
 	render() {
+		// Verificar si existe el shadowRoot
 		if (this.shadowRoot) {
+			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
 			<div class="container">
 			<img class="poster" src="${this.image}" >
@@ -50,9 +52,11 @@ class MovieCard extends HTMLElement {
 				</section>
 		</div>
 			`;
+			// Obtener referencias a los botones de "like" y "dislike"
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
 
+			// Agregar listeners a los botones
 			likeButton.addEventListener('click', () => {
 				this.isLiked = true;
 				likeButton.style.display = 'none';
@@ -70,6 +74,7 @@ class MovieCard extends HTMLElement {
 			dislikeButton.style.display = this.isLiked ? 'inline' : 'none';
 		}
 
+		// Se crea un elemento <style> para aplicar los estilos CSS
 		const cssMovieCard = this.ownerDocument.createElement('style');
 		cssMovieCard.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssMovieCard);

@@ -7,6 +7,8 @@ export enum Attribute {
 	'link' = 'link',
 }
 //la variable name se usa para el titulo de cada sección
+//link es para que cuando se hunda en el nombre de la seccion, te lleve a una pagina asociada
+//las movieCard se meten en un array y las imagenes son traidas de la data
 class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
