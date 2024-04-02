@@ -1,5 +1,4 @@
-//esto es un modal que va a aparecer cuando se le de click a un boton flotante que va a estar puesto desde el abuelo
-//al hacer el boton on click y los estilos igual, con el query selector. con esto vamos a hacer aparecer a este componente.
+//esto es un modal que va a aparecer cuando se le de click a un boton flotante
 //aqui tiene que ir un formulario de la informacion necesaria para crear una pelicula, osea un forumalrio que tenga toda la ifno que vez cuando le das click a una pelicula.
 //la asignacion de categoria se hara a traves de checkboxes
 import css from './addMovie.css';
@@ -15,7 +14,9 @@ class AddMoviesModal extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			//cambiar el placeholder de crew
+			// Se comprueba si el shadowRoot está disponible
+
+			// Se establece la estructura HTML del modal
 			this.shadowRoot.innerHTML = /*html*/ `
 				<section class= "container">
 
@@ -97,13 +98,16 @@ class AddMoviesModal extends HTMLElement {
 		</section>
 		</section>
       `;
-			const cssBanner = this.ownerDocument.createElement('style');
-			cssBanner.innerHTML = css;
-			this.shadowRoot?.appendChild(cssBanner);
-			//se pone el ! para decirle que si existe y no salga como null xd
+			// Se añade el CSS al shadowRoot
+			const cssAddMovie = this.ownerDocument.createElement('style');
+			cssAddMovie.innerHTML = css;
+			this.shadowRoot?.appendChild(cssAddMovie);
+			//se pone el ! para decirle que si existe y no salga como null
+			// Se obtienen referencias a los elementos del DOM
 			const modal = this.shadowRoot.querySelector('.modalContainer')! as HTMLDivElement;
 
 			const span = this.shadowRoot.querySelector('.close')!;
+			// Se añaden event listeners para mostrar y ocultar el modal
 			span.addEventListener('click', () => {
 				modal.style.display = 'none';
 			});
@@ -119,6 +123,8 @@ class AddMoviesModal extends HTMLElement {
 				modal.style.display = 'block';
 				// body.style.overflow = 'hidden';
 			});
+
+			// Se añade un event listener al formulario para prevenir el envío y ocultar el modal
 			const form = this.shadowRoot.querySelector('.my-form')!;
 			form.addEventListener('submit', (event) => {
 				event.preventDefault();
