@@ -25,8 +25,10 @@ class AddMoviesModal extends HTMLElement {
     <div class="modal-overlay">
 				<section class="modal-content">
 					<form class="my-form">
-						<span class = "close">X</span>
+					<section id="header">
+						<span class = "close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
 							<h2>Add a movie</h2>
+							</section>
 								<label for="fname">Name movie</label><br>
 								<input type="text" id="fname" name="fname" placeholder="Pearl"><br><br>
 								<label for="director">Director</label><br>
