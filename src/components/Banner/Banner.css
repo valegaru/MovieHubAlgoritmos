@@ -1,3 +1,4 @@
+/* Estilos para el componente de banner */
 :host {
 	display: flex;
 	flex-direction: column;
@@ -33,11 +34,12 @@ section {
 	z-index: 2;
 }
 
+/* Estilos para el componente personalizado de la barra de navegación */
 custom-navbar {
 	width: 100%; /* Ocupar el 100% del banner */
 	position: absolute; /* Para posicionarlo */
 	top: 0; /* En la parte superior */
-	z-index: 3;
+	z-index: 3; /* Z-index para estar por encima de otros elementos */
 }
 
 h1 {
@@ -52,7 +54,7 @@ h1 {
 
 button {
 	width: 20%; /* Modifica el ancho del botón */
-	height: 50px; /* como lo hago con unidades relaivas */
+	height: 50px;
 	background-color: rgba(251, 149, 60, 1);
 	color: white;
 	border: none;
