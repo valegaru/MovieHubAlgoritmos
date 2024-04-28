@@ -1,6 +1,8 @@
 //esto es un modal que va a aparecer cuando se le de click a un boton flotante
 //aqui tiene que ir un formulario de la informacion necesaria para crear una pelicula, osea un forumalrio que tenga toda la ifno que vez cuando le das click a una pelicula.
 //la asignacion de categoria se hara a traves de checkboxes
+import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
+
 import css from './addMovie.css';
 class AddMoviesModal extends HTMLElement {
 	constructor() {
