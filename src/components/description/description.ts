@@ -1,0 +1,1 @@
+//En la pantalla de cada peli, es el microcomponente de la descripcion

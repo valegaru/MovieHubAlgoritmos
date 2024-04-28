@@ -1,0 +1,1 @@
+//la lista de filtros de la pagina new list. FILTERS CON LOS CHECBOXES POR CATEGORIA DEBAJO

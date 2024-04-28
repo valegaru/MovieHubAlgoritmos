@@ -86,7 +86,7 @@ nav .search-bar {
 
 /* Estilos para el menú desplegable */
 .pages .menu-desplegable {
-	display: none;
+	display: none; /* controla que no se muestre */
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -104,6 +104,7 @@ nav .search-bar {
 	color: rgba(233, 13, 90, 1);
 }
 
+/* controla que se muestre el menu desplegable */
 a:focus + .menu-desplegable {
 	display: block;
 }
