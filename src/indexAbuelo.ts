@@ -1,5 +1,5 @@
 import { movies } from './data/dataFetch';
-import './components/indexPadre';
+import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
 import styles from './indexAbuelo.css';
 //aca importo Nav
