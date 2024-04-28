@@ -3,7 +3,7 @@
 //la asignacion de categoria se hara a traves de checkboxes
 import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
-import css from './addMovie.css';
+import css from './addMoviesModal.css';
 class AddMoviesModal extends HTMLElement {
 	constructor() {
 		super();
