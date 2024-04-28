@@ -1,0 +1,1 @@
+//es la parte de la foto de perfil y de los campos de informacion con el boton para actulizarla
