@@ -1,0 +1,1 @@
+//en la pantalla de cada peli es el mirco componente que tiene por titulo cast o crew o genre, y su informacion correspondiente
