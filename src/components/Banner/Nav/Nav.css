@@ -86,7 +86,7 @@ nav .search-bar {
 
 /* Estilos para el menú desplegable */
 .pages .menu-desplegable {
-	display: none;
+	display: none; /*oculta el menu */
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -105,6 +105,7 @@ nav .search-bar {
 }
 
 a:focus + .menu-desplegable {
+	/* se usa para poner elementos debajo de otros, como columnas  */
 	display: block;
 }
 
