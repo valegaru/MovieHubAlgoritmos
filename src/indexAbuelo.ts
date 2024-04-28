@@ -37,3 +37,5 @@ class AppContainer extends HTMLElement {
 }
 
 customElements.define('app-container', AppContainer);
+
+//<my-actionandicon label="hola" description_icon="hola2" icon_url="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" link="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png"></my-actionandicon>
