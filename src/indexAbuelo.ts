@@ -1,4 +1,4 @@
-import { movies } from './data/dataFetch';
+import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
 import styles from './indexAbuelo.css';

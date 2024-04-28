@@ -1,5 +1,5 @@
 //esta es la pantalla de la segunda entrega
-import { movies } from '../data/dataFetch';
+import { movies } from '../services/dataFetch';
 import './components/indexPadre';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
 import styles from './indexAbuelo.css';

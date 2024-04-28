@@ -1,4 +1,4 @@
-import { movies, type DataShape } from '../../data/dataFetch';
+import { movies, type DataShape } from '../../services/dataFetch';
 import css from './filterCategories.css';
 
 export enum Attribute {
