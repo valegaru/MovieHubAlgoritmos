@@ -1,13 +1,13 @@
-import './screens/dashboard'
-import './screens/categories'
-import './screens/film'
-import './screens/login'
-import './screens/mylists'
-import './screens/newlist'
-import './screens/profile'
-import './screens/signin'
-//import { appState } from './store/store';
-//import { addObserver } from './store/store';
+import './screens/dashboard';
+import './screens/categories';
+import './screens/film';
+import './screens/login';
+import './screens/mylists';
+import './screens/newlist';
+import './screens/profile';
+import './screens/signin';
+import { appState } from './store/index';
+import { addObserver } from './store/index';
 
 import { movies } from './services/dataFetch';
 import './components/exports';
@@ -40,7 +40,7 @@ class AppContainer extends HTMLElement {
 				this.shadowRoot?.appendChild(dashboard);
 				break;
 
-				case 'SIGNIN':
+			case 'SIGNIN':
 				const signin = this.ownerDocument.createElement('app-signin');
 				this.shadowRoot?.appendChild(signin);
 				break;
