@@ -51,7 +51,7 @@ export default class FigureMovie extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
-<img src="${this.poster}>
+<img src="${this.poster}">
 <h1>${this.utitle}</h1>
 <p>Directed by ${this.director} - ${this.release_year}</p>
       </section>
