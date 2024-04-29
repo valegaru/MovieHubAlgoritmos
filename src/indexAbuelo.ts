@@ -48,6 +48,11 @@ class AppContainer extends HTMLElement {
 				this.shadowRoot?.appendChild(signin);
 				break;
 
+			case 'CATEGORIES':
+				const categories = this.ownerDocument.createElement('app-categories') as Categories;
+				this.shadowRoot?.appendChild(categories);
+				break;
+
 			default:
 				break;
 		}
