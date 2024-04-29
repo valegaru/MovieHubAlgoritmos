@@ -11,3 +11,4 @@ export { default as DescriptionMovie } from './description/description';
 export { default as ExtraInfo } from './ExtraInfo/ExtraInfo';
 export { default as SessionForm } from './SessionForm/SessionForm';
 export { default as SubmitAndTerms } from './SubmitAndTerms/SubmitAndTerms';
+export { default as MovieCardAdd } from './MovieCardADD/MovieCardADD';
