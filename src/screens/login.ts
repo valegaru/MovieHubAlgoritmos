@@ -17,7 +17,7 @@ class LogIn extends HTMLElement {
 			<body>
 			<section>
      <my-sessionform utitle="LOG IN" password="Password" emailornumber="Mobile number or email"></my-sessionform>
-		 <my-submitandterms btn_text="Continue" message="By using our services you agree to"></my-submitandterms>
+		 <my-submitandterms btn_text="Continue" message="By using our services you agree to" btn_type="submit"></my-submitandterms>
 		 </section>
 		 <hr><p>New to this website</p><hr>
 		 <a href="sign in page"><button>Create your account</button></a>

@@ -4,11 +4,13 @@ import styles from './SubmitAndTerms.css';
 export enum AttributeSubmitAndTerms {
 	'btn_text' = 'btn_text',
 	'message' = 'message',
+  'btn_type'='btn_type'
 }
 
 export default class SubmitAndTerms extends HTMLElement {
 	btn_text?: string;
 	message?: string;
+  btn_type?: string;
 
 	constructor() {
 		super();
@@ -18,6 +20,7 @@ export default class SubmitAndTerms extends HTMLElement {
 	static get observedAttributes() {
 		const attrs: Record<AttributeSubmitAndTerms, null> = {
 			btn_text: null,
+      btn_type: null,
 			message: null,
 		};
 		return Object.keys(attrs);
@@ -49,7 +52,7 @@ export default class SubmitAndTerms extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
-      <button type="submit">${this.btn_text}</button>
+      <button type="${this.btn_type}">${this.btn_text}</button>
       <p>${this.message}<a href="https://en.wikipedia.org/wiki/Terms_of_service"> Our Conditions of Use and Privacy Notice</a>.</p>
       </section>
       `;
