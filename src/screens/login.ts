@@ -1,7 +1,7 @@
 import { movies } from '../services/dataFetch';
 import './components/exports';
 
-class LogIn extends HTMLElement {
+export class LogIn extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });

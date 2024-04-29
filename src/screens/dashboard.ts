@@ -1,4 +1,6 @@
 //esta es la pantalla de la segunda entrega
+import { addObserver, dispatch } from '../store/index';
+import { navigate } from '../store/actions';
 import { movies } from '../services/dataFetch';
 import './components/indexPadre';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
@@ -6,7 +8,7 @@ import styles from './indexAbuelo.css';
 //aca importo Nav
 //aca importo banner
 
-class Dashboard extends HTMLElement {
+export class Dashboard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
@@ -14,6 +16,10 @@ class Dashboard extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		const button = this.shadowRoot?.querySelector('#accountButton');
+		button?.addEventListener('click', () => {
+			dispatch(navigate('SIGNIN'));
+		});
 	}
 
 	render() {

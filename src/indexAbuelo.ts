@@ -8,7 +8,9 @@ import './screens/profile';
 import './screens/signin';
 import { appState } from './store/index';
 import { addObserver } from './store/index';
-
+import { LogIn } from './screens/login';
+import { Dashboard } from './screens/dashboard';
+import { SignIn } from './screens/signin';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
@@ -31,17 +33,17 @@ class AppContainer extends HTMLElement {
 		if (this.shadowRoot) this.shadowRoot.innerHTML = '';
 		switch (appState.screen) {
 			case 'LOGIN':
-				const login = this.ownerDocument.createElement('app-login');
+				const login = this.ownerDocument.createElement('app-login') as LogIn;
 				this.shadowRoot?.appendChild(login);
 				break;
 
 			case 'DASHBOARD':
-				const dashboard = this.ownerDocument.createElement('app-dashboard');
+				const dashboard = this.ownerDocument.createElement('app-dashboard') as Dashboard;
 				this.shadowRoot?.appendChild(dashboard);
 				break;
 
 			case 'SIGNIN':
-				const signin = this.ownerDocument.createElement('app-signin');
+				const signin = this.ownerDocument.createElement('app-signin') as SignIn;
 				this.shadowRoot?.appendChild(signin);
 				break;
 
