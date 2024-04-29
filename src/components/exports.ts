@@ -8,3 +8,4 @@ export { default as ActionAndIcon } from './ActionAndIcon/ActionAndIcon';
 export { default as FilterList } from './FilterList/FilterList';
 export { default as FigureMovie } from './FigureMovie/FigureMovie';
 export { default as DescriptionMovie } from './description/description';
+export { default as ExtraInfo } from './ExtraInfo/ExtraInfo';
