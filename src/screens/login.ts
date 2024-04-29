@@ -1,5 +1,4 @@
-import { movies } from '../services/dataFetch';
-import './components/exports';
+import '../components/exports';
 
 export class LogIn extends HTMLElement {
 	constructor() {

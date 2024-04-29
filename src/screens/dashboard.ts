@@ -2,9 +2,9 @@
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import { movies } from '../services/dataFetch';
-import './components/indexPadre';
+import '../components/exports';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
-import styles from './indexAbuelo.css';
+import styles from '../indexAbuelo.css';
 //aca importo Nav
 //aca importo banner
 
