@@ -6,3 +6,4 @@ export { default as AddMoviesModal } from './addMoviesModal/addMoviesModal';
 export { default as ButtonCustom } from './ButtonCustom/ButtonCustom';
 export { default as ActionAndIcon } from './ActionAndIcon/ActionAndIcon';
 export { default as FilterList } from './FilterList/FilterList';
+export { default as FigureMovie } from './FigureMovie/FigureMovie';
