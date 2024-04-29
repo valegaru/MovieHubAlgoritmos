@@ -42,3 +42,4 @@ customElements.define('app-container', AppContainer);
 //<my-filters label="FILTERS"></my-filters>
 //<my-figuremovie poster=""></my-figuremovie>
 //<my-descriptionmovie description=""></my-descriptionmovie>
+//<my-extrainfo section_title="hola" content="adios"></my-extrainfo>
