@@ -12,6 +12,7 @@ import { LogIn } from './screens/login';
 import { Dashboard } from './screens/dashboard';
 import { SignIn } from './screens/signin';
 import { Categories } from './screens/categories';
+import { FilmPage } from './screens/film';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
@@ -51,6 +52,11 @@ class AppContainer extends HTMLElement {
 			case 'CATEGORIES':
 				const categories = this.ownerDocument.createElement('app-categories') as Categories;
 				this.shadowRoot?.appendChild(categories);
+				break;
+
+			case 'FILMPAGE':
+				const filmpage = this.ownerDocument.createElement('app-filmpage') as FilmPage;
+				this.shadowRoot?.appendChild(filmpage);
 				break;
 
 			default:
