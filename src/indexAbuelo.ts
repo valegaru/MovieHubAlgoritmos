@@ -43,3 +43,4 @@ customElements.define('app-container', AppContainer);
 //<my-figuremovie poster=""></my-figuremovie>
 //<my-descriptionmovie description=""></my-descriptionmovie>
 //<my-extrainfo section_title="hola" content="adios"></my-extrainfo>
+//<my-sessionform utitle="hello" email="adios" password="hola"></my-sessionform>

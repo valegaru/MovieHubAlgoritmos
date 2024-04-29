@@ -13,12 +13,12 @@ export enum AttributeSessionForm {
 
 export default class SessionForm extends HTMLElement {
 	utitle?: string;
-	your_name?: string;
-	mobile_number?: string;
-	email?: string;
-	emailornumber?: string;
-	password?: string;
-	re_password?: string;
+	your_name?: string; //si no recibe nada, el label y el input, no se muestran
+	mobile_number?: string; //si no recibe nada, el label y el input, no se muestran
+	email?: string; //si no recibe nada, el label y el input, no se muestran
+	emailornumber?: string; //si no recibe nada, el label y el input, no se muestran
+	password?: string; //si no recibe nada, el label y el input, no se muestran
+	re_password?: string; //si no recibe nada, el label y el input, no se muestran
 
 	constructor() {
 		super();
@@ -55,63 +55,63 @@ export default class SessionForm extends HTMLElement {
 	}
 
 	render() {
-      // Verificar si existe el shadowRoot
-      if (this.shadowRoot) {
-          // Se establece la estructura HTML del componente
-          let formContent = `
+		// Verificar si existe el shadowRoot
+		if (this.shadowRoot) {
+			// Se establece la estructura HTML del componente
+			let formContent = `
               <section id="header">
                   <span class="close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
                   <h2>${this.utitle}</h2>
               </section>
           `;
 
-          // Comprobar cada propiedad antes de incluir el label y el input correspondiente
-          if (this.your_name) {
-              formContent += `
+			// Comprobar cada propiedad antes de incluir el label y el input correspondiente
+			if (this.your_name) {
+				formContent += `
                   <label for="name">${this.your_name}</label><br>
                   <input type="text" class="space" name="name" placeholder="First and last name"><br><br>
               `;
-          }
+			}
 
-          if (this.mobile_number) {
-              formContent += `
+			if (this.mobile_number) {
+				formContent += `
                   <label for="mobile">${this.mobile_number}</label><br>
                   <input type="text" class="space" name="mobile" placeholder="Don't forget your country code"><br><br>
               `;
-          }
+			}
 
-          if (this.email) {
-              formContent += `
+			if (this.email) {
+				formContent += `
                   <label for="email">${this.email}</label><br>
                   <input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
               `;
-          }
+			}
 
-          if (this.emailornumber) {
-              formContent += `
+			if (this.emailornumber) {
+				formContent += `
                   <label for="emailornumber">${this.emailornumber}</label><br>
                   <input type="text" class="space" name="emailornumber"><br><br>
               `;
-          }
+			}
 
-          if (this.password) {
-              formContent += `
+			if (this.password) {
+				formContent += `
                   <label for="password">${this.password}</label><br>
                   <input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
               `;
-          }
+			}
 
-          if (this.re_password) {
-              formContent += `
+			if (this.re_password) {
+				formContent += `
                   <label for="re_password">${this.re_password}</label><br>
                   <input type="text" class="space" name="re_password" placeholder="Confirm your password"><br><br>
               `;
-          }
+			}
 
-          formContent += '</section>';
+			formContent += '</section>';
 
-          this.shadowRoot.innerHTML = formContent;
-      }
+			this.shadowRoot.innerHTML = formContent;
+		}
 		// Se crea un elemento <style> para aplicar los estilos CSS
 		const cssExtraInfo = this.ownerDocument.createElement('style');
 		cssExtraInfo.innerHTML = styles;
