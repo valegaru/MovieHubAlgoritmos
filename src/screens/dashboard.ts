@@ -16,10 +16,13 @@ export class Dashboard extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
-		const button = this.shadowRoot?.querySelector('#holi');
-		button?.addEventListener('click', () => {
-			dispatch(navigate('SIGNIN'));
-		});
+		const myBannerButton = this.shadowRoot?.querySelector('my-banner');
+		if (myBannerButton) {
+			const button = myBannerButton.shadowRoot?.querySelector('#accountButton');
+			button?.addEventListener('click', () => {
+				dispatch(navigate('SIGNIN'));
+			});
+		}
 	}
 
 	render() {
@@ -29,7 +32,6 @@ export class Dashboard extends HTMLElement {
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
 			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
-			<button id="holi">dame click</button>
 			<category-section name="Popular films in the community" category="popular" link="https://myflixerz.to/movie"></category-section>
 				<category-section name="On cinema right now" category="cinema"></category-section>
 				<category-section name="Trending this week" category="trending"></category-section>

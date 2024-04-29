@@ -79,14 +79,6 @@ class Banner extends HTMLElement {
         `;
 
 			this.shadowRoot.innerHTML = htmlContent;
-			// Se agrega un listener al botón
-			const button = this.shadowRoot.querySelector('#accountButton');
-			if (button) {
-				button.addEventListener('click', () => {
-					window.location.href =
-						'https://static.vecteezy.com/system/resources/previews/002/236/321/non_2x/movie-trendy-banner-vector.jpg'; // Reemplazar el enlace por el de sign in
-				});
-			}
 		}
 		// Se crea un elemento <style> para aplicar los estilos CSS
 		const cssBanner = this.ownerDocument.createElement('style');
