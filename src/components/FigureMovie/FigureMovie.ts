@@ -2,10 +2,10 @@
 import styles from './FigureMovie.css';
 
 export enum AttributeFigureMovie {
-	'poster' = 'poster',
-	'director' = 'director',
-	'utitle' = 'utitle',
-	'release_year' = 'release_year',
+	'poster' = 'poster', //from data
+	'director' = 'director', //from data
+	'utitle' = 'utitle', //from data
+	'release_year' = 'release_year', //from data
 }
 
 export default class FigureMovie extends HTMLElement {
