@@ -2,12 +2,14 @@ import styles from './Banner.css';
 import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 export enum Attribute {
+	'section_title' = 'section_title',
 	'image' = 'image',
 	'message' = 'message',
 	'buttonlabel' = 'buttonlabel',
 }
 
 class Banner extends HTMLElement {
+	section_title?: string;
 	image?: string;
 	message?: string;
 	buttonlabel?: string;
@@ -19,6 +21,7 @@ class Banner extends HTMLElement {
 
 	static get observedAttributes() {
 		const attrs: Record<Attribute, null> = {
+			section_title: null,
 			image: null,
 			message: null,
 			buttonlabel: null,
@@ -46,15 +49,36 @@ class Banner extends HTMLElement {
 		// Verificar si existe el shadowRoot
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
-			this.shadowRoot.innerHTML = `
-			<custom-navbar></custom-navbar>
-      <section>
-			<section>
-        <h1>${this.message || 'Not working'}</h1>
-				</section>
-        <button type="button" id="accountButton">${this.buttonlabel}</button>
-      </section>
-      `;
+			let htmlContent = `
+            <custom-navbar></custom-navbar>
+            <section>
+                <section>
+        `;
+
+			// Comprobar si section_title tiene un valor definido antes de incluir el <h1>
+			if (this.section_title) {
+				htmlContent += `<h1>${this.section_title}</h1>`;
+			}
+
+			// Comprobar si message tiene un valor definido antes de incluir el <h1>
+			if (this.message) {
+				htmlContent += `<h1>${this.message}</h1>`;
+			}
+
+			htmlContent += `
+                </section>
+        `;
+
+			// Comprobar si buttonlabel tiene un valor definido antes de incluir el <button>
+			if (this.buttonlabel) {
+				htmlContent += `<button type="button" id="accountButton">${this.buttonlabel}</button>`;
+			}
+
+			htmlContent += `
+            </section>
+        `;
+
+			this.shadowRoot.innerHTML = htmlContent;
 			// Se agrega un listener al botón
 			const button = this.shadowRoot.querySelector('#accountButton');
 			if (button) {
