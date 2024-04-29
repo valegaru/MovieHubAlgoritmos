@@ -11,6 +11,7 @@ import { addObserver } from './store/index';
 import { LogIn } from './screens/login';
 import { Dashboard } from './screens/dashboard';
 import { SignIn } from './screens/signin';
+import { Categories } from './screens/categories';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
