@@ -1,3 +1,14 @@
+import './screens/dashboard'
+import './screens/categories'
+import './screens/film'
+import './screens/login'
+import './screens/mylists'
+import './screens/newlist'
+import './screens/profile'
+import './screens/signin'
+//import { appState } from './store/store';
+//import { addObserver } from './store/store';
+
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
@@ -9,6 +20,7 @@ class AppContainer extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
+		//addObserver(this);
 	}
 
 	connectedCallback() {
@@ -16,19 +28,25 @@ class AppContainer extends HTMLElement {
 	}
 
 	render() {
-		if (this.shadowRoot) {
-			//el contenido dle banner se esta renderizando por encima de el del modal
-			this.shadowRoot.innerHTML = `
-			<body>
-      <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
-			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
-			<category-section name="Popular films in the community" category="popular" link="https://myflixerz.to/movie"></category-section>
-				<category-section name="On cinema right now" category="cinema"></category-section>
-				<category-section name="Trending this week" category="trending"></category-section>
-				<category-section name="classics" category="classics"></category-section>
-				<modal-movie></modal-movie>
-				</body>
-			`;
+		if (this.shadowRoot) this.shadowRoot.innerHTML = '';
+		switch (appState.screen) {
+			case 'LOGIN':
+				const login = this.ownerDocument.createElement('app-login');
+				this.shadowRoot?.appendChild(login);
+				break;
+
+			case 'DASHBOARD':
+				const dashboard = this.ownerDocument.createElement('app-dashboard');
+				this.shadowRoot?.appendChild(dashboard);
+				break;
+
+				case 'SIGNIN':
+				const signin = this.ownerDocument.createElement('app-signin');
+				this.shadowRoot?.appendChild(signin);
+				break;
+
+			default:
+				break;
 		}
 		const cssIndex = this.ownerDocument.createElement('style');
 		cssIndex.innerHTML = styles;
