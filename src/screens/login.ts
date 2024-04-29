@@ -1,3 +1,5 @@
+import { addObserver, dispatch } from '../store/index';
+import { navigate } from '../store/actions';
 import '../components/exports';
 
 export class LogIn extends HTMLElement {
@@ -8,6 +10,10 @@ export class LogIn extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		const button = this.shadowRoot?.querySelector('#navigatetosignin');
+		button?.addEventListener('click', () => {
+			dispatch(navigate('SIGNIN'));
+		});
 	}
 
 	render() {
@@ -19,7 +25,7 @@ export class LogIn extends HTMLElement {
 		 <my-submitandterms btn_text="Continue" message="By using our services you agree to" btn_type="submit"></my-submitandterms>
 		 </section>
 		 <hr><p>New to this website</p><hr>
-		 <a href="sign in page"><button>Create your account</button></a>
+		 <button id="navigatetosignin">Create your account</button>
 				</body>
 			`;
 		}
