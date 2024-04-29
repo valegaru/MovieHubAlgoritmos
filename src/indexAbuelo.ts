@@ -13,6 +13,7 @@ import { Dashboard } from './screens/dashboard';
 import { SignIn } from './screens/signin';
 import { Categories } from './screens/categories';
 import { FilmPage } from './screens/film';
+import { MyLists } from './screens/mylists';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
@@ -57,6 +58,11 @@ class AppContainer extends HTMLElement {
 			case 'FILMPAGE':
 				const filmpage = this.ownerDocument.createElement('app-filmpage') as FilmPage;
 				this.shadowRoot?.appendChild(filmpage);
+				break;
+
+			case 'MYLISTS':
+				const mylists = this.ownerDocument.createElement('app-mylists') as MyLists;
+				this.shadowRoot?.appendChild(mylists);
 				break;
 
 			default:
