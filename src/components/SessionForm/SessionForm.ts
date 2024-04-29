@@ -1,1 +1,88 @@
 //es la parte del form en el login y en el signin
+import styles from './SessionForm.css';
+
+export enum AttributeSessionForm {
+	'utitle' = 'utitle',
+	'your_name' = 'your_name',
+	'mobile_number' = 'mobile_number',
+	'email' = 'email',
+	'emailornumber' = 'emailornumber',
+	'password' = 'password',
+	're_password' = 're_password',
+}
+
+export default class SessionForm extends HTMLElement {
+	utitle?: string;
+	your_name?: string;
+	mobile_number?: string;
+	email?: string;
+	emailornumber?: string;
+	password?: string;
+	re_password?: string;
+
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+	}
+
+	static get observedAttributes() {
+		const attrs: Record<AttributeSessionForm, null> = {
+			utitle: null,
+			your_name: null,
+			mobile_number: null,
+			email: null,
+			emailornumber: null,
+			password: null,
+			re_password: null,
+		};
+		return Object.keys(attrs);
+	}
+
+	// Método llamado cuando se cambia un atributo observado
+	attributeChangedCallback(propName: AttributeSessionForm, oldValue: string | undefined, newValue: string | undefined) {
+		// Actualización del valor del atributo en la instancia
+		switch (propName) {
+			default:
+				this[propName] = newValue;
+				break;
+		}
+		// Se vuelve a renderizar el componente
+		this.render();
+	}
+
+	connectedCallback() {
+		this.render();
+	}
+
+	render() {
+		// Verificar si existe el shadowRoot
+		if (this.shadowRoot) {
+			// Se establece la estructura HTML del componente
+			this.shadowRoot.innerHTML = `
+      <section id="header">
+      <span class = "close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
+        <h2>${this.utitle}</h2>
+        </section>
+          <label for="name">${this.your_name}</label><br>
+          <input type="text" class="space" name="name" placeholder="First and last name"><br><br>
+          <label for="mobile">${this.mobile_number}</label><br>
+          <input type="text" class="space" name="mobile" placeholder="Don't froget your country code"><br><br>
+          <label for="email">${this.email}</label><br>
+          <input type="text" class="space" name="email" placeholder="johndoe@movie.com" ><br><br>
+          <label for="emailornumber">${this.emailornumber}</label><br>
+          <input type="text" class="space" name="emailornumber" ><br><br>
+          <label for="password">${this.password}</label><br>
+          <input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+          <label for="re_password">${this.re_password}</label><br>
+          <input type="text" class="space" name="re_password" placeholder="Confirm your password"><br><br>
+          <section>
+      `;
+		}
+		// Se crea un elemento <style> para aplicar los estilos CSS
+		const cssExtraInfo = this.ownerDocument.createElement('style');
+		cssExtraInfo.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssExtraInfo);
+	}
+}
+
+customElements.define('my-sessionform', SessionForm);
