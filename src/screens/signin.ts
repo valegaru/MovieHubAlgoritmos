@@ -1,3 +1,5 @@
+import { addObserver, dispatch } from '../store/index';
+import { navigate } from '../store/actions';
 import '../components/exports';
 
 export class SignIn extends HTMLElement {
@@ -8,6 +10,10 @@ export class SignIn extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		const aref = this.shadowRoot?.querySelector('#loginpage');
+		aref?.addEventListener('click', () => {
+			dispatch(navigate('LOGIN'));
+		});
 	}
 
 	render() {
@@ -18,12 +24,11 @@ export class SignIn extends HTMLElement {
      <my-sessionform utitle="SIGN IN" email="Email" your_name="Your name" mobile_number="Mobile number" re_password="Re-enter password" password="Password" ></my-sessionform>
 		 <my-submitandterms btn_text="Create account" message="By creating an account, you agree to" btn_type="submit"></my-submitandterms>
 		 <hr>
-		 <p>Already have an account? <a href="Log in page">Log in</a></p>
+		 <p>Already have an account? <a id="loginpage">Log in</a></p>
 		 </section>
 		</body>
 			`;
 		}
 	}
 }
-
 customElements.define('app-signin', SignIn);
