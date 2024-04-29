@@ -7,7 +7,7 @@ export enum AttributeDescriptionMovie {
 }
 
 export default class DescriptionMovie extends HTMLElement {
-	description?: string;
+	description?: string; //from data
 
 	constructor() {
 		super();
