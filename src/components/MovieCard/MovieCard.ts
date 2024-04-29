@@ -1,7 +1,7 @@
 import styles from './MovieCard.css';
 
 export enum Attribute {
-	'image' = 'image',
+	'image' = 'image', //from data
 }
 
 class MovieCard extends HTMLElement {
