@@ -50,7 +50,7 @@ export default class SubmitAndTerms extends HTMLElement {
 			this.shadowRoot.innerHTML = `
 			<section>
       <button type="submit">${this.btn_text}</button>
-      <p>${this.message}<a href="https://en.wikipedia.org/wiki/Terms_of_service">Our Conditions of Use and Privacy Notice</a>e</p>
+      <p>${this.message}<a href="https://en.wikipedia.org/wiki/Terms_of_service"> Our Conditions of Use and Privacy Notice</a>.</p>
       </section>
       `;
 		}
