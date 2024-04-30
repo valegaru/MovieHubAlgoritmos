@@ -14,6 +14,7 @@ import { SignIn } from './screens/signin';
 import { Categories } from './screens/categories';
 import { FilmPage } from './screens/film';
 import { MyLists } from './screens/mylists';
+import { NewList } from './screens/newlist';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
