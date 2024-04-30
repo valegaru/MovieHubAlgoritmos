@@ -72,6 +72,11 @@ class AppContainer extends HTMLElement {
 				this.shadowRoot?.appendChild(newlist);
 				break;
 
+			case 'PROFILE':
+				const profile = this.ownerDocument.createElement('app-profile') as Profile;
+				this.shadowRoot?.appendChild(profile);
+				break;
+
 			default:
 				break;
 		}
