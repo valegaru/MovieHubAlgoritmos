@@ -66,6 +66,11 @@ class AppContainer extends HTMLElement {
 				this.shadowRoot?.appendChild(mylists);
 				break;
 
+			case 'NEWLIST':
+				const newlist = this.ownerDocument.createElement('app-newlist') as NewList;
+				this.shadowRoot?.appendChild(newlist);
+				break;
+
 			default:
 				break;
 		}
