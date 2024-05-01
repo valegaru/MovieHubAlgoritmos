@@ -2,6 +2,12 @@ export interface DataShape {
 	id: number;
 	image: string;
 	categories: string[]; //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
+	title: string;
+	director: string;
+	release_date: string;
+	cast: string;
+	crew: string;
+	image_sec: string;
 }
 //al momento de crear la pelicula dentro del sitio web, el usuario le va a asignar las categorias que considere con multiples checkboxes.
 //categories: ['popular','cinema','trending','classics','action','comedy','romantic','cienceFiction','animated','drama','thriller',"documentary"], estas son todas las categorias posibles
@@ -10,6 +16,12 @@ export const movies: DataShape[] = [
 		id: 1,
 		image: 'https://pics.filmaffinity.com/Pearl-745024740-large.jpg',
 		categories: ['popular'],
+		title: '',
+		director:'',
+		release_date:'',
+		cast:'',
+		crew:'',
+		image_sec:'',
 	},
 
 	{
