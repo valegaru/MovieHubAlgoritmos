@@ -4,7 +4,7 @@ import { navigate } from '../store/actions';
 import { movies } from '../services/dataFetch';
 import '../components/exports';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
-import styles from '../indexAbuelo.css';
+import styles from './dashboard.css';
 //aca importo Nav
 //aca importo banner
 
