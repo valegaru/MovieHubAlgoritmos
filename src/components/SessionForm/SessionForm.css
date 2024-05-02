@@ -1,0 +1,23 @@
+input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 0;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #fff;
+	border-radius: 5px;
+	box-sizing: border-box; /* Modelo de caja */
+}
+
+::placeholder {
+	color: rgba(30, 21, 22, 1);
+}
+
+#header .close {
+	float: right; /* Se alinea a la derecha */
+}
+
+h1 {
+	font-size: 300%;
+	margin-top: 0;
+}

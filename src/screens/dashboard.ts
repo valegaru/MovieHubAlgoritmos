@@ -4,7 +4,7 @@ import { navigate } from '../store/actions';
 import { movies } from '../services/dataFetch';
 import '../components/exports';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
-import styles from '../indexAbuelo.css';
+import styles from './dashboard.css';
 //aca importo Nav
 //aca importo banner
 
@@ -22,6 +22,30 @@ export class Dashboard extends HTMLElement {
 			button?.addEventListener('click', () => {
 				dispatch(navigate('SIGNIN'));
 			});
+		}
+
+		//HACER CLICK EN LOGIN Desde la barra nav
+		const myBanner = this.shadowRoot?.querySelector('my-banner');
+		if (myBanner) {
+			const navbar = myBanner.shadowRoot?.querySelector('custom-navbar');
+			const loginLink = navbar?.shadowRoot?.querySelector('#login');
+			if (loginLink) {
+				loginLink.addEventListener('click', () => {
+					dispatch(navigate('LOGIN'));
+				});
+			}
+		}
+
+		//HACER CLICK EN Create account Desde la barra nav
+		const my = this.shadowRoot?.querySelector('my-banner');
+		if (my) {
+			const navbar = my.shadowRoot?.querySelector('custom-navbar');
+			const loginLink = navbar?.shadowRoot?.querySelector('#signin');
+			if (loginLink) {
+				loginLink.addEventListener('click', () => {
+					dispatch(navigate('SIGNIN'));
+				});
+			}
 		}
 	}
 

@@ -19,7 +19,6 @@ import { Profile } from './screens/profile';
 import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import styles from './indexAbuelo.css';
 //aca importo Nav
 //aca importo banner
 
@@ -80,9 +79,6 @@ class AppContainer extends HTMLElement {
 			default:
 				break;
 		}
-		const cssIndex = this.ownerDocument.createElement('style');
-		cssIndex.innerHTML = styles;
-		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 

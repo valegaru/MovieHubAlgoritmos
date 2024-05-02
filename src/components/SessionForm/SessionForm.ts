@@ -61,7 +61,7 @@ export default class SessionForm extends HTMLElement {
 			let formContent = `
               <section id="header">
                   <span class="close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
-                  <h2>${this.utitle}</h2>
+                  <h1>${this.utitle}</h1>
               </section>
           `;
 

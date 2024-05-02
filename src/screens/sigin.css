@@ -1,0 +1,20 @@
+section {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
+	background-color: rgba(30, 21, 22, 1);
+	padding: 3%;
+	box-shadow: 0 0 20px #000000; /* Sombra */
+	border-radius: 2rem;
+	height: auto;
+	width: auto;
+	overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+	overflow-y: auto; /* Habilita el desplazamiento vertical */
+	color: #fff;
+	font-family: 'Cairo', sans-serif;
+}
+
+a {
+	color: rgba(250, 149, 59, 1);
+}
