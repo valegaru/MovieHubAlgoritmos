@@ -18,6 +18,9 @@
 	float: right; /* Se alinea a la derecha */
 }
 
+::placeholder {
+	color: rgba(30, 21, 22, 1);
+}
 /* Estilos del formulario dentro del modal */
 .my-form {
 	position: fixed; /* Se fija el formulario en una posición específica */
@@ -115,7 +118,7 @@
 	padding: 10px;
 	margin-bottom: 0;
 	border: none;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.5);
 	color: #fff;
 	border-radius: 5px;
 	box-sizing: border-box; /* Modelo de caja */
