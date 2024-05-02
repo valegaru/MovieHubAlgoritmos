@@ -42,7 +42,7 @@ class Navbar extends HTMLElement {
 										<!--<a href="#">lists</a>  aparece cuando se esta logueado de numero 2 -->
 										<!--<a href="#">profile</a>  aparece cuando se esta logueado de numero 3 -->
                     <a href="#" id="login">log in</a> <!-- aparece cuando NO se esta logueado de numero 2 -->
-                    <a href="#" id="sigin">create account</a> <!-- aparece cuando NO se esta logueado de numero 3 -->
+                    <a href="#" id="signin">create account</a> <!-- aparece cuando NO se esta logueado de numero 3 -->
 										</section>
 
                 </nav>

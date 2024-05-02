@@ -36,6 +36,17 @@ export class Dashboard extends HTMLElement {
 			}
 		}
 
+		//HACER CLICK EN Create account Desde la barra nav
+		const my = this.shadowRoot?.querySelector('my-banner');
+		if (my) {
+			const navbar = my.shadowRoot?.querySelector('custom-navbar');
+			const loginLink = navbar?.shadowRoot?.querySelector('#signin');
+			if (loginLink) {
+				loginLink.addEventListener('click', () => {
+					dispatch(navigate('SIGNIN'));
+				});
+			}
+		}
 	}
 
 	render() {
