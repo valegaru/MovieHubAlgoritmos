@@ -15,6 +15,14 @@ export class LogIn extends HTMLElement {
 		button?.addEventListener('click', () => {
 			dispatch(navigate('SIGNIN'));
 		});
+
+		const submitandterms = this.shadowRoot?.querySelector('my-submitandterms');
+		if (submitandterms) {
+			const button = submitandterms.shadowRoot?.querySelector('#send');
+			button?.addEventListener('click', () => {
+				dispatch(navigate('DASHBOARD'));
+			});
+		}
 	}
 
 	render() {
