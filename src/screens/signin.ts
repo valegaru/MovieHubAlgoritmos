@@ -23,6 +23,15 @@ export class SignIn extends HTMLElement {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
+
+		const close = this.shadowRoot?.querySelector('my-sessionform');
+		if (close) {
+			const button = close.shadowRoot?.querySelector('.close');
+			button?.addEventListener('click', () => {
+				dispatch(navigate('DASHBOARD'));
+			});
+		}
+		``;
 	}
 
 	render() {
