@@ -23,6 +23,19 @@ export class Dashboard extends HTMLElement {
 				dispatch(navigate('SIGNIN'));
 			});
 		}
+
+		//HACER CLICK EN LOGIN Desde la barra nav
+		const myBanner = this.shadowRoot?.querySelector('my-banner');
+		if (myBanner) {
+			const navbar = myBanner.shadowRoot?.querySelector('custom-navbar');
+			const loginLink = navbar?.shadowRoot?.querySelector('#login');
+			if (loginLink) {
+				loginLink.addEventListener('click', () => {
+					dispatch(navigate('LOGIN'));
+				});
+			}
+		}
+
 	}
 
 	render() {
