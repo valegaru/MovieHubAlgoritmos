@@ -1,6 +1,7 @@
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
+import styles from './sigin.css';
 
 export class SignIn extends HTMLElement {
 	constructor() {
@@ -29,6 +30,9 @@ export class SignIn extends HTMLElement {
 		</body>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 customElements.define('app-signin', SignIn);
