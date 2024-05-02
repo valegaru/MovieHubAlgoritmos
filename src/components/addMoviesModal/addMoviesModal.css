@@ -139,6 +139,7 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer; /* Cambio de cursor */
+	font-family: 'Noto Traditional Nushu', serif;
 }
 
 /* Estilos cuando se pasa el cursor sobre el botón */
