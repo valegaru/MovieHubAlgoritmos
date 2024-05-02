@@ -12,3 +12,12 @@ input {
 ::placeholder {
 	color: rgba(30, 21, 22, 1);
 }
+
+#header .close {
+	float: right; /* Se alinea a la derecha */
+}
+
+h1 {
+	font-size: 300%;
+	margin-top: 0;
+}

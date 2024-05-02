@@ -5,16 +5,15 @@ section {
 	left: 50%;
 	transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
 	background-color: rgba(30, 21, 22, 1);
-	padding: 20px;
+	padding: 3%;
 	box-shadow: 0 0 20px #000000; /* Sombra */
 	border-radius: 2rem;
-	height: 80vh; /* Altura del 80% de la ventana */
+	height: auto; /* Altura del 80% de la ventana */
 	width: 50%; /* Ancho del 50% de la ventana */
 	overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 	overflow-y: auto; /* Habilita el desplazamiento vertical */
 	color: #fff;
 	font-family: 'Cairo', sans-serif;
-	font-size: 80%;
 }
 
 a {
