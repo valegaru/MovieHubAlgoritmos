@@ -31,7 +31,6 @@ export class SignIn extends HTMLElement {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
-		``;
 	}
 
 	render() {
