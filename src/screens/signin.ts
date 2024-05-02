@@ -11,11 +11,13 @@ export class SignIn extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		//a para loguearse
 		const aref = this.shadowRoot?.querySelector('#loginpage');
 		aref?.addEventListener('click', () => {
 			dispatch(navigate('LOGIN'));
 		});
 
+		//boton de mandar el formulario
 		const submitandterms = this.shadowRoot?.querySelector('my-submitandterms');
 		if (submitandterms) {
 			const button = submitandterms.shadowRoot?.querySelector('#send');
@@ -24,6 +26,7 @@ export class SignIn extends HTMLElement {
 			});
 		}
 
+		//x para cerrar el formulario
 		const close = this.shadowRoot?.querySelector('my-sessionform');
 		if (close) {
 			const button = close.shadowRoot?.querySelector('.close');
