@@ -1,6 +1,5 @@
-/* Estilos para el formulario dentro del componente SessionForm */
 section {
-	position: fixed; /* Se fija el formulario en una posición específica */
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
@@ -8,8 +7,8 @@ section {
 	padding: 3%;
 	box-shadow: 0 0 20px #000000; /* Sombra */
 	border-radius: 2rem;
-	height: auto; /* Altura del 80% de la ventana */
-	width: 50%; /* Ancho del 50% de la ventana */
+	height: auto;
+	width: auto;
 	overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 	overflow-y: auto; /* Habilita el desplazamiento vertical */
 	color: #fff;
@@ -18,67 +17,4 @@ section {
 
 a {
 	color: rgba(250, 149, 59, 1);
-}
-/*oculta la scrollbar */
-:host::-webkit-scrollbar {
-	display: none;
-}
-
-/* Estilos para el contenido del formulario */
-.my-form-content {
-	padding: 20px;
-	border-radius: 10px;
-	position: relative;
-	z-index: 10000; /* Colocado por encima de todos los elementos */
-	overflow: hidden; /* Oculta el desbordamiento */
-	display: flex;
-	justify-content: center; /* Centrado horizontal */
-	align-items: center; /* Centrado vertical */
-
-	height: 80vh; /* Altura del 80% de la ventana */
-}
-
-/* Estilos para los campos de entrada de texto */
-.my-form-content input[type='text'] {
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 0;
-	border: none;
-	background-color: rgba(255, 255, 255, 0.1);
-	color: #fff;
-	border-radius: 5px;
-	box-sizing: border-box; /* Modelo de caja */
-}
-
-/* Estilos para el botón de submit */
-.my-form-content button {
-	width: 100%;
-	padding: 10px;
-	margin-top: 20px;
-	background-color: rgba(250, 149, 59, 1);
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer; /* Cambio de cursor */
-}
-
-/* Estilos cuando se pasa el cursor sobre el botón */
-.my-form-content button:hover {
-	background-color: rgba(233, 13, 90, 1);
-	color: rgba(255, 255, 255, 1);
-}
-
-/* Estilos para el título del formulario */
-.my-form-title {
-	margin-bottom: 10px;
-}
-
-/* Estilos para las etiquetas de los campos */
-.my-form-label {
-	color: #fff;
-}
-
-/* Estilos para el espacio entre los campos */
-.space {
-	margin-bottom: 10px;
 }
