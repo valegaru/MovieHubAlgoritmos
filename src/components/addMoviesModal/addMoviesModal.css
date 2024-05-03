@@ -11,11 +11,13 @@
 	height: 55px;
 	border-radius: 50%;
 	border: 0px;
+	cursor: pointer;
 }
 
 /* Estilos para el botón de cerrar el modal */
 .modalContainer .close {
 	float: right; /* Se alinea a la derecha */
+	cursor: pointer;
 }
 
 ::placeholder {

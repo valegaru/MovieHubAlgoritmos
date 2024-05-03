@@ -18,6 +18,7 @@ section {
 
 a {
 	color: rgba(250, 149, 59, 1);
+	cursor: pointer;
 }
 
 :host {
