@@ -4,6 +4,18 @@
 import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 import css from './addMoviesModal.css';
+
+const formData = {
+	title: '',
+	image: '',
+	categories: '', //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
+	director: '',
+	release_date: '',
+	cast: '',
+	crew: '',
+	image_sec: '',
+};
+
 class AddMoviesModal extends HTMLElement {
 	constructor() {
 		super();
@@ -12,6 +24,36 @@ class AddMoviesModal extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+	}
+
+	changeTitle(e: any) {
+		formData.title = e?.target?.value;
+	}
+
+	changeImage(e: any) {
+		formData.image = e?.target?.value;
+	}
+
+	changeCategories(e: any) {
+		formData.categories = e?.target?.value;
+	}
+
+	changeDirector(e: any) {
+		formData.director = e?.target?.value;
+	}
+
+	changeRelease(e: any) {
+		formData.release_date = e?.target?.value;
+	}
+
+	changeCast(e: any) {
+		formData.cast = e?.target?.value;
+	}
+	changeCrew(e: any) {
+		formData.crew = e?.target?.value;
+	}
+	changeImageSec(e: any) {
+		formData.image_sec = e?.target?.value;
 	}
 
 	render() {
@@ -126,11 +168,16 @@ class AddMoviesModal extends HTMLElement {
 				// body.style.overflow = 'hidden';
 			});
 
+			//////////////////////////////
+			const inputTitle =this.shadowRoot.querySelector('.my-form')!;
+			inputTitle.addEventListener("change", this.changeTitle);
+
 			// Se añade un event listener al formulario para prevenir el envío y ocultar el modal
 			const form = this.shadowRoot.querySelector('.my-form')!;
 			form.addEventListener('submit', (event) => {
 				event.preventDefault();
 				modal.style.display = 'none';
+				//Firebase.addProduct(formData);
 			});
 		}
 	}

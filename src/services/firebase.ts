@@ -16,17 +16,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-const uploadData = async () => {
+export const uploadData = async (product: any) => {
 	try {
-		const docRef = await addDoc(collection(db, 'users'), {
-			first: 'Ada',
-			last: 'Lovelace',
-			born: 1815,
-		});
-		console.log('Document written with ID: ', docRef.id);
-	} catch (e) {
-		console.error('Error adding document: ', e);
+		const where = collection(db, 'products');
+		await addDoc(where, product);
+		console.log('se añadió con éxito');
+	} catch (error) {
+		console.error(error);
 	}
 };
-
-uploadData();
