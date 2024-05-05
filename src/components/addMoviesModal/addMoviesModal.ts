@@ -5,6 +5,11 @@ import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 import css from './addMoviesModal.css';
 
+
+import { DataShapeMovie } from '../../types/movies';
+import Firebase from '../../services/firebase';
+
+
 const formData = {
 	title: '',
 	image: '',
