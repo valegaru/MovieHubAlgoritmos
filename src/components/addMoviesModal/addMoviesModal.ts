@@ -248,6 +248,7 @@ class AddMoviesModal extends HTMLElement {
 				(this.shadowRoot?.getElementById('fname') as HTMLInputElement).value = '';
 				(this.shadowRoot?.getElementById('directorMovie') as HTMLInputElement).value = '';
 				(this.shadowRoot?.getElementById('datemovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('catchMovie') as HTMLInputElement).value = '';
 				(this.shadowRoot?.getElementById('descriptionMovie') as HTMLInputElement).value = '';
 				(this.shadowRoot?.getElementById('castMovie') as HTMLInputElement).value = '';
 				(this.shadowRoot?.getElementById('crewMovie') as HTMLInputElement).value = '';
