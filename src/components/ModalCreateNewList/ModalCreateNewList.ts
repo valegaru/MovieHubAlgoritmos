@@ -40,5 +40,5 @@ class ModalCreateNewList extends HTMLElement {
 	}
 }
 
-customElements.define('modal-list', ModalCreateNewList);
+customElements.define('my-modal-list', ModalCreateNewList);
 export default ModalCreateNewList;
