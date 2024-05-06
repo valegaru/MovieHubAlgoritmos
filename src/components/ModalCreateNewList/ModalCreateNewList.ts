@@ -1,5 +1,5 @@
 import css from './ModalCreateNewList.css';
-export default class ModalCreateNewList extends HTMLElement {
+class ModalCreateNewList extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
@@ -39,3 +39,6 @@ export default class ModalCreateNewList extends HTMLElement {
 		}
 	}
 }
+
+customElements.define('moda-list', ModalCreateNewList);
+export default ModalCreateNewList;
