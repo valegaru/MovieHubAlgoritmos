@@ -1,7 +1,7 @@
 //esta es la pantalla de la segunda entrega
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
-import { DataShapeMovie } from '../types/movies';
+import { DataShapeMovie } from '../types/movies¨;
 import Firebase from '../services/firebase';
 import '../components/exports';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
