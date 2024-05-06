@@ -2,6 +2,8 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import { movies } from '../services/dataFetch';
 import '../components/exports';
+import { Navbar } from '../components/exports';
+import { Banner } from '../components/exports';
 
 export class NewList extends HTMLElement {
 	constructor() {
@@ -15,8 +17,8 @@ export class NewList extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
-			<h1>NewList</h1>
+			this.shadowRoot.innerHTML = /*html*/ `
+			<my-banner></my-banner>
 			`;
 		}
 	}

@@ -7,6 +7,7 @@ import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
 import styles from './dashboard.css';
 //aca importo Nav
 //aca importo banner
+
 export class Dashboard extends HTMLElement {
 	constructor() {
 		super();
@@ -43,6 +44,17 @@ export class Dashboard extends HTMLElement {
 			if (loginLink) {
 				loginLink.addEventListener('click', () => {
 					dispatch(navigate('SIGNIN'));
+				});
+			}
+		}
+
+		const lists = this.shadowRoot?.querySelector('my-banner');
+		if (lists) {
+			const navbar = lists.shadowRoot?.querySelector('custom-navbar');
+			const listsLink = navbar?.shadowRoot?.querySelector('.pages a.navigate-list');
+			if (listsLink) {
+				listsLink.addEventListener('click', () => {
+					dispatch(navigate('MYLIST'));
 				});
 			}
 		}

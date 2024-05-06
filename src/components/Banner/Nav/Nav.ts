@@ -39,7 +39,7 @@ class Navbar extends HTMLElement {
 											<li><a href="">Documental</a></li>
 											<li><a href="">Psychological</a></li>
 										</ul>
-										<!--<a href="#">lists</a>  aparece cuando se esta logueado de numero 2 -->
+										<a class ="navigate-list" href="#">lists</a>  <!-- aparece cuando se esta logueado de numero 2
 										<!--<a href="#">profile</a>  aparece cuando se esta logueado de numero 3 -->
                     <a href="#" id="login">log in</a> <!-- aparece cuando NO se esta logueado de numero 2 -->
                     <a href="#" id="signin">create account</a> <!-- aparece cuando NO se esta logueado de numero 3 -->
