@@ -1,6 +1,6 @@
 //esta es la pantalla de la segunda entrega
 import { addObserver, dispatch } from '../store/index';
-import { navigate } from '../store/actions';
+import { GetMovies, navigate } from '../store/actions';
 import { DataShapeMovie } from '../types/movies';
 import Firebase from '../services/firebase';
 import '../components/exports';
@@ -15,7 +15,7 @@ export class Dashboard extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		this.render();
 		const myBannerButton = this.shadowRoot?.querySelector('my-banner');
 		if (myBannerButton) {
@@ -24,7 +24,6 @@ export class Dashboard extends HTMLElement {
 				dispatch(navigate('SIGNIN'));
 			});
 		}
-
 		//HACER CLICK EN LOGIN Desde la barra nav
 		const myBanner = this.shadowRoot?.querySelector('my-banner');
 		if (myBanner) {

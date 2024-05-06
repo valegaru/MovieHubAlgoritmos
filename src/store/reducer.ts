@@ -1,3 +1,6 @@
+import { Actions, MoviesActions, AppState } from '../types/store';
+import { appState } from './index';
+
 export const reducer = (currentAction: any, currentState: any) => {
 	//Payload: es el valor que queremos cambiar o asignar
 	const { action, payload } = currentAction;
@@ -8,5 +11,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case MoviesActions.GET:
+			return {
+				...currentState,
+				movielist: payload,
+			};
+	}
 	return currentState;
 };

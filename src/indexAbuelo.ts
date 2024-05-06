@@ -6,7 +6,7 @@ import './screens/mylists';
 import './screens/newlist';
 import './screens/profile';
 import './screens/signin';
-import { appState } from './store/index';
+import { appState, dispatch } from './store/index';
 import { addObserver } from './store/index';
 import { LogIn } from './screens/login';
 import { Dashboard } from './screens/dashboard';
@@ -18,6 +18,7 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
+import { GetMovies } from './store/actions';
 //aca importo Nav
 //aca importo banner
 
@@ -28,7 +29,9 @@ class AppContainer extends HTMLElement {
 		addObserver(this);
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
+		const action = await GetMovies();
+		dispatch(action);
 		this.render();
 	}
 
