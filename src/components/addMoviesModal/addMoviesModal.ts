@@ -217,7 +217,7 @@ class AddMoviesModal extends HTMLElement {
 			//catch phrase
 			const inputCatch = this.shadowRoot.querySelector('#catchMovie')!;
 			inputCatch.addEventListener('change', this.changeCatchPhrase);
-			console.log(this.changeCatchPhrase);
+
 			//checkboxes for Categories
 			const checkboxes = this.shadowRoot.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
 
@@ -238,12 +238,33 @@ class AddMoviesModal extends HTMLElement {
 				});
 			});
 
-			// Se añade un event listener al formulario para prevenir el envío y ocultar el modal
 			const form = this.shadowRoot.querySelector('.my-form')!;
-			form.addEventListener('submit', (event) => {
+			form.addEventListener('submit', async (event) => {
 				event.preventDefault();
 				modal.style.display = 'none';
-				Firebase.addMovie(formData);
+				await Firebase.addMovie(formData);
+
+				// Limpiar los campos del formulario después de enviar
+				(this.shadowRoot?.getElementById('fname') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('directorMovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('datemovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('descriptionMovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('castMovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('crewMovie') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('movieposter') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('movieimage') as HTMLInputElement).value = '';
+				(this.shadowRoot?.getElementById('catchMovie') as HTMLInputElement).value = '';
+
+				// Desmarcar todos los checkboxes
+				const checkboxes = this.shadowRoot?.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+				checkboxes?.forEach((checkbox) => {
+					checkbox.checked = false;
+				});
+
+				// Reiniciar el arreglo categories
+				formData.categories = [];
+
+				console.log('Formulario enviado y campos limpiados');
 			});
 		}
 	}
