@@ -1,3 +1,5 @@
+import ModalCreateNewList from './ModalCreateNewList/ModalCreateNewList';
+
 export { default as Banner } from './Banner/Banner';
 export { default as Navbar } from './Banner/Nav/Nav';
 export { default as MovieCard } from './MovieCard/MovieCard';
@@ -12,3 +14,4 @@ export { default as ExtraInfo } from './ExtraInfo/ExtraInfo';
 export { default as SessionForm } from './SessionForm/SessionForm';
 export { default as SubmitAndTerms } from './SubmitAndTerms/SubmitAndTerms';
 export { default as MovieCardAdd } from './MovieCardADD/MovieCardADD';
+export { default as ModalCreateNewList } from './ModalCreateNewList/ModalCreateNewList';

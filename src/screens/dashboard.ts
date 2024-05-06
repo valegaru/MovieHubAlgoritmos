@@ -7,7 +7,6 @@ import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
 import styles from './dashboard.css';
 //aca importo Nav
 //aca importo banner
-
 export class Dashboard extends HTMLElement {
 	constructor() {
 		super();
@@ -52,7 +51,7 @@ export class Dashboard extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			//el contenido dle banner se esta renderizando por encima de el del modal
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
 			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>

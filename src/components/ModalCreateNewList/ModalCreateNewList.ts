@@ -12,7 +12,7 @@ class ModalCreateNewList extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-      <section class = "modal-new-list" style="display: none;">
+      <section class = "modal-new-list">
       <span class = "close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
         <h1>New list</h1>
         <form class="info-list">
@@ -40,5 +40,5 @@ class ModalCreateNewList extends HTMLElement {
 	}
 }
 
-customElements.define('moda-list', ModalCreateNewList);
+customElements.define('modal-list', ModalCreateNewList);
 export default ModalCreateNewList;
