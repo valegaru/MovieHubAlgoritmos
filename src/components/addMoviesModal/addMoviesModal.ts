@@ -130,7 +130,7 @@ class AddMoviesModal extends HTMLElement {
 										<label for="animated">Animated</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="classic" value="classic" />
+										<input type="checkbox" id="classic" value="classics" />
 										<label for="classic">Classics</label>
 										</section>
 										<section class="label-chechbox">
