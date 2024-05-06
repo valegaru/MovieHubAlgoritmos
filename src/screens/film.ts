@@ -1,7 +1,6 @@
 // cada pelicula
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
-import { movies } from '../services/dataFetch';
 import '../components/exports';
 
 export class FilmPage extends HTMLElement {

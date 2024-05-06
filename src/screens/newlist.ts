@@ -1,6 +1,5 @@
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
-import { movies } from '../services/dataFetch';
 import '../components/exports';
 import { Navbar } from '../components/exports';
 import { Banner } from '../components/exports';

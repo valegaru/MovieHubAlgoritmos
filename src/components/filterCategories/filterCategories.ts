@@ -1,5 +1,8 @@
-import { movies, type DataShape } from '../../services/dataFetch';
 import css from './filterCategories.css';
+import Firebase from '../../services/firebase';
+import { DataShapeMovie } from '../../types/movies';
+import { MovieCard } from '../exports';
+import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
 
 export enum Attribute {
 	'name' = 'name',
@@ -13,7 +16,7 @@ class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
 	link?: string;
-	moviesData?: DataShape[];
+	moviesData?: DataShapeMovie[];
 
 	constructor() {
 		super();
@@ -33,7 +36,8 @@ class CategorySection extends HTMLElement {
 		this.render();
 	}
 	//se filtran las pelis por categoria y se guarda en la data jiji
-	filterData(category: string) {
+	async filterData(category: string) {
+		const movies = await Firebase.getMovie();
 		this.moviesData = movies.filter((movie) => movie.categories.includes(category));
 	}
 
@@ -50,25 +54,23 @@ class CategorySection extends HTMLElement {
 
 	//aca se usa el map para que itere sobre la data y devuelva un nuevo array de las pelis
 	//se usa el join para q ese array se convierta en una sola cadena de texto
-	render() {
+	async render() {
 		if (this.shadowRoot) {
+			await this.filterData(this.category!);
 			const styles = document.createElement('style');
 			styles.textContent = css;
 			const movieElements = this.moviesData != undefined ? this.moviesData : [];
-			console.log(movieElements);
-
-			this.shadowRoot.innerHTML = /*html*/ `
+			this.shadowRoot.innerHTML = `
                 <a href="${this.link}"><h1>${this.name}</h1></a>
 				<section id="cards">
 					${movieElements
 						.map(
-							(movie) => /*html*/ `
+							(movie) => `
 						<movie-card image="${movie.image}"></movie-card>
 					`
 						)
 						.join('')}
 				</section>
-
             `;
 
 			this.shadowRoot.appendChild(styles);

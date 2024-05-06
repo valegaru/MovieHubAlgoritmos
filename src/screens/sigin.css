@@ -13,8 +13,25 @@ section {
 	overflow-y: auto; /* Habilita el desplazamiento vertical */
 	color: #fff;
 	font-family: 'Cairo', sans-serif;
+	z-index: 2;
 }
 
 a {
 	color: rgba(250, 149, 59, 1);
+	cursor: pointer;
+}
+
+:host {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background-image: url('../assets/background.png');
+	background-size: cover;
+	background-position: center top 30%;
+	margin: 0;
+	padding: 10%;
+	color: white;
+	height: 100%;
 }

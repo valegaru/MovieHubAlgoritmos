@@ -3,10 +3,12 @@
 import styles from './description.css';
 
 export enum AttributeDescriptionMovie {
+	'catch_phrase' = 'catch_phrase',
 	'description' = 'description',
 }
 
 export default class DescriptionMovie extends HTMLElement {
+	catch_phrase?: string; //from data
 	description?: string; //from data
 
 	constructor() {
@@ -17,6 +19,7 @@ export default class DescriptionMovie extends HTMLElement {
 	static get observedAttributes() {
 		const attrs: Record<AttributeDescriptionMovie, null> = {
 			description: null,
+			catch_phrase: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -47,6 +50,7 @@ export default class DescriptionMovie extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
+			<b><p>${this.catch_phrase}</p></b>
 <p>${this.description}</p>
       </section>
       `;
