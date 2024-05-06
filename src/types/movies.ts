@@ -8,4 +8,5 @@ export interface DataShapeMovie {
 	cast: string;
 	crew: string;
 	image_sec: string;
+	description: string;
 }

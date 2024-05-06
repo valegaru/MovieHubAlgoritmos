@@ -5,20 +5,19 @@ import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 import css from './addMoviesModal.css';
 
-
 import { DataShapeMovie } from '../../types/movies';
 import Firebase from '../../services/firebase';
 
-
-const formData = {
+const formData: Omit<DataShapeMovie, 'id'> = {
 	title: '',
 	image: '',
-	categories: '', //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
+	categories: [''], //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
 	director: '',
 	release_date: '',
 	cast: '',
 	crew: '',
 	image_sec: '',
+	description: '',
 };
 
 class AddMoviesModal extends HTMLElement {
@@ -61,7 +60,11 @@ class AddMoviesModal extends HTMLElement {
 		formData.image_sec = e?.target?.value;
 	}
 
-	render() {
+	changeDescription(e: any) {
+		formData.description = e?.target?.value;
+	}
+
+	async render() {
 		if (this.shadowRoot) {
 			// Se comprueba si el shadowRoot está disponible
 
@@ -143,7 +146,6 @@ class AddMoviesModal extends HTMLElement {
 								<button type="submit">Submit</button>
 						</form>
 						</div>
-
 		</section>
 		</section>
       `;
@@ -173,16 +175,44 @@ class AddMoviesModal extends HTMLElement {
 				// body.style.overflow = 'hidden';
 			});
 
-			//////////////////////////////
-			const inputTitle =this.shadowRoot.querySelector('.my-form')!;
-			inputTitle.addEventListener("change", this.changeTitle);
+			//TITLE
+			const inputTitle = this.shadowRoot.querySelector('#fname')!;
+			inputTitle.addEventListener('change', this.changeTitle);
+
+			//director
+			const inputDirector = this.shadowRoot.querySelector('#directorMovie')!;
+			inputDirector.addEventListener('change', this.changeDirector);
+
+			//release date
+			const inputDate = this.shadowRoot.querySelector('#datemovie')!;
+			inputDate.addEventListener('change', this.changeRelease);
+
+			//Description
+			const inputDescription = this.shadowRoot.querySelector('#descriptionMovie')!;
+			inputDescription.addEventListener('change', this.changeDescription);
+
+			//Cast
+			const inputCast = this.shadowRoot.querySelector('#castMovie')!;
+			inputCast.addEventListener('change', this.changeCast);
+
+			//Cast
+			const inputCrew = this.shadowRoot.querySelector('#crewMovie')!;
+			inputCrew.addEventListener('change', this.changeCrew);
+
+			//Poster or image
+			const inputposter = this.shadowRoot.querySelector('#movieposter')!;
+			inputposter.addEventListener('change', this.changeImage);
+
+			//secondary Image
+			const inputImageSec = this.shadowRoot.querySelector('#movieimage')!;
+			inputImageSec.addEventListener('change', this.changeImageSec);
 
 			// Se añade un event listener al formulario para prevenir el envío y ocultar el modal
 			const form = this.shadowRoot.querySelector('.my-form')!;
 			form.addEventListener('submit', (event) => {
 				event.preventDefault();
 				modal.style.display = 'none';
-				//Firebase.addProduct(formData);
+				Firebase.addMovie(formData);
 			});
 		}
 	}
