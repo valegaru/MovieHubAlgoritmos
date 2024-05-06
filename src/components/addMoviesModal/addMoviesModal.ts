@@ -11,7 +11,7 @@ import Firebase from '../../services/firebase';
 const formData: Omit<DataShapeMovie, 'id'> = {
 	title: '',
 	image: '',
-	categories: [''], //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
+	categories: [], //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
 	director: '',
 	release_date: '',
 	cast: '',
@@ -102,43 +102,43 @@ class AddMoviesModal extends HTMLElement {
 										<label for="crew">Genres</label><br>
 										<section id="checkboxes">
 										<section class="label-chechbox">
-										<input type="checkbox" id="romance" value="first-checkbox" />
+										<input type="checkbox" id="romance" value="romance" />
 										<label for="romance">Romance</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="action" value="second-checkbox" />
+										<input type="checkbox" id="action" value="action" />
 										<label for="action">Action</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="comedy" value="thirth-checkbox" />
+										<input type="checkbox" id="comedy" value="comedy" />
 										<label for="comedy">Comedy</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="Thriller" value="fourth-checkbox" />
+										<input type="checkbox" id="Thriller" value="thriller" />
 										<label for="thriller">Thriller</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="sci-fi" value="fifth-checkbox" />
+										<input type="checkbox" id="sci-fi" value="sci-fi" />
 										<label for="sci-fi">Sci-Fi</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="drama" value="sixth-checkbox" />
+										<input type="checkbox" id="drama" value="drama" />
 										<label for="drama">Drama</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="animated" value="seventh-checkbox" />
+										<input type="checkbox" id="animated" value="animated" />
 										<label for="animated">Animated</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="classic" value="eighth-checkbox" />
+										<input type="checkbox" id="classic" value="classic" />
 										<label for="classic">Classics</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="documental" value="ninth-checkbox" />
+										<input type="checkbox" id="documental" value="documental" />
 										<label for="documental">Documental</label>
 										</section>
 										<section class="label-chechbox">
-										<input type="checkbox" id="psychological" value="second-checkbox" />
+										<input type="checkbox" id="psychological" value="psychological" />
 										<label for="psychological">Psychological</label>
 										</section>
 										</section>
@@ -206,6 +206,25 @@ class AddMoviesModal extends HTMLElement {
 			//secondary Image
 			const inputImageSec = this.shadowRoot.querySelector('#movieimage')!;
 			inputImageSec.addEventListener('change', this.changeImageSec);
+
+			const checkboxes = this.shadowRoot.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+
+			// Iterar sobre cada checkbox y agregar un event listener
+			checkboxes.forEach((checkbox) => {
+				checkbox.addEventListener('change', (event) => {
+					// Si el checkbox está marcado, agregar su valor al arreglo categories
+					if (checkbox.checked) {
+						formData.categories.push(checkbox.value);
+					} else {
+						// Si el checkbox está desmarcado, eliminar su valor del arreglo categories
+						const index = formData.categories.indexOf(checkbox.value);
+						if (index !== -1) {
+							formData.categories.splice(index, 1);
+						}
+					}
+					console.log('Arreglo de categorías actualizado:', formData.categories);
+				});
+			});
 
 			// Se añade un event listener al formulario para prevenir el envío y ocultar el modal
 			const form = this.shadowRoot.querySelector('.my-form')!;
