@@ -35,7 +35,6 @@ const getMovie = async () => {
 		const data: Omit<DataShapeMovie, 'id'> = doc.data() as any;
 		transformed.push({ id: doc.id, ...data });
 	});
-
 	return transformed;
 };
 

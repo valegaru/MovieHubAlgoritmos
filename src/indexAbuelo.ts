@@ -16,7 +16,6 @@ import { FilmPage } from './screens/film';
 import { MyLists } from './screens/mylists';
 import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
-import { movies } from './services/dataFetch';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
 //aca importo Nav
