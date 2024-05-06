@@ -9,4 +9,5 @@ export interface DataShapeMovie {
 	crew: string;
 	image_sec: string;
 	description: string;
+	catch_phrase: string;
 }

@@ -18,6 +18,7 @@ const formData: Omit<DataShapeMovie, 'id'> = {
 	crew: '',
 	image_sec: '',
 	description: '',
+	catch_phrase: '',
 };
 
 class AddMoviesModal extends HTMLElement {
@@ -64,6 +65,10 @@ class AddMoviesModal extends HTMLElement {
 		formData.description = e?.target?.value;
 	}
 
+	changeCatchPhrase(e: any) {
+		formData.catch_phrase = e?.target?.value;
+	}
+
 	async render() {
 		if (this.shadowRoot) {
 			// Se comprueba si el shadowRoot está disponible
@@ -88,6 +93,8 @@ class AddMoviesModal extends HTMLElement {
 								<input type="text" id="directorMovie" name="director" placeholder="Ti West"><br><br>
 								<label for="date">Release date</label><br>
 								<input type="date" id="datemovie" name="date" ><br><br>
+								<label for="catch">Catch-Phrase</label><br>
+								<input type="text" id="catchMovie" name="catch" placeholder="An X-traordinary Origin Story"><br><br>
 								<label for="description">Description</label><br>
 								<input type="text" id="descriptionMovie" name="description" placeholder="Pearl (subtitled An X-traordinary Origin Story) is a 2022 American horror film directed by Ti West, co-written by West and Mia Goth, who reprises her role as the title character, and featuring David Corenswet, Tandi Wright, Matthew Sunderland and Emma Jenkins-Purro in supporting roles. A prequel to X (2022) and the second installment in the X film series, it serves as an origin story for the title villain, whose fervent aspiration to become a movie star led her to committing violent acts on her family's Texas homestead in 1918."><br><br>
 								<label for="cast">Cast</label><br>
@@ -207,6 +214,11 @@ class AddMoviesModal extends HTMLElement {
 			const inputImageSec = this.shadowRoot.querySelector('#movieimage')!;
 			inputImageSec.addEventListener('change', this.changeImageSec);
 
+			//catch phrase
+			const inputCatch = this.shadowRoot.querySelector('#catchMovie')!;
+			inputCatch.addEventListener('change', this.changeCatchPhrase);
+			console.log(this.changeCatchPhrase);
+			//checkboxes for Categories
 			const checkboxes = this.shadowRoot.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
 
 			// Iterar sobre cada checkbox y agregar un event listener
