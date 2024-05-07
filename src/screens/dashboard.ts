@@ -56,7 +56,7 @@ export class Dashboard extends HTMLElement {
 			const listsLink = navbar?.shadowRoot?.querySelector('.pages a.navigate-list');
 			if (listsLink) {
 				listsLink.addEventListener('click', () => {
-					dispatch(navigate('MYLISTs'));
+					dispatch(navigate('MYLISTS'));
 				});
 			}
 		}
