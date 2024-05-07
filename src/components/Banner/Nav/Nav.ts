@@ -36,13 +36,18 @@ class Navbar extends HTMLElement {
 			const input = document.createElement('input');
 			input.className = 'barra';
 			input.type = 'text';
-			input.placeholder = 'Enter movie name';
+			//input.placeholder = 'Enter movie name';
 
 			searchBar.appendChild(icon);
 			searchBar.appendChild(input);
 
 			const pages = document.createElement('section');
 			pages.className = 'pages';
+
+			const home = document.createElement('a');
+			home.href = '#';
+			home.textContent = 'home';
+			pages.appendChild(home);
 
 			const filmsLink = document.createElement('a');
 			filmsLink.href = '#';
