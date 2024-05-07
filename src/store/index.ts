@@ -15,7 +15,8 @@ export let appState = {
 	//para los titulos compuestos solo guarda la primera palabra
 	movietitle: '',
 	//solo guarda la primera palabra del nombre dle director
-	moviedirector:''
+	moviedirector: '',
+	moviereleasedate: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

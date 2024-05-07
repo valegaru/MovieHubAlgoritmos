@@ -14,6 +14,7 @@ export type AppState = {
 	moviecategories: string;
 	movietitle: string;
 	moviedirector: string;
+	moviereleasedate: string;
 };
 
 export enum MoviesActions {

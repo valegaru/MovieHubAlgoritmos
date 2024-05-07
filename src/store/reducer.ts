@@ -67,5 +67,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveMovieReleaseDate':
+			currentState.moviereleasedate = payload;
+			break;
+	}
+
 	return currentState;
 };
