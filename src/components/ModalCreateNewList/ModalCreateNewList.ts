@@ -12,19 +12,33 @@ class ModalCreateNewList extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-      <section class = "modal-new-list">
-      <span class = "close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
-        <h1>New list</h1>
-        <form class="info-list">
-					<label for="name-list">Name</label><br>
-          <input type="text" id="name-list" name="name" placeholder="Enter the list name"><br><br>
-          <label for="url-list">URL list image</label><br>
-          <input type="text" id="url-list" name="name" placeholder="Enter the URL of the image list"><br><br>
-        </form>
-        <section>
-          <button type = "submit">ADD FILMS</button>
+      <section class="modal-new-list">
+            <span class="close"
+                ><img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMDUuNjYsMTk0LjM0YTgsOCwwLDAsMS0xMS4zMiwxMS4zMkwxMjgsMTM5LjMxLDYxLjY2LDIwNS42NmE4LDgsMCwwLDEtMTEuMzItMTEuMzJMMTE2LjY5LDEyOCw1MC4zNCw2MS42NkE4LDgsMCwwLDEsNjEuNjYsNTAuMzRMMTI4LDExNi42OWw2Ni4zNC02Ni4zNWE4LDgsMCwwLDEsMTEuMzIsMTEuMzJMMTM5LjMxLDEyOFoiPjwvcGF0aD48L3N2Zz4="
+                    alt="close"
+            /></span>
+            <h1 class="title-list">New list</h1>
+            <form class="info-list">
+                <label for="name-list">Name</label>
+                <input
+                    type="text"
+                    id="name-list"
+                    name="name"
+                    placeholder="Enter the list name"
+                />
+                <label for="url-list">URL list image</label>
+                <input
+                    type="text"
+                    id="url-list"
+                    name="name"
+                    placeholder="Enter the URL of the image list"
+                />
+                <section>
+                    <button type="submit">ADD FILMS</button>
+                </section>
+            </form>
         </section>
-      </section>
       `;
 
 			const cssAddMovie = this.ownerDocument.createElement('style');
