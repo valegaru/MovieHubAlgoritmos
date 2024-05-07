@@ -50,6 +50,7 @@ class Banner extends HTMLElement {
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
 			let htmlContent = `
+			<section id="allbanner" style="background-image: url('${this.image || "https://pbs.twimg.com/media/GJ331yEWQAAtUzN.jpg "}');">
             <custom-navbar></custom-navbar>
             <section>
                 <section>

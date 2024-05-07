@@ -1,19 +1,20 @@
 /* Estilos para el componente de banner */
-:host {
+#allbanner {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	background-image: url('https://pbs.twimg.com/media/GJ331yEWQAAtUzN.jpg');
 	background-size: cover;
 	background-position: center top 30%;
 	margin: 0;
 	padding: 10%;
-	color: white;
 	height: 43vh;
 }
 
+:host {
+	color: white;
+}
 /* Agregar un velo solo sobre la imagen de fondo */
 :host::before {
 	content: '';
