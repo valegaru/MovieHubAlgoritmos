@@ -73,7 +73,7 @@ class MovieCard extends HTMLElement {
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
-			<div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="" data-title=" data-director="" data-release="" data-cast="" data-crew="" data-imgbanner="" data-description="" data-phrase="">
+			<div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="${this.categories}" data-title="${this.utitle}" data-director="${this.director}" data-release="${this.release_date}" data-cast="${this.cast}" data-crew="${this.crew}" data-imgbanner="${this.image_sec}" data-description="${this.description}" data-phrase="${this.catch_phrase}">
 			<img class="poster" src="${this.image}" >
 			<section class="content">
 			<section class="viewdetails">
