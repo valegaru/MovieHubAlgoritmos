@@ -17,7 +17,7 @@ export class FilmPage extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<h1>FilmPage</h1>
-			<my-figuremovie  poster=${appState.movieimage} utitle="${appState.movietitle}" director=${appState.moviedirector} release_date=${appState.moviereleasedate}></my-figuremovie>
+			<my-figuremovie  poster=${appState.movieimage} utitle="${appState.movietitle}" director="${appState.moviedirector}" release_date=${appState.moviereleasedate}></my-figuremovie>
 			`;
 		}
 	}

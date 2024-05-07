@@ -72,6 +72,13 @@ export const SaveMovieReleaseDate = (release: any) => {
 	};
 };
 
+export const SaveMovieCast = (cast: any) => {
+	return {
+		action: 'SaveMovieCast',
+		payload: cast,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

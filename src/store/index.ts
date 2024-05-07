@@ -12,11 +12,13 @@ export let appState = {
 	movieid: '',
 	movieimage: '',
 	moviecategories: '',
-	//para los titulos compuestos solo guarda la primera palabra
+	//hay que usarlo con comillas como title="${appState.movietitle}"
 	movietitle: '',
-	//solo guarda la primera palabra del nombre dle director
+	//hay que usarlo con comillas como director="${appState.moviedirector}"
 	moviedirector: '',
 	moviereleasedate: '',
+	
+	moviecast: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración
