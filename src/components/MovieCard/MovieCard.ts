@@ -1,3 +1,5 @@
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
 import styles from './MovieCard.css';
 
 export enum Attribute {
@@ -32,6 +34,14 @@ class MovieCard extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+
+		//HACER CLICK en el ojo y su label para ver los detalles de la peli
+		const view = this.shadowRoot?.querySelector('.viewdetails');
+		if (view) {
+			view.addEventListener('click', () => {
+				dispatch(navigate('FILMPAGE'));
+			});
+		}
 	}
 
 	render() {
@@ -42,10 +52,11 @@ class MovieCard extends HTMLElement {
 			<div class="container">
 			<img class="poster" src="${this.image}" >
 			<section class="content">
-				<a href="https://myflixerz.to/" class="link">
-					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/>
-				</a>
+			<section class="viewdetails">
+				<a class="link">
+					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/></a>
 				<p>View details</p>
+				</section>
 				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
 				<img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
 				<p>Like</p>

@@ -19,6 +19,12 @@
 	object-fit: cover;
 }
 
+.viewdetails {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
 /* Añade estilos para el contenido */
 .content {
 	top: 0;
@@ -59,7 +65,7 @@ p {
 
 img.details {
 	height: auto;
-	width: 30%;
+	width: 50%;
 }
 
 .link {
@@ -88,7 +94,7 @@ img.details {
 	}
 
 	img.details {
-		width: 50%;
+		width: 80%;
 	}
 
 	.link {
