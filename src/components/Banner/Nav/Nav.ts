@@ -4,7 +4,7 @@ import SearchIcon from '../../../assets/search.svg';
 import { DataShapeNavMenu } from '../../../services/navMenu';
 import { navMenu } from '../../../services/navMenu';
 import { addObserver, dispatch } from '../../../store';
-import { SaveTitleCategory, navigate } from '../../../store/actions';
+import { SaveImageCategory, SaveTitleCategory, navigate } from '../../../store/actions';
 import { appState } from '../../../store';
 import { navigateCategory } from '../../../store/actions';
 
@@ -112,6 +112,7 @@ class Navbar extends HTMLElement {
 					dispatch(navigate('CATEGORIES'));
 					dispatch(navigateCategory(element.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
 					dispatch(SaveTitleCategory(element.name));
+					dispatch(SaveImageCategory(element.image));
 				});
 			});
 

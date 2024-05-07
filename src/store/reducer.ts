@@ -31,5 +31,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveImageCategory':
+			currentState.imagecategory = payload;
+			break;
+	}
+
 	return currentState;
 };

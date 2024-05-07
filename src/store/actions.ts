@@ -23,6 +23,13 @@ export const SaveTitleCategory = (title: any) => {
 	};
 };
 
+export const SaveImageCategory = (image: any) => {
+	return {
+		action: 'SaveImageCategory',
+		payload: image,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

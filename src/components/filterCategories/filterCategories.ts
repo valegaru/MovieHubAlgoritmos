@@ -4,11 +4,12 @@ import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
 import { addObserver, appState, dispatch } from '../../store';
-import { GetMovies, SaveTitleCategory, navigateCategory } from '../../store/actions';
+import { GetMovies, SaveImageCategory, SaveTitleCategory, navigateCategory } from '../../store/actions';
 import { navigate } from '../../store/actions';
 export enum Attribute {
 	'name' = 'name',
 	'category' = 'category',
+	'image' = 'image',
 }
 //la variable name se usa para el titulo de cada sección
 //link es para que cuando se hunda en el nombre de la seccion, te lleve a una pagina asociada
@@ -16,6 +17,7 @@ export enum Attribute {
 class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
+	image?:string;
 
 	constructor() {
 		super();
@@ -26,6 +28,7 @@ class CategorySection extends HTMLElement {
 		const attrs: Record<Attribute, null> = {
 			name: null,
 			category: null,
+			image: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -73,6 +76,7 @@ class CategorySection extends HTMLElement {
 				dispatch(navigate('CATEGORIES'));
 				dispatch(navigateCategory(this.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
 				dispatch(SaveTitleCategory(this.name));
+				dispatch(SaveImageCategory(this.image));
 				console.log(appState);
 			});
 			this.shadowRoot.appendChild(styles);
