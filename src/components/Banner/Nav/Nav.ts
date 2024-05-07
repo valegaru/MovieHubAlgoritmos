@@ -34,11 +34,19 @@ class Navbar extends HTMLElement {
 			});
 		}
 
-//HACER CLICK EN LOGIN Desde la barra nav
+		//HACER CLICK EN LOGIN Desde la barra nav
 		const loginLink = this.shadowRoot?.querySelector('#login');
 		if (loginLink) {
 			loginLink.addEventListener('click', () => {
 				dispatch(navigate('LOGIN'));
+			});
+		}
+
+		//HACER CLICK EN Home Desde la barra nav
+		const homelink = this.shadowRoot?.querySelector('#home');
+		if (homelink) {
+			homelink.addEventListener('click', () => {
+				dispatch(navigate('DASHBOARD'));
 			});
 		}
 	}
@@ -71,6 +79,7 @@ class Navbar extends HTMLElement {
 			const home = document.createElement('a');
 			home.href = '#';
 			home.textContent = 'home';
+			home.id = 'home';
 			pages.appendChild(home);
 
 			const filmsLink = document.createElement('a');
