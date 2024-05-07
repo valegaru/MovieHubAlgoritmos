@@ -5,11 +5,29 @@ import styles from './MovieCard.css';
 export enum Attribute {
 	'image' = 'image', //from data
 	'uid' = 'uid',
+	'categories' = 'categories',
+	'utitle' = 'utitle',
+	'director' = 'director',
+	'release_date' = 'release_date',
+	'cast' = 'cast',
+	'crew' = 'crew',
+	'image_sec' = 'image_sec',
+	'description' = 'description',
+	'catch_phrase' = 'catch_phrase',
 }
 
 class MovieCard extends HTMLElement {
 	image?: string;
 	uid?: string;
+	categories?: string;
+	utitle?: string;
+	director?: string;
+	release_date?: string;
+	cast?: string;
+	crew?: string;
+	image_sec?: string;
+	description?: string;
+	catch_phrase?: string;
 	isLiked: boolean;
 
 	constructor() {
@@ -22,6 +40,15 @@ class MovieCard extends HTMLElement {
 		const attrs: Record<Attribute, null> = {
 			image: null,
 			uid: null,
+			categories: null,
+			utitle: null,
+			director: null,
+			release_date: null,
+			cast: null,
+			crew: null,
+			image_sec: null,
+			description: null,
+			catch_phrase: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -46,7 +73,7 @@ class MovieCard extends HTMLElement {
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
-			<div class="container" data-uid="${this.uid}">
+			<div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="" data-title=" data-director="" data-release="" data-cast="" data-crew="" data-imgbanner="" data-description="" data-phrase="">
 			<img class="poster" src="${this.image}" >
 			<section class="content">
 			<section class="viewdetails">
