@@ -9,7 +9,8 @@ export type AppState = {
 	currentcategory: string;
 	titlecategory: string;
 	imagecategory: string;
-	movieid:string;
+	movieid: string;
+	movieimage: string;
 };
 
 export enum MoviesActions {

@@ -1,5 +1,5 @@
 // cada pelicula
-import { addObserver, dispatch } from '../store/index';
+import { addObserver, appState, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 
@@ -17,6 +17,7 @@ export class FilmPage extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<h1>FilmPage</h1>
+			<my-figuremovie  poster=${appState.movieimage}></my-figuremovie>
 			`;
 		}
 	}

@@ -37,6 +37,13 @@ export const SaveMovieId = (uid: any) => {
 	};
 };
 
+export const SaveMovieImage = (image: any) => {
+	return {
+		action: 'SaveMovieImage',
+		payload: image,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {
