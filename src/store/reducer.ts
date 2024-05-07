@@ -61,5 +61,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveMovieDirector':
+			currentState.moviedirector = payload;
+			break;
+	}
+
 	return currentState;
 };

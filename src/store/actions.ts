@@ -58,6 +58,13 @@ export const SaveMovieTitle = (utitle: any) => {
 	};
 };
 
+export const SaveMovieDirector = (director: any) => {
+	return {
+		action: 'SaveMovieDirector',
+		payload: director,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

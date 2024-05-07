@@ -13,6 +13,7 @@ export type AppState = {
 	movieimage: string;
 	moviecategories: string;
 	movietitle: string;
+	moviedirector: string;
 };
 
 export enum MoviesActions {
