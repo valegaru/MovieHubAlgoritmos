@@ -12,6 +12,7 @@ export let appState = {
 	movieid: '',
 	movieimage: '',
 	moviecategories: '',
+	//para los titulos compuestos solo guarda la primera palabra
 	movietitle: '',
 };
 
