@@ -12,18 +12,19 @@
 	height: 43vh;
 }
 
-:host {
-	color: white;
-}
-/* Agregar un velo solo sobre la imagen de fondo */
-:host::before {
+#allbanner::before {
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: rgba(30, 21, 22, 0.01);
-	z-index: 1;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3); /* Color de fondo con opacidad */
+	z-index: 1; /* Colócalo encima del contenido */
+}
+
+:host {
+	color: white;
 }
 
 section {
