@@ -6,6 +6,7 @@ export type Observer = { render: () => void } & HTMLElement;
 export type AppState = {
 	movielist: DataShapeMovie[];
 	screen: string;
+  currentcategory:string;
 };
 
 export enum MoviesActions {

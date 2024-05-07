@@ -9,6 +9,13 @@ export const navigate = (screen: any) => {
 	};
 };
 
+export const navigateCategory = (category: any) => {
+	return {
+		action: 'navigateCategory',
+		payload: category,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

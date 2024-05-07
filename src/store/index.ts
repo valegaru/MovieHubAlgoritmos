@@ -1,11 +1,12 @@
 import { reducer } from './reducer';
 import Storage, { PersistanceKeys } from '../utils/storage';
 import { Actions, AppState, Observer } from '../types/store';
-import { Screens } from "../types/navigation";
+import { Screens } from '../types/navigation';
 
 export let appState = {
 	screen: 'DASHBOARD',
 	movielist: [],
+	currentcategory: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

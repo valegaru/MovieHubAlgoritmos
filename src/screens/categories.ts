@@ -2,6 +2,8 @@
 import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
+import { appState } from '../store/index';
+import { AppState } from '../types/store';
 
 export class Categories extends HTMLElement {
 	constructor() {
@@ -17,6 +19,7 @@ export class Categories extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<h1>CATEGORIES</h1>
+			<category-section category=${appState.currentcategory}></category-section>
 			`;
 		}
 	}

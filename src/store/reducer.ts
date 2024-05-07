@@ -18,5 +18,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 				movielist: payload,
 			};
 	}
+
+	switch (action) {
+		case 'navigateCategory':
+			currentState.currentcategory = payload;
+			break;
+	}
+
 	return currentState;
 };

@@ -67,7 +67,7 @@ export class Dashboard extends HTMLElement {
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
 			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
-			<category-section name="Popular films in the community" category="popular" link="https://myflixerz.to/movie"></category-section>
+			<category-section name="Popular films in the community" category="popular"></category-section>
 				<category-section name="On cinema right now" category="cinema"></category-section>
 				<category-section name="Trending this week" category="trending"></category-section>
 				<category-section name="classics" category="classics"></category-section>
