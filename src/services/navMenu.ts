@@ -13,7 +13,7 @@ export const navMenu: DataShapeNavMenu[] = [
 	{
 		name: 'Popular',
 		category: 'popular',
-		image: '',
+		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/s5R6kTMfOxkGit96A8lqcDL4uVk.jpg',
 	},
 	{
 		name: 'On cinema',
@@ -23,12 +23,12 @@ export const navMenu: DataShapeNavMenu[] = [
 	{
 		name: 'Trending',
 		category: 'trending',
-		image: '',
+		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/iAyr7VEFGJoHDIHIxjEb3TskQW4.jpg',
 	},
 	{
 		name: 'Action',
 		category: 'action',
-		image: '',
+		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/d9sMIwulLtwRHowmDk2INm0ugmP.jpg',
 	},
 	{
 		name: 'Sci-fi',
@@ -63,11 +63,12 @@ export const navMenu: DataShapeNavMenu[] = [
 	{
 		name: 'Documental',
 		category: 'documental',
-		image: '',
+		image:
+			'https://media.vogue.es/photos/605dcd126503a651df3ce9ef/master/w_1600%2Cc_limit/Seapiracy-vogue-credit-Netflix-7.jpg',
 	},
 	{
 		name: 'Psychological',
 		category: 'psychological',
-		image: '',
+		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/fGe1ej335XbqN1j9teoDpofpbLX.jpg',
 	},
 ];
