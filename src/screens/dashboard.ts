@@ -36,7 +36,7 @@ export class Dashboard extends HTMLElement {
 			<category-section name="Popular films in the community" category="popular"></category-section>
 				<category-section name="On cinema right now" category="cinema"></category-section>
 				<category-section name="Trending this week" category="trending"></category-section>
-				<category-section name="classics" category="classics"></category-section>
+				<category-section name="Classics" category="classics"></category-section>
 				<modal-movie></modal-movie>
 				</body>
 			`;

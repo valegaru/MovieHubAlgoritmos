@@ -7,6 +7,7 @@ export type AppState = {
 	movielist: DataShapeMovie[];
 	screen: string;
   currentcategory:string;
+	titlecategory: string,
 };
 
 export enum MoviesActions {

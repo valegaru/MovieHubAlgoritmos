@@ -25,5 +25,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveTitleCategory':
+			currentState.titlecategory = payload;
+			break;
+	}
+
 	return currentState;
 };

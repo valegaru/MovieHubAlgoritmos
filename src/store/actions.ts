@@ -16,6 +16,13 @@ export const navigateCategory = (category: any) => {
 	};
 };
 
+export const SaveTitleCategory = (title: any) => {
+	return {
+		action: 'SaveTitleCategory',
+		payload: title,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

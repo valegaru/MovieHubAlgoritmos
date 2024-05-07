@@ -7,6 +7,7 @@ export let appState = {
 	screen: 'DASHBOARD',
 	movielist: [],
 	currentcategory: '',
+	titlecategory: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

@@ -4,7 +4,7 @@ import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
 import { addObserver, appState, dispatch } from '../../store';
-import { GetMovies, navigateCategory } from '../../store/actions';
+import { GetMovies, SaveTitleCategory, navigateCategory } from '../../store/actions';
 import { navigate } from '../../store/actions';
 export enum Attribute {
 	'name' = 'name',
@@ -72,6 +72,7 @@ class CategorySection extends HTMLElement {
 			inputImageSec?.addEventListener('click', () => {
 				dispatch(navigate('CATEGORIES'));
 				dispatch(navigateCategory(this.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
+				dispatch(SaveTitleCategory(this.name));
 				console.log(appState);
 			});
 			this.shadowRoot.appendChild(styles);

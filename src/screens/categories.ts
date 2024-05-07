@@ -20,7 +20,7 @@ export class Categories extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			<my-banner section_title=${appState.currentcategory}></my-banner>
+			<my-banner section_title=${appState.titlecategory}></my-banner>
 			<category-section category=${appState.currentcategory}></category-section>
 			`;
 		}
