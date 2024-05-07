@@ -5,6 +5,8 @@ import '../components/exports';
 import { appState } from '../store/index';
 import { AppState } from '../types/store';
 
+import styles from './categories.css';
+
 export class Categories extends HTMLElement {
 	constructor() {
 		super();
@@ -18,10 +20,13 @@ export class Categories extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			<h1>CATEGORIES</h1>
+			<my-banner section_title=${appState.currentcategory}></my-banner>
 			<category-section category=${appState.currentcategory}></category-section>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 
