@@ -30,6 +30,13 @@ export const SaveImageCategory = (image: any) => {
 	};
 };
 
+export const SaveMovieId = (uid: any) => {
+	return {
+		action: 'SaveMovieId',
+		payload: uid,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

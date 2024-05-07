@@ -37,5 +37,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveMovieId':
+			currentState.movieid = payload;
+			break;
+	}
+
 	return currentState;
 };
