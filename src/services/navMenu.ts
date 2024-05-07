@@ -16,7 +16,7 @@ export const navMenu: DataShapeNavMenu[] = [
 		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/s5R6kTMfOxkGit96A8lqcDL4uVk.jpg',
 	},
 	{
-		name: 'On cinema',
+		name: 'On-cinema',
 		category: 'cinema',
 		image: 'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/rron9HAuS9s7zBF8iCX1tsafxUo.jpg',
 	},
