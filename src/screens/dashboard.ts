@@ -24,40 +24,6 @@ export class Dashboard extends HTMLElement {
 				dispatch(navigate('SIGNIN'));
 			});
 		}
-		//HACER CLICK EN LOGIN Desde la barra nav
-		const myBanner = this.shadowRoot?.querySelector('my-banner');
-		if (myBanner) {
-			const navbar = myBanner.shadowRoot?.querySelector('custom-navbar');
-			const loginLink = navbar?.shadowRoot?.querySelector('#login');
-			if (loginLink) {
-				loginLink.addEventListener('click', () => {
-					dispatch(navigate('LOGIN'));
-				});
-			}
-		}
-
-		//HACER CLICK EN Create account Desde la barra nav
-		const my = this.shadowRoot?.querySelector('my-banner');
-		if (my) {
-			const navbar = my.shadowRoot?.querySelector('custom-navbar');
-			const loginLink = navbar?.shadowRoot?.querySelector('#signin');
-			if (loginLink) {
-				loginLink.addEventListener('click', () => {
-					dispatch(navigate('SIGNIN'));
-				});
-			}
-		}
-
-		const lists = this.shadowRoot?.querySelector('my-banner');
-		if (lists) {
-			const navbar = lists.shadowRoot?.querySelector('custom-navbar');
-			const listsLink = navbar?.shadowRoot?.querySelector('.pages a.navigate-list');
-			if (listsLink) {
-				listsLink.addEventListener('click', () => {
-					dispatch(navigate('MYLIST'));
-				});
-			}
-		}
 	}
 
 	render() {

@@ -17,6 +17,30 @@ class Navbar extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+
+		//HACER CLICK EN LISTS Desde la barra nav
+		const listsLink = this.shadowRoot?.querySelector('.pages a.navigate-list');
+		if (listsLink) {
+			listsLink.addEventListener('click', () => {
+				dispatch(navigate('MYLISTS'));
+			});
+		}
+
+		//HACER CLICK EN Create account Desde la barra nav
+		const signLink = this.shadowRoot?.querySelector('#signin');
+		if (signLink) {
+			signLink.addEventListener('click', () => {
+				dispatch(navigate('SIGNIN'));
+			});
+		}
+
+//HACER CLICK EN LOGIN Desde la barra nav
+		const loginLink = this.shadowRoot?.querySelector('#login');
+		if (loginLink) {
+			loginLink.addEventListener('click', () => {
+				dispatch(navigate('LOGIN'));
+			});
+		}
 	}
 
 	render() {
