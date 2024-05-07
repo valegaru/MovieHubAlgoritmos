@@ -52,15 +52,27 @@ class Navbar extends HTMLElement {
 			const section = document.createElement('div');
 			section.className = 'menu-desplegable';
 
+			filmsLink.addEventListener('click', () => {
+				if (section) {
+					// Verifica si la clase ya está presente
+					const isDisplayed = section.classList.contains('menu-desplegableDisplayed');
+					if (isDisplayed) {
+						// Si la clase está presente, quítala
+						section.classList.remove('menu-desplegableDisplayed');
+					} else {
+						// Si la clase no está presente, agrégala
+						section.classList.add('menu-desplegableDisplayed');
+					}
+				}
+			});
+
 			navMenu.forEach((element: DataShapeNavMenu) => {
 				const p = document.createElement('p');
 				p.textContent = element.name;
 				section.appendChild(p);
 				p.addEventListener('click', () => {
-					alert('hola ');
 					dispatch(navigate('CATEGORIES'));
 					dispatch(navigateCategory(element.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
-					console.log(appState);
 				});
 			});
 
