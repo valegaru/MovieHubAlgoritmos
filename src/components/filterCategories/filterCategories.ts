@@ -17,7 +17,7 @@ export enum Attribute {
 class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
-	image?:string;
+	image?: string;
 
 	constructor() {
 		super();
@@ -65,7 +65,7 @@ class CategorySection extends HTMLElement {
 					${moviesData
 						.map(
 							(movie) => `
-						<movie-card image="${movie.image}"></movie-card>
+						<movie-card image="${movie.image}" uid="${movie.id}"></movie-card>
 					`
 						)
 						.join('')}

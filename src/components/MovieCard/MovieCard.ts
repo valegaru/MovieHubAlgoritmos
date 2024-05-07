@@ -4,10 +4,12 @@ import styles from './MovieCard.css';
 
 export enum Attribute {
 	'image' = 'image', //from data
+	'uid' = 'uid',
 }
 
 class MovieCard extends HTMLElement {
 	image?: string;
+	uid?: string;
 	isLiked: boolean;
 
 	constructor() {
@@ -19,6 +21,7 @@ class MovieCard extends HTMLElement {
 	static get observedAttributes() {
 		const attrs: Record<Attribute, null> = {
 			image: null,
+			uid: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -36,12 +39,6 @@ class MovieCard extends HTMLElement {
 		this.render();
 
 		//HACER CLICK en el ojo y su label para ver los detalles de la peli
-		const view = this.shadowRoot?.querySelector('.viewdetails');
-		if (view) {
-			view.addEventListener('click', () => {
-				dispatch(navigate('FILMPAGE'));
-			});
-		}
 	}
 
 	render() {
@@ -49,7 +46,7 @@ class MovieCard extends HTMLElement {
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
-			<div class="container">
+			<div class="container" data-uid="${this.uid}">
 			<img class="poster" src="${this.image}" >
 			<section class="content">
 			<section class="viewdetails">
@@ -63,6 +60,13 @@ class MovieCard extends HTMLElement {
 				</section>
 		</div>
 			`;
+
+			const view = this.shadowRoot.querySelector('.viewdetails');
+			view?.addEventListener('click', () => {
+				dispatch(navigate('FILMPAGE'));
+				//dispatch(SaveTitleCategory(this.name));
+			});
+
 			// Obtener referencias a los botones de "like" y "dislike"
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
