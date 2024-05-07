@@ -1,5 +1,7 @@
 //es la parte del form en el login y en el signin
 import styles from './SessionForm.css';
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
 
 export enum AttributeSessionForm {
 	'utitle' = 'utitle',
@@ -52,6 +54,14 @@ export default class SessionForm extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+
+		//x para cerrar el formulario
+		const close = this.shadowRoot?.querySelector('.close');
+		if (close) {
+			close.addEventListener('click', () => {
+				dispatch(navigate('DASHBOARD'));
+			});
+		}
 	}
 
 	render() {
