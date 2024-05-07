@@ -86,7 +86,7 @@ nav .search-bar {
 
 /* Estilos para el menú desplegable */
 .pages .menu-desplegable {
-	display: none; /* controla que no se muestre */
+	display: flex; /* controla que no se muestre */
 	position: absolute;
 	top: 100%;
 	left: 0;
