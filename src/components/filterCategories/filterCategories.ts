@@ -65,7 +65,7 @@ class CategorySection extends HTMLElement {
 					${moviesData
 						.map(
 							(movie) => `
-						<movie-card image="${movie.image}" uid="${movie.id}"></movie-card>
+						<movie-card image="${movie.image}" uid="${movie.id}" categories="${movie.categories}"></movie-card>
 					`
 						)
 						.join('')}

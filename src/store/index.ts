@@ -11,6 +11,7 @@ export let appState = {
 	imagecategory: '',
 	movieid: '',
 	movieimage: '',
+	moviecategories:'',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

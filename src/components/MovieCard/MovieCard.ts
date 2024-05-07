@@ -1,5 +1,5 @@
 import { dispatch } from '../../store';
-import { SaveMovieId, SaveMovieImage, navigate } from '../../store/actions';
+import { SaveMovieCategories, SaveMovieId, SaveMovieImage, navigate } from '../../store/actions';
 import styles from './MovieCard.css';
 
 export enum Attribute {
@@ -93,7 +93,8 @@ class MovieCard extends HTMLElement {
 				dispatch(navigate('FILMPAGE'));
 				dispatch(SaveMovieId(this.uid));
 				dispatch(SaveMovieImage(this.image));
-				console.log('id', this.uid);
+				dispatch(SaveMovieCategories(this.categories));
+				console.log('categories', this.categories);
 				console.log('imagesaved', this.image);
 				//dispatch(SaveTitleCategory(this.name));
 			});
