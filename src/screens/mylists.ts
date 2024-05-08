@@ -6,6 +6,8 @@ import { Banner } from '../components/exports';
 import { ModalCreateNewList } from '../components/exports';
 import { appState } from '../store/index';
 import styles from './mylists.css';
+import { DataShapeLists } from '../services/dataLists';
+import List from '../components/List/List';
 
 export class MyLists extends HTMLElement {
 	constructor() {
@@ -20,10 +22,12 @@ export class MyLists extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
+			${this}
 			<section>
 				<my-banner section_title="My Lists"></my-banner>
 				<button id ="modal-button">Create new list</button>
 				<my-modal-list id ="open"></my-modal-list>
+				<my-list></my-list>
 			</section>
 				`;
 		}
