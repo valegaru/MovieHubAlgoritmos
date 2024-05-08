@@ -54,8 +54,8 @@ export default class FigureMovie extends HTMLElement {
 <img src="${this.poster}" alt="This a poster of the movie named ${this.utitle} ">
 <h1>${this.utitle}</h1>
 <section id="directoranddate">
-<p>Directed by ${this.director} </p>
-<p>Release date: ${this.release_date}</p>
+<p>Directed by <b> ${this.director} </b></p>
+<p>Release date:<b> ${this.release_date}</b></p>
 </section>
       </section>
       `;
