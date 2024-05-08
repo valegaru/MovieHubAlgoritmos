@@ -27,7 +27,6 @@ export class MyLists extends HTMLElement {
 				<my-banner section_title="My Lists"></my-banner>
 				<button id ="modal-button">Create new list</button>
 				<my-modal-list id ="open"></my-modal-list>
-				<my-list></my-list>
 			</section>
 				`;
 		}
