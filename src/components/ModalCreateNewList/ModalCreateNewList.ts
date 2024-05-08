@@ -49,7 +49,8 @@ export default class ModalCreateNewList extends HTMLElement {
 			const modal = this.shadowRoot.querySelector('.modal-new-list')! as HTMLDivElement;
 			const span = this.shadowRoot.querySelector('.close')!;
 			span.addEventListener('click', () => {
-				modal.style.display = 'none';
+				// modal.style.display = 'none';
+				this.style.display = 'none';
 			});
 		}
 	}

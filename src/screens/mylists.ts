@@ -4,6 +4,8 @@ import '../components/exports';
 import { Navbar } from '../components/exports';
 import { Banner } from '../components/exports';
 import { ModalCreateNewList } from '../components/exports';
+import { appState } from '../store/index';
+import styles from './mylists.css';
 
 export class MyLists extends HTMLElement {
 	constructor() {
@@ -18,12 +20,22 @@ export class MyLists extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<my-banner>
-				<h1>My Lists</h1>
-			</my-banner>
-			<my-modal-list></my-modal-list>
-			`;
+			<section>
+				<my-banner section_title=${this.title}></my-banner>
+				<button id ="modal-button">Create new list</button>
+				<my-modal-list id ="open"></my-modal-list>
+			</section>
+				`;
 		}
+		const modalButton = this.shadowRoot?.querySelector('#modal-button');
+		const modal = this.shadowRoot?.querySelector('#open') as HTMLElement;
+		modal.style.display = 'none';
+		modalButton?.addEventListener('click', () => {
+			modal.style.display = 'flex';
+		});
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 
