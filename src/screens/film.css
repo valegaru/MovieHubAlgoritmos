@@ -25,14 +25,15 @@
 	margin-top: 30%;
 	display: flex;
 	position: relative;
-	margin-left: 7%;
-	margin-right: 7%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 #info {
 	flex: 2; /* Para que ocupe 2/3 del espacio */
 	border-right-color: white;
 	border-right-width: 20px;
+	padding-right: 20%;
 }
 
 #actions {
