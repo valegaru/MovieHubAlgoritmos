@@ -1,0 +1,9 @@
+a {
+	display: flex;
+	align-items: center; /* Alinea verticalmente los elementos */
+	text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+p {
+	margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+}

@@ -3,4 +3,95 @@
 	background-color: rgba(30, 21, 22, 1);
 	margin: 0;
 	padding: 0;
+	font-family: 'Noto Traditional Nushu', serif;
+	color: white;
+	position: relative;
+}
+
+#banner {
+	position: relative;
+	z-index: 1;
+}
+
+#figure {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2; /* Para asegurarse de que figure esté encima del banner */
+}
+
+#content {
+	margin-top: 20%;
+	display: flex;
+	position: relative;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#info {
+	flex: 2; /* Para que ocupe 2/3 del espacio */
+	border-right-color: white;
+	border-right-width: 20px;
+	padding-right: 20%;
+}
+
+#content::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: calc(4 / 5 * 100%); /* Calcula la posición para que esté en el cuarto 4/5 de la pantalla */
+	width: 1px; /* Ancho de la línea */
+	background-color: white; /* Color de la línea */
+}
+
+#actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end; /* Centra los elementos horizontalmente */
+	flex: 1; /* Para que ocupe 1/3 del espacio */
+}
+
+/* Estilos para pantallas más pequeñas */
+@media screen and (max-width: 767px) {
+	#figure {
+		top: 39%;
+	}
+
+	#content {
+		margin-top: 80%;
+		flex-direction: column; /* Cambiar la dirección del flex para columnas */
+	}
+
+	#info {
+		border-right: none; /* Eliminar el borde derecho en pantallas pequeñas */
+		padding-right: 0; /* Eliminar el relleno derecho */
+	}
+
+	#content::after {
+		left: 0; /* Colocar la línea vertical al principio */
+		top: calc(2 / 3 * 100%); /* Colocar la línea al cuarto 4/5 de la pantalla */
+		width: 100%; /* Ancho completo */
+		height: 1px; /* Altura de la línea */
+	}
+
+	#actions {
+		order: -1; /* Cambiar el orden para que aparezca arriba */
+		align-items: center; /* Alinear los elementos horizontalmente */
+		padding-top: 10px; /* Añadir espacio arriba */
+		display: grid; /* Usar grid layout para organizar los elementos */
+		grid-template-columns: repeat(2, 1fr); /* Crear 2 columnas de igual tamaño */
+		grid-gap: 10px; /* Espacio entre las celdas */
+		margin-bottom: 20px;
+	}
+
+	/* Alinear elementos de la segunda columna hacia la derecha */
+	#actions my-actionandicon:nth-child(even) {
+		justify-self: end;
+	}
+
+	#content::after {
+		display: none;
+	}
 }

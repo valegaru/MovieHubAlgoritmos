@@ -1,0 +1,53 @@
+#figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+#figure img {
+	width: 400px;
+	height: auto;
+}
+
+#directoanddate {
+	margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+}
+
+h1 {
+	font-size: 200%;
+	margin: 1%;
+}
+
+#directoranddate {
+	margin: 1%;
+	display: flex; /* Hace que los elementos se alineen en una línea */
+	justify-content: center; /* Los elementos se alinearán al centro horizontalmente */
+	gap: 10px; /* Espacio entre los elementos */
+}
+
+p {
+	margin: 1%;
+	white-space: nowrap; /* Hace que el texto dentro del párrafo se muestre en una sola línea */
+}
+
+/* Estilos para pantallas más pequeñas */
+@media screen and (max-width: 767px) {
+	#figure img {
+		width: 100%; /* Hace que la imagen ocupe todo el ancho disponible */
+	}
+
+	#directoranddate {
+		flex-direction: column; /* Cambia la dirección del flexbox a columna */
+		align-items: center; /* Centra los elementos horizontalmente */
+		margin-top: 5px; /* Ajusta el margen superior */
+	}
+
+	h1 {
+		font-size: 120%;
+	}
+	p {
+		white-space: normal; /* Permite que el texto dentro del párrafo se ajuste automáticamente al ancho del contenedor */
+		font-size: 90%;
+	}
+}
