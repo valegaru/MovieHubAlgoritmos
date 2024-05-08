@@ -20,6 +20,7 @@ export let appState = {
 
 	moviecast: '',
 	moviecrew: '',
+	movieimagesec:'',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

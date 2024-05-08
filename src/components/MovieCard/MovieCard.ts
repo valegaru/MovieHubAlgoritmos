@@ -6,6 +6,7 @@ import {
 	SaveMovieDirector,
 	SaveMovieId,
 	SaveMovieImage,
+	SaveMovieImageSec,
 	SaveMovieReleaseDate,
 	SaveMovieTitle,
 	navigate,
@@ -109,6 +110,7 @@ class MovieCard extends HTMLElement {
 				dispatch(SaveMovieReleaseDate(this.release_date));
 				dispatch(SaveMovieCast(this.cast));
 				dispatch(SaveMovieCrew(this.crew));
+				dispatch(SaveMovieImageSec(this.image_sec));
 				console.log('date', this.release_date);
 				console.log('cast appstate', appState.moviedirector);
 				console.log('imagesaved', this.image);

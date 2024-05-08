@@ -86,6 +86,13 @@ export const SaveMovieCrew = (crew: any) => {
 	};
 };
 
+export const SaveMovieImageSec = (imagesec: any) => {
+	return {
+		action: 'SaveMovieImageSec',
+		payload: imagesec,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {
