@@ -15,14 +15,14 @@
 
 #figure {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2; /* Para asegurarse de que figure esté encima del banner */
 }
 
 #content {
-	margin-top: 30%;
+	margin-top: 20%;
 	display: flex;
 	position: relative;
 	margin-left: 10%;
@@ -36,10 +36,6 @@
 	padding-right: 20%;
 }
 
-#actions {
-	flex: 1; /* Para que ocupe 1/3 del espacio */
-}
-
 #content::after {
 	content: '';
 	position: absolute;
@@ -48,4 +44,11 @@
 	left: calc(2 / 3 * 100%); /* Calcula la posición para que esté al final de info */
 	width: 1px; /* Ancho de la línea */
 	background-color: white; /* Color de la línea */
+}
+
+#actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end; /* Centra los elementos horizontalmente */
+	flex: 1; /* Para que ocupe 1/3 del espacio */
 }

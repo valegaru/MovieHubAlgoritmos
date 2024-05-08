@@ -51,7 +51,7 @@ export default class DescriptionMovie extends HTMLElement {
 			this.shadowRoot.innerHTML = `
 			<section>
 			<b><p>${this.catch_phrase || ''}</p></b>
-<p>${this.description}</p>
+<p id="description">${this.description}</p>
       </section>
       `;
 		}

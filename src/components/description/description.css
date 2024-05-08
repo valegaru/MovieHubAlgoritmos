@@ -7,3 +7,7 @@ p {
 	display: block; /* Hace que el párrafo sea un bloque de texto */
 	width: 100%; /* Establece un ancho del 100% */
 }
+
+#description {
+	margin-bottom: 10%;
+}
