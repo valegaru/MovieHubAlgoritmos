@@ -91,11 +91,11 @@ class MovieCard extends HTMLElement {
 			<section class="content">
 			<section class="viewdetails">
 				<a class="link">
-					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="visible--v1"/></a>
+					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="eye icon"/></a>
 				<p>View details</p>
 				</section>
-				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="like--v1"/>
-				<img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="like--v1"/>
+				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="hear icon empty"/>
+				<img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="heart icon full"/>
 				<p>Like</p>
 				</section>
 		</div>
