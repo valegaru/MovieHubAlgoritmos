@@ -91,5 +91,11 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveMovieDescription':
+			currentState.moviedescription = payload;
+			break;
+	}
+
 	return currentState;
 };

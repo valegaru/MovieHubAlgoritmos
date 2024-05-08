@@ -93,6 +93,13 @@ export const SaveMovieImageSec = (imagesec: any) => {
 	};
 };
 
+export const SaveMovieDescription = (description: any) => {
+	return {
+		action: 'SaveMovieDescription',
+		payload: description,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {
