@@ -3,6 +3,7 @@ import { navigate } from '../store/actions';
 import '../components/exports';
 import { Navbar } from '../components/exports';
 import { Banner } from '../components/exports';
+import { ModalCreateNewList } from '../components/exports';
 
 export class MyLists extends HTMLElement {
 	constructor() {
@@ -19,8 +20,8 @@ export class MyLists extends HTMLElement {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<my-banner>
 				<h1>My Lists</h1>
-				<h1>prueba</h1>
 			</my-banner>
+			<my-modal-list></my-modal-list>
 			`;
 		}
 	}
