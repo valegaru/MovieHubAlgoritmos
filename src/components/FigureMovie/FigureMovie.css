@@ -30,3 +30,20 @@ p {
 	margin: 1%;
 	white-space: nowrap; /* Hace que el texto dentro del párrafo se muestre en una sola línea */
 }
+
+/* Estilos para pantallas más pequeñas */
+@media screen and (max-width: 767px) {
+	#figure img {
+		width: 100%; /* Hace que la imagen ocupe todo el ancho disponible */
+	}
+
+	#directoranddate {
+		flex-direction: column; /* Cambia la dirección del flexbox a columna */
+		align-items: center; /* Centra los elementos horizontalmente */
+		margin-top: 5px; /* Ajusta el margen superior */
+	}
+
+	p {
+		white-space: normal; /* Permite que el texto dentro del párrafo se ajuste automáticamente al ancho del contenedor */
+	}
+}
