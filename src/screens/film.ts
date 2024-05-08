@@ -20,7 +20,7 @@ export class FilmPage extends HTMLElement {
 			<my-figuremovie  poster=${appState.movieimage} utitle="${appState.movietitle}" director="${appState.moviedirector}" release_date=${appState.moviereleasedate}></my-figuremovie>
 			<my-descriptionmovie catch_phrase="hola" description="adios"></my-descriptionmovie>
 			<my-extrainfo section_title="Cast" content="${appState.moviecast}"></my-extrainfo>
-			<my-extrainfo section_title="Crew" content=""></my-extrainfo>
+			<my-extrainfo section_title="Crew" content="${appState.moviecrew}"></my-extrainfo>
 			<my-extrainfo section_title="Genres" content="${appState.moviecategories}"></my-extrainfo>
 			`;
 		}

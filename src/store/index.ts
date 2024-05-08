@@ -17,8 +17,9 @@ export let appState = {
 	//hay que usarlo con comillas como director="${appState.moviedirector}"
 	moviedirector: '',
 	moviereleasedate: '',
-	
+
 	moviecast: '',
+	moviecrew: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

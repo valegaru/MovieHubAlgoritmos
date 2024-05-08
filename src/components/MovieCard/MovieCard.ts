@@ -2,6 +2,7 @@ import { appState, dispatch } from '../../store';
 import {
 	SaveMovieCast,
 	SaveMovieCategories,
+	SaveMovieCrew,
 	SaveMovieDirector,
 	SaveMovieId,
 	SaveMovieImage,
@@ -107,6 +108,7 @@ class MovieCard extends HTMLElement {
 				dispatch(SaveMovieDirector(this.director));
 				dispatch(SaveMovieReleaseDate(this.release_date));
 				dispatch(SaveMovieCast(this.cast));
+				dispatch(SaveMovieCrew(this.crew));
 				console.log('date', this.release_date);
 				console.log('cast appstate', appState.moviedirector);
 				console.log('imagesaved', this.image);

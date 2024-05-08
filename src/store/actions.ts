@@ -79,6 +79,13 @@ export const SaveMovieCast = (cast: any) => {
 	};
 };
 
+export const SaveMovieCrew = (crew: any) => {
+	return {
+		action: 'SaveMovieCrew',
+		payload: crew,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {
