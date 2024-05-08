@@ -1,6 +1,6 @@
 //esta es la pantalla de la segunda entrega
 import { addObserver, dispatch } from '../store/index';
-import { navigate } from '../store/actions';
+import { GetMovies, navigate } from '../store/actions';
 import { DataShapeMovie } from '../types/movies';
 import Firebase from '../services/firebase';
 import '../components/exports';
@@ -16,7 +16,7 @@ export class Dashboard extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		this.render();
 		const myBannerButton = this.shadowRoot?.querySelector('my-banner');
 		if (myBannerButton) {
@@ -24,41 +24,6 @@ export class Dashboard extends HTMLElement {
 			button?.addEventListener('click', () => {
 				dispatch(navigate('SIGNIN'));
 			});
-		}
-
-		//HACER CLICK EN LOGIN Desde la barra nav
-		const myBanner = this.shadowRoot?.querySelector('my-banner');
-		if (myBanner) {
-			const navbar = myBanner.shadowRoot?.querySelector('custom-navbar');
-			const loginLink = navbar?.shadowRoot?.querySelector('#login');
-			if (loginLink) {
-				loginLink.addEventListener('click', () => {
-					dispatch(navigate('LOGIN'));
-				});
-			}
-		}
-
-		//HACER CLICK EN Create account Desde la barra nav
-		const my = this.shadowRoot?.querySelector('my-banner');
-		if (my) {
-			const navbar = my.shadowRoot?.querySelector('custom-navbar');
-			const loginLink = navbar?.shadowRoot?.querySelector('#signin');
-			if (loginLink) {
-				loginLink.addEventListener('click', () => {
-					dispatch(navigate('SIGNIN'));
-				});
-			}
-		}
-
-		const lists = this.shadowRoot?.querySelector('my-banner');
-		if (lists) {
-			const navbar = lists.shadowRoot?.querySelector('custom-navbar');
-			const listsLink = navbar?.shadowRoot?.querySelector('.pages a.navigate-list');
-			if (listsLink) {
-				listsLink.addEventListener('click', () => {
-					dispatch(navigate('MYLISTS'));
-				});
-			}
 		}
 	}
 
@@ -69,10 +34,10 @@ export class Dashboard extends HTMLElement {
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
 			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
-			<category-section name="Popular films in the community" category="popular" link="https://myflixerz.to/movie"></category-section>
-				<category-section name="On cinema right now" category="cinema"></category-section>
-				<category-section name="Trending this week" category="trending"></category-section>
-				<category-section name="classics" category="classics"></category-section>
+			<category-section name="Popular films in the community" category="popular" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/s5R6kTMfOxkGit96A8lqcDL4uVk.jpg"></category-section>
+				<category-section name="On-cinema right now" category="cinema" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/rron9HAuS9s7zBF8iCX1tsafxUo.jpg"></category-section>
+				<category-section name="Trending this week" category="trending" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/iAyr7VEFGJoHDIHIxjEb3TskQW4.jpg"></category-section>
+				<category-section name="Classics" category="classics" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg"></category-section>
 				<modal-movie></modal-movie>
 				</body>
 			`;

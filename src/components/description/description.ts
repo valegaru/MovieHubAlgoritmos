@@ -50,7 +50,7 @@ export default class DescriptionMovie extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
-			<b><p>${this.catch_phrase}</p></b>
+			<b><p>${this.catch_phrase || ''}</p></b>
 <p>${this.description}</p>
       </section>
       `;

@@ -3,11 +3,13 @@ import Firebase from '../../services/firebase';
 import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
-
+import { addObserver, appState, dispatch } from '../../store';
+import { GetMovies, SaveImageCategory, SaveTitleCategory, navigateCategory } from '../../store/actions';
+import { navigate } from '../../store/actions';
 export enum Attribute {
 	'name' = 'name',
 	'category' = 'category',
-	'link' = 'link',
+	'image' = 'image',
 }
 //la variable name se usa para el titulo de cada sección
 //link es para que cuando se hunda en el nombre de la seccion, te lleve a una pagina asociada
@@ -15,8 +17,7 @@ export enum Attribute {
 class CategorySection extends HTMLElement {
 	name?: string;
 	category?: string;
-	link?: string;
-	moviesData?: DataShapeMovie[];
+	image?: string;
 
 	constructor() {
 		super();
@@ -27,7 +28,7 @@ class CategorySection extends HTMLElement {
 		const attrs: Record<Attribute, null> = {
 			name: null,
 			category: null,
-			link: null,
+			image: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -36,10 +37,6 @@ class CategorySection extends HTMLElement {
 		this.render();
 	}
 	//se filtran las pelis por categoria y se guarda en la data jiji
-	async filterData(category: string) {
-		const movies = await Firebase.getMovie();
-		this.moviesData = movies.filter((movie) => movie.categories.includes(category));
-	}
 
 	attributeChangedCallback(propName: Attribute, oldValue: string | number, newValue: string | undefined) {
 		switch (propName) {
@@ -48,7 +45,6 @@ class CategorySection extends HTMLElement {
 				break;
 		}
 		//se llama la funcion filter pq se cambia la categoria y se cambia la data. Cuando se cambia la categoria se cambia la data
-		this.filterData(this.category!);
 		this.render();
 	}
 
@@ -56,23 +52,33 @@ class CategorySection extends HTMLElement {
 	//se usa el join para q ese array se convierta en una sola cadena de texto
 	async render() {
 		if (this.shadowRoot) {
-			await this.filterData(this.category!);
+			const movies: DataShapeMovie[] = appState.movielist;
+			const moviesData = movies.filter((movie) =>
+				movie.categories?.includes(this.category != undefined ? this.category : 'undefined')
+			);
+			console.log('category', this.category, moviesData);
 			const styles = document.createElement('style');
 			styles.textContent = css;
-			const movieElements = this.moviesData != undefined ? this.moviesData : [];
 			this.shadowRoot.innerHTML = `
-                <a href="${this.link}"><h1>${this.name}</h1></a>
+                <h1 id="titlecategory">${this.name || ''}</h1>
 				<section id="cards">
-					${movieElements
+					${moviesData
 						.map(
 							(movie) => `
-						<movie-card image="${movie.image}"></movie-card>
+						<movie-card image="${movie.image}" uid="${movie.id}" categories="${movie.categories}" utitle="${movie.title}" director="${movie.director}" release_date="${movie.release_date}" cast="${movie.cast}" crew="${movie.crew}" image_sec="${movie.image_sec}" description="${movie.description}" catch_phrase="${movie.catch_phrase}"></movie-card>
 					`
 						)
 						.join('')}
 				</section>
             `;
-
+			const inputImageSec = this.shadowRoot.querySelector('#titlecategory');
+			inputImageSec?.addEventListener('click', () => {
+				dispatch(navigate('CATEGORIES'));
+				dispatch(navigateCategory(this.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
+				dispatch(SaveTitleCategory(this.name));
+				dispatch(SaveImageCategory(this.image));
+				console.log(appState);
+			});
 			this.shadowRoot.appendChild(styles);
 		}
 	}

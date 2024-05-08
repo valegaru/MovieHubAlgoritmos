@@ -5,14 +5,14 @@ export enum AttributeFigureMovie {
 	'poster' = 'poster', //from data
 	'director' = 'director', //from data
 	'utitle' = 'utitle', //from data
-	'release_year' = 'release_year', //from data
+	'release_date' = 'release_date', //from data
 }
 
 export default class FigureMovie extends HTMLElement {
 	poster?: string;
 	director?: string;
 	utitle?: string;
-	release_year?: string;
+	release_date?: string;
 
 	constructor() {
 		super();
@@ -24,7 +24,7 @@ export default class FigureMovie extends HTMLElement {
 			poster: null,
 			director: null,
 			utitle: null,
-			release_year: null,
+			release_date: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -51,9 +51,9 @@ export default class FigureMovie extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
-<img src="${this.poster}">
+<img src="${this.poster}" alt="This a poster of the movie named ${this.utitle} ">
 <h1>${this.utitle}</h1>
-<p>Directed by ${this.director} - ${this.release_year}</p>
+<p>Directed by ${this.director} - ${this.release_date}</p>
       </section>
       `;
 		}

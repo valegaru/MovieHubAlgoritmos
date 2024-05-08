@@ -3,14 +3,12 @@ import styles from './ActionAndIcon.css';
 export enum AttributeActionAndIcon {
 	'icon_url' = 'icon_url',
 	'label' = 'label',
-	'link' = 'link',
 	'description_icon' = 'description_icon', //para accesibilidad
 }
 
 export default class ActionAndIcon extends HTMLElement {
 	icon_url?: string;
 	label?: string;
-	link?: string;
 	description_icon?: string;
 
 	constructor() {
@@ -22,7 +20,6 @@ export default class ActionAndIcon extends HTMLElement {
 		const attrs: Record<AttributeActionAndIcon, null> = {
 			icon_url: null,
 			label: null,
-			link: null,
 			description_icon: null,
 		};
 		return Object.keys(attrs);
@@ -53,7 +50,7 @@ export default class ActionAndIcon extends HTMLElement {
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
-<a href="${this.link}"><p>${this.label}</p> <img src="${this.icon_url}" alt="${this.description_icon}"></a>
+<a><p>${this.label}</p> <img src="${this.icon_url}" alt="${this.description_icon}"></a>
       `;
 			// Se crea un elemento <style> para aplicar los estilos CSS
 			const cssActionAndIcon = this.ownerDocument.createElement('style');
