@@ -1,0 +1,9 @@
+b {
+	text-transform: uppercase; /* Convierte el texto a mayúsculas */
+	opacity: 70%;
+}
+
+p {
+	display: block; /* Hace que el párrafo sea un bloque de texto */
+	width: 100%; /* Establece un ancho del 100% */
+}
