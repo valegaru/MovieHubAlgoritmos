@@ -21,7 +21,7 @@ export class MyLists extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<section>
-				<my-banner section_title=${this.title}></my-banner>
+				<my-banner section_title="My Lists"></my-banner>
 				<button id ="modal-button">Create new list</button>
 				<my-modal-list id ="open"></my-modal-list>
 			</section>
