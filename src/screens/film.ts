@@ -3,6 +3,8 @@ import { addObserver, appState, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 
+import styles from './film.css';
+
 export class FilmPage extends HTMLElement {
 	constructor() {
 		super();
@@ -28,6 +30,9 @@ export class FilmPage extends HTMLElement {
 			<my-actionandicon label="Share" icon_url="https://img.icons8.com/ios-glyphs/30/FFFFFF/share--v1.png" description_icon="share icon"></my-actionandicon>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 
