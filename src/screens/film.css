@@ -5,4 +5,24 @@
 	padding: 0;
 	font-family: 'Noto Traditional Nushu', serif;
 	color: white;
+	position: relative;
 }
+
+#banner {
+	position: relative;
+	z-index: 1;
+}
+
+#figure {
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2; /* Para asegurarse de que figure esté encima del banner */
+}
+
+#content {
+	margin-top: 13%;
+}
+
+
