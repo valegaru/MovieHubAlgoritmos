@@ -43,7 +43,11 @@ p {
 		margin-top: 5px; /* Ajusta el margen superior */
 	}
 
+	h1 {
+		font-size: 120%;
+	}
 	p {
 		white-space: normal; /* Permite que el texto dentro del párrafo se ajuste automáticamente al ancho del contenedor */
+		font-size: 90%;
 	}
 }
