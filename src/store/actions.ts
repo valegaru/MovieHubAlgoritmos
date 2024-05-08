@@ -100,6 +100,13 @@ export const SaveMovieDescription = (description: any) => {
 	};
 };
 
+export const SaveMovieCatchPhrase = (catchphrase: any) => {
+	return {
+		action: 'SaveMovieCatchPhrase',
+		payload: catchphrase,
+	};
+};
+
 export const GetMovies = async (): Promise<GetMoviesAction> => {
 	const dataMovies = await getDataMovies();
 	return {

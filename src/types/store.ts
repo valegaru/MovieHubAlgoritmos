@@ -19,6 +19,7 @@ export type AppState = {
 	moviecrew: string;
 	movieimagesec: string;
 	moviedescription: string;
+	moviecatchphrase: string;
 };
 
 export enum MoviesActions {

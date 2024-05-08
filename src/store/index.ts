@@ -22,6 +22,7 @@ export let appState = {
 	moviecrew: '',
 	movieimagesec:'',
 	moviedescription:'',
+	moviecatchphrase: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración
