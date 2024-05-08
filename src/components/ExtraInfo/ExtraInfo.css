@@ -1,0 +1,11 @@
+h2 {
+	font-weight: normal; /* Quita el negrita */
+	color: rgba(233, 13, 90, 1); /* Cambia el color a rosa */
+	margin-bottom: 6px;
+}
+
+hr {
+	border-color: rgba(233, 13, 90, 1); /* Cambia el color del hr a rosa */
+	margin-top: 0px;
+	margin-bottom: 5%;
+}

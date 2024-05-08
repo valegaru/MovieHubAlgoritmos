@@ -45,7 +45,7 @@ export default class ExtraInfo extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
 			<section>
-      <h4>${this.section_title}</h4>
+      <h2>${this.section_title}</h2>
       <hr></hr>
 <p>${this.content}</p>
       </section>
