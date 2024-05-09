@@ -102,6 +102,22 @@ class MovieCard extends HTMLElement {
                 </section>
             </div>
         `;
+			const view = this.shadowRoot.querySelector('.viewdetails');
+			view?.addEventListener('click', () => {
+				dispatch(navigate('FILMPAGE'));
+				dispatch(SaveMovieId(this.uid));
+				dispatch(SaveMovieImage(this.image));
+				dispatch(SaveMovieCategories(this.categories));
+				dispatch(SaveMovieTitle(this.utitle));
+				dispatch(SaveMovieDirector(this.director));
+				dispatch(SaveMovieReleaseDate(this.release_date));
+				dispatch(SaveMovieCast(this.cast));
+				dispatch(SaveMovieCrew(this.crew));
+				dispatch(SaveMovieImageSec(this.image_sec));
+				dispatch(SaveMovieDescription(this.description));
+				dispatch(SaveMovieCatchPhrase(this.catch_phrase));
+				//dispatch(SaveTitleCategory(this.name));
+			});
 
 			// Obtener referencias a los botones de "like" y "dislike"
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
