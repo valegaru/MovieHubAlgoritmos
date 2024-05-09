@@ -1,4 +1,4 @@
-import { addFavorites } from '../../services/firebase';
+import { addFavorites, removeFavorite } from '../../services/firebase';
 import { appState, dispatch } from '../../store';
 import {
 	SaveMovieCast,
@@ -127,10 +127,25 @@ class MovieCard extends HTMLElement {
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
 
 			// Agregar listeners a los botones
-			likeButton.addEventListener('click', () => {
-				this.isLiked = true;
-				likeButton.style.display = 'none';
-				dislikeButton.style.display = 'inline';
+			likeButton.addEventListener('click', async () => {
+				// Cambiar el estado de isLiked
+				this.isLiked = !this.isLiked;
+
+				// Mostrar el botón correcto según el estado actual
+				likeButton.style.display = this.isLiked ? 'none' : 'inline';
+				dislikeButton.style.display = this.isLiked ? 'inline' : 'none';
+
+				// Si el usuario está cambiando de "dislike" a "like", eliminar la película de "Favorites"
+				if (this.isLiked) {
+					// Eliminar la película de la colección "Favorites"
+					const userId = '8Ff0fUFnkPYot7FEJt8u';
+					try {
+						await removeFavorite(userId, this.uid || ''); // Suponiendo que tienes una función removeFavorite implementada para eliminar la película de la colección "Favorites"
+						console.log('Película eliminada de Favorites');
+					} catch (error) {
+						console.error('Error al eliminar la película de Favorites', error);
+					}
+				}
 			});
 
 			dislikeButton.addEventListener('click', async () => {
@@ -138,25 +153,26 @@ class MovieCard extends HTMLElement {
 				dislikeButton.style.display = 'none';
 				likeButton.style.display = 'inline';
 
-					// Guardar la película en la colección "Favorites" al hacer clic en el botón de dislike
-			const userId = '8Ff0fUFnkPYot7FEJt8u';
-			try {
-				await addFavorites(userId, {
-					image: this.image || '',
-					categories: this.categories ? this.categories.split(',') : [],
-					title: this.utitle || '',
-					director: this.director || '',
-					release_date: this.release_date || '',
-					cast: this.cast || '',
-					crew: this.crew || '',
-					image_sec: this.image_sec || '',
-					description: this.description || '',
-					catch_phrase: this.catch_phrase || '',
-				});
-				console.log('Película guardada en Favorites');
-			} catch (error) {
-				console.error('Error al guardar la película en Favorites', error);
-			}
+				// Guardar la película en la colección "Favorites" al hacer clic en el botón de dislike
+				const userId = '8Ff0fUFnkPYot7FEJt8u';
+				try {
+					await addFavorites(userId, this.uid ? this.uid : '', {
+						id: this.uid || '', // Firebase generará automáticamente el ID
+						image: this.image || '',
+						categories: this.categories ? this.categories.split(',') : [],
+						title: this.utitle || '',
+						director: this.director || '',
+						release_date: this.release_date || '',
+						cast: this.cast || '',
+						crew: this.crew || '',
+						image_sec: this.image_sec || '',
+						description: this.description || '',
+						catch_phrase: this.catch_phrase || '',
+					});
+					console.log('Película guardada en Favorites');
+				} catch (error) {
+					console.error('Error al guardar la película en Favorites', error);
+				}
 			});
 
 			// Mostrar el botón correcto según el estado actual

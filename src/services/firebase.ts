@@ -3,6 +3,7 @@ import { getFirestore } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
+import { deleteDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',
@@ -38,7 +39,7 @@ const getMovie = async () => {
 	return transformed;
 };
 
-export const addFavorites = async (userId: string, movie: Omit<DataShapeMovie, 'id'>) => {
+export const addFavorites = async (userId: string, movieId: string, movie: DataShapeMovie) => {
 	try {
 		// Obtener la referencia del documento del usuario
 		const userRef = doc(db, 'users', userId);
@@ -46,12 +47,23 @@ export const addFavorites = async (userId: string, movie: Omit<DataShapeMovie, '
 		// Crear la colección 'Favorites' dentro del documento del usuario
 		const favoritesCollectionRef = collection(userRef, 'Favorites');
 
-		// Agregar la película a la colección 'Favorites'
-		await addDoc(favoritesCollectionRef, movie);
+		// Agregar la película a la colección 'Favorites' con el movieId especificado
+		await setDoc(doc(favoritesCollectionRef, movieId), movie);
 
 		console.log('Película agregada exitosamente a la colección "Favorites" del usuario', userId);
 	} catch (error) {
 		console.error('Error al agregar película a la colección "Favorites" del usuario', userId, error);
+	}
+};
+
+export const removeFavorite = async (userId: string, movieId: string) => {
+	try {
+		const db = getFirestore();
+		const userRef = doc(db, 'users', userId);
+		const favoritesCollectionRef = collection(userRef, 'Favorites');
+		await deleteDoc(doc(favoritesCollectionRef, movieId));
+	} catch (error) {
+		throw error;
 	}
 };
 
