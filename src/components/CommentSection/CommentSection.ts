@@ -1,4 +1,5 @@
 import { DataCommentSection } from '../../services/dataComments';
+import css from './CommentSection.css';
 
 export enum AttributeCommentSection {
 	'image_profile' = 'image_profile',
@@ -46,17 +47,24 @@ export default class CommentSection extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<section class = "comment-section">
+			<div class = "user-image">
+				<img src="${this.image_profile}" alt="Image profile">
+			</div>
+				<div class = "right-side">
 				<div class = "info-user">
-					<img src="${this.image_profile}" alt="Image profile">
+					<span><h3>${this.name_profile}</h3> made a review</span>
 					<span class="rating">★★★★★</span>
-					<h3>${this.name_profile} made a review</h3>
 				</div>
 				<div class = "info-comment">
 					<p>${this.comment}</p>
 				</div>
+				</div>
 			</section>
       `;
 		}
+		const cssCommentSection = this.ownerDocument.createElement('style');
+		cssCommentSection.innerHTML = css;
+		this.shadowRoot?.appendChild(cssCommentSection);
 	}
 }
 
