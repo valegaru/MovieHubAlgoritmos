@@ -27,6 +27,7 @@ export class MyLists extends HTMLElement {
 				<my-banner section_title="My Lists"></my-banner>
 				<button id ="modal-button">Create new list</button>
 				<my-modal-list id ="open"></my-modal-list>
+				<button id="favorites">Favorites</button>
 			</section>
 				`;
 		}
@@ -36,6 +37,12 @@ export class MyLists extends HTMLElement {
 		modalButton?.addEventListener('click', () => {
 			modal.style.display = 'flex';
 		});
+
+		const button = this.shadowRoot?.querySelector('#favorites');
+		button?.addEventListener('click', () => {
+			dispatch(navigate('SIGNIN'));
+		});
+
 		const cssIndex = this.ownerDocument.createElement('style');
 		cssIndex.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssIndex);
