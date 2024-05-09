@@ -1,0 +1,4 @@
+const createList = {
+	name: '',
+	background: '',
+};

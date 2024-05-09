@@ -1,7 +1,6 @@
 import { addObserver, dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { AppState } from '../../types/store';
-import { listsData } from '../../services/dataLists';
 
 export enum AttributeList {
 	'background' = 'background',
@@ -9,7 +8,6 @@ export enum AttributeList {
 }
 
 export default class List extends HTMLElement {
-	movies = listsData;
 	background?: string;
 	name_list?: string;
 
@@ -42,19 +40,6 @@ export default class List extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<div class="movie-list">
-                    ${this.movies
-											.map(
-												(movie) => `
-                        <div class="movie">
-                            <img src="${movie.background}" alt="Image of the movie ${movie.name}">
-                            <h2>${movie.name}</h2>
-                        </div>
-                    `
-											)
-											.join('')}
-                </div>
-					<section>
 						<img src="${this.background}" alt="Background entered by user from the URL">
 						<h1>${this.name_list}</h1>
 					</section>
