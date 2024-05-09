@@ -40,7 +40,7 @@ export class MyLists extends HTMLElement {
 
 		const button = this.shadowRoot?.querySelector('#favorites');
 		button?.addEventListener('click', () => {
-			dispatch(navigate('SIGNIN'));
+			dispatch(navigate('FAVORITES'));
 		});
 
 		const cssIndex = this.ownerDocument.createElement('style');
