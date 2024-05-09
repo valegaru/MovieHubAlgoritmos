@@ -87,6 +87,15 @@ class Navbar extends HTMLElement {
 			filmsLink.textContent = 'films';
 			pages.appendChild(filmsLink);
 
+			const profileLink = document.createElement('a');
+			profileLink.href = '#';
+			profileLink.textContent = 'profile';
+			pages.appendChild(profileLink);
+
+			profileLink.addEventListener('click', () => {
+				dispatch(navigate('PROFILE'));
+			});
+
 			const section = document.createElement('div');
 			section.className = 'menu-desplegable';
 

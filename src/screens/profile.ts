@@ -16,6 +16,7 @@ export class Profile extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<h1>PROFILE</h1>
+			<custom-navbar><custom-navbar>
 			`;
 		}
 	}
