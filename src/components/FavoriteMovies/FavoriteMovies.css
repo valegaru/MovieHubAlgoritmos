@@ -21,21 +21,7 @@ movie-card {
 	}
 }
 
-#favoriteMoviesTitle {
-	text-transform: uppercase;
-	color: white;
-	font-family: 'Cairo', sans-serif;
-	margin-bottom: 20px; /* Espacio entre el título y las tarjetas */
-	@media (max-width: 576px) {
-		font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
-	}
-}
-
 a {
 	text-transform: uppercase;
 	text-decoration: none;
-}
-
-#favoriteMoviesTitle:hover {
-	color: rgba(233, 13, 90, 1);
 }

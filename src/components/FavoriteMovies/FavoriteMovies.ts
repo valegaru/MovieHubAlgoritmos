@@ -20,7 +20,6 @@ class FavoriteMovies extends HTMLElement {
 			const styles = document.createElement('style');
 			styles.textContent = css;
 			this.shadowRoot.innerHTML = `
-				<h1 id="favoriteMoviesTitle">Favorite Movies</h1>
 				<section id="favoriteMovies">
 					${favoriteMovies
 						.map(
