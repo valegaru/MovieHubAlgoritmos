@@ -2,6 +2,8 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 
+import styles from './favorites.css';
+
 export class Favorites extends HTMLElement {
 	constructor() {
 		super();
@@ -15,9 +17,13 @@ export class Favorites extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			<h1>Favorites</h1>
+			<my-banner section_title="Favorites"></my-banner>
+			<my-favoritemovies></my-favoritemovies>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 
