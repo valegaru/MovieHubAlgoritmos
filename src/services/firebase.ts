@@ -67,7 +67,35 @@ export const removeFavorite = async (userId: string, movieId: string) => {
 	}
 };
 
+export const getFavoriteMovies = async (userId: string) => {
+	try {
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
+
+		// Obtener la referencia de la colección 'Favorites' dentro del documento del usuario
+		const favoritesCollectionRef = collection(userRef, 'Favorites');
+
+		// Obtener todos los documentos de la colección 'Favorites'
+		const querySnapshot = await getDocs(favoritesCollectionRef);
+
+		// Transformar los datos de los documentos en un array de películas
+		const favoriteMovies: DataShapeMovie[] = [];
+		querySnapshot.forEach((doc) => {
+			const data: Omit<DataShapeMovie, 'id'> = doc.data() as any;
+			favoriteMovies.push({ id: doc.id, ...data });
+		});
+
+		return favoriteMovies;
+	} catch (error) {
+		console.error('Error al obtener las películas favoritas del usuario', userId, error);
+		throw error;
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
+	getFavoriteMovies,
+	removeFavorite,
+	addFavorites
 };

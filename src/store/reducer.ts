@@ -1,4 +1,4 @@
-import { Actions, MoviesActions, AppState } from '../types/store';
+import { Actions, MoviesActions, AppState, FavoritesActions } from '../types/store';
 import { appState } from './index';
 
 export const reducer = (currentAction: any, currentState: any) => {
@@ -16,6 +16,14 @@ export const reducer = (currentAction: any, currentState: any) => {
 			return {
 				...currentState,
 				movielist: payload,
+			};
+	}
+
+	switch (action) {
+		case FavoritesActions.GET2:
+			return {
+				...currentState,
+				favlist: payload,
 			};
 	}
 
