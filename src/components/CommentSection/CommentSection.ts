@@ -1,3 +1,5 @@
+import { DataCommentSection } from '../../services/dataComments';
+
 export enum AttributeCommentSection {
 	'image_profile' = 'image_profile',
 	'name_profile' = 'name_profile',
@@ -43,11 +45,16 @@ export default class CommentSection extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-      <h2>POPULAR REVIEWS</h2>
-      <img src="${this.image_profile}" alt="Image profile">
-      <h3>${this.name_profile} made a review</h3>
-      <!-- estrellas -->
-      <p>${this.comment}</p>
+			<section class = "comment-section">
+				<div >
+					<img src="${this.image_profile}" alt="Image profile">
+					<span class="rating">★★★★★</span>
+					<h3>${this.name_profile} made a review</h3>
+				</div>
+				<div>
+					<p>${this.comment}</p>
+				</div>
+			</section>
       `;
 		}
 	}

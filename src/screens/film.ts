@@ -2,7 +2,7 @@
 import { addObserver, appState, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
-
+import { DataCommentSection, comments } from '../services/dataComments';
 import styles from './film.css';
 
 export class FilmPage extends HTMLElement {
@@ -17,13 +17,17 @@ export class FilmPage extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
 
-			<my-figuremovie id="figure"  poster=${appState.movieimage} utitle="${appState.movietitle}" director="${appState.moviedirector}" release_date=${appState.moviereleasedate}></my-figuremovie>
+			<my-figuremovie id="figure"  poster=${appState.movieimage} utitle="${appState.movietitle}" director="${
+				appState.moviedirector
+			}" release_date=${appState.moviereleasedate}></my-figuremovie>
 			<my-banner image="${appState.movieimagesec}" id="banner"></my-banner>
 <section id="content">
 <section id="info">
-			<my-descriptionmovie catch_phrase="${appState.moviecatchphrase}" description="${appState.moviedescription}"></my-descriptionmovie>
+			<my-descriptionmovie catch_phrase="${appState.moviecatchphrase}" description="${
+				appState.moviedescription
+			}"></my-descriptionmovie>
 			<my-extrainfo section_title="Cast" content="${appState.moviecast}"></my-extrainfo>
 			<my-extrainfo section_title="Crew" content="${appState.moviecrew}"></my-extrainfo>
 			<my-extrainfo section_title="Genres" content="${appState.moviecategories}"></my-extrainfo>
@@ -35,8 +39,25 @@ export class FilmPage extends HTMLElement {
 			<my-actionandicon label="Share" icon_url="https://img.icons8.com/ios-glyphs/30/FFFFFF/share--v1.png" description_icon="share icon"></my-actionandicon>
 			</section>
 			</section>
+			<section>
+				<h1>POPULAR REVIEWS</h1>
+				<section class = "comment-section">
+					${comments
+						.map(
+							(comment) => /*html*/ `
+							<my-comment-section image_profile = "${comment.image}"
+							name_profile = "${comment.name}"
+							comment = "${comment.comment}">
+							</my-comment-section>
+						`
+						)
+						.join('')}
+				</section>
+			</section>
+
 			`;
 		}
+
 		const cssIndex = this.ownerDocument.createElement('style');
 		cssIndex.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssIndex);
