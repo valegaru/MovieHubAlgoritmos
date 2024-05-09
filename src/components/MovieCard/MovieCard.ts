@@ -116,9 +116,6 @@ class MovieCard extends HTMLElement {
 				dispatch(SaveMovieImageSec(this.image_sec));
 				dispatch(SaveMovieDescription(this.description));
 				dispatch(SaveMovieCatchPhrase(this.catch_phrase));
-				console.log('date', this.release_date);
-				console.log('cast appstate', appState.moviedirector);
-				console.log('imagesaved', this.image);
 				//dispatch(SaveTitleCategory(this.name));
 			});
 
