@@ -1,3 +1,4 @@
+import { addFavorites } from '../../services/firebase';
 import { appState, dispatch } from '../../store';
 import {
 	SaveMovieCast,
@@ -132,10 +133,30 @@ class MovieCard extends HTMLElement {
 				dislikeButton.style.display = 'inline';
 			});
 
-			dislikeButton.addEventListener('click', () => {
+			dislikeButton.addEventListener('click', async () => {
 				this.isLiked = false;
 				dislikeButton.style.display = 'none';
 				likeButton.style.display = 'inline';
+
+					// Guardar la película en la colección "Favorites" al hacer clic en el botón de dislike
+			const userId = '8Ff0fUFnkPYot7FEJt8u';
+			try {
+				await addFavorites(userId, {
+					image: this.image || '',
+					categories: this.categories ? this.categories.split(',') : [],
+					title: this.utitle || '',
+					director: this.director || '',
+					release_date: this.release_date || '',
+					cast: this.cast || '',
+					crew: this.crew || '',
+					image_sec: this.image_sec || '',
+					description: this.description || '',
+					catch_phrase: this.catch_phrase || '',
+				});
+				console.log('Película guardada en Favorites');
+			} catch (error) {
+				console.error('Error al guardar la película en Favorites', error);
+			}
 			});
 
 			// Mostrar el botón correcto según el estado actual

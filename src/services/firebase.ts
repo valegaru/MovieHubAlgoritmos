@@ -38,6 +38,23 @@ const getMovie = async () => {
 	return transformed;
 };
 
+export const addFavorites = async (userId: string, movie: Omit<DataShapeMovie, 'id'>) => {
+	try {
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
+
+		// Crear la colección 'Favorites' dentro del documento del usuario
+		const favoritesCollectionRef = collection(userRef, 'Favorites');
+
+		// Agregar la película a la colección 'Favorites'
+		await addDoc(favoritesCollectionRef, movie);
+
+		console.log('Película agregada exitosamente a la colección "Favorites" del usuario', userId);
+	} catch (error) {
+		console.error('Error al agregar película a la colección "Favorites" del usuario', userId, error);
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
