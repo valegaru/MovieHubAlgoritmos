@@ -46,12 +46,12 @@ export default class CommentSection extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<section class = "comment-section">
-				<div >
+				<div class = "info-user">
 					<img src="${this.image_profile}" alt="Image profile">
 					<span class="rating">★★★★★</span>
 					<h3>${this.name_profile} made a review</h3>
 				</div>
-				<div>
+				<div class = "info-comment">
 					<p>${this.comment}</p>
 				</div>
 			</section>
