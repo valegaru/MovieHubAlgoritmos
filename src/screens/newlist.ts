@@ -3,6 +3,7 @@ import { navigate } from '../store/actions';
 import '../components/exports';
 import { Navbar } from '../components/exports';
 import { Banner } from '../components/exports';
+import styles from './newlist.css';
 
 export class NewList extends HTMLElement {
 	constructor() {
@@ -21,6 +22,9 @@ export class NewList extends HTMLElement {
 			<my-addmovietolist></my-addmovietolist>
 			`;
 		}
+		const cssIndex = this.ownerDocument.createElement('style');
+		cssIndex.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
 
