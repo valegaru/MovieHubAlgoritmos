@@ -1,6 +1,14 @@
 import { getDataFavoriteMovies } from '../services/getDataFavorites';
 import { getDataMovies } from '../services/getDataMovies';
-import { MoviesActions, GetMoviesAction, GetFavoritesAction, FavoritesActions } from '../types/store';
+//import { getDataUserMovieList } from '../services/getDataUserMovieLists';
+import {
+	MoviesActions,
+	GetMoviesAction,
+	GetFavoritesAction,
+	FavoritesActions,
+	//GetListsAction,
+	//ListsActions,
+} from '../types/store';
 import { Observer, AppState, Actions } from '../types/store';
 
 export const navigate = (screen: any) => {
@@ -145,3 +153,12 @@ export const GetFavorites = async (): Promise<GetFavoritesAction> => {
 		payload: dataFavorites,
 	};
 };
+
+// export const GetLists = async (): Promise<GetListsAction> => {
+// 	const userId = '8Ff0fUFnkPYot7FEJt8u';
+// 	const dataLists = await getDataUserMovieList(userId);
+// 	return {
+// 		action: ListsActions.GET3,
+// 		payload: dataLists,
+// 	};
+// };

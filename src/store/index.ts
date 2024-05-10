@@ -29,6 +29,7 @@ export let appState = {
 	currentnewlistname: '',
 	currentnewlistimage: '',
 	currentnewlistid: '',
+	//usermovielists: [] || undefined,
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

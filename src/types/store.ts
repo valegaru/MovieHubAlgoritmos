@@ -1,4 +1,6 @@
 //aqui no habia
+//import { UserMovieList } from '../services/getDataUserMovieLists';
+import { ListDocument } from './list';
 import { DataShapeMovie } from './movies';
 
 export type Observer = { render: () => void } & HTMLElement;
@@ -24,6 +26,7 @@ export type AppState = {
 	currentnewlistname: string;
 	currentnewlistimage: string;
 	currentnewlistid: string;
+	//usermovielists: UserMovieList[];
 };
 
 export enum MoviesActions {
@@ -44,8 +47,19 @@ export interface GetFavoritesAction {
 	payload: DataShapeMovie[] | undefined;
 }
 
+// export enum ListsActions {
+// 	'GET3' = 'GET3',
+// }
+
+// export interface GetListsAction {
+// 	action: ListsActions.GET3;
+// 	payload: [] | undefined;
+// }
+
 export enum ScreenActions {
 	'NAVIGATE' = 'NAVIGATE',
 }
 
 export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction;
+
+//| GetListsAction

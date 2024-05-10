@@ -169,6 +169,32 @@ export const addMovieToList = async (userId: string, listId: string, movieData: 
 	}
 };
 
+// // Función para obtener las listas de películas del usuario
+// export const getUserMovieLists = async (userId: string) => {
+// 	try {
+// 		// Obtener la referencia del documento del usuario
+// 		const userRef = doc(db, 'users', userId);
+
+// 		// Obtener la referencia de la colección 'Mylists' dentro del documento del usuario
+// 		const myListCollectionRef = collection(userRef, 'Mylists');
+
+// 		// Obtener todos los documentos (listas) de la colección 'Mylists'
+// 		const querySnapshot = await getDocs(myListCollectionRef);
+
+// 		// Transformar los datos de los documentos en un array de listas de películas
+// 		const userMovieLists: any[] = [];
+// 		querySnapshot.forEach((doc) => {
+// 			const data = doc.data();
+// 			userMovieLists.push({ id: doc.id, ...data });
+// 		});
+
+// 		return userMovieLists;
+// 	} catch (error) {
+// 		console.error('Error al obtener las listas de películas del usuario', userId, error);
+// 		throw error;
+// 	}
+// };
+
 export default {
 	addMovie,
 	getMovie,
@@ -177,4 +203,5 @@ export default {
 	addFavorites,
 	addListAndGetId,
 	addMovieToList,
+	//getUserMovieLists,
 };
