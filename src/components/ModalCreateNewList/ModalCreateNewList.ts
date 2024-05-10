@@ -1,7 +1,6 @@
 import css from './ModalCreateNewList.css';
-
 import Firebase from '../../services/firebase';
-import { dispatch } from '../../store';
+import { appState, dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 
 export default class ModalCreateNewList extends HTMLElement {
@@ -82,23 +81,23 @@ export default class ModalCreateNewList extends HTMLElement {
 			cssAddMovie.innerHTML = css;
 			this.shadowRoot.appendChild(cssAddMovie);
 
-			form.addEventListener('submit', async (event) => {
+			addButton.addEventListener('click', async (event) => {
 				event.preventDefault();
 				dispatch(navigate('NEWLIST'));
 				// Obtener los valores de los campos de entrada
 				const listName = (this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value;
 				const listImage = (this.shadowRoot?.querySelector('#url-list') as HTMLInputElement).value;
 
-				// Crear un objeto formData similar al usado en addMovie
-				const formData = {
-					title: listName,
-					image: listImage,
-				};
-
 				// Verificar si los campos no están vacíos
-				if (formData.title.trim() !== '' && formData.image.trim() !== '') {
+				if (listName.trim() !== '' && listImage.trim() !== '') {
+					// Guardar el nombre de la lista
+					dispatch({ action: 'SaveCurrentNewListName', payload: listName });
+					console.log('namelist', appState.currentnewlistname);
+					// Guardar la imagen de la lista
+					dispatch({ action: 'SaveCurrentNewListImage', payload: listImage });
+					console.log('imagelist', appState.currentnewlistimage);
 					// Llamar a la acción addList de Firebase
-					await Firebase.addList('8Ff0fUFnkPYot7FEJt8u', formData.title, formData.image, []);
+					await Firebase.addList('8Ff0fUFnkPYot7FEJt8u', listName, listImage, []);
 
 					// Limpiar los campos después de enviar
 					(this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value = '';

@@ -21,6 +21,8 @@ export type AppState = {
 	moviedescription: string;
 	moviecatchphrase: string;
 	favlist: DataShapeMovie[];
+	currentnewlistname: string;
+	currentnewlistimage: string;
 };
 
 export enum MoviesActions {

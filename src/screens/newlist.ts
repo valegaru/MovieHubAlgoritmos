@@ -1,4 +1,4 @@
-import { addObserver, dispatch } from '../store/index';
+import { addObserver, appState, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 import { Navbar } from '../components/exports';
@@ -17,7 +17,7 @@ export class NewList extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<my-banner></my-banner>
+			<my-banner section_title=${appState.currentnewlistname} image=${appState.currentnewlistimage}></my-banner>
 			`;
 		}
 	}

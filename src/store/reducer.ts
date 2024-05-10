@@ -111,5 +111,17 @@ export const reducer = (currentAction: any, currentState: any) => {
 			break;
 	}
 
+	switch (action) {
+		case 'SaveCurrentNewListName':
+			currentState.currentnewlistname = payload;
+			break;
+	}
+
+	switch (action) {
+		case 'SaveCurrentNewListImage':
+			currentState.currentnewlistimage = payload;
+			break;
+	}
+
 	return currentState;
 };
