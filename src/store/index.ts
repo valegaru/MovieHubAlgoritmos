@@ -20,14 +20,15 @@ export let appState = {
 
 	moviecast: '',
 	moviecrew: '',
-	movieimagesec:'',
-	moviedescription:'',
+	movieimagesec: '',
+	moviedescription: '',
 	moviecatchphrase: '',
 
-	favlist:[],
+	favlist: [],
 
 	currentnewlistname: '',
 	currentnewlistimage: '',
+	currentnewlistid: '',
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

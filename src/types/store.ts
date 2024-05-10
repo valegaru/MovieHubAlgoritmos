@@ -23,6 +23,7 @@ export type AppState = {
 	favlist: DataShapeMovie[];
 	currentnewlistname: string;
 	currentnewlistimage: string;
+	currentnewlistid: string;
 };
 
 export enum MoviesActions {
