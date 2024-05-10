@@ -36,15 +36,15 @@
 	padding-right: 20%;
 }
 
-#content::after {
+/* #content::after {
 	content: '';
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: calc(4 / 5 * 100%); /* Calcula la posición para que esté en el cuarto 4/5 de la pantalla */
-	width: 1px; /* Ancho de la línea */
-	background-color: white; /* Color de la línea */
-}
+	left: calc(4 / 5 * 100%);
+	width: 1px;
+	background-color: white;
+} */
 
 #actions {
 	display: flex;
