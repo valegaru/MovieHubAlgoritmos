@@ -19,11 +19,11 @@ export class FilmPage extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 
+			<my-banner image="${appState.movieimagesec}" id="banner"></my-banner>
+<section id="content">
 			<my-figuremovie id="figure"  poster=${appState.movieimage} utitle="${appState.movietitle}" director="${
 				appState.moviedirector
 			}" release_date=${appState.moviereleasedate}></my-figuremovie>
-			<my-banner image="${appState.movieimagesec}" id="banner"></my-banner>
-<section id="content">
 <section id="info">
 			<my-descriptionmovie catch_phrase="${appState.moviecatchphrase}" description="${
 				appState.moviedescription

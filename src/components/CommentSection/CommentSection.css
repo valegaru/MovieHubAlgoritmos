@@ -46,3 +46,25 @@
 	flex-direction: column;
 	gap: 10px;
 }
+
+@media screen and (max-width: 767px) {
+	.comment-section {
+		flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+		padding: 10px; /* Ajusta el padding */
+	}
+
+	.info-user {
+		flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+		align-items: center; /* Centra los elementos horizontalmente */
+		gap: 10px; /* Ajusta el espacio entre elementos */
+	}
+
+	.user-image {
+		width: 50px; /* Reduce el tamaño de la imagen */
+		height: 50px;
+	}
+
+	.info-user span h3 {
+		font-size: 14px; /* Reduce el tamaño de fuente */
+	}
+}

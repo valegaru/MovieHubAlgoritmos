@@ -5,7 +5,7 @@
 	padding: 0;
 	font-family: 'Noto Traditional Nushu', serif;
 	color: white;
-	position: relative;
+	/* position: relative; */
 }
 
 #banner {
@@ -15,7 +15,7 @@
 
 #figure {
 	position: absolute;
-	top: 10%;
+	top: -60%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2; /* Para asegurarse de que figure esté encima del banner */
