@@ -25,14 +25,14 @@ export default class ModalCreateNewList extends HTMLElement {
                 <input
                     type="text"
                     id="name-list"
-                    name="name"
+                    name="name-list"
                     placeholder="Enter the list name"
                 />
                 <label for="url-list">URL list image</label>
                 <input
                     type="text"
                     id="url-list"
-                    name="name"
+                    name="url-list"
                     placeholder="Enter the URL of the image list"
                 />
                 <section>
