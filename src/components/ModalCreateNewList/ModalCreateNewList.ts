@@ -1,6 +1,8 @@
 import css from './ModalCreateNewList.css';
 
 import Firebase from '../../services/firebase';
+import { dispatch } from '../../store';
+import { navigate } from '../../store/actions';
 
 export default class ModalCreateNewList extends HTMLElement {
 	constructor() {
@@ -82,7 +84,7 @@ export default class ModalCreateNewList extends HTMLElement {
 
 			form.addEventListener('submit', async (event) => {
 				event.preventDefault();
-
+				dispatch(navigate('NEWLIST'));
 				// Obtener los valores de los campos de entrada
 				const listName = (this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value;
 				const listImage = (this.shadowRoot?.querySelector('#url-list') as HTMLInputElement).value;
