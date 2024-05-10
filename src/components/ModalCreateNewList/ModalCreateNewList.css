@@ -65,3 +65,6 @@
 .info-list button[type='submit']:hover {
 	background-color: #555;
 }
+.modal-new-list {
+	z-index: 1000;
+}
