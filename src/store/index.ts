@@ -23,6 +23,8 @@ export let appState = {
 	movieimagesec:'',
 	moviedescription:'',
 	moviecatchphrase: '',
+
+	favlist:[],
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

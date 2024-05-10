@@ -56,7 +56,6 @@ class CategorySection extends HTMLElement {
 			const moviesData = movies.filter((movie) =>
 				movie.categories?.includes(this.category != undefined ? this.category : 'undefined')
 			);
-			console.log('category', this.category, moviesData);
 			const styles = document.createElement('style');
 			styles.textContent = css;
 			this.shadowRoot.innerHTML = `
@@ -77,7 +76,6 @@ class CategorySection extends HTMLElement {
 				dispatch(navigateCategory(this.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
 				dispatch(SaveTitleCategory(this.name));
 				dispatch(SaveImageCategory(this.image));
-				console.log(appState);
 			});
 			this.shadowRoot.appendChild(styles);
 		}

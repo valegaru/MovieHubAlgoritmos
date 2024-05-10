@@ -14,6 +14,7 @@ import {
 	SaveMovieTitle,
 	navigate,
 } from '../../store/actions';
+import { DataShapeMovie } from '../../types/movies';
 import styles from './MovieCard.css';
 
 export enum Attribute {
@@ -86,22 +87,21 @@ class MovieCard extends HTMLElement {
 		// Verificar si existe el shadowRoot
 		if (this.shadowRoot) {
 			// Se establece la estructura HTML del componente
-			this.shadowRoot.innerHTML = /*En <a href="https://myflixerz.to/" class="details"> luego se ponen los hypervinculos dinamicos*/ `
-			<div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="${this.categories}" data-title="${this.utitle}" data-director="${this.director}" data-release="${this.release_date}" data-cast="${this.cast}" data-crew="${this.crew}" data-imgbanner="${this.image_sec}" data-description="${this.description}" data-phrase="${this.catch_phrase}">
-			<img class="poster" src="${this.image}" >
-			<section class="content">
-			<section class="viewdetails">
-				<a class="link">
-					<img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="eye icon"/></a>
-				<p>View details</p>
-				</section>
-				<img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="hear icon empty"/>
-				<img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="heart icon full"/>
-				<p>Like</p>
-				</section>
-		</div>
-			`;
-
+			this.shadowRoot.innerHTML = `
+            <div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="${this.categories}" data-title="${this.utitle}" data-director="${this.director}" data-release="${this.release_date}" data-cast="${this.cast}" data-crew="${this.crew}" data-imgbanner="${this.image_sec}" data-description="${this.description}" data-phrase="${this.catch_phrase}">
+                <img class="poster" src="${this.image}" >
+                <section class="content">
+                    <section class="viewdetails">
+                        <a class="link">
+                            <img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="eye icon"/></a>
+                        <p>View details</p>
+                    </section>
+                    <img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="hear icon empty"/>
+                    <img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="heart icon full"/>
+                    <p>Like</p>
+                </section>
+            </div>
+        `;
 			const view = this.shadowRoot.querySelector('.viewdetails');
 			view?.addEventListener('click', () => {
 				dispatch(navigate('FILMPAGE'));
@@ -116,9 +116,6 @@ class MovieCard extends HTMLElement {
 				dispatch(SaveMovieImageSec(this.image_sec));
 				dispatch(SaveMovieDescription(this.description));
 				dispatch(SaveMovieCatchPhrase(this.catch_phrase));
-				console.log('date', this.release_date);
-				console.log('cast appstate', appState.moviedirector);
-				console.log('imagesaved', this.image);
 				//dispatch(SaveTitleCategory(this.name));
 			});
 
@@ -126,34 +123,31 @@ class MovieCard extends HTMLElement {
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
 
+			// Verificar si la película está en la colección de favoritos
+			const isFavorite = appState.favlist.some((movie: DataShapeMovie) => movie.id === this.uid);
+
+			// Mostrar el botón correcto según la condición
+			likeButton.style.display = isFavorite ? 'inline' : 'none';
+			dislikeButton.style.display = isFavorite ? 'none' : 'inline';
+
 			// Agregar listeners a los botones
 			likeButton.addEventListener('click', async () => {
-				// Cambiar el estado de isLiked
-				this.isLiked = !this.isLiked;
-
-				// Mostrar el botón correcto según el estado actual
-				likeButton.style.display = this.isLiked ? 'none' : 'inline';
-				dislikeButton.style.display = this.isLiked ? 'inline' : 'none';
-
-				// Si el usuario está cambiando de "dislike" a "like", eliminar la película de "Favorites"
-				if (this.isLiked) {
-					// Eliminar la película de la colección "Favorites"
-					const userId = '8Ff0fUFnkPYot7FEJt8u';
-					try {
-						await removeFavorite(userId, this.uid || ''); // Suponiendo que tienes una función removeFavorite implementada para eliminar la película de la colección "Favorites"
-						console.log('Película eliminada de Favorites');
-					} catch (error) {
-						console.error('Error al eliminar la película de Favorites', error);
-					}
+				// Eliminar la película de la colección "Favorites"
+				const userId = '8Ff0fUFnkPYot7FEJt8u';
+				try {
+					await removeFavorite(userId, this.uid || '');
+					console.log('Película eliminada de Favorites');
+				} catch (error) {
+					console.error('Error al eliminar la película de Favorites', error);
 				}
+
+				// Actualizar la vista
+				likeButton.style.display = 'none';
+				dislikeButton.style.display = 'inline';
 			});
 
 			dislikeButton.addEventListener('click', async () => {
-				this.isLiked = false;
-				dislikeButton.style.display = 'none';
-				likeButton.style.display = 'inline';
-
-				// Guardar la película en la colección "Favorites" al hacer clic en el botón de dislike
+				// Guardar la película en la colección "Favorites"
 				const userId = '8Ff0fUFnkPYot7FEJt8u';
 				try {
 					await addFavorites(userId, this.uid ? this.uid : '', {
@@ -173,11 +167,11 @@ class MovieCard extends HTMLElement {
 				} catch (error) {
 					console.error('Error al guardar la película en Favorites', error);
 				}
-			});
 
-			// Mostrar el botón correcto según el estado actual
-			likeButton.style.display = this.isLiked ? 'none' : 'inline';
-			dislikeButton.style.display = this.isLiked ? 'inline' : 'none';
+				// Actualizar la vista
+				likeButton.style.display = 'inline';
+				dislikeButton.style.display = 'none';
+			});
 		}
 
 		// Se crea un elemento <style> para aplicar los estilos CSS

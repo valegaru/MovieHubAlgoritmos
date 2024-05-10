@@ -20,6 +20,7 @@ export type AppState = {
 	movieimagesec: string;
 	moviedescription: string;
 	moviecatchphrase: string;
+	favlist: DataShapeMovie[];
 };
 
 export enum MoviesActions {
@@ -31,8 +32,17 @@ export interface GetMoviesAction {
 	payload: DataShapeMovie[] | undefined;
 }
 
+export enum FavoritesActions {
+	'GET2' = 'GET2',
+}
+
+export interface GetFavoritesAction {
+	action: FavoritesActions.GET2;
+	payload: DataShapeMovie[] | undefined;
+}
+
 export enum ScreenActions {
 	'NAVIGATE' = 'NAVIGATE',
 }
 
-export type Actions = GetMoviesAction | ScreenActions;
+export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction;

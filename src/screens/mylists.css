@@ -5,7 +5,8 @@
 	padding: 0;
 }
 
-#modal-button {
+#modal-button,
+#favorites {
 	width: 70%;
 	height: 200px;
 	margin: 30px auto;

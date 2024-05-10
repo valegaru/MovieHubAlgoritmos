@@ -6,6 +6,7 @@ import './screens/mylists';
 import './screens/newlist';
 import './screens/profile';
 import './screens/signin';
+import './screens/favorites';
 import { appState, dispatch } from './store/index';
 import { addObserver } from './store/index';
 import { LogIn } from './screens/login';
@@ -18,7 +19,8 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import { GetMovies } from './store/actions';
+import { GetFavorites, GetMovies } from './store/actions';
+import { Favorites } from './screens/favorites';
 //aca importo Nav
 //aca importo banner
 
@@ -32,6 +34,10 @@ class AppContainer extends HTMLElement {
 	async connectedCallback() {
 		const action = await GetMovies();
 		dispatch(action);
+
+		const action2 = await GetFavorites();
+		dispatch(action2);
+		console.log('favorites', appState.favlist);
 		this.render();
 	}
 
@@ -71,6 +77,11 @@ class AppContainer extends HTMLElement {
 			case 'NEWLIST':
 				const newlist = this.ownerDocument.createElement('app-newlist') as NewList;
 				this.shadowRoot?.appendChild(newlist);
+				break;
+
+			case 'FAVORITES':
+				const favlist = this.ownerDocument.createElement('app-favorites') as Favorites;
+				this.shadowRoot?.appendChild(favlist);
 				break;
 
 			case 'PROFILE':

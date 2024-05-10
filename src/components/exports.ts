@@ -17,4 +17,5 @@ export { default as SubmitAndTerms } from './SubmitAndTerms/SubmitAndTerms';
 export { default as MovieCardAdd } from './MovieCardADD/MovieCardADD';
 export { default as ModalCreateNewList } from './ModalCreateNewList/ModalCreateNewList';
 export { default as CommentSection } from './CommentSection/CommentSection';
+export { default as FavoriteMovies } from './FavoriteMovies/FavoriteMovies';
 export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
