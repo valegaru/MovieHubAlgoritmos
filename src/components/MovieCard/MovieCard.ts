@@ -89,7 +89,7 @@ class MovieCard extends HTMLElement {
 			// Se establece la estructura HTML del componente
 			this.shadowRoot.innerHTML = `
             <div class="container" data-uid="${this.uid}" data-image="${this.image}" data-categories="${this.categories}" data-title="${this.utitle}" data-director="${this.director}" data-release="${this.release_date}" data-cast="${this.cast}" data-crew="${this.crew}" data-imgbanner="${this.image_sec}" data-description="${this.description}" data-phrase="${this.catch_phrase}">
-                <img class="poster" src="${this.image}" >
+                <img class="poster" src="${this.image}" alt="This a poster of the movie named ${this.utitle}" ></img>
                 <section class="content">
                     <section class="viewdetails">
                         <a class="link">

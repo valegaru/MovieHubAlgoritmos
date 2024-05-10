@@ -77,7 +77,9 @@ export default class MovieCardAdd extends HTMLElement {
 			}" data-crew="${this.crew}" data-imgbanner="${this.image_sec}" data-description="${
 				this.description
 			}" data-phrase="${this.catch_phrase}">
-                    <img class="poster" src="${this.image}" >
+                    <img class="poster" src="${this.image}" alt="This a poster of the movie named ${
+				this.utitle
+			}" ></img>
                     <section class="content">
                         <button id="LikeButton">${this.isLiked ? '-' : '+'}</button>
                     </section>
