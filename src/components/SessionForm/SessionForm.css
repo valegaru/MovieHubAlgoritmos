@@ -22,3 +22,12 @@ h1 {
 	font-size: 300%;
 	margin-top: 0;
 }
+@media screen and (max-width: 767px) {
+	input {
+		font-size: 1.2rem; /* Reduce el tamaño de fuente en dispositivos más pequeños */
+	}
+
+	h1 {
+		font-size: 2rem; /* Reduce el tamaño de fuente en dispositivos más pequeños */
+	}
+}

@@ -32,12 +32,12 @@ export class FilmPage extends HTMLElement {
 			<my-extrainfo section_title="Crew" content="${appState.moviecrew}"></my-extrainfo>
 			<my-extrainfo section_title="Genres" content="${appState.moviecategories}"></my-extrainfo>
 			</section>
-			<section id="actions">
+			<!-- <section id="actions">
 			<my-actionandicon label="Like" icon_url="https://img.icons8.com/ios/30/FFFFFF/like--v1.png" description_icon="heart icon"></my-actionandicon>
 			<my-actionandicon label="Edit film" icon_url="https://img.icons8.com/material/24/FFFFFF/pencil--v2.png" description_icon="pencil icon"></my-actionandicon>
 			<my-actionandicon label="Add to a list" icon_url="https://img.icons8.com/ios-glyphs/30/FFFFFF/bookmark-ribbon.png" description_icon="bookmark icon"></my-actionandicon>
 			<my-actionandicon label="Share" icon_url="https://img.icons8.com/ios-glyphs/30/FFFFFF/share--v1.png" description_icon="share icon"></my-actionandicon>
-			</section>
+			</section> -->
 			</section>
 			<section>
 				<h1>POPULAR REVIEWS</h1>
