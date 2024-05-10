@@ -1,0 +1,27 @@
+:host {
+	display: block;
+	padding: 5%;
+}
+
+#cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start; /* Alineación a la izquierda */
+	gap: 2%; /* Agregamos un espacio entre las columnas */
+}
+
+my-moviecardadd {
+	width: calc((100% / 6) - 2%); /* Calculamos el ancho deseado considerando el espacio entre las columnas */
+	margin-bottom: 20px; /* Espacio entre las filas */
+
+	/* Ajustes para pantallas de tamaño pequeño */
+	@media (max-width: 576px) {
+		width: calc((100% / 2) - 2%); /* Ancho para mostrar dos columnas */
+		margin-bottom: 4%; /* Espacio máximo entre las filas */
+	}
+}
+
+a {
+	text-transform: uppercase;
+	text-decoration: none;
+}

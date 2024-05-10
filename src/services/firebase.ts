@@ -1,9 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, addDoc, getDocs, doc, setDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
+import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
 import { deleteDoc } from 'firebase/firestore';
+import { ListDocument } from '../types/list';
+import Firebase from './firebase';
+import { appState } from '../store';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',
@@ -103,10 +106,75 @@ export const getFavoriteMovies = async (userId: string) => {
 	}
 };
 
+export const addListAndGetId = async (
+	userId: string,
+	listName: string,
+	listImage: string,
+	content: DataShapeMovie[]
+) => {
+	try {
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
+
+		// Crear la colección 'Mylists' dentro del documento del usuario
+		const myListCollectionRef = collection(userRef, 'Mylists');
+
+		// Crear un nuevo documento para la nueva lista dentro de 'Mylists'
+		const newListDocRef = await addDoc(myListCollectionRef, {
+			name: listName,
+			image: listImage,
+		} as ListDocument); // Se asegura de que la estructura sea de ListDocument
+
+		// Obtener el ID del nuevo documento de lista
+		const newListId = newListDocRef.id;
+		console.log('Lista agregada exitosamente para el usuario', userId, 'con ID:', newListId);
+
+		// Crear la colección 'content' dentro del documento de la lista recién creada
+		const contentCollectionRef = collection(newListDocRef, 'content');
+
+		// Agregar un documento vacío a la colección 'content'
+		await addDoc(contentCollectionRef, {});
+
+		// Agregar las películas a la colección 'content' de la lista
+		await Promise.all(
+			content.map(async (movie) => {
+				await addDoc(contentCollectionRef, movie);
+			})
+		);
+
+		// Devolver el ID de la lista recién creada
+		return newListId;
+	} catch (error) {
+		console.error('Error al agregar lista para el usuario', userId, error);
+		throw error;
+	}
+};
+
+// Crear una nueva función en Firebase para agregar una película a la lista
+export const addMovieToList = async (userId: string, listId: string, movieData: DataShapeMovie) => {
+	try {
+		// Obtener la referencia del documento de la lista
+		const listRef = doc(db, 'users', userId, 'Mylists', listId);
+
+		// Obtener la referencia de la colección 'content' dentro del documento de la lista
+		const contentCollectionRef = collection(listRef, 'content');
+
+		// Agregar la película como un nuevo documento en la colección 'content'
+		await addDoc(contentCollectionRef, movieData);
+
+		console.log('Película agregada exitosamente a la lista', listId);
+	} catch (error) {
+		console.error('Error al agregar la película a la lista', listId, error);
+		throw error;
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
 	getFavoriteMovies,
 	removeFavorite,
 	addFavorites,
+	addListAndGetId,
+	addMovieToList,
 };

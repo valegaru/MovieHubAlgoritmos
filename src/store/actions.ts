@@ -116,6 +116,27 @@ export const GetMovies = async (): Promise<GetMoviesAction> => {
 	};
 };
 
+export const SaveCurrentNewListName = (name: any) => {
+	return {
+		action: 'SaveCurrentNewListName',
+		payload: name,
+	};
+};
+
+export const SaveCurrentNewListImage = (url: any) => {
+	return {
+		action: 'SaveCurrentNewListImage',
+		payload: url,
+	};
+};
+
+export const SaveCurrentNewListId = (id: any) => {
+	return {
+		action: 'SaveCurrentNewListId',
+		payload: id,
+	};
+};
+
 export const GetFavorites = async (): Promise<GetFavoritesAction> => {
 	const userId = '8Ff0fUFnkPYot7FEJt8u';
 	const dataFavorites = await getDataFavoriteMovies(userId);
