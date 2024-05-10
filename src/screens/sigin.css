@@ -2,18 +2,21 @@ section {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
+	transform: translate(-50%, -50%);
 	background-color: rgba(30, 21, 22, 1);
 	padding: 3%;
-	box-shadow: 0 0 20px #000000; /* Sombra */
+	box-shadow: 0 0 20px #000000;
 	border-radius: 2rem;
 	height: auto;
 	width: auto;
-	overflow-x: hidden; /* Oculta el desbordamiento horizontal */
-	overflow-y: auto; /* Habilita el desplazamiento vertical */
+	overflow-x: hidden;
+	overflow-y: auto;
 	color: #fff;
 	font-family: 'Cairo', sans-serif;
 	z-index: 2;
+	margin-top: 10px;
+	width: 50%; /* Ajustar el ancho del contenedor */
+	max-width: 500px; /* Establecer un ancho máximo */
 }
 
 a {
@@ -21,6 +24,18 @@ a {
 	cursor: pointer;
 }
 
+my-sessionform {
+	margin-bottom: 20px; /* Agregar espacio entre el formulario y el botón */
+}
+
+my-submitandterms {
+	margin-bottom: 10px; /* Agregar espacio entre el botón y el enlace */
+}
+
+input {
+	font-size: 16px; /* Mantener el tamaño de fuente predeterminado */
+	margin-bottom: 10px; /* Agregar espacio entre los campos de entrada */
+}
 :host {
 	display: flex;
 	flex-direction: column;
@@ -38,6 +53,7 @@ a {
 
 @media screen and (max-width: 767px) {
 	section {
+		width: 70%;
 		height: 90%;
 	}
 }
