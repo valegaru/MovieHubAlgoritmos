@@ -18,3 +18,11 @@ button span {
 	width: 100%;
 	text-align: center;
 }
+
+@media screen and (max-width: 767px) {
+	button {
+		width: 100%; /* Modifica el ancho del botón para ocupar todo el ancho disponible */
+		margin-bottom: 10px; /* Añade un margen inferior para separar los botones */
+		font-size: 70%; /* Reduce el tamaño de fuente para pantallas pequeñas */
+	}
+}
