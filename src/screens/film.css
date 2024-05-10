@@ -55,12 +55,8 @@
 
 /* Estilos para pantallas más pequeñas */
 @media screen and (max-width: 767px) {
-	#figure {
-		top: 39%;
-	}
-
 	#content {
-		margin-top: 80%;
+		margin-top: 50%;
 		flex-direction: column; /* Cambiar la dirección del flex para columnas */
 	}
 

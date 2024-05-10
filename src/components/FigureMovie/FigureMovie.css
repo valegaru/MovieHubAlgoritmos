@@ -33,6 +33,10 @@ p {
 
 /* Estilos para pantallas más pequeñas */
 @media screen and (max-width: 767px) {
+	#figure {
+		margin-top: 10%; /* Ajusta el margen superior para posicionarlo más abajo */
+	}
+
 	#figure img {
 		width: 100%; /* Hace que la imagen ocupe todo el ancho disponible */
 	}
@@ -47,7 +51,7 @@ p {
 		font-size: 120%;
 	}
 	p {
-		white-space: normal; /* Permite que el texto dentro del párrafo se ajuste automáticamente al ancho del contenedor */
+		white-space: normal;
 		font-size: 90%;
 	}
 }
