@@ -1,52 +1,156 @@
 import css from './Nav.css';
 // Importación del ícono de búsqueda
 import SearchIcon from '../../../assets/search.svg';
+import { DataShapeNavMenu } from '../../../services/navMenu';
+import { navMenu } from '../../../services/navMenu';
+import { addObserver, dispatch } from '../../../store';
+import { SaveImageCategory, SaveTitleCategory, navigate } from '../../../store/actions';
+import { appState } from '../../../store';
+import { navigateCategory } from '../../../store/actions';
 
 class Navbar extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
+		addObserver(this);
 	}
 
 	connectedCallback() {
 		this.render();
+
+		//HACER CLICK EN LISTS Desde la barra nav
+		const listsLink = this.shadowRoot?.querySelector('.pages a.navigate-list');
+		if (listsLink) {
+			listsLink.addEventListener('click', () => {
+				dispatch(navigate('MYLISTS'));
+			});
+		}
+
+		//HACER CLICK EN Create account Desde la barra nav
+		const signLink = this.shadowRoot?.querySelector('#signin');
+		if (signLink) {
+			signLink.addEventListener('click', () => {
+				dispatch(navigate('SIGNIN'));
+			});
+		}
+
+		//HACER CLICK EN LOGIN Desde la barra nav
+		const loginLink = this.shadowRoot?.querySelector('#login');
+		if (loginLink) {
+			loginLink.addEventListener('click', () => {
+				dispatch(navigate('LOGIN'));
+			});
+		}
+
+		//HACER CLICK EN Home Desde la barra nav
+		const homelink = this.shadowRoot?.querySelector('#home');
+		if (homelink) {
+			homelink.addEventListener('click', () => {
+				dispatch(navigate('DASHBOARD'));
+			});
+		}
 	}
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = /*html*/ `
-						<nav>
-                <section class="search-bar">
-                    <section class="icon">
-                        <img src="${SearchIcon}" alt="search logo" draggable="false" />
-                    </section>
-										<input class="barra" type="text" placeholder="Enter movie name" >
-                </section>
-										<section class="pages">
-										<a href="#">films</a> <!-- aparece siempre de numero 1 -->
-										<ul class = "menu-desplegable">
-											<li><a href="#">Classics</a></li>
-											<li><a href="">Popular</a></li>
-											<li><a href="">On cinema</a></li>
-											<li><a href="">Trending</a></li>
-											<li><a href="">Action</a></li>
-											<li><a href="">Sci-fi</a></li>
-											<li><a href="">Romance</a></li>
-											<li><a href="">Comedy</a></li>
-											<li><a href="">Thriller</a></li>
-											<li><a href="">Drama</a></li>
-											<li><a href="">Animated</a></li>
-											<li><a href="">Documental</a></li>
-											<li><a href="">Psychological</a></li>
-										</ul>
-										<!--<a href="#">lists</a>  aparece cuando se esta logueado de numero 2 -->
-										<!--<a href="#">profile</a>  aparece cuando se esta logueado de numero 3 -->
-                    <a href="#">log in</a> <!-- aparece cuando NO se esta logueado de numero 2 -->
-                    <a href="#">create account</a> <!-- aparece cuando NO se esta logueado de numero 3 -->
-										</section>
+			const nav = document.createElement('nav');
 
-                </nav>
-            `;
+			const searchBar = document.createElement('section');
+			searchBar.className = 'search-bar';
+
+			const icon = document.createElement('section');
+			icon.className = 'icon';
+			const img = document.createElement('img');
+			img.src = SearchIcon;
+			img.alt = 'search logo';
+			icon.appendChild(img);
+
+			const input = document.createElement('input');
+			input.className = 'barra';
+			input.type = 'text';
+			//input.placeholder = 'Enter movie name';
+
+			searchBar.appendChild(icon);
+			searchBar.appendChild(input);
+
+			const pages = document.createElement('section');
+			pages.className = 'pages';
+
+			const home = document.createElement('a');
+			home.href = '#';
+			home.textContent = 'home';
+			home.id = 'home';
+			pages.appendChild(home);
+
+			const filmsLink = document.createElement('a');
+			filmsLink.href = '#';
+			filmsLink.textContent = 'films';
+			pages.appendChild(filmsLink);
+
+			const profileLink = document.createElement('a');
+			profileLink.href = '#';
+			profileLink.textContent = 'profile';
+			pages.appendChild(profileLink);
+
+			profileLink.addEventListener('click', () => {
+				dispatch(navigate('PROFILE'));
+			});
+
+			const section = document.createElement('div');
+			section.className = 'menu-desplegable';
+
+			filmsLink.addEventListener('click', () => {
+				if (section) {
+					// Verifica si la clase ya está presente
+					const isDisplayed = section.classList.contains('menu-desplegableDisplayed');
+					if (isDisplayed) {
+						// Si la clase está presente, quítala
+						section.classList.remove('menu-desplegableDisplayed');
+					} else {
+						// Si la clase no está presente, agrégala
+						section.classList.add('menu-desplegableDisplayed');
+					}
+				}
+			});
+
+			navMenu.forEach((element: DataShapeNavMenu) => {
+				const p = document.createElement('p');
+				p.textContent = element.name;
+				section.appendChild(p);
+				p.addEventListener('click', () => {
+					dispatch(navigate('CATEGORIES'));
+					dispatch(navigateCategory(element.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
+					dispatch(SaveTitleCategory(element.name));
+					dispatch(SaveImageCategory(element.image));
+				});
+			});
+
+			const navigateList = document.createElement('a');
+			navigateList.className = 'navigate-list';
+			navigateList.href = '#';
+			navigateList.textContent = 'lists';
+
+			const login = document.createElement('a');
+			login.id = 'login';
+			login.href = '#';
+			login.textContent = 'log in';
+
+			const signin = document.createElement('a');
+			signin.id = 'signin';
+			signin.href = '#';
+			signin.textContent = 'create account';
+
+			pages.appendChild(section);
+			pages.appendChild(navigateList);
+			pages.appendChild(login);
+			pages.appendChild(signin);
+
+			nav.appendChild(searchBar);
+			nav.appendChild(pages);
+
+			this.shadowRoot.innerHTML = '';
+			this.shadowRoot.appendChild(nav);
+
 			// Se crea un elemento <style> para aplicar los estilos CSS
 			const styles = document.createElement('style');
 			styles.innerHTML = css;
@@ -55,6 +159,5 @@ class Navbar extends HTMLElement {
 		}
 	}
 }
-
 customElements.define('custom-navbar', Navbar);
 export default Navbar;

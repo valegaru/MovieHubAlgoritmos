@@ -1,0 +1,11 @@
+// esto no existia
+export enum Screens {
+	LOGIN = 'LOGIN',
+	DASHBOARD = 'DASHBOARD',
+	SIGNIN = 'SIGNIN',
+	CATEGORIES = 'CATEGORIES',
+	FILMPAGE = 'FILMPAGE',
+	MYLISTS = 'MYLISTS',
+	NEWLIST = 'NEWLIST',
+	PROFILE = 'PROFILE',
+}

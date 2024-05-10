@@ -1,0 +1,29 @@
+h2 {
+	font-weight: normal; /* Quita el negrita */
+	color: rgba(233, 13, 90, 1); /* Cambia el color a rosa */
+	margin-bottom: 6px;
+}
+
+hr {
+	border-color: rgba(233, 13, 90, 1); /* Cambia el color del hr a rosa */
+	margin-top: 0px;
+	margin-bottom: 5%;
+}
+
+p {
+	margin-bottom: 10%;
+}
+
+@media screen and (max-width: 767px) {
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	hr {
+		margin-bottom: 3%;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+}

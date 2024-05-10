@@ -1,0 +1,96 @@
+* {
+	color: #fff;
+	font-family: 'Cairo', sans-serif;
+}
+
+#form {
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Centrado horizontal y vertical */
+	background-color: rgba(30, 21, 22, 1);
+	padding: 3%;
+	box-shadow: 0 0 20px #000000; /* Sombra */
+	border-radius: 2rem;
+	height: auto;
+	width: auto;
+	overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+	overflow-y: auto; /* Habilita el desplazamiento vertical */
+	color: #fff;
+	font-family: 'Cairo', sans-serif;
+	z-index: 2;
+}
+
+a {
+	color: rgba(250, 149, 59, 1);
+}
+
+#extrainfo {
+	position: fixed;
+	bottom: 5%; /* Ajusta esta cantidad para colocar la sección más abajo */
+	left: 50%;
+	transform: translate(-50%, 0); /* Ajusta la transformación vertical a 0 */
+	width: 100%;
+	text-align: center; /* Alinea el contenido al centro */
+	z-index: 3; /* Asegura que #extrainfo esté por encima del formulario */
+}
+
+#extrainfo-content {
+	width: 100%;
+}
+
+#extrainfo-content hr {
+	display: inline-block;
+	width: 30%; /* Ajusta este valor según el ancho deseado */
+	margin: 0 10px; /* Espacio entre elementos */
+	border-top: 1px solid rgba(255, 255, 255, 0.5); /* Cambia el color y estilo según lo necesario */
+	vertical-align: middle; /* Alinea verticalmente */
+}
+
+#extrainfo-content p {
+	display: inline-block;
+	margin: 0 10px; /* Espacio entre elementos */
+}
+
+button {
+	display: inline-block;
+	background-color: rgba(233, 13, 90, 1);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 16px;
+	margin: 10px;
+	font-family: 'Noto Traditional Nushu', serif;
+}
+
+button:hover {
+	background-color: rgba(250, 149, 59, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+:host {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	background-image: url('../assets/background.png');
+	background-size: cover;
+	background-position: center top 30%;
+	margin: 0;
+	padding: 10%;
+	color: white;
+	height: 100%;
+	z-index: 1;
+}
+@media screen and (max-width: 767px) {
+	#extrainfo {
+		bottom: 10%;
+	}
+
+	#extrainfo-content hr {
+		width: 10%;
+	}
+}

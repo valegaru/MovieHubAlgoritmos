@@ -1,0 +1,25 @@
+a {
+	color: rgba(250, 149, 59, 1);
+	font-size: 15px;
+}
+
+button {
+	width: 100%;
+	padding: 10px;
+	background-color: rgba(250, 149, 59, 1);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer; /* Cambio de cursor */
+	font-family: 'Noto Traditional Nushu', serif;
+	font-size: 110%;
+}
+
+button:hover {
+	background-color: rgba(233, 13, 90, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+p {
+	font-size: 15px;
+}

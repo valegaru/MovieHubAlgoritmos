@@ -6,7 +6,7 @@
 #cards {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start; /* Alineación a la izquierda */
 	gap: 2%; /* Agregamos un espacio entre las columnas */
 }
 
