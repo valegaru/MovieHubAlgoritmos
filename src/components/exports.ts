@@ -20,3 +20,4 @@ export { default as CommentSection } from './CommentSection/CommentSection';
 export { default as FavoriteMovies } from './FavoriteMovies/FavoriteMovies';
 export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
 export { default as CardAddSection } from './CardAddSection/CardAddSection';
+export { default as AddMovieToList } from './AddMovieToList/AddMovieToList';

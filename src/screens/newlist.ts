@@ -18,6 +18,7 @@ export class NewList extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<my-banner section_title=${appState.currentnewlistname} image=${appState.currentnewlistimage}></my-banner>
+			<my-addmovietolist></my-addmovietolist>
 			`;
 		}
 	}
