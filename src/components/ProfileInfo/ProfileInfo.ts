@@ -24,19 +24,19 @@ export default class ProfileInfo extends HTMLElement {
         <section class="form-group">
           <label for="name">Name</label>
           <br>
-          <input type="text" id="name" name="name">
+          <input type="text" id="name" name="name"  value=" John Dae" >
         </section>
 
         <section class="form-group">
           <label for="mobile">Mobile Number</label>
           <br>
-          <input type="tel" id="mobile" name="mobile">
+          <input type="tel" id="mobile" name="mobile" value=" +57 3015476756">
         </section>
 
         <section class="form-group">
           <label for="email">Email</label>
           <br>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" value="johndoe@gmail.com">
         </section>
 
         <section class="form-group">
