@@ -104,7 +104,12 @@ export const getFavoriteMovies = async (userId: string) => {
 	}
 };
 
-export const addList = async (userId: string, listName: string, listImage: string, content: DataShapeMovie[]) => {
+export const addListAndGetId = async (
+	userId: string,
+	listName: string,
+	listImage: string,
+	content: DataShapeMovie[]
+) => {
 	try {
 		// Obtener la referencia del documento del usuario
 		const userRef = doc(db, 'users', userId);
@@ -118,6 +123,10 @@ export const addList = async (userId: string, listName: string, listImage: strin
 			image: listImage,
 		} as ListDocument); // Se asegura de que la estructura sea de ListDocument
 
+		// Obtener el ID del nuevo documento de lista
+		const newListId = newListDocRef.id;
+		console.log('Lista agregada exitosamente para el usuario', userId, 'con ID:', newListId);
+
 		// Obtener la referencia de la colección 'content' dentro del documento de la lista recién creada
 		const contentCollectionRef = collection(newListDocRef, 'content');
 
@@ -128,7 +137,8 @@ export const addList = async (userId: string, listName: string, listImage: strin
 			})
 		);
 
-		console.log('Lista agregada exitosamente para el usuario', userId);
+		// Devolver el ID de la lista recién creada
+		return newListId;
 	} catch (error) {
 		console.error('Error al agregar lista para el usuario', userId, error);
 		throw error;
@@ -141,5 +151,5 @@ export default {
 	getFavoriteMovies,
 	removeFavorite,
 	addFavorites,
-	addList,
+	addListAndGetId,
 };
