@@ -34,7 +34,7 @@ p {
 /* Estilos para pantallas más pequeñas */
 @media screen and (max-width: 767px) {
 	#figure {
-		margin-top: 10%; /* Ajusta el margen superior para posicionarlo más abajo */
+		margin-top: 50%; /* Ajusta el margen superior para posicionarlo más abajo */
 	}
 
 	#figure img {

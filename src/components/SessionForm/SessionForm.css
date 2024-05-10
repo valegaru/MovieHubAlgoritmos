@@ -24,10 +24,10 @@ h1 {
 }
 @media screen and (max-width: 767px) {
 	input {
-		font-size: 10px; /* Reduce el tamaño de fuente en dispositivos más pequeños */
+		font-size: 14px; /* Reduce el tamaño de fuente en dispositivos más pequeños */
 	}
 
 	h1 {
-		font-size: 2rem; /* Reduce el tamaño de fuente en dispositivos más pequeños */
+		font-size: 2rem; /* Reduce el tamaño de fuente del título en dispositivos más pequeños */
 	}
 }
