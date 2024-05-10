@@ -37,11 +37,15 @@ nav .search-bar {
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 5px;
 	max-width: 30%;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	width: 50%;
+	height: 50%;
 }
 
 .search-bar input {
 	flex: 1; /* Para que el input ocupe el espacio restante */
-	padding: 0 5px;
+	padding: 2 5px;
 	height: 100%;
 	border: none;
 	outline: none;
@@ -67,7 +71,7 @@ nav .search-bar {
 }
 
 .pages a {
-	margin-right: 15%; /* Espacio entre los elementos */
+	margin-right: 12%; /* Espacio entre los elementos */
 	text-transform: uppercase;
 	text-decoration: none;
 	color: white;

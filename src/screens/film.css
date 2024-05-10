@@ -15,7 +15,7 @@
 
 #figure {
 	position: absolute;
-	top: 40%;
+	top: 10%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2; /* Para asegurarse de que figure esté encima del banner */

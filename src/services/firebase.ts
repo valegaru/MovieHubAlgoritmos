@@ -39,6 +39,17 @@ const getMovie = async () => {
 	return transformed;
 };
 
+export const getUser = async () => {
+	const querySnapshot = await getDocs(collection(db, 'users'));
+	const transformed: Array<DataShapeMovie> = [];
+
+	querySnapshot.forEach((doc) => {
+		const data: Omit<DataShapeMovie, 'id'> = doc.data() as any;
+		transformed.push({ id: doc.id, ...data });
+	});
+	return transformed;
+};
+
 export const addFavorites = async (userId: string, movieId: string, movie: DataShapeMovie) => {
 	try {
 		// Obtener la referencia del documento del usuario
@@ -70,4 +81,5 @@ export const removeFavorite = async (userId: string, movieId: string) => {
 export default {
 	addMovie,
 	getMovie,
+	getUser,
 };
