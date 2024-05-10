@@ -27,11 +27,12 @@ a {
 
 #extrainfo {
 	position: fixed;
-	bottom: 10%; /* Ajusta esta cantidad según el espacio que quieras entre #form y #extrainfo */
+	bottom: 5%; /* Ajusta esta cantidad para colocar la sección más abajo */
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 0); /* Ajusta la transformación vertical a 0 */
 	width: 100%;
 	text-align: center; /* Alinea el contenido al centro */
+	z-index: 3; /* Asegura que #extrainfo esté por encima del formulario */
 }
 
 #extrainfo-content {
@@ -83,4 +84,13 @@ button:hover {
 	color: white;
 	height: 100%;
 	z-index: 1;
+}
+@media screen and (max-width: 767px) {
+	#extrainfo {
+		bottom: 10%;
+	}
+
+	#extrainfo-content hr {
+		width: 10%;
+	}
 }
