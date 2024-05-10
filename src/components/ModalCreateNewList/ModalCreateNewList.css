@@ -68,3 +68,9 @@
 .modal-new-list {
 	z-index: 1000;
 }
+
+@media screen and (max-width: 767px) {
+	.modal-new-list {
+		width: 80%;
+	}
+}

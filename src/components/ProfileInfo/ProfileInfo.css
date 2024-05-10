@@ -29,4 +29,8 @@
 .form-actions button {
 	border: 2px solid white;
 	background-color: rgba(250, 149, 59, 1);
+	border-radius: 3px;
+	padding: 5px 10px;
+	margin: 5px 0;
+	min-width: 170px;
 }
