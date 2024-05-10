@@ -13,3 +13,17 @@ hr {
 p {
 	margin-bottom: 10%;
 }
+
+@media screen and (max-width: 767px) {
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	hr {
+		margin-bottom: 3%;
+	}
+
+	p {
+		font-size: 1rem; /
+	}
+}
