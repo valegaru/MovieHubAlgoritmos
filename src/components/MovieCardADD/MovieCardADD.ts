@@ -1,4 +1,7 @@
+import { appState } from '../../store';
+import { DataShapeMovie } from '../../types/movies';
 import styles from './MovieCardADD.css';
+import Firebase from '../../services/firebase';
 
 export enum AttributeMovieCardAdd {
 	'image' = 'image',
@@ -91,7 +94,7 @@ export default class MovieCardAdd extends HTMLElement {
 		const likeButton = this.shadowRoot?.querySelector('#LikeButton') as HTMLButtonElement;
 
 		// Agregar listener al botón
-		likeButton.addEventListener('click', () => {
+		likeButton.addEventListener('click', async () => {
 			// Cambiar el estado de isLiked
 			this.isLiked = !this.isLiked;
 
@@ -100,6 +103,31 @@ export default class MovieCardAdd extends HTMLElement {
 
 			// Realizar aquí las acciones que desees al dar clic al botón
 			// Por ejemplo, agregar o remover de la lista de favoritos, etc.
+			// Obtener los datos de la película
+			const movieData: DataShapeMovie = {
+				id: this.uid || '',
+				image: this.image || '',
+				categories: this.categories ? this.categories.split(',') : [],
+				title: this.utitle || '',
+				director: this.director || '',
+				release_date: this.release_date || '',
+				cast: this.cast || '',
+				crew: this.crew || '',
+				image_sec: this.image_sec || '',
+				description: this.description || '',
+				catch_phrase: this.catch_phrase || '',
+			};
+
+			// Obtener el ID de la lista actual desde el estado de la aplicación
+			const currentListId = appState.currentnewlistid;
+
+			// Verificar si la lista actual y los datos de la película no están vacíos
+			if (currentListId && Object.values(movieData).every((val) => val !== '')) {
+				// Llamar a la función en Firebase para agregar la película a la lista
+				await Firebase.addMovieToList('8Ff0fUFnkPYot7FEJt8u', currentListId, movieData);
+			} else {
+				alert('Please select a list and make sure all movie data is available.');
+			}
 		});
 	}
 }

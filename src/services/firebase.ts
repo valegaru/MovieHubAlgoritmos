@@ -1,10 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, addDoc, getDocs, doc, setDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
+import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
 import { deleteDoc } from 'firebase/firestore';
 import { ListDocument } from '../types/list';
+import Firebase from './firebase';
+import { appState } from '../store';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',
@@ -127,8 +129,11 @@ export const addListAndGetId = async (
 		const newListId = newListDocRef.id;
 		console.log('Lista agregada exitosamente para el usuario', userId, 'con ID:', newListId);
 
-		// Obtener la referencia de la colección 'content' dentro del documento de la lista recién creada
+		// Crear la colección 'content' dentro del documento de la lista recién creada
 		const contentCollectionRef = collection(newListDocRef, 'content');
+
+		// Agregar un documento vacío a la colección 'content'
+		await addDoc(contentCollectionRef, {});
 
 		// Agregar las películas a la colección 'content' de la lista
 		await Promise.all(
@@ -145,6 +150,25 @@ export const addListAndGetId = async (
 	}
 };
 
+// Crear una nueva función en Firebase para agregar una película a la lista
+export const addMovieToList = async (userId: string, listId: string, movieData: DataShapeMovie) => {
+	try {
+		// Obtener la referencia del documento de la lista
+		const listRef = doc(db, 'users', userId, 'Mylists', listId);
+
+		// Obtener la referencia de la colección 'content' dentro del documento de la lista
+		const contentCollectionRef = collection(listRef, 'content');
+
+		// Agregar la película como un nuevo documento en la colección 'content'
+		await addDoc(contentCollectionRef, movieData);
+
+		console.log('Película agregada exitosamente a la lista', listId);
+	} catch (error) {
+		console.error('Error al agregar la película a la lista', listId, error);
+		throw error;
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
@@ -152,4 +176,5 @@ export default {
 	removeFavorite,
 	addFavorites,
 	addListAndGetId,
+	addMovieToList,
 };
