@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { collection, addDoc, getDocs, doc, setDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
 import { deleteDoc } from 'firebase/firestore';
+import { ListDocument } from '../types/list';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',

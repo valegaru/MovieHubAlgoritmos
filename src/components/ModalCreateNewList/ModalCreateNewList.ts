@@ -1,5 +1,7 @@
 import css from './ModalCreateNewList.css';
 
+import Firebase from '../../services/firebase';
+
 export default class ModalCreateNewList extends HTMLElement {
 	constructor() {
 		super();
@@ -60,7 +62,6 @@ export default class ModalCreateNewList extends HTMLElement {
 			const addButton = document.createElement('button');
 			addButton.type = 'submit';
 			addButton.textContent = 'ADD FILMS';
-
 			buttonSection.appendChild(addButton);
 
 			form.appendChild(nameLabel);
@@ -78,6 +79,32 @@ export default class ModalCreateNewList extends HTMLElement {
 			const cssAddMovie = this.ownerDocument.createElement('style');
 			cssAddMovie.innerHTML = css;
 			this.shadowRoot.appendChild(cssAddMovie);
+
+			form.addEventListener('submit', async (event) => {
+				event.preventDefault();
+
+				// Obtener los valores de los campos de entrada
+				const listName = (this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value;
+				const listImage = (this.shadowRoot?.querySelector('#url-list') as HTMLInputElement).value;
+
+				// Crear un objeto formData similar al usado en addMovie
+				const formData = {
+					title: listName,
+					image: listImage,
+				};
+
+				// Verificar si los campos no están vacíos
+				if (formData.title.trim() !== '' && formData.image.trim() !== '') {
+					// Llamar a la acción addList de Firebase
+					await Firebase.addList('8Ff0fUFnkPYot7FEJt8u', formData.title, formData.image, []);
+
+					// Limpiar los campos después de enviar
+					(this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value = '';
+					(this.shadowRoot?.querySelector('#url-list') as HTMLInputElement).value = '';
+				} else {
+					alert('Please fill in all fields.');
+				}
+			});
 		}
 	}
 }
