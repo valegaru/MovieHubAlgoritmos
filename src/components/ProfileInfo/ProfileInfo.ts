@@ -46,6 +46,7 @@ export default class ProfileInfo extends HTMLElement {
         </section>
 
         <section class="form-actions">
+          <br>
           <button type="submit" class="edit-profile">Edit</button>
         </section>
     </form>
