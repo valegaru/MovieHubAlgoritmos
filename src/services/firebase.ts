@@ -103,10 +103,42 @@ export const getFavoriteMovies = async (userId: string) => {
 	}
 };
 
+export const addList = async (userId: string, listName: string, listImage: string, content: DataShapeMovie[]) => {
+	try {
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
+
+		// Crear la colección 'Mylists' dentro del documento del usuario
+		const myListCollectionRef = collection(userRef, 'Mylists');
+
+		// Crear un nuevo documento para la nueva lista dentro de 'Mylists'
+		const newListDocRef = await addDoc(myListCollectionRef, {
+			name: listName,
+			image: listImage,
+		} as ListDocument); // Se asegura de que la estructura sea de ListDocument
+
+		// Obtener la referencia de la colección 'content' dentro del documento de la lista recién creada
+		const contentCollectionRef = collection(newListDocRef, 'content');
+
+		// Agregar las películas a la colección 'content' de la lista
+		await Promise.all(
+			content.map(async (movie) => {
+				await addDoc(contentCollectionRef, movie);
+			})
+		);
+
+		console.log('Lista agregada exitosamente para el usuario', userId);
+	} catch (error) {
+		console.error('Error al agregar lista para el usuario', userId, error);
+		throw error;
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
 	getFavoriteMovies,
 	removeFavorite,
 	addFavorites,
+	addList,
 };

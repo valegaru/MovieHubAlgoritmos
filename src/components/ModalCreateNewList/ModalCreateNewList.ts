@@ -1,6 +1,4 @@
 import css from './ModalCreateNewList.css';
-import { DataShapeMovie } from '../../types/movies';
-import firebase from '../../services/firebase';
 
 export default class ModalCreateNewList extends HTMLElement {
 	constructor() {
@@ -10,32 +8,6 @@ export default class ModalCreateNewList extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
-	}
-
-	itemList: DataShapeMovie = {
-		id: '',
-		categories: [],
-		director: '',
-		release_date: '',
-		cast: '',
-		crew: '',
-		image_sec: '',
-		description: '',
-		catch_phrase: '',
-		image: '',
-		title: '',
-	};
-
-	addName(e: any) {
-		this.itemList.image = e.target?.value;
-	}
-
-	addBackImg(e: any) {
-		this.itemList.title = e.target?.value;
-	}
-
-	submitForm() {
-		firebase.addMovie(this.itemList);
 	}
 
 	async render() {
@@ -79,8 +51,6 @@ export default class ModalCreateNewList extends HTMLElement {
 			span.addEventListener('click', () => {
 				this.style.display = 'none';
 			});
-
-			const movies = await firebase.getMovie();
 		}
 	}
 }
