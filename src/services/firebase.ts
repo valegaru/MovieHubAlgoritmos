@@ -169,31 +169,60 @@ export const addMovieToList = async (userId: string, listId: string, movieData: 
 	}
 };
 
-// // Función para obtener las listas de películas del usuario
-// export const getUserMovieLists = async (userId: string) => {
-// 	try {
-// 		// Obtener la referencia del documento del usuario
-// 		const userRef = doc(db, 'users', userId);
+// Función para obtener las listas de películas del usuario
+export const getUserMovieLists = async (userId: string) => {
+	try {
+		const userMovieLists: any[] = []; //array con las listas
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
 
-// 		// Obtener la referencia de la colección 'Mylists' dentro del documento del usuario
-// 		const myListCollectionRef = collection(userRef, 'Mylists');
+		// Obtener la referencia de la colección 'Mylists' dentro del documento del usuario
+		const myListCollectionRef = collection(userRef, 'Mylists');
 
-// 		// Obtener todos los documentos (listas) de la colección 'Mylists'
-// 		const querySnapshot = await getDocs(myListCollectionRef);
+		// Obtener todos los documentos (listas) de la colección 'Mylists'
+		const querySnapshot = await getDocs(myListCollectionRef);
+		// Transformar los datos de los documentos en un array de listas de películas
+		querySnapshot.forEach((doc) => {
+			const data = doc.data();
+			userMovieLists.push({ id: doc.id, ...data });
+		});
 
-// 		// Transformar los datos de los documentos en un array de listas de películas
-// 		const userMovieLists: any[] = [];
-// 		querySnapshot.forEach((doc) => {
-// 			const data = doc.data();
-// 			userMovieLists.push({ id: doc.id, ...data });
-// 		});
+		console.log(userMovieLists);
+		return userMovieLists;
+	} catch (error) {
+		console.error('Error al obtener las listas de películas del usuario', userId, error);
+		throw error;
+	}
+};
 
-// 		return userMovieLists;
-// 	} catch (error) {
-// 		console.error('Error al obtener las listas de películas del usuario', userId, error);
-// 		throw error;
-// 	}
-// };
+getUserMovieLists('8Ff0fUFnkPYot7FEJt8u');
+
+export const getUserMovieListContent = async (userId: string, idList: string) => {
+	try {
+		const listContent: any[] = [];// array con el content de peliculas de la lista
+		// Obtener la referencia del documento del usuario
+		const userRef = doc(db, 'users', userId);
+
+		// Obtener la referencia de la colección 'Mylists' dentro del documento del usuario
+		const myListCollectionRef = collection(userRef, 'Mylists');
+
+		// Obtener la referencia de la documento  dentro de la coleccion 'Mylists'
+		const docList = doc(myListCollectionRef, idList);
+		// Obtener la referencia de la coleccion 'content'  dentro del documento de la lista
+		const collectionContent = collection(docList, 'content');
+		// Obtener todos los documentos (movies) de la coleccion content
+		const querySnapshot = await getDocs(collectionContent);
+		querySnapshot.forEach((doc) => {
+			const data = doc.data();
+			listContent.push({ id: doc.id, ...data });
+		});
+
+		return listContent;
+	} catch (error) {
+		console.error('Error al obtener las listas de películas del usuario', userId, error);
+		throw error;
+	}
+};
 
 export default {
 	addMovie,
@@ -203,5 +232,6 @@ export default {
 	addFavorites,
 	addListAndGetId,
 	addMovieToList,
-	//getUserMovieLists,
+	getUserMovieLists,//para pintar los botones de las listas
+	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
 };
