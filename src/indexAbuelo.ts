@@ -19,7 +19,7 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import { GetFavorites, GetMovies } from './store/actions';
+import { GetFavorites, GetLists, GetMovies } from './store/actions';
 import { Favorites } from './screens/favorites';
 //aca importo Nav
 //aca importo banner
@@ -38,6 +38,11 @@ class AppContainer extends HTMLElement {
 		const action2 = await GetFavorites();
 		dispatch(action2);
 		console.log('favorites', appState.favlist);
+		this.render();
+
+		const action3 = await GetLists('8Ff0fUFnkPYot7FEJt8u'); //en () le paso el id del user logueado osea algo como appState.currentuserid
+		dispatch(action3);
+		console.log('listas', appState.usermovielists);
 		this.render();
 	}
 

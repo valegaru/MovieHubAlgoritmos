@@ -154,8 +154,7 @@ export const GetFavorites = async (): Promise<GetFavoritesAction> => {
 	};
 };
 
-export const GetLists = async (): Promise<GetListsAction> => {
-	const userId = '8Ff0fUFnkPYot7FEJt8u';
+export const GetLists = async (userId:string): Promise<GetListsAction> => {
 	const dataLists = await getDataUserMovieList(userId);
 	return {
 		action: ListsActions.GET3,
