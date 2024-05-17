@@ -1,13 +1,13 @@
 import { getDataFavoriteMovies } from '../services/getDataFavorites';
 import { getDataMovies } from '../services/getDataMovies';
-//import { getDataUserMovieList } from '../services/getDataUserMovieLists';
+import { getDataUserMovieList } from '../services/getDataUserMovieLists';
 import {
 	MoviesActions,
 	GetMoviesAction,
 	GetFavoritesAction,
 	FavoritesActions,
-	//GetListsAction,
-	//ListsActions,
+	GetListsAction,
+	ListsActions,
 } from '../types/store';
 import { Observer, AppState, Actions } from '../types/store';
 
@@ -154,11 +154,11 @@ export const GetFavorites = async (): Promise<GetFavoritesAction> => {
 	};
 };
 
-// export const GetLists = async (): Promise<GetListsAction> => {
-// 	const userId = '8Ff0fUFnkPYot7FEJt8u';
-// 	const dataLists = await getDataUserMovieList(userId);
-// 	return {
-// 		action: ListsActions.GET3,
-// 		payload: dataLists,
-// 	};
-// };
+export const GetLists = async (): Promise<GetListsAction> => {
+	const userId = '8Ff0fUFnkPYot7FEJt8u';
+	const dataLists = await getDataUserMovieList(userId);
+	return {
+		action: ListsActions.GET3,
+		payload: dataLists,
+	};
+};

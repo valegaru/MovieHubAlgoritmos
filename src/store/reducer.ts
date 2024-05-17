@@ -1,4 +1,4 @@
-import { Actions, MoviesActions, AppState, FavoritesActions } from '../types/store';
+import { Actions, MoviesActions, AppState, FavoritesActions, ListsActions } from '../types/store';
 import { appState } from './index';
 
 export const reducer = (currentAction: any, currentState: any) => {
@@ -127,6 +127,14 @@ export const reducer = (currentAction: any, currentState: any) => {
 		case 'SaveCurrentNewListId':
 			currentState.currentnewlistid = payload;
 			break;
+	}
+
+	switch (action) {
+		case ListsActions.GET3:
+			return {
+				...currentState,
+				usermovielists: payload,
+			};
 	}
 
 	return currentState;

@@ -1,5 +1,5 @@
 //aqui no habia
-//import { UserMovieList } from '../services/getDataUserMovieLists';
+import { UserMovieList } from '../services/getDataUserMovieLists';
 import { ListDocument } from './list';
 import { DataShapeMovie } from './movies';
 
@@ -26,7 +26,7 @@ export type AppState = {
 	currentnewlistname: string;
 	currentnewlistimage: string;
 	currentnewlistid: string;
-	//usermovielists: UserMovieList[];
+	usermovielists: UserMovieList[];
 };
 
 export enum MoviesActions {
@@ -47,19 +47,19 @@ export interface GetFavoritesAction {
 	payload: DataShapeMovie[] | undefined;
 }
 
-// export enum ListsActions {
-// 	'GET3' = 'GET3',
-// }
+export enum ListsActions {
+	'GET3' = 'GET3',
+}
 
-// export interface GetListsAction {
-// 	action: ListsActions.GET3;
-// 	payload: [] | undefined;
-// }
+export interface GetListsAction {
+	action: ListsActions.GET3;
+	payload: UserMovieList[] | undefined;
+}
 
 export enum ScreenActions {
 	'NAVIGATE' = 'NAVIGATE',
 }
 
-export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction;
+export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction | GetListsAction;
 
-//| GetListsAction
+//
