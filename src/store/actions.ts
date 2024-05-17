@@ -145,8 +145,7 @@ export const SaveCurrentNewListId = (id: any) => {
 	};
 };
 
-export const GetFavorites = async (): Promise<GetFavoritesAction> => {
-	const userId = '8Ff0fUFnkPYot7FEJt8u';
+export const GetFavorites = async (userId: string): Promise<GetFavoritesAction> => {
 	const dataFavorites = await getDataFavoriteMovies(userId);
 	return {
 		action: FavoritesActions.GET2,
@@ -154,7 +153,7 @@ export const GetFavorites = async (): Promise<GetFavoritesAction> => {
 	};
 };
 
-export const GetLists = async (userId:string): Promise<GetListsAction> => {
+export const GetLists = async (userId: string): Promise<GetListsAction> => {
 	const dataLists = await getDataUserMovieList(userId);
 	return {
 		action: ListsActions.GET3,

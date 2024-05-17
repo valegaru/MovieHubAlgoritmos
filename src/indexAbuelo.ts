@@ -35,7 +35,7 @@ class AppContainer extends HTMLElement {
 		const action = await GetMovies();
 		dispatch(action);
 
-		const action2 = await GetFavorites();
+		const action2 = await GetFavorites('8Ff0fUFnkPYot7FEJt8u'); //en () le paso el id del user logueado osea algo como appState.currentuserid
 		dispatch(action2);
 		console.log('favorites', appState.favlist);
 		this.render();
