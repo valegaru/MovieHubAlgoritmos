@@ -139,3 +139,5 @@ export const reducer = (currentAction: any, currentState: any) => {
 
 	return currentState;
 };
+
+//uso SaveCurrentNewListId, SaveCurrentNewListName, SaveCurrentNewListImage tambien para lo de darle click a las listas
