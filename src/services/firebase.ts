@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore'; //Importar los modulos
+import { getFirestore, onSnapshot } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
@@ -223,6 +223,21 @@ export const getUserMovieListContent = async (userId: string, idList: string) =>
 		throw error;
 	}
 };
+
+
+// export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
+// 	const moviesCollectionRef = collection(db, 'movies');
+
+// 	// Usar onSnapshot para suscribirse a los cambios en tiempo real
+// 	onSnapshot(moviesCollectionRef, (collection) => {
+// 			const docs: DataShapeMovie[] = collection.docs.map((doc)=>({
+// 				id: doc.id,
+// 				...doc.data(),
+// 			})) as DataShapeMovie[];
+// 			});
+// 			// Llamar al callback con los datos transformados
+// 			cb(docs);
+// 	};
 
 export default {
 	addMovie,
