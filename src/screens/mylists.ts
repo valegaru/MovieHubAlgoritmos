@@ -53,8 +53,12 @@ export class MyLists extends HTMLElement {
 				const listButton = document.createElement('button');
 				listButton.textContent = list.name;
 				listButton.style.backgroundImage = `url(${list.image})`;
-				listButton.dataset.id = list.id;
-				listButton.addEventListener('click', () => {});
+				const myid = (listButton.dataset.id = list.id);
+				listButton.addEventListener('click', () => {
+					// Guardar el ID de la lista
+					dispatch({ action: 'SaveCurrentNewListId', payload: myid });
+					console.log('idlist', appState.currentnewlistid);
+				});
 				listsSection?.appendChild(listButton);
 			});
 

@@ -28,6 +28,7 @@ export let appState = {
 
 	currentnewlistname: '',
 	currentnewlistimage: '',
+	//para guardar el id de la lista a la que quiero acceder desde mylist o la que acabo de crear desde el modal
 	currentnewlistid: '',
 	usermovielists: [] || undefined,
 };
