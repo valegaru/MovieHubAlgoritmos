@@ -8,6 +8,7 @@ import { appState } from '../store/index';
 import styles from './mylists.css';
 import { DataShapeLists } from '../services/dataLists';
 import List from '../components/List/List';
+import { UserMovieList } from '../services/getDataUserMovieLists';
 
 export class MyLists extends HTMLElement {
 	constructor() {
@@ -22,31 +23,45 @@ export class MyLists extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			${this}
-			<section class = "container">
-				<my-banner section_title="My Lists"></my-banner>
-				<button id ="modal-button">Create new list</button>
-				<my-modal-list id ="open"></my-modal-list>
-				<button id="favorites">Favorites</button>
-			</section>
-				`;
+				${this}
+				<section class="container">
+					<my-banner section_title="My Lists"></my-banner>
+					<button id="modal-button">Create new list</button>
+					<my-modal-list id="open"></my-modal-list>
+					<button id="favorites">Favorites</button>
+					<section id="lists"></section>
+				</section>
+			`;
+
+			const modalButton = this.shadowRoot?.querySelector('#modal-button');
+			const modal = this.shadowRoot?.querySelector('#open') as HTMLElement;
+			modal.style.display = 'none';
+			modalButton?.addEventListener('click', () => {
+				modal.style.display = 'flex';
+			});
+
+			const button = this.shadowRoot?.querySelector('#favorites');
+			button?.addEventListener('click', () => {
+				dispatch(navigate('FAVORITES'));
+			});
+
+			// Renderizar las listas de películas del usuario
+			const listsSection = this.shadowRoot?.querySelector('#lists');
+			const userMovieLists: UserMovieList[] = appState.usermovielists || [];
+
+			userMovieLists.forEach((list) => {
+				const listButton = document.createElement('button');
+				listButton.textContent = list.name;
+				listButton.style.backgroundImage = `url(${list.image})`;
+				listButton.dataset.id = list.id;
+				listButton.addEventListener('click', () => {});
+				listsSection?.appendChild(listButton);
+			});
+
+			const cssIndex = this.ownerDocument.createElement('style');
+			cssIndex.innerHTML = styles;
+			this.shadowRoot?.appendChild(cssIndex);
 		}
-		const modalButton = this.shadowRoot?.querySelector('#modal-button');
-		const modal = this.shadowRoot?.querySelector('#open') as HTMLElement;
-		modal.style.display = 'none';
-		modalButton?.addEventListener('click', () => {
-			modal.style.display = 'flex';
-		});
-
-		const button = this.shadowRoot?.querySelector('#favorites');
-		button?.addEventListener('click', () => {
-			dispatch(navigate('FAVORITES'));
-		});
-
-		const cssIndex = this.ownerDocument.createElement('style');
-		cssIndex.innerHTML = styles;
-		this.shadowRoot?.appendChild(cssIndex);
 	}
 }
-
 customElements.define('app-mylists', MyLists);
