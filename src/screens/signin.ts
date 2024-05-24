@@ -2,6 +2,14 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 import styles from './sigin.css';
+import { createUser } from '../services/firebase';
+
+const formData = {
+	email: '',
+	password: '',
+	name: '',
+	mobile: '',
+};
 
 export class SignIn extends HTMLElement {
 	constructor() {
@@ -25,6 +33,26 @@ export class SignIn extends HTMLElement {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
+	}
+
+	changeEmail(e: any) {
+		formData.email = e?.target?.value;
+	}
+
+	changePassword(e: any) {
+		formData.password = e?.target?.value;
+	}
+
+	changeName(e: any) {
+		formData.name = e?.target?.value;
+	}
+
+	changeMobile(e: any) {
+		formData.mobile = e?.target?.value;
+	}
+
+	submitForm() {
+		createUser(formData);
 	}
 
 	render() {
