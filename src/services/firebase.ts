@@ -54,6 +54,20 @@ export const createUser = (formData: any) => {
 		});
 };
 
+export const logIn = (formData: any) => {
+	signInWithEmailAndPassword(auth, formData.email, formData.password)
+	.then(async (userCredential) => {
+		//Primer paso es obtener el id
+		const user = userCredential.user;
+		console.log(user.uid);
+	})
+	.catch((error: any) => {
+		const errorCode = error.code;
+		const errorMessage = error.message;
+		console.error(errorCode, errorMessage);
+	});
+};
+
 //funciones para el funcionamiento de la pagina
 export const addMovie = async (movie: Omit<DataShapeMovie, 'id'>) => {
 	try {
