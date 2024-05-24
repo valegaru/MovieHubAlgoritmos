@@ -2,6 +2,12 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 import styles from './login.css';
+import { logIn } from '../services/firebase';
+
+const formData = {
+	email: '',
+	password: '',
+};
 
 export class LogIn extends HTMLElement {
 	constructor() {
@@ -29,6 +35,28 @@ export class LogIn extends HTMLElement {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
+
+		// Agregar listeners a los inputs y enlazarlos al contexto de la instancia de SignIn
+		const emailInput = this.shadowRoot?.querySelector('input[name="email"]');
+		emailInput?.addEventListener('change', this.changeEmail.bind(this));
+
+		const passwordInput = this.shadowRoot?.querySelector('input[name="password"]');
+		passwordInput?.addEventListener('change', this.changePassword.bind(this));
+
+		// // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
+		const submitButton = this.shadowRoot?.querySelector('#send');
+		submitButton?.addEventListener('click', this.submitForm.bind(this));
+	}
+
+	changeEmail(e: any) {
+		formData.email = e?.target?.value;
+	}
+
+	changePassword(e: any) {
+		formData.password = e?.target?.value;
+	}
+	submitForm() {
+		logIn(formData);
 	}
 
 	render() {
