@@ -63,6 +63,7 @@ export class MyLists extends HTMLElement {
 					console.log('idlist', appState.currentnewlistid);
 					console.log('listname', appState.currentnewlistname);
 					console.log('listimage', appState.currentnewlistimage);
+					dispatch(navigate('LISTCONTENT'));
 				});
 				listsSection?.appendChild(listButton);
 			});
