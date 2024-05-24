@@ -33,6 +33,23 @@ export class SignIn extends HTMLElement {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
+
+		// // Agregar listeners a los inputs y enlazarlos al contexto de la instancia de SignIn
+    // const emailInput = this.shadowRoot?.querySelector('input[name="email"]');
+    // emailInput?.addEventListener('change', this.changeEmail.bind(this));
+
+    // const passwordInput = this.shadowRoot?.querySelector('input[name="password"]');
+    // passwordInput?.addEventListener('change', this.changePassword.bind(this));
+
+    // const nameInput = this.shadowRoot?.querySelector('input[name="name"]');
+    // nameInput?.addEventListener('change', this.changeName.bind(this));
+
+    // const mobileInput = this.shadowRoot?.querySelector('input[name="mobile"]');
+    // mobileInput?.addEventListener('change', this.changeMobile.bind(this));
+
+    // // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
+    // const submitButton = this.shadowRoot?.querySelector('#send');
+    // submitButton?.addEventListener('click', this.submitForm.bind(this));
 	}
 
 	changeEmail(e: any) {
