@@ -132,8 +132,8 @@ export const addListAndGetId = async (
 		// Crear la colección 'content' dentro del documento de la lista recién creada
 		const contentCollectionRef = collection(newListDocRef, 'content');
 
-		// Agregar un documento vacío a la colección 'content'
-		await addDoc(contentCollectionRef, {});
+		// Crear el primer documento con el ID 'automaticreation123'
+		await setDoc(doc(contentCollectionRef, 'automaticreation123'), {});
 
 		// Agregar las películas a la colección 'content' de la lista
 		await Promise.all(
@@ -216,8 +216,11 @@ export const getUserMovieListContent = async (userId: string, idList: string): P
 		// Obtener todos los documentos (movies) de la colección content
 		const querySnapshot = await getDocs(collectionContent);
 		querySnapshot.forEach((doc) => {
-			const data = doc.data() as Omit<DataShapeMovie, 'id'>;
-			listContent.push({ id: doc.id, ...data });
+			// Verificar si el ID del documento es diferente de 'automaticreation123' para no traer ese
+			if (doc.id !== 'automaticreation123') {
+				const data = doc.data() as Omit<DataShapeMovie, 'id'>;
+				listContent.push({ id: doc.id, ...data });
+			}
 		});
 
 		return listContent;
