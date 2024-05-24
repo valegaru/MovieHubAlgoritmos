@@ -18,7 +18,7 @@ export class ListContent extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-			<my-banner section_title=${appState.currentnewlistname} image=${appState.currentnewlistimage}></my-banner>
+			<my-banner section_title="${appState.currentnewlistname}" image=${appState.currentnewlistimage}></my-banner>
 			`;
 		}
 		const cssIndex = this.ownerDocument.createElement('style');
