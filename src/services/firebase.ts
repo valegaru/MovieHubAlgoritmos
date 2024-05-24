@@ -20,7 +20,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+//funciones para loguear y registrar
+export const creatUser = (email:string, password: string)=>{
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up
+    const user = userCredential.user;
+		console.log(user);
+    // ...
+  })
+  .catch((error) => { //error:any
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage)
+  });
+}
 
+//funciones para el funcionamiento de la pagina
 export const addMovie = async (movie: Omit<DataShapeMovie, 'id'>) => {
 	try {
 		const where = collection(db, 'movies');
