@@ -197,23 +197,26 @@ export const getUserMovieLists = async (userId: string) => {
 
 getUserMovieLists('8Ff0fUFnkPYot7FEJt8u');
 
-export const getUserMovieListContent = async (userId: string, idList: string) => {
+export const getUserMovieListContent = async (userId: string, idList: string): Promise<DataShapeMovie[]> => {
 	try {
-		const listContent: any[] = [];// array con el content de peliculas de la lista
+		const listContent: DataShapeMovie[] = []; // array con el content de peliculas de la lista
+
 		// Obtener la referencia del documento del usuario
 		const userRef = doc(db, 'users', userId);
 
 		// Obtener la referencia de la colección 'Mylists' dentro del documento del usuario
 		const myListCollectionRef = collection(userRef, 'Mylists');
 
-		// Obtener la referencia de la documento  dentro de la coleccion 'Mylists'
+		// Obtener la referencia del documento dentro de la colección 'Mylists'
 		const docList = doc(myListCollectionRef, idList);
-		// Obtener la referencia de la coleccion 'content'  dentro del documento de la lista
+
+		// Obtener la referencia de la colección 'content' dentro del documento de la lista
 		const collectionContent = collection(docList, 'content');
-		// Obtener todos los documentos (movies) de la coleccion content
+
+		// Obtener todos los documentos (movies) de la colección content
 		const querySnapshot = await getDocs(collectionContent);
 		querySnapshot.forEach((doc) => {
-			const data = doc.data();
+			const data = doc.data() as Omit<DataShapeMovie, 'id'>;
 			listContent.push({ id: doc.id, ...data });
 		});
 
@@ -223,7 +226,6 @@ export const getUserMovieListContent = async (userId: string, idList: string) =>
 		throw error;
 	}
 };
-
 
 // export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
 // 	const moviesCollectionRef = collection(db, 'movies');
@@ -247,6 +249,6 @@ export default {
 	addFavorites,
 	addListAndGetId,
 	addMovieToList,
-	getUserMovieLists,//para pintar los botones de las listas
+	getUserMovieLists, //para pintar los botones de las listas
 	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
 };

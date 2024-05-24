@@ -31,6 +31,7 @@ export let appState = {
 	//para guardar el id de la lista a la que quiero acceder desde mylist o la que acabo de crear desde el modal
 	currentnewlistid: '',
 	usermovielists: [] || undefined,
+	listcontent:[],
 };
 
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración

@@ -1,4 +1,4 @@
-import { Actions, MoviesActions, AppState, FavoritesActions, ListsActions } from '../types/store';
+import { Actions, MoviesActions, AppState, FavoritesActions, ListsActions, ContentListsActions } from '../types/store';
 import { appState } from './index';
 
 export const reducer = (currentAction: any, currentState: any) => {
@@ -134,6 +134,14 @@ export const reducer = (currentAction: any, currentState: any) => {
 			return {
 				...currentState,
 				usermovielists: payload,
+			};
+	}
+
+	switch (action) {
+		case ContentListsActions.GET4:
+			return {
+				...currentState,
+				listcontent: payload,
 			};
 	}
 

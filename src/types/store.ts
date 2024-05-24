@@ -27,6 +27,7 @@ export type AppState = {
 	currentnewlistimage: string;
 	currentnewlistid: string;
 	usermovielists: UserMovieList[];
+	listcontent:DataShapeMovie[];
 };
 
 export enum MoviesActions {
@@ -56,10 +57,19 @@ export interface GetListsAction {
 	payload: UserMovieList[] | undefined;
 }
 
+export enum ContentListsActions {
+	'GET4' = 'GET4',
+}
+
+export interface ContentGetListsAction {
+	action: ContentListsActions.GET4;
+	payload: DataShapeMovie[] | undefined;
+}
+
 export enum ScreenActions {
 	'NAVIGATE' = 'NAVIGATE',
 }
 
-export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction | GetListsAction;
+export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction | GetListsAction| ContentGetListsAction;
 
 //

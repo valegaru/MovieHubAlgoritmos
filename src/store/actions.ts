@@ -1,5 +1,6 @@
 import { getDataFavoriteMovies } from '../services/getDataFavorites';
 import { getDataMovies } from '../services/getDataMovies';
+import { getDataUserMovieListContent } from '../services/getDataUserMovieListContent';
 import { getDataUserMovieList } from '../services/getDataUserMovieLists';
 import {
 	MoviesActions,
@@ -8,6 +9,8 @@ import {
 	FavoritesActions,
 	GetListsAction,
 	ListsActions,
+	ContentGetListsAction,
+	ContentListsActions,
 } from '../types/store';
 import { Observer, AppState, Actions } from '../types/store';
 
@@ -158,5 +161,13 @@ export const GetLists = async (userId: string): Promise<GetListsAction> => {
 	return {
 		action: ListsActions.GET3,
 		payload: dataLists,
+	};
+};
+
+export const GetContentLists = async (userId: string, idList: string): Promise<ContentGetListsAction> => {
+	const ContentLists = await getDataUserMovieListContent(userId, idList);
+	return {
+		action: ContentListsActions.GET4,
+		payload: ContentLists,
 	};
 };
