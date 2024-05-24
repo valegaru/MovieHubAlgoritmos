@@ -26,30 +26,36 @@ export class SignIn extends HTMLElement {
 		});
 
 		//boton de mandar el formulario
-		const submitandterms = this.shadowRoot?.querySelector('my-submitandterms');
-		if (submitandterms) {
-			const button = submitandterms.shadowRoot?.querySelector('#send');
-			button?.addEventListener('click', () => {
+
+		const button = this.shadowRoot?.querySelector('#send');
+		button?.addEventListener('click', () => {
+			dispatch(navigate('DASHBOARD'));
+		});
+
+		//x para cerrar el formulario
+		const close = this.shadowRoot?.querySelector('.close');
+		if (close) {
+			close.addEventListener('click', () => {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
 
-		// // Agregar listeners a los inputs y enlazarlos al contexto de la instancia de SignIn
-    // const emailInput = this.shadowRoot?.querySelector('input[name="email"]');
-    // emailInput?.addEventListener('change', this.changeEmail.bind(this));
+		// Agregar listeners a los inputs y enlazarlos al contexto de la instancia de SignIn
+		const emailInput = this.shadowRoot?.querySelector('input[name="email"]');
+		emailInput?.addEventListener('change', this.changeEmail.bind(this));
 
-    // const passwordInput = this.shadowRoot?.querySelector('input[name="password"]');
-    // passwordInput?.addEventListener('change', this.changePassword.bind(this));
+		const passwordInput = this.shadowRoot?.querySelector('input[name="password"]');
+		passwordInput?.addEventListener('change', this.changePassword.bind(this));
 
-    // const nameInput = this.shadowRoot?.querySelector('input[name="name"]');
-    // nameInput?.addEventListener('change', this.changeName.bind(this));
+		const nameInput = this.shadowRoot?.querySelector('input[name="name"]');
+		nameInput?.addEventListener('change', this.changeName.bind(this));
 
-    // const mobileInput = this.shadowRoot?.querySelector('input[name="mobile"]');
-    // mobileInput?.addEventListener('change', this.changeMobile.bind(this));
+		const mobileInput = this.shadowRoot?.querySelector('input[name="mobile"]');
+		mobileInput?.addEventListener('change', this.changeMobile.bind(this));
 
-    // // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
-    // const submitButton = this.shadowRoot?.querySelector('#send');
-    // submitButton?.addEventListener('click', this.submitForm.bind(this));
+		// // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
+		const submitButton = this.shadowRoot?.querySelector('#send');
+		submitButton?.addEventListener('click', this.submitForm.bind(this));
 	}
 
 	changeEmail(e: any) {
@@ -76,9 +82,25 @@ export class SignIn extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
 			<body>
-			<section>
-     <my-sessionform utitle="SIGN IN" email="Email" your_name="Your name" mobile_number="Mobile number" re_password="Re-enter password" password="Password" ></my-sessionform>
-		 <my-submitandterms btn_text="Create account" message="By creating an account, you agree to" btn_type="submit"></my-submitandterms>
+			<section id="main">
+			<section id="my-sessionform">
+			<section id="header">
+                  <span class="close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
+                  <h1>SIGN IN</h1>
+              </section>
+							<label for="name">Your name</label><br>
+							<input type="text" class="space" name="name" placeholder="First and last name"><br><br>
+							<label for="mobile">Mobile number</label><br>
+                  <input type="text" class="space" name="mobile" placeholder="Don't forget your country code"><br><br>
+									<label for="email">Email</label><br>
+                  <input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
+									<label for="password">Password</label><br>
+                  <input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+									</section>
+									<section id="my-submitandterms">
+									<button type="submit" id="send">Create account</button>
+									<p>By creating an account, you agree to<a href="https://en.wikipedia.org/wiki/Terms_of_service"> Our Conditions of Use and Privacy Notice</a>.</p>
+									</section>
 		 <hr>
 		 <p>Already have an account? <a id="loginpage">Log in</a></p>
 		 </section>

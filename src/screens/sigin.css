@@ -1,4 +1,4 @@
-section {
+#main {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -24,11 +24,11 @@ a {
 	cursor: pointer;
 }
 
-my-sessionform {
+#my-sessionform {
 	margin-bottom: 20px; /* Agregar espacio entre el formulario y el botón */
 }
 
-my-submitandterms {
+#my-submitandterms {
 	margin-bottom: 10px; /* Agregar espacio entre el botón y el enlace */
 }
 
@@ -56,4 +56,68 @@ input {
 		width: 70%;
 		height: 90%;
 	}
+}
+
+#my-sessionform input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 0;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: #fff;
+	border-radius: 5px;
+	box-sizing: border-box; /* Modelo de caja */
+}
+
+#my-sessionform ::placeholder {
+	color: rgba(30, 21, 22, 1);
+}
+
+#my-sessionform #header .close {
+	float: right; /* Se alinea a la derecha */
+	cursor: pointer;
+}
+
+#my-sessionform h1 {
+	font-size: 200%;
+	margin-top: 0;
+}
+
+#my-sessionform label {
+	font-size: 15px;
+}
+@media screen and (max-width: 767px) {
+	#my-sessionform input {
+		font-size: 14px; /* Reduce el tamaño de fuente en dispositivos más pequeños */
+	}
+
+	#my-sessionform h1 {
+		font-size: 2rem; /* Reduce el tamaño de fuente del título en dispositivos más pequeños */
+	}
+}
+
+#my-submitandterms a {
+	color: rgba(250, 149, 59, 1);
+	font-size: 15px;
+}
+
+#my-submitandterms button {
+	width: 100%;
+	padding: 10px;
+	background-color: rgba(250, 149, 59, 1);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer; /* Cambio de cursor */
+	font-family: 'Noto Traditional Nushu', serif;
+	font-size: 110%;
+}
+
+#my-submitandterms button:hover {
+	background-color: rgba(233, 13, 90, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+#my-submitandterms p {
+	font-size: 15px;
 }
