@@ -12,23 +12,20 @@ export class LogIn extends HTMLElement {
 	connectedCallback() {
 		this.render();
 		//boton de create account de abajo
-		const button = this.shadowRoot?.querySelector('#navigatetosignin');
-		button?.addEventListener('click', () => {
+		const buttonn = this.shadowRoot?.querySelector('#navigatetosignin');
+		buttonn?.addEventListener('click', () => {
 			dispatch(navigate('SIGNIN'));
 		});
-//boton de mandar el formulario
-		const submitandterms = this.shadowRoot?.querySelector('my-submitandterms');
-		if (submitandterms) {
-			const button = submitandterms.shadowRoot?.querySelector('#send');
-			button?.addEventListener('click', () => {
-				dispatch(navigate('DASHBOARD'));
-			});
-		}
-//x para cerrar el formulario
-		const close = this.shadowRoot?.querySelector('my-sessionform');
+		//boton de mandar el formulario
+		const button = this.shadowRoot?.querySelector('#send');
+		button?.addEventListener('click', () => {
+			dispatch(navigate('DASHBOARD'));
+		});
+
+		//x para cerrar el formulario
+		const close = this.shadowRoot?.querySelector('.close');
 		if (close) {
-			const button = close.shadowRoot?.querySelector('.close');
-			button?.addEventListener('click', () => {
+			close.addEventListener('click', () => {
 				dispatch(navigate('DASHBOARD'));
 			});
 		}
@@ -39,8 +36,20 @@ export class LogIn extends HTMLElement {
 			this.shadowRoot.innerHTML = `
 			<section>
 			<section id="form">
-     <my-sessionform utitle="LOG IN" password="Password" emailornumber="Mobile number or email"></my-sessionform>
-		 <my-submitandterms btn_text="Continue" message="By using our services you agree to" btn_type="submit"></my-submitandterms>
+			<section id="my-sessionform">
+			<section id="header">
+                  <span class="close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
+                  <h1>LOG IN</h1>
+              </section>
+							<label for="email">Email</label><br>
+							<input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
+							<label for="password">Password</label><br>
+							<input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+							</section>
+							<section id="my-submitandterms">
+							<button type="submit" id="send">Continue</button>
+							<p>By using our services you agree to<a href="https://en.wikipedia.org/wiki/Terms_of_service"> Our Conditions of Use and Privacy Notice</a>.</p>
+							</section>
 		 </section>
 		 <section id="extrainfo">
 		 <section id="extrainfo-content">

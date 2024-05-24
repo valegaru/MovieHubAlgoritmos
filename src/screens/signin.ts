@@ -86,7 +86,7 @@ export class SignIn extends HTMLElement {
 			<section id="my-sessionform">
 			<section id="header">
                   <span class="close"><img src="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" alt="delete-sign--v1"/></span>
-                  <h1>SIGN IN</h1>
+                  <h1>SIGN UP</h1>
               </section>
 							<label for="name">Your name</label><br>
 							<input type="text" class="space" name="name" placeholder="First and last name"><br><br>
