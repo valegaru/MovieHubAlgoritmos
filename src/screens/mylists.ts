@@ -1,5 +1,5 @@
 import { addObserver, dispatch } from '../store/index';
-import { navigate } from '../store/actions';
+import { GetContentLists, navigate } from '../store/actions';
 import '../components/exports';
 import { Navbar } from '../components/exports';
 import { Banner } from '../components/exports';
@@ -54,7 +54,7 @@ export class MyLists extends HTMLElement {
 				listButton.textContent = list.name;
 				listButton.style.backgroundImage = `url(${list.image})`;
 				const myid = (listButton.dataset.id = list.id);
-				listButton.addEventListener('click', () => {
+				listButton.addEventListener('click', async () => {
 					// Guardar el nombre y la imagen de la lista
 					dispatch({ action: 'SaveCurrentNewListName', payload: list.name });
 					dispatch({ action: 'SaveCurrentNewListImage', payload: list.image });
@@ -63,6 +63,12 @@ export class MyLists extends HTMLElement {
 					console.log('idlist', appState.currentnewlistid);
 					console.log('listname', appState.currentnewlistname);
 					console.log('listimage', appState.currentnewlistimage);
+
+					// Obtener el contenido de la lista y despachar la acción
+					const action4 = await GetContentLists('8Ff0fUFnkPYot7FEJt8u', myid);
+					dispatch(action4);
+					console.log('contentfromclick', appState.listcontent);
+
 					dispatch(navigate('LISTCONTENT'));
 				});
 				listsSection?.appendChild(listButton);
