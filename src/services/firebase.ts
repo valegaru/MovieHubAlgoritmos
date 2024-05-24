@@ -20,21 +20,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+let userId: string | null = null;
+
 //funciones para loguear y registrar
-export const creatUser = (email:string, password: string)=>{
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up
-    const user = userCredential.user;
-		console.log(user);
-    // ...
-  })
-  .catch((error) => { //error:any
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage)
-  });
-}
+export const createUser = (formData: any) => {
+	createUserWithEmailAndPassword(auth, formData.email, formData.password)
+		.then(async (userCredential) => {
+			//Primer paso es obtener el id
+			const user = userCredential.user;
+			userId = user.uid;
+			console.log(user.uid);
+
+			//Segundo paso es agregar un documento con más info bajo ese id
+			try {
+				const where = doc(db, 'users', user.uid);
+				const data = {
+					id: user.uid,
+					username: formData.username,
+					mobilenumber: formData.mobile,
+				};
+				console.log(data);
+				await setDoc(where, data);
+				alert('Se creó el usuario');
+			} catch (error) {
+				console.error(error);
+			}
+		})
+		.catch((error: any) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			console.error(errorCode, errorMessage);
+		});
+};
 
 //funciones para el funcionamiento de la pagina
 export const addMovie = async (movie: Omit<DataShapeMovie, 'id'>) => {
