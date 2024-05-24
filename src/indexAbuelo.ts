@@ -7,6 +7,7 @@ import './screens/newlist';
 import './screens/profile';
 import './screens/signin';
 import './screens/favorites';
+import './screens/listscontent';
 import { appState, dispatch } from './store/index';
 import { addObserver } from './store/index';
 import { LogIn } from './screens/login';
@@ -21,6 +22,7 @@ import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
 import { GetFavorites, GetLists, GetMovies } from './store/actions';
 import { Favorites } from './screens/favorites';
+import { ListContent } from './screens/listscontent';
 //aca importo Nav
 //aca importo banner
 
@@ -92,6 +94,11 @@ class AppContainer extends HTMLElement {
 			case 'PROFILE':
 				const profile = this.ownerDocument.createElement('app-profile') as Profile;
 				this.shadowRoot?.appendChild(profile);
+				break;
+
+			case 'LISTCONTENT':
+				const listcontent = this.ownerDocument.createElement('app-listcontent') as ListContent;
+				this.shadowRoot?.appendChild(listcontent);
 				break;
 
 			default:
