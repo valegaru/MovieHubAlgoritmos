@@ -37,7 +37,7 @@ export const createUser = (formData: any) => {
 				const where = doc(db, 'users', user.uid);
 				const data = {
 					id: user.uid,
-					username: formData.username,
+					username: formData.name,
 					mobilenumber: formData.mobile,
 				};
 				console.log(data);
