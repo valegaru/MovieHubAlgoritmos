@@ -10,4 +10,5 @@ export interface DataShapeMovie {
 	image_sec: string;
 	description: string;
 	catch_phrase: string;
+	idUser: string,
 }

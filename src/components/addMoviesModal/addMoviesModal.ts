@@ -7,6 +7,7 @@ import css from './addMoviesModal.css';
 
 import { DataShapeMovie } from '../../types/movies';
 import Firebase from '../../services/firebase';
+import { appState } from '../../store';
 
 const formData: Omit<DataShapeMovie, 'id'> = {
 	title: '',
@@ -19,6 +20,7 @@ const formData: Omit<DataShapeMovie, 'id'> = {
 	image_sec: '',
 	description: '',
 	catch_phrase: '',
+	idUser: '',
 };
 
 class AddMoviesModal extends HTMLElement {
@@ -242,6 +244,7 @@ class AddMoviesModal extends HTMLElement {
 			form.addEventListener('submit', async (event) => {
 				event.preventDefault();
 				modal.style.display = 'none';
+				formData.idUser = appState.user;
 				await Firebase.addMovie(formData);
 
 				// Limpiar los campos del formulario después de enviar

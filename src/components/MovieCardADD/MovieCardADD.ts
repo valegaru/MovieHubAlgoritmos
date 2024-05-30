@@ -15,6 +15,7 @@ export enum AttributeMovieCardAdd {
 	'image_sec' = 'image_sec',
 	'description' = 'description',
 	'catch_phrase' = 'catch_phrase',
+	'idUser'='idUser'
 }
 
 export default class MovieCardAdd extends HTMLElement {
@@ -30,6 +31,7 @@ export default class MovieCardAdd extends HTMLElement {
 	description?: string;
 	catch_phrase?: string;
 	isLiked: boolean;
+	idUser?: string;
 
 	constructor() {
 		super();
@@ -50,6 +52,7 @@ export default class MovieCardAdd extends HTMLElement {
 			image_sec: null,
 			description: null,
 			catch_phrase: null,
+			idUser: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -118,6 +121,7 @@ export default class MovieCardAdd extends HTMLElement {
 				image_sec: this.image_sec || '',
 				description: this.description || '',
 				catch_phrase: this.catch_phrase || '',
+				idUser: this.idUser||'' ,
 			};
 
 			// Obtener el ID de la lista actual desde el estado de la aplicación

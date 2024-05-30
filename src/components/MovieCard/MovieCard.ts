@@ -29,6 +29,7 @@ export enum Attribute {
 	'image_sec' = 'image_sec',
 	'description' = 'description',
 	'catch_phrase' = 'catch_phrase',
+	'idUser' = 'idUser',
 }
 
 class MovieCard extends HTMLElement {
@@ -44,6 +45,7 @@ class MovieCard extends HTMLElement {
 	description?: string;
 	catch_phrase?: string;
 	isLiked: boolean;
+	idUser?: string;
 
 	constructor() {
 		super();
@@ -64,6 +66,7 @@ class MovieCard extends HTMLElement {
 			image_sec: null,
 			description: null,
 			catch_phrase: null,
+			idUser: null,
 		};
 		return Object.keys(attrs);
 	}
@@ -162,6 +165,7 @@ class MovieCard extends HTMLElement {
 						image_sec: this.image_sec || '',
 						description: this.description || '',
 						catch_phrase: this.catch_phrase || '',
+						idUser: this.idUser || '',
 					});
 					console.log('Película guardada en Favorites');
 				} catch (error) {
