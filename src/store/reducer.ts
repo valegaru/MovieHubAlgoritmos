@@ -1,4 +1,12 @@
-import { Actions, MoviesActions, AppState, FavoritesActions, ListsActions, ContentListsActions } from '../types/store';
+import {
+	Actions,
+	MoviesActions,
+	AppState,
+	FavoritesActions,
+	ListsActions,
+	ContentListsActions,
+	MoviesProfileActions,
+} from '../types/store';
 import { appState } from './index';
 
 export const reducer = (currentAction: any, currentState: any) => {
@@ -149,6 +157,14 @@ export const reducer = (currentAction: any, currentState: any) => {
 		case 'SETUSER':
 			currentState.user = payload;
 			break;
+	}
+
+	switch (action) {
+		case MoviesProfileActions.GET5:
+			return {
+				...currentState,
+				movieprofile: payload,
+			};
 	}
 
 	return currentState;

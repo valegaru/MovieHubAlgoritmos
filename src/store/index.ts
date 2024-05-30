@@ -48,6 +48,8 @@ const emptyState = {
 	listcontent: [],
 	//para usercredentials
 	user: '',
+	//para guardar las peliculas que crea cada usuario, se puede usar para mostrar las del usuario logueado
+	movieprofile:[],
 };
 
 export let appState = emptyState;

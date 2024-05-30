@@ -20,9 +20,10 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import { GetFavorites, GetLists, GetMovies } from './store/actions';
+import { GetFavorites, GetLists, GetMovies, getMovieProfileAction } from './store/actions';
 import { Favorites } from './screens/favorites';
 import { ListContent } from './screens/listscontent';
+import { getMovieProfile } from './services/firebase';
 //aca importo Nav
 //aca importo banner
 
@@ -46,6 +47,12 @@ class AppContainer extends HTMLElement {
 		dispatch(action3);
 		console.log('listas', appState.usermovielists);
 		this.render();
+
+		const action4 = await getMovieProfileAction(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
+		dispatch(action4);
+		console.log('movies profile', appState.movieprofile);
+		this.render();
+		console.log('id usuario', appState.user);
 	}
 
 	render() {

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, onSnapshot } from 'firebase/firestore'; //Importar los modulos
+import { getFirestore, onSnapshot, query, where } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
@@ -279,6 +279,20 @@ export const getUserMovieListContent = async (userId: string, idList: string): P
 	}
 };
 
+//obtener las peliculas que ha creado el usuario logueado
+export const getMovieProfile = async (idUser:string) => {
+	const q = query(collection(db, 'movies'), where('idUser', '==', idUser));
+	const querySnapshot = await getDocs(q);
+	const transformed: Array<DataShapeMovie> = [];
+
+	querySnapshot.forEach((doc) => {
+		const data: Omit<DataShapeMovie, 'id'> = doc.data() as any;
+		transformed.push({ id: doc.id, ...data });
+	});
+	return transformed;
+};
+
+
 // export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
 // 	const moviesCollectionRef = collection(db, 'movies');
 
@@ -303,4 +317,5 @@ export default {
 	addMovieToList,
 	getUserMovieLists, //para pintar los botones de las listas
 	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
+	getMovieProfile,
 };

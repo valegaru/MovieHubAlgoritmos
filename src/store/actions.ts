@@ -1,4 +1,6 @@
+import { getMovieProfile } from '../services/firebase';
 import { getDataFavoriteMovies } from '../services/getDataFavorites';
+import { getDataMoviesProfile } from '../services/getDataMovieProfile';
 import { getDataMovies } from '../services/getDataMovies';
 import { getDataUserMovieListContent } from '../services/getDataUserMovieListContent';
 import { getDataUserMovieList } from '../services/getDataUserMovieLists';
@@ -11,6 +13,8 @@ import {
 	ListsActions,
 	ContentGetListsAction,
 	ContentListsActions,
+	GetMoviesProfileAction,
+	MoviesProfileActions,
 } from '../types/store';
 import { Observer, AppState, Actions } from '../types/store';
 
@@ -176,5 +180,14 @@ export const setUserCredentials = (user: string) => {
 	return {
 		action: 'SETUSER',
 		payload: user,
+	};
+};
+
+export const getMovieProfileAction = async (idUser: string): Promise<GetMoviesProfileAction> => {
+	//Ir al utils de firebase y ejecutar la función getPostsProfile
+	const movieProfile = await getDataMoviesProfile(idUser);
+	return {
+		action: MoviesProfileActions.GET5,
+		payload: movieProfile,
 	};
 };
