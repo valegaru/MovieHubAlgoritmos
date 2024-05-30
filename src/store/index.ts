@@ -3,7 +3,7 @@ import Storage, { PersistanceKeys } from '../utils/storage';
 import { Actions, AppState, Observer } from '../types/store';
 import { Screens } from '../types/navigation';
 
-export let appState = {
+const emptyState = {
 	screen: 'DASHBOARD',
 	movielist: [],
 	currentcategory: '',
@@ -31,16 +31,20 @@ export let appState = {
 	//para guardar el id de la lista a la que quiero acceder desde mylist o la que acabo de crear desde el modal
 	currentnewlistid: '',
 	usermovielists: [] || undefined,
-	listcontent:[],
+	listcontent: [],
 };
 
+export let appState = emptyState;
 //De aquí hacia abajo no se lo aprendan de memoria, siempre va a estar ahí el archivo, esto es configuración
 let observers: Observer[] = [];
 
+const notifyObservers = () => observers.forEach((o: any) => o.render());
+
 export const dispatch = (action: any) => {
 	const clone = JSON.parse(JSON.stringify(appState));
-	appState = reducer(action, clone);
-	observers.forEach((o: any) => o.render());
+	const newState = reducer(action, clone);
+	appState = newState;
+	notifyObservers();
 };
 
 export const addObserver = (ref: any) => {
