@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, onSnapshot, query, where } from 'firebase/firestore'; //Importar los modulos
+import { getFirestore, onSnapshot, query, updateDoc, where } from 'firebase/firestore'; //Importar los modulos
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
@@ -53,6 +53,19 @@ export const createUser = (formData: any) => {
 			console.error(errorCode, errorMessage);
 			alert('Revisa que la información sea correcta y que el correo no esté en uso en nuestra plataforma');
 		});
+};
+
+//actualiza la informacion del usuario, permite cambiar el username y mobilenumber
+export const updateUser = async (userId: string, data: any) => {
+	const userRef = doc(db, 'users', userId);
+
+	try {
+		await updateDoc(userRef, data);
+		alert('Información actualizada exitosamente');
+	} catch (error) {
+		console.error('Error actualizando el usuario: ', error);
+		alert('Hubo un error al actualizar la información. Inténtalo de nuevo.');
+	}
 };
 
 export const logIn = (formData: any) => {
@@ -280,7 +293,7 @@ export const getUserMovieListContent = async (userId: string, idList: string): P
 };
 
 //obtener las peliculas que ha creado el usuario logueado
-export const getMovieProfile = async (idUser:string) => {
+export const getMovieProfile = async (idUser: string) => {
 	const q = query(collection(db, 'movies'), where('idUser', '==', idUser));
 	const querySnapshot = await getDocs(q);
 	const transformed: Array<DataShapeMovie> = [];
@@ -291,7 +304,6 @@ export const getMovieProfile = async (idUser:string) => {
 	});
 	return transformed;
 };
-
 
 // export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
 // 	const moviesCollectionRef = collection(db, 'movies');
