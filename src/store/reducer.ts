@@ -145,6 +145,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 			};
 	}
 
+	switch (action) {
+		case 'SETUSER':
+			currentState.user = payload;
+			break;
+	}
+
 	return currentState;
 };
 

@@ -171,3 +171,10 @@ export const GetContentLists = async (userId: string, idList: string): Promise<C
 		payload: ContentLists,
 	};
 };
+
+export const setUserCredentials = (user: string) => {
+	return {
+		action: 'SETUSER',
+		payload: user,
+	};
+};

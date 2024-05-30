@@ -2,9 +2,23 @@ import { reducer } from './reducer';
 import Storage, { PersistanceKeys } from '../utils/storage';
 import { Actions, AppState, Observer } from '../types/store';
 import { Screens } from '../types/navigation';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../services/firebase';
+import { navigate, setUserCredentials } from './actions';
+
+onAuthStateChanged(auth, (user) => {
+	if (user) {
+		user.uid !== null ? dispatch(setUserCredentials(user.uid)) : '';
+		dispatch(navigate('DASHBOARD'));
+		console.log(user);
+	} else {
+		dispatch(navigate('LOGIN'));
+		console.log('no hay usuario logueado');
+	}
+});
 
 const emptyState = {
-	screen: 'DASHBOARD',
+	screen: 'LOGIN',
 	movielist: [],
 	currentcategory: '',
 	titlecategory: '',
@@ -32,6 +46,8 @@ const emptyState = {
 	currentnewlistid: '',
 	usermovielists: [] || undefined,
 	listcontent: [],
+	//para usercredentials
+	user: {},
 };
 
 export let appState = emptyState;
