@@ -25,18 +25,11 @@ export class SignIn extends HTMLElement {
 			dispatch(navigate('LOGIN'));
 		});
 
-		//boton de mandar el formulario
-
-		const button = this.shadowRoot?.querySelector('#send');
-		button?.addEventListener('click', () => {
-			dispatch(navigate('DASHBOARD'));
-		});
-
 		//x para cerrar el formulario
 		const close = this.shadowRoot?.querySelector('.close');
 		if (close) {
 			close.addEventListener('click', () => {
-				dispatch(navigate('DASHBOARD'));
+				dispatch(navigate('LOGIN'));
 			});
 		}
 

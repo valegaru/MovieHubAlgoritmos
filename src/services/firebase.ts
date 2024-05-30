@@ -51,21 +51,24 @@ export const createUser = (formData: any) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
 			console.error(errorCode, errorMessage);
+			alert('Revisa que la información sea correcta y que el correo no esté en uso en nuestra plataforma');
 		});
 };
 
 export const logIn = (formData: any) => {
 	signInWithEmailAndPassword(auth, formData.email, formData.password)
-	.then(async (userCredential) => {
-		//Primer paso es obtener el id
-		const user = userCredential.user;
-		console.log(user.uid);
-	})
-	.catch((error: any) => {
-		const errorCode = error.code;
-		const errorMessage = error.message;
-		console.error(errorCode, errorMessage);
-	});
+		.then(async (userCredential) => {
+			//Primer paso es obtener el id
+			const user = userCredential.user;
+			console.log(user.uid);
+			alert('Bienvenido de vuelta');
+		})
+		.catch((error: any) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			console.error(errorCode, errorMessage);
+			alert('Credenciales incorrectas');
+		});
 };
 
 //funciones para el funcionamiento de la pagina
@@ -242,7 +245,6 @@ export const getUserMovieLists = async (userId: string) => {
 		throw error;
 	}
 };
-
 
 export const getUserMovieListContent = async (userId: string, idList: string): Promise<DataShapeMovie[]> => {
 	try {
