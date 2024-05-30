@@ -65,7 +65,7 @@ export class MyLists extends HTMLElement {
 					console.log('listimage', appState.currentnewlistimage);
 
 					// Obtener el contenido de la lista y despachar la acción
-					const action4 = await GetContentLists('8Ff0fUFnkPYot7FEJt8u', myid);
+					const action4 = await GetContentLists(appState.user, myid);
 					dispatch(action4);
 					console.log('contentfromclick', appState.listcontent);
 

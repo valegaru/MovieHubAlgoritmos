@@ -243,7 +243,6 @@ export const getUserMovieLists = async (userId: string) => {
 	}
 };
 
-getUserMovieLists('8Ff0fUFnkPYot7FEJt8u');
 
 export const getUserMovieListContent = async (userId: string, idList: string): Promise<DataShapeMovie[]> => {
 	try {

@@ -47,7 +47,7 @@ const emptyState = {
 	usermovielists: [] || undefined,
 	listcontent: [],
 	//para usercredentials
-	user: {},
+	user: '',
 };
 
 export let appState = emptyState;

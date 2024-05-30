@@ -133,7 +133,7 @@ class MovieCard extends HTMLElement {
 			// Agregar listeners a los botones
 			likeButton.addEventListener('click', async () => {
 				// Eliminar la película de la colección "Favorites"
-				const userId = '8Ff0fUFnkPYot7FEJt8u';
+				const userId = appState.user;
 				try {
 					await removeFavorite(userId, this.uid || '');
 					console.log('Película eliminada de Favorites');
@@ -148,7 +148,7 @@ class MovieCard extends HTMLElement {
 
 			dislikeButton.addEventListener('click', async () => {
 				// Guardar la película en la colección "Favorites"
-				const userId = '8Ff0fUFnkPYot7FEJt8u';
+				const userId = appState.user;
 				try {
 					await addFavorites(userId, this.uid ? this.uid : '', {
 						id: this.uid || '', // Firebase generará automáticamente el ID

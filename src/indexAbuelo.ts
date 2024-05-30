@@ -37,12 +37,12 @@ class AppContainer extends HTMLElement {
 		const action = await GetMovies();
 		dispatch(action);
 
-		const action2 = await GetFavorites('8Ff0fUFnkPYot7FEJt8u'); //en () le paso el id del user logueado osea algo como appState.currentuserid
+		const action2 = await GetFavorites(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
 		dispatch(action2);
 		console.log('favorites', appState.favlist);
 		this.render();
 
-		const action3 = await GetLists('8Ff0fUFnkPYot7FEJt8u'); //en () le paso el id del user logueado osea algo como appState.currentuserid
+		const action3 = await GetLists(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
 		dispatch(action3);
 		console.log('listas', appState.usermovielists);
 		this.render();

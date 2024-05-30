@@ -126,7 +126,7 @@ export default class MovieCardAdd extends HTMLElement {
 			// Verificar si la lista actual y los datos de la película no están vacíos
 			if (currentListId && Object.values(movieData).every((val) => val !== '')) {
 				// Llamar a la función en Firebase para agregar la película a la lista
-				await Firebase.addMovieToList('8Ff0fUFnkPYot7FEJt8u', currentListId, movieData);
+				await Firebase.addMovieToList(appState.user, currentListId, movieData);
 			} else {
 				alert('Please select a list and make sure all movie data is available.');
 			}

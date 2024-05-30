@@ -98,7 +98,7 @@ export default class ModalCreateNewList extends HTMLElement {
 					console.log('imagelist', appState.currentnewlistimage);
 
 					// Llamar a la acción addListAndGetId de Firebase
-					const newListId = await Firebase.addListAndGetId('8Ff0fUFnkPYot7FEJt8u', listName, listImage, []);
+					const newListId = await Firebase.addListAndGetId(appState.user, listName, listImage, []);
 					console.log('New List ID:', newListId);
 
 					// Guardar el ID de la lista
