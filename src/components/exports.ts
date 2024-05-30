@@ -22,3 +22,4 @@ export { default as ProfileInfo } from './ProfileInfo/ProfileInfo';
 export { default as CardAddSection } from './CardAddSection/CardAddSection';
 export { default as AddMovieToList } from './AddMovieToList/AddMovieToList';
 export { default as ListMovies } from './listmovies/listmovies';
+export {default as YourContributions} from './YourContributions/YourContributions';

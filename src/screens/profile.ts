@@ -22,6 +22,7 @@ export class Profile extends HTMLElement {
 
 			this.shadowRoot.innerHTML += /*html*/ `
 				<my-profile></my-profile>
+				<my-yourcontributions></my-yourcontributions>
 			`;
 		}
 		const cssIndex = this.ownerDocument.createElement('style');
