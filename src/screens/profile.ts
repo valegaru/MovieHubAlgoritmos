@@ -14,6 +14,12 @@ export class Profile extends HTMLElement {
 		this.render();
 	}
 
+	logout() {
+		indexedDB.deleteDatabase('firebase-heartbeat-database');
+		indexedDB.deleteDatabase('firebaseLocalStorageDb');
+		window.location.reload();
+	}
+
 	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML += /*html*/ `
@@ -24,6 +30,11 @@ export class Profile extends HTMLElement {
 				<my-profile></my-profile>
 				<my-yourcontributions></my-yourcontributions>
 			`;
+
+			const logoutBtn = this.ownerDocument.createElement('button');
+			logoutBtn.innerText = 'Logout';
+			logoutBtn.addEventListener('click', this.logout);
+			this.shadowRoot?.appendChild(logoutBtn);
 		}
 		const cssIndex = this.ownerDocument.createElement('style');
 		cssIndex.innerHTML = styles;
