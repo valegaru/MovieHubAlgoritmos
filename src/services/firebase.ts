@@ -84,6 +84,32 @@ export const logIn = (formData: any) => {
 		});
 };
 
+interface UserData {
+	id: string;
+	username: string;
+	mobilenumber: string;
+}
+
+export const getUserData = async (): Promise<UserData | null> => {
+	const userId = appState.user;
+	if (!userId) {
+		return null; // No hay usuario logueado, retornar null
+	}
+
+	try {
+		const userDoc = await getDoc(doc(db, 'users', userId));
+		if (userDoc.exists()) {
+			const userData = userDoc.data() as UserData;
+			return userData;
+		} else {
+			return null; // No se encontraron datos para el usuario
+		}
+	} catch (error) {
+		console.error('Error al obtener datos del usuario:', error);
+		return null; // Manejar el error y retornar null
+	}
+};
+
 //funciones para el funcionamiento de la pagina
 export const addMovie = async (movie: Omit<DataShapeMovie, 'id'>) => {
 	try {
@@ -330,4 +356,5 @@ export default {
 	getUserMovieLists, //para pintar los botones de las listas
 	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
 	getMovieProfile,
+	getUserData,
 };

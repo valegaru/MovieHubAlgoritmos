@@ -1,47 +1,46 @@
 import styles from './ProfileInfo.css';
-import { getUser, updateUser } from '../../services/firebase';
+import { getUser, getUserData, updateUser } from '../../services/firebase';
 import { appState } from '../../store';
 
 export default class ProfileInfo extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+	}
 
-    connectedCallback() {
-        this.render();
-        this.attachEventListeners();
-    }
+	async connectedCallback() {
+		await this.render();
+		this.attachEventListeners();
+	}
 
-    attachEventListeners() {
-        const form = this.shadowRoot?.querySelector('form');
-        form?.addEventListener('submit', this.handleSubmit.bind(this));
-    }
+	attachEventListeners() {
+		const form = this.shadowRoot?.querySelector('form');
+		form?.addEventListener('submit', this.handleSubmit.bind(this));
+	}
 
-    async handleSubmit(event: Event) {
-        event.preventDefault();
+	async handleSubmit(event: Event) {
+		event.preventDefault();
 
-        const userId = appState.user; // Asegúrate de que esto obtiene el ID correctamente
-        const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
-        const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
+		const userId = appState.user;
+		const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
+		const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
 
-        const updatedData = {
-            username: nameInput?.value,
-            mobilenumber: mobileInput?.value,
-        };
+		const updatedData = {
+			username: nameInput?.value,
+			mobilenumber: mobileInput?.value,
+		};
 
-        if (userId) {
-            await updateUser(userId, updatedData);
-        }
-    }
+		if (userId) {
+			await updateUser(userId, updatedData);
+		}
+	}
 
-    render() {
-        const user = appState.user; // Asegúrate de que esto obtiene el ID correctamente
-        // Aquí deberías obtener la información del usuario usando su ID y mostrarla en los inputs
-        // Para simplificar el ejemplo, se usan valores estáticos.
+	async render() {
+		const userData = await getUserData(); // Obtener los datos del usuario
+		if (!userData) return;
 
-        if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = /*html*/ `
+		if (this.shadowRoot) {
+			this.shadowRoot.innerHTML = /*html*/ `
                 <section class="container">
                     <section class="profile">
                         <div class="profile-image">
@@ -52,12 +51,12 @@ export default class ProfileInfo extends HTMLElement {
                         <section class="form-group">
                             <label for="name">Name</label>
                             <br>
-                            <input type="text" id="name" name="name" value="John Dae">
+                            <input type="text" id="name" name="name" placeholder="${userData.username}">
                         </section>
                         <section class="form-group">
                             <label for="mobile">Mobile Number</label>
                             <br>
-                            <input type="tel" id="mobile" name="mobile" value="+57 3015476756">
+                            <input type="tel" id="mobile" name="mobile" placeholder="${userData.mobilenumber}">
                         </section>
                         <section class="form-group">
                             <label for="email">Email</label>
@@ -77,11 +76,11 @@ export default class ProfileInfo extends HTMLElement {
                 </section>
             `;
 
-            const cssIndex = this.ownerDocument.createElement('style');
-            cssIndex.innerHTML = styles;
-            this.shadowRoot?.appendChild(cssIndex);
-        }
-    }
+			const cssIndex = this.ownerDocument.createElement('style');
+			cssIndex.innerHTML = styles;
+			this.shadowRoot?.appendChild(cssIndex);
+		}
+	}
 }
 
 customElements.define('my-profile', ProfileInfo);
