@@ -15,7 +15,7 @@ export enum AttributeMovieCardAdd {
 	'image_sec' = 'image_sec',
 	'description' = 'description',
 	'catch_phrase' = 'catch_phrase',
-	'idUser'='idUser'
+	'idUser' = 'idUser',
 }
 
 export default class MovieCardAdd extends HTMLElement {
@@ -106,10 +106,8 @@ export default class MovieCardAdd extends HTMLElement {
 			// Cambiar el texto del botón según el estado
 			likeButton.textContent = this.isLiked ? '-' : '+';
 
-			// Realizar aquí las acciones que desees al dar clic al botón
-			// Por ejemplo, agregar o remover de la lista de favoritos, etc.
 			// Obtener los datos de la película
-			const movieData: DataShapeMovie = {
+			const movieData: Partial<DataShapeMovie> = {
 				id: this.uid || '',
 				image: this.image || '',
 				categories: this.categories ? this.categories.split(',') : [],
@@ -121,8 +119,12 @@ export default class MovieCardAdd extends HTMLElement {
 				image_sec: this.image_sec || '',
 				description: this.description || '',
 				catch_phrase: this.catch_phrase || '',
-				idUser: this.idUser||'' ,
 			};
+
+			// Agregar idUser si está presente
+			if (this.idUser) {
+				movieData.idUser = this.idUser;
+			}
 
 			// Obtener el ID de la lista actual desde el estado de la aplicación
 			const currentListId = appState.currentnewlistid;
@@ -130,7 +132,7 @@ export default class MovieCardAdd extends HTMLElement {
 			// Verificar si la lista actual y los datos de la película no están vacíos
 			if (currentListId && Object.values(movieData).every((val) => val !== '')) {
 				// Llamar a la función en Firebase para agregar la película a la lista
-				await Firebase.addMovieToList(appState.user, currentListId, movieData);
+				await Firebase.addMovieToList(appState.user, currentListId, movieData as DataShapeMovie);
 			} else {
 				alert('Please select a list and make sure all movie data is available.');
 			}
