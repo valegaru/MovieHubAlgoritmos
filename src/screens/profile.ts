@@ -22,17 +22,17 @@ export class Profile extends HTMLElement {
 
 	async render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML += /*html*/ `
-			<custom-navbar><custom-navbar>
-			`;
-
-			this.shadowRoot.innerHTML += /*html*/ `
-				<my-profile></my-profile>
-				<my-yourcontributions></my-yourcontributions>
+			this.shadowRoot.innerHTML = /*html*/ `
+				<custom-navbar></custom-navbar>
+				<div class="profile-container">
+					<my-profile></my-profile>
+					<my-yourcontributions></my-yourcontributions>
+				</div>
 			`;
 
 			const logoutBtn = this.ownerDocument.createElement('button');
 			logoutBtn.innerText = 'Logout';
+			logoutBtn.className = 'logout-button'; // Aplicar clase para los estilos
 			logoutBtn.addEventListener('click', this.logout);
 			this.shadowRoot?.appendChild(logoutBtn);
 		}
@@ -42,15 +42,6 @@ export class Profile extends HTMLElement {
 
 		const showUser = await getUser();
 	}
-
-	// async createUser(data: any) {
-	// 	console.log("Firebase User")
-	// 	this.
-	// }
-
-	// renderUser() {
-
-	// }
 }
 
 customElements.define('app-profile', Profile);
