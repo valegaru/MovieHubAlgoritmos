@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, onSnapshot, query, updateDoc, where } from 'firebase/firestore'; //Importar los modulos
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { collection, addDoc, getDocs, doc, setDoc, getDoc } from 'firebase/firestore'; //Importar funciones para agregar info a la db
 import { DataShapeMovie } from '../types/movies';
 import { deleteDoc } from 'firebase/firestore';
@@ -345,6 +345,23 @@ export const getMovieProfile = async (idUser: string) => {
 			});
 
  	};
+
+	 export const getUserEmail = (): Promise<string | null> => {
+		return new Promise((resolve, reject) => {
+			const auth = getAuth();
+
+			onAuthStateChanged(auth, (user) => {
+				if (user) {
+					resolve(user.email || null);
+				} else {
+					resolve(null); // No hay usuario autenticado
+				}
+			}, (error) => {
+				console.error('Error al obtener el estado de autenticación del usuario:', error);
+				reject(error);
+			});
+		});
+	};
 
 export default {
 	addMovie,

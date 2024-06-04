@@ -1,5 +1,5 @@
 import styles from './ProfileInfo.css';
-import { getUser, getUserData, updateUser } from '../../services/firebase';
+import { getUser, getUserData, getUserEmail, updateUser } from '../../services/firebase';
 import { appState } from '../../store';
 
 export default class ProfileInfo extends HTMLElement {
@@ -38,6 +38,8 @@ export default class ProfileInfo extends HTMLElement {
 	async render() {
 		const userData = await getUserData(); // Obtener los datos del usuario
 		if (!userData) return;
+		const userEmail = await getUserEmail();
+		if (!userEmail) return;
 
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
@@ -61,7 +63,7 @@ export default class ProfileInfo extends HTMLElement {
                         <section class="form-group">
                             <label for="email">Email</label>
                             <br>
-                            <input type="email" id="email" name="email" value="johndoe@gmail.com" readonly>
+                            <input type="email" id="email" name="email" value="${userEmail}" readonly>
                         </section>
                         <section class="form-group">
                             <label for="password">Password</label>
