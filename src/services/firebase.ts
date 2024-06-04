@@ -331,19 +331,20 @@ export const getMovieProfile = async (idUser: string) => {
 	return transformed;
 };
 
-// export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
-// 	const moviesCollectionRef = collection(db, 'movies');
+ export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
+ 	const moviesCollectionRef = collection(db, 'movies');
 
-// 	// Usar onSnapshot para suscribirse a los cambios en tiempo real
-// 	onSnapshot(moviesCollectionRef, (collection) => {
-// 			const docs: DataShapeMovie[] = collection.docs.map((doc)=>({
-// 				id: doc.id,
-// 				...doc.data(),
-// 			})) as DataShapeMovie[];
-// 			});
-// 			// Llamar al callback con los datos transformados
-// 			cb(docs);
-// 	};
+ 	// Usar onSnapshot para suscribirse a los cambios en tiempo real
+ 	onSnapshot(moviesCollectionRef, (collection) => {
+		const movies: DataShapeMovie[] = collection.docs.map((doc)=>({
+ 				id: doc.id,
+ 				...doc.data(),
+ 			})) as DataShapeMovie[];
+			// Llamar al callback con los datos transformados
+			cb(movies);
+			});
+
+ 	};
 
 export default {
 	addMovie,
@@ -357,4 +358,5 @@ export default {
 	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
 	getMovieProfile,
 	getUserData,
+	getMovieListener
 };
