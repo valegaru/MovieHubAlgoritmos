@@ -73,7 +73,7 @@ export class SignIn extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
 			<body>
 			<section id="main">
 			<section id="my-sessionform">
@@ -82,9 +82,9 @@ export class SignIn extends HTMLElement {
                   <h1>SIGN UP</h1>
               </section>
 							<label for="name">Your name</label><br>
-							<input type="text" class="space" name="name" placeholder="First and last name"><br><br>
+							<input type="text" class="space" name="name" placeholder="First and Last name"><br><br>
 							<label for="mobile">Mobile number</label><br>
-                  <input type="text" class="space" name="mobile" placeholder="Don't forget your country code"><br><br>
+                  <input type="text" class="space" name="mobile" placeholder="+ Prefixe"><br><br>
 									<label for="email">Email</label><br>
                   <input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
 									<label for="password">Password</label><br>
