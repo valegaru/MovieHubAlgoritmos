@@ -46,7 +46,7 @@ export default class ProfileInfo extends HTMLElement {
                 <section class="container">
                     <section class="profile">
                         <div class="profile-image">
-                            <img src="https://i.pinimg.com/564x/89/c8/c5/89c8c501627cac554a35242923c33ece.jpg" alt="Profile Picture">
+                            <img src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Profile Picture">
                         </div>
                     </section>
                     <form class="form" method="post">

@@ -142,6 +142,9 @@ class Navbar extends HTMLElement {
 
 			pages.appendChild(section);
 			pages.appendChild(navigateList);
+
+			// aqui verificas la utenticacion, si esta autenticado no pones esto
+
 			pages.appendChild(login);
 			pages.appendChild(signin);
 

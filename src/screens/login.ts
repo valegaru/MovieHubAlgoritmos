@@ -56,7 +56,7 @@ export class LogIn extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = /*html*/ `
 			<section>
 			<section id="form">
 			<section id="my-sessionform">
@@ -67,7 +67,7 @@ export class LogIn extends HTMLElement {
 							<label for="email">Email</label><br>
 							<input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
 							<label for="password">Password</label><br>
-							<input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+							<input type="password" class="space" name="password" placeholder="At least 8 characters"><br><br>
 							</section>
 							<section id="my-submitandterms">
 							<button type="submit" id="send">Continue</button>

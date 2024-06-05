@@ -77,7 +77,7 @@ export default class SessionForm extends HTMLElement {
 
 			// Comprobar cada propiedad antes de incluir el label y el input correspondiente
 			if (this.your_name) {
-				formContent += `
+				formContent += /*html*/ `
                   <label for="name">${this.your_name}</label><br>
                   <input type="text" class="space" name="name" placeholder="First and last name"><br><br>
               `;
@@ -107,14 +107,14 @@ export default class SessionForm extends HTMLElement {
 			if (this.password) {
 				formContent += `
                   <label for="password">${this.password}</label><br>
-                  <input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+                  <input type="password" class="space" name="password" placeholder="At least 8 characters"><br><br>
               `;
 			}
 
 			if (this.re_password) {
 				formContent += `
                   <label for="re_password">${this.re_password}</label><br>
-                  <input type="text" class="space" name="re_password" placeholder="Confirm your password"><br><br>
+                  <input type="password" class="space" name="re_password" placeholder="Confirm your password"><br><br>
               `;
 			}
 
