@@ -84,7 +84,7 @@ export class SignIn extends HTMLElement {
 							<label for="name">Your name</label><br>
 							<input type="text" class="space" name="name" placeholder="First and Last name"><br><br>
 							<label for="mobile">Mobile number</label><br>
-                  <input type="text" class="space" name="mobile" placeholder="+ Prefixe"><br><br>
+                  <input type="text" class="space" name="mobile" placeholder="Don't forget your country code"><br><br>
 									<label for="email">Email</label><br>
                   <input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
 									<label for="password">Password</label><br>
