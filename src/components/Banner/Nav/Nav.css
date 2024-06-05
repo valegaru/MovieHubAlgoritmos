@@ -131,8 +131,14 @@ nav .search-bar {
 		width: 30%;
 		height: 30%;
 	}
+
+	.pages {
+		justify-content: space-around;
+	}
+
 	.pages a {
-		margin-right: 6px;
-		font-size: 10px;
+		margin-right: 0;
+		font-size: 13px;
+		padding: 0 5px;
 	}
 }
