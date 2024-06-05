@@ -35,24 +35,45 @@ class AppContainer extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		const action = await GetMovies();
-		dispatch(action);
+		// Esperar a que appState.user esté disponible
+		const waitForUser = () =>
+			new Promise((resolve) => {
+				const interval = setInterval(() => {
+					if (appState.user) {
+						clearInterval(interval);
+						resolve(appState.user);
+					}
+				}, 100); // Verificar cada 100ms
+			});
 
-		const action2 = await GetFavorites(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
-		dispatch(action2);
-		console.log('favorites', appState.favlist);
-		this.render();
+		// Esperar hasta que appState.user tenga un valor
+		await waitForUser();
 
-		const action3 = await GetLists(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
-		dispatch(action3);
-		console.log('listas', appState.usermovielists);
-		this.render();
+		if (appState.user) {
+			try {
+				const action = await GetMovies();
+				dispatch(action);
 
-		const action4 = await getMovieProfileAction(appState.user); //en () le paso el id del user logueado osea algo como appState.currentuserid
-		dispatch(action4);
-		console.log('movies profile', appState.movieprofile);
-		this.render();
-		console.log('id usuario', appState.user);
+				const action2 = await GetFavorites(appState.user);
+				dispatch(action2);
+				console.log('favorites', appState.favlist);
+
+				const action3 = await GetLists(appState.user);
+				dispatch(action3);
+				console.log('listas', appState.usermovielists);
+
+				const action4 = await getMovieProfileAction(appState.user);
+				dispatch(action4);
+				console.log('movies profile', appState.movieprofile);
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+
+			console.log('id usuario', appState.user);
+			this.render();
+		} else {
+			console.error('No user logged in');
+		}
 	}
 
 	render() {
