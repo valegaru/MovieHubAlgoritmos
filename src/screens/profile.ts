@@ -24,6 +24,7 @@ export class Profile extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 				<custom-navbar class="profile-page"></custom-navbar>
+				<div class="profile-container">
 					<my-profile></my-profile>
 					<my-yourcontributions></my-yourcontributions>
 				</div>
