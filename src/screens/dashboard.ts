@@ -22,7 +22,7 @@ export class Dashboard extends HTMLElement {
 		if (myBannerButton) {
 			const button = myBannerButton.shadowRoot?.querySelector('#accountButton');
 			button?.addEventListener('click', () => {
-				dispatch(navigate('SIGNIN'));
+				dispatch(navigate('FAVORITES'));
 			});
 		}
 	}
@@ -33,7 +33,7 @@ export class Dashboard extends HTMLElement {
 			this.shadowRoot.innerHTML = /*html*/ `
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."
-			buttonlabel="GET AN ACCOUNT, IT'S FREE"></my-banner>
+			buttonlabel="BROWSE THROUGH YOUR FAVORITES"></my-banner>
 			<category-section name="Popular films in the community" category="popular" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/s5R6kTMfOxkGit96A8lqcDL4uVk.jpg"></category-section>
 				<category-section name="On-cinema right now" category="cinema" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/rron9HAuS9s7zBF8iCX1tsafxUo.jpg"></category-section>
 				<category-section name="Trending this week" category="trending" image="https://media.themoviedb.org/t/p/w533_and_h300_bestv2/iAyr7VEFGJoHDIHIxjEb3TskQW4.jpg"></category-section>
