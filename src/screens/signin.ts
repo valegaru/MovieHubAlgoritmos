@@ -46,29 +46,57 @@ export class SignIn extends HTMLElement {
 		const mobileInput = this.shadowRoot?.querySelector('input[name="mobile"]');
 		mobileInput?.addEventListener('change', this.changeMobile.bind(this));
 
-		// // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
+		// Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
 		const submitButton = this.shadowRoot?.querySelector('#send');
 		submitButton?.addEventListener('click', this.submitForm.bind(this));
 	}
 
 	changeEmail(e: any) {
-		formData.email = e?.target?.value;
+		const email = e?.target?.value;
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (emailRegex.test(email)) {
+			formData.email = email;
+		} else {
+			alert('Please enter a valid email address.');
+		}
 	}
 
 	changePassword(e: any) {
-		formData.password = e?.target?.value;
+		const password = e?.target?.value;
+		const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+		if (passwordRegex.test(password)) {
+			formData.password = password;
+		} else {
+			alert('Password must be at least 8 characters long and contain at least one number or special character.');
+		}
 	}
 
 	changeName(e: any) {
-		formData.name = e?.target?.value;
+		const name = e?.target?.value;
+		const nameRegex = /^[A-Za-z\s]+$/;
+		if (nameRegex.test(name)) {
+			formData.name = name;
+		} else {
+			alert('Name must contain only letters.');
+		}
 	}
 
 	changeMobile(e: any) {
-		formData.mobile = e?.target?.value;
+		const mobile = e?.target?.value;
+		const mobileRegex = /^\+\d+$/;
+		if (mobileRegex.test(mobile)) {
+			formData.mobile = mobile;
+		} else {
+			alert('Mobile number must start with "+" followed by country code and number.');
+		}
 	}
 
 	submitForm() {
-		createUser(formData);
+		if (formData.email && formData.password && formData.name && formData.mobile) {
+			createUser(formData);
+		} else {
+			alert('Please fill out all fields correctly.');
+		}
 	}
 
 	render() {
