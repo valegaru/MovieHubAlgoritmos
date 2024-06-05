@@ -116,7 +116,7 @@ export class SignIn extends HTMLElement {
 									<label for="email">Email</label><br>
                   <input type="text" class="space" name="email" placeholder="johndoe@movie.com"><br><br>
 									<label for="password">Password</label><br>
-                  <input type="text" class="space" name="password" placeholder="At least 8 characters"><br><br>
+                  <input type="password" class="space" name="password" placeholder="At least 8 characters"><br><br>
 									</section>
 									<section id="my-submitandterms">
 									<button type="submit" id="send">Create account</button>
