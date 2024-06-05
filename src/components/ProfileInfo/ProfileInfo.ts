@@ -16,6 +16,24 @@ export default class ProfileInfo extends HTMLElement {
 	attachEventListeners() {
 		const form = this.shadowRoot?.querySelector('form');
 		form?.addEventListener('submit', this.handleSubmit.bind(this));
+
+		const profileImage = this.shadowRoot?.querySelector('.profile-image');
+		profileImage?.addEventListener('click', this.handleImageClick.bind(this));
+
+		const fileInput = this.shadowRoot?.querySelector('#profile-pic');
+		fileInput?.addEventListener('change', this.handleFileSelect.bind(this));
+	}
+
+	handleImageClick() {
+		const fileInput = this.shadowRoot?.querySelector('#profile-pic') as HTMLInputElement;
+		fileInput?.click();
+	}
+
+	handleFileSelect(event: Event) {
+		const input = event.target as HTMLInputElement;
+		if (input.files && input.files[0]) {
+			console.log(input.files[0]);
+		}
 	}
 
 	async handleSubmit(event: Event) {
@@ -36,7 +54,7 @@ export default class ProfileInfo extends HTMLElement {
 	}
 
 	async render() {
-		const userData = await getUserData(); // Obtener los datos del usuario
+		const userData = await getUserData();
 		if (!userData) return;
 		const userEmail = await getUserEmail();
 		if (!userEmail) return;
@@ -44,41 +62,42 @@ export default class ProfileInfo extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
                 <section class="container">
-				<section class="profile">
-					<div class="profile-image">
-						<img src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Profile Picture">
-						<div class="overlay">
-							<span>Change Photo</span>
+					<section class="profile">
+						<div class="profile-image">
+							<img src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Profile Picture">
+							<div class="overlay">
+								<span>Change Photo</span>
+							</div>
 						</div>
-					</div>
+						<input type="file" id="profile-pic" style="display:none">
+					</section>
+					<form class="form" method="post">
+						<section class="form-group">
+							<label for="name">Name</label>
+							<br>
+							<input type="text" id="name" name="name" placeholder="${userData.username}">
+						</section>
+						<section class="form-group">
+							<label for="mobile">Mobile Number</label>
+							<br>
+							<input type="tel" id="mobile" name="mobile" placeholder="${userData.mobilenumber}">
+						</section>
+						<section class="form-group">
+							<label for="email">Email</label>
+							<br>
+							<input type="email" id="email" name="email" value="${userEmail}" readonly>
+						</section>
+						<section class="form-group">
+							<label for="password">Password</label>
+							<br>
+							<input type="password" id="password" name="password" value="••••••••" readonly>
+						</section>
+						<section class="form-actions">
+							<br>
+							<button type="submit" class="edit-profile">Edit</button>
+						</section>
+					</form>
 				</section>
-				<form class="form" method="post">
-					<section class="form-group">
-						<label for="name">Name</label>
-						<br>
-						<input type="text" id="name" name="name" placeholder="${userData.username}">
-					</section>
-					<section class="form-group">
-						<label for="mobile">Mobile Number</label>
-						<br>
-						<input type="tel" id="mobile" name="mobile" placeholder="${userData.mobilenumber}">
-					</section>
-					<section class="form-group">
-						<label for="email">Email</label>
-						<br>
-						<input type="email" id="email" name="email" value="${userEmail}" readonly>
-					</section>
-					<section class="form-group">
-						<label for="password">Password</label>
-						<br>
-						<input type="password" id="password" name="password" value="••••••••" readonly>
-					</section>
-					<section class="form-actions">
-						<br>
-						<button type="submit" class="edit-profile">Edit</button>
-					</section>
-				</form>
-			</section>
             `;
 
 			const cssIndex = this.ownerDocument.createElement('style');
