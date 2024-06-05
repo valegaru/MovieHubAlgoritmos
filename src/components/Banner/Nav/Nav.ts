@@ -55,23 +55,10 @@ class Navbar extends HTMLElement {
 		if (this.shadowRoot) {
 			const nav = document.createElement('nav');
 
-			const searchBar = document.createElement('section');
-			searchBar.className = 'search-bar';
-
-			const icon = document.createElement('section');
-			icon.className = 'icon';
-			const img = document.createElement('img');
-			img.src = SearchIcon;
-			img.alt = 'search logo';
-			icon.appendChild(img);
-
 			const input = document.createElement('input');
 			input.className = 'barra';
 			input.type = 'text';
 			//input.placeholder = 'Enter movie name';
-
-			searchBar.appendChild(icon);
-			searchBar.appendChild(input);
 
 			const pages = document.createElement('section');
 			pages.className = 'pages';
@@ -130,22 +117,9 @@ class Navbar extends HTMLElement {
 			navigateList.href = '#';
 			navigateList.textContent = 'lists';
 
-			const login = document.createElement('a');
-			login.id = 'login';
-			login.href = '#';
-			login.textContent = 'log in';
-
-			const signin = document.createElement('a');
-			signin.id = 'signin';
-			signin.href = '#';
-			signin.textContent = 'create account';
-
 			pages.appendChild(section);
 			pages.appendChild(navigateList);
-			pages.appendChild(login);
-			pages.appendChild(signin);
 
-			nav.appendChild(searchBar);
 			nav.appendChild(pages);
 
 			this.shadowRoot.innerHTML = '';
