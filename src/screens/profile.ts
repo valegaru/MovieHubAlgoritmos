@@ -23,8 +23,7 @@ export class Profile extends HTMLElement {
 	async render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-				<custom-navbar></custom-navbar>
-				<div class="profile-container">
+				<custom-navbar class="profile-page"></custom-navbar>
 					<my-profile></my-profile>
 					<my-yourcontributions></my-yourcontributions>
 				</div>
