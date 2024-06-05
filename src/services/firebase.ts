@@ -7,6 +7,7 @@ import { deleteDoc } from 'firebase/firestore';
 import { ListDocument } from '../types/list';
 import Firebase from './firebase';
 import { appState } from '../store';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',
@@ -20,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export const auth = getAuth(app);
+const storage = getStorage();
 
 let userId: string | null = null;
 
@@ -331,38 +333,47 @@ export const getMovieProfile = async (idUser: string) => {
 	return transformed;
 };
 
- export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
- 	const moviesCollectionRef = collection(db, 'movies');
+export const getMovieListener = (cb: (movies: DataShapeMovie[]) => void) => {
+	const moviesCollectionRef = collection(db, 'movies');
 
- 	// Usar onSnapshot para suscribirse a los cambios en tiempo real
- 	onSnapshot(moviesCollectionRef, (collection) => {
-		const movies: DataShapeMovie[] = collection.docs.map((doc)=>({
- 				id: doc.id,
- 				...doc.data(),
- 			})) as DataShapeMovie[];
-			// Llamar al callback con los datos transformados
-			cb(movies);
-			});
+	// Usar onSnapshot para suscribirse a los cambios en tiempo real
+	onSnapshot(moviesCollectionRef, (collection) => {
+		const movies: DataShapeMovie[] = collection.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		})) as DataShapeMovie[];
+		// Llamar al callback con los datos transformados
+		cb(movies);
+	});
+};
 
- 	};
+export const getUserEmail = (): Promise<string | null> => {
+	return new Promise((resolve, reject) => {
+		const auth = getAuth();
 
-	 export const getUserEmail = (): Promise<string | null> => {
-		return new Promise((resolve, reject) => {
-			const auth = getAuth();
-
-			onAuthStateChanged(auth, (user) => {
+		onAuthStateChanged(
+			auth,
+			(user) => {
 				if (user) {
 					resolve(user.email || null);
 				} else {
 					resolve(null); // No hay usuario autenticado
 				}
-			}, (error) => {
+			},
+			(error) => {
 				console.error('Error al obtener el estado de autenticación del usuario:', error);
 				reject(error);
-			});
-		});
-	};
+			}
+		);
+	});
+};
 
+export const uploadFile = async (file: File) => {
+	const storageRef = ref(storage, 'imgsProfile/' + file.name);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('Foto de perfil cambiada exitosamente');
+	});
+};
 export default {
 	addMovie,
 	getMovie,
@@ -375,5 +386,6 @@ export default {
 	getUserMovieListContent, //para pintar el content de la ultima lista tecleada
 	getMovieProfile,
 	getUserData,
-	getMovieListener
+	getMovieListener,
+	uploadFile,
 };

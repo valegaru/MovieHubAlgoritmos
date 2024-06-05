@@ -1,5 +1,5 @@
 import styles from './ProfileInfo.css';
-import { getUser, getUserData, getUserEmail, updateUser } from '../../services/firebase';
+import { getUser, getUserData, getUserEmail, updateUser, uploadFile } from '../../services/firebase';
 import { appState } from '../../store';
 
 export default class ProfileInfo extends HTMLElement {
@@ -29,10 +29,11 @@ export default class ProfileInfo extends HTMLElement {
 		fileInput?.click();
 	}
 
-	handleFileSelect(event: Event) {
+	async handleFileSelect(event: Event) {
 		const input = event.target as HTMLInputElement;
-		if (input.files && input.files[0]) {
-			console.log(input.files[0]);
+		const file = input.files ? input.files[0] : null;
+		if (file) {
+			await uploadFile(file);
 		}
 	}
 
