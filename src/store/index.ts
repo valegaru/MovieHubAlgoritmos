@@ -49,7 +49,7 @@ const emptyState = {
 	//para usercredentials
 	user: '',
 	//para guardar las peliculas que crea cada usuario, se puede usar para mostrar las del usuario logueado
-	movieprofile:[],
+	movieprofile: [],
 };
 
 export let appState = emptyState;
@@ -58,10 +58,13 @@ let observers: Observer[] = [];
 
 const notifyObservers = () => observers.forEach((o: any) => o.render());
 
+const persistStore = (state: AppState) => Storage.set({ key: PersistanceKeys.STORE, value: state });
+
 export const dispatch = (action: any) => {
 	const clone = JSON.parse(JSON.stringify(appState));
 	const newState = reducer(action, clone);
 	appState = newState;
+	persistStore(newState);
 	notifyObservers();
 };
 
