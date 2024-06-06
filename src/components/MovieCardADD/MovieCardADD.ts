@@ -107,34 +107,37 @@ export default class MovieCardAdd extends HTMLElement {
 			likeButton.textContent = this.isLiked ? '-' : '+';
 
 			// Obtener los datos de la película
-			const movieData: Partial<DataShapeMovie> = {
-				id: this.uid || '',
-				image: this.image || '',
-				categories: this.categories ? this.categories.split(',') : [],
-				title: this.utitle || '',
-				director: this.director || '',
-				release_date: this.release_date || '',
-				cast: this.cast || '',
-				crew: this.crew || '',
-				image_sec: this.image_sec || '',
-				description: this.description || '',
-				catch_phrase: this.catch_phrase || '',
-			};
+			const movieData: Partial<DataShapeMovie> = {};
 
-			// Agregar idUser si está presente
-			if (this.idUser) {
-				movieData.idUser = this.idUser;
+			// Añadir solo propiedades que estén definidas
+			if (this.uid) movieData.id = this.uid;
+			if (this.image) movieData.image = this.image;
+			if (this.categories) movieData.categories = this.categories.split(',');
+			if (this.utitle) movieData.title = this.utitle;
+			if (this.director) movieData.director = this.director;
+			if (this.release_date) movieData.release_date = this.release_date;
+			if (this.cast) movieData.cast = this.cast;
+			if (this.crew) movieData.crew = this.crew;
+			if (this.image_sec) movieData.image_sec = this.image_sec;
+			if (this.description) movieData.description = this.description;
+			if (this.catch_phrase) movieData.catch_phrase = this.catch_phrase;
+			if (this.idUser) movieData.idUser = this.idUser;
+
+			// Verificar si el UID está presente
+			if (!movieData.id) {
+				alert('Movie ID is required.');
+				return;
 			}
 
 			// Obtener el ID de la lista actual desde el estado de la aplicación
 			const currentListId = appState.currentnewlistid;
 
-			// Verificar si la lista actual y los datos de la película no están vacíos
-			if (currentListId && Object.values(movieData).every((val) => val !== '')) {
+			// Verificar si la lista actual no está vacía
+			if (currentListId) {
 				// Llamar a la función en Firebase para agregar la película a la lista
 				await Firebase.addMovieToList(appState.user, currentListId, movieData as DataShapeMovie);
 			} else {
-				alert('Please select a list and make sure all movie data is available.');
+				alert('Please select a list.');
 			}
 		});
 	}
