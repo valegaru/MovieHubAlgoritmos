@@ -93,6 +93,9 @@
 	}
 }
 
+.my-form {
+	width: 80%;
+}
 /* Estilos del contenido del modal */
 .modal-content {
 	color: #fff;

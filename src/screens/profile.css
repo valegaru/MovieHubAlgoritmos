@@ -35,6 +35,14 @@ my-yourcontributions {
 	font-size: 1.1em; /* Tamaño de fuente ajustado */
 }
 
+.logout-button button:hover {
+	background-color: rgba(233, 13, 90, 1);
+}
+
+.logout-button {
+	margin: 0 auto;
+}
+
 @media screen and (max-width: 767px) {
 	.profile-container {
 		flex-direction: column;
