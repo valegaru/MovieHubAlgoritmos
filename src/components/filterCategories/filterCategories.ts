@@ -1,5 +1,5 @@
 import css from './filterCategories.css';
-import Firebase from '../../services/firebase';
+import Firebase, { getMovieListener } from '../../services/firebase';
 import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
@@ -52,34 +52,40 @@ class CategorySection extends HTMLElement {
 	//se usa el join para q ese array se convierta en una sola cadena de texto
 	async render() {
 		if (this.shadowRoot) {
-			const movies: DataShapeMovie[] = appState.movielist;
-			const moviesData = movies.filter((movie) =>
+			getMovieListener((movies:any)=>{
+				while(movies.firstChild){
+					movies.removeChild(movies.firstChild);
+				}
+			const moviesData = movies.filter((movie:any) =>
 				movie.categories?.includes(this.category != undefined ? this.category : 'undefined')
 			);
+
 			const styles = document.createElement('style');
 			styles.textContent = css;
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot!.innerHTML = `
                 <h1 id="titlecategory">${this.name || ''}</h1>
 				<section id="cards">
 					${moviesData
 						.map(
-							(movie) => `
+							(movie:any) => `
 						<movie-card image="${movie.image}" uid="${movie.id}" categories="${movie.categories}" utitle="${movie.title}" director="${movie.director}" release_date="${movie.release_date}" cast="${movie.cast}" crew="${movie.crew}" image_sec="${movie.image_sec}" description="${movie.description}" catch_phrase="${movie.catch_phrase}"></movie-card>
 					`
 						)
 						.join('')}
 				</section>
             `;
-			const inputImageSec = this.shadowRoot.querySelector('#titlecategory');
+			const inputImageSec = this.shadowRoot!.querySelector('#titlecategory');
 			inputImageSec?.addEventListener('click', () => {
 				dispatch(navigate('CATEGORIES'));
 				dispatch(navigateCategory(this.category)); //hacer otra action como navigate que le paso yo un string, el payload de la accion seria this.category
 				dispatch(SaveTitleCategory(this.name));
 				dispatch(SaveImageCategory(this.image));
 			});
-			this.shadowRoot.appendChild(styles);
-		}
+			this.shadowRoot!.appendChild(styles);
+		})
 	}
 }
+}
+
 customElements.define('category-section', CategorySection);
 export default CategorySection;

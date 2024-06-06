@@ -3,6 +3,7 @@ import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { addObserver, appState, dispatch } from '../../store';
 import { navigate } from '../../store/actions';
+import { getFavoriteMoviesListener } from '../../services/firebase';
 
 class FavoriteMovies extends HTMLElement {
 	constructor() {
@@ -11,14 +12,21 @@ class FavoriteMovies extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.render();
+		this.initializeListener();
 	}
 
-	async render() {
+	initializeListener() {
+		const userId = appState.user;
+		getFavoriteMoviesListener(userId, (favoriteMovies: DataShapeMovie[]) => {
+			this.render(favoriteMovies);
+		});
+	}
+
+	render(favoriteMovies: DataShapeMovie[] = []) {
 		if (this.shadowRoot) {
-			const favoriteMovies: DataShapeMovie[] = appState.favlist;
 			const styles = document.createElement('style');
 			styles.textContent = css;
+
 			this.shadowRoot.innerHTML = `
 				<section id="favoriteMovies">
 					${favoriteMovies

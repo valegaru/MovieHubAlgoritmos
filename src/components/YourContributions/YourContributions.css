@@ -35,7 +35,14 @@ h1 {
 	font-family: 'Cairo', sans-serif;
 	margin-bottom: 40px;
 
-	@media (max-width: 576px) {
-		font-size: 5vw;
+	@media (max-width: 767px) {
+		h1 {
+			font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
+		}
+
+		movie-card {
+			width: calc((100% / 2) - 2%); /* Ancho para mostrar dos columnas */
+			margin-bottom: 4%; /* Espacio máximo entre las filas */
+		}
 	}
 }

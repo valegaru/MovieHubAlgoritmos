@@ -63,10 +63,11 @@ nav .search-bar {
 .pages {
 	display: flex;
 	justify-content: center;
+	gap: 13%;
 }
 
 .pages a {
-	margin-right: 12%;
+	/* margin-right: 12%; */
 	text-transform: uppercase;
 	text-decoration: none;
 	color: white;
