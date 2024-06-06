@@ -23,7 +23,6 @@ export class MyLists extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
-				${this}
 				<section class="container">
 					<my-banner section_title="My Lists"></my-banner>
 					<button id="modal-button">Create new list</button>

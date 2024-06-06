@@ -139,7 +139,8 @@ button:hover {
 }
 
 #my-submitandterms button {
-	width: 100%;
+	width: 90%;
+	box-sizing: border-box;
 	padding: 10px;
 	background-color: rgba(250, 149, 59, 1);
 	color: white;

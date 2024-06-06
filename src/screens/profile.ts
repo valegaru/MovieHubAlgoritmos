@@ -2,7 +2,7 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 import styles from './profile.css';
-import { getUser } from '../services/firebase';
+import { getFile, getUser } from '../services/firebase';
 
 export class Profile extends HTMLElement {
 	constructor() {
@@ -24,6 +24,7 @@ export class Profile extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
 				<custom-navbar class="profile-page"></custom-navbar>
+				<div class="profile-container">
 					<my-profile></my-profile>
 					<my-yourcontributions></my-yourcontributions>
 				</div>
