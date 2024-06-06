@@ -27,7 +27,7 @@ export default class ProfileInfo extends HTMLElement {
 	validateName(e: any) {
 		const name = e?.target?.value;
 		const nameRegex = /^[A-Za-z\s]+$/;
-		if (!nameRegex.test(name)) {
+		if (name && !nameRegex.test(name)) {
 			alert('Name must contain only letters.');
 		}
 	}
@@ -35,7 +35,7 @@ export default class ProfileInfo extends HTMLElement {
 	validateMobile(e: any) {
 		const mobile = e?.target?.value;
 		const mobileRegex = /^\+\d+$/;
-		if (!mobileRegex.test(mobile)) {
+		if (mobile && !mobileRegex.test(mobile)) {
 			alert('Mobile number must start with "+" followed by country code and number.');
 		}
 	}
@@ -47,26 +47,31 @@ export default class ProfileInfo extends HTMLElement {
 		const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
 		const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
 
-		const updatedData = {
-			username: nameInput?.value,
-			mobilenumber: mobileInput?.value,
-		};
+		const updatedData: { username?: string; mobilenumber?: string } = {};
+
+		if (nameInput?.value) {
+			updatedData.username = nameInput.value;
+		}
+
+		if (mobileInput?.value) {
+			updatedData.mobilenumber = mobileInput.value;
+		}
 
 		if (userId && this.isFormValid(updatedData)) {
 			await updateUser(userId, updatedData);
 		}
 	}
 
-	isFormValid(data: { username: string; mobilenumber: string }) {
+	isFormValid(data: { username?: string; mobilenumber?: string }) {
 		const nameRegex = /^[A-Za-z\s]+$/;
 		const mobileRegex = /^\+\d+$/;
 
-		if (!nameRegex.test(data.username)) {
+		if (data.username && !nameRegex.test(data.username)) {
 			alert('Name must contain only letters.');
 			return false;
 		}
 
-		if (!mobileRegex.test(data.mobilenumber)) {
+		if (data.mobilenumber && !mobileRegex.test(data.mobilenumber)) {
 			alert('Mobile number must start with "+" followed by country code and number.');
 			return false;
 		}
