@@ -23,6 +23,28 @@ export default class ProfileInfo extends HTMLElement {
 
 		const fileInput = this.shadowRoot?.querySelector('#profile-pic');
 		fileInput?.addEventListener('change', this.handleFileSelect.bind(this));
+
+		const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
+		nameInput?.addEventListener('change', this.validateName.bind(this));
+
+		const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
+		mobileInput?.addEventListener('change', this.validateMobile.bind(this));
+	}
+
+	validateName(e: any) {
+		const name = e?.target?.value;
+		const nameRegex = /^[A-Za-z\s]+$/;
+		if (name && !nameRegex.test(name)) {
+			alert('Name must contain only letters.');
+		}
+	}
+
+	validateMobile(e: any) {
+		const mobile = e?.target?.value;
+		const mobileRegex = /^\+\d+$/;
+		if (mobile && !mobileRegex.test(mobile)) {
+			alert('Mobile number must start with "+" followed by country code and number.');
+		}
 	}
 
 	handleImageClick() {
@@ -52,14 +74,36 @@ export default class ProfileInfo extends HTMLElement {
 		const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
 		const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
 
-		const updatedData = {
-			username: nameInput?.value,
-			mobilenumber: mobileInput?.value,
-		};
+		const updatedData: { username?: string; mobilenumber?: string } = {};
 
-		if (userId) {
+		if (nameInput?.value) {
+			updatedData.username = nameInput.value;
+		}
+
+		if (mobileInput?.value) {
+			updatedData.mobilenumber = mobileInput.value;
+		}
+
+		if (userId && this.isFormValid(updatedData)) {
 			await updateUser(userId, updatedData);
 		}
+	}
+
+	isFormValid(data: { username?: string; mobilenumber?: string }) {
+		const nameRegex = /^[A-Za-z\s]+$/;
+		const mobileRegex = /^\+\d+$/;
+
+		if (data.username && !nameRegex.test(data.username)) {
+			alert('Name must contain only letters.');
+			return false;
+		}
+
+		if (data.mobilenumber && !mobileRegex.test(data.mobilenumber)) {
+			alert('Mobile number must start with "+" followed by country code and number.');
+			return false;
+		}
+
+		return true;
 	}
 
 	async render() {
