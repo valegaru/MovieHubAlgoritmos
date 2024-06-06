@@ -2,7 +2,7 @@ import { addObserver, dispatch } from '../store/index';
 import { navigate } from '../store/actions';
 import '../components/exports';
 import styles from './profile.css';
-import { getUser } from '../services/firebase';
+import { getFile, getUser } from '../services/firebase';
 
 export class Profile extends HTMLElement {
 	constructor() {

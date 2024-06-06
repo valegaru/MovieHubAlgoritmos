@@ -1,6 +1,7 @@
 import styles from './ProfileInfo.css';
 import { getUser, getUserData, getUserEmail, updateUser, uploadFile } from '../../services/firebase';
 import { appState } from '../../store';
+import { getProfileImageUrl } from '../../services/firebase';
 
 export default class ProfileInfo extends HTMLElement {
 	constructor() {
@@ -33,7 +34,14 @@ export default class ProfileInfo extends HTMLElement {
 		const input = event.target as HTMLInputElement;
 		const file = input.files ? input.files[0] : null;
 		if (file) {
-			await uploadFile(file);
+			await uploadFile(file, appState.user);
+			const imageUrl = await getProfileImageUrl(appState.user);
+			if (imageUrl) {
+				const profileImage = this.shadowRoot?.querySelector('.profile-image img') as HTMLImageElement;
+				if (profileImage) {
+					profileImage.src = imageUrl;
+				}
+			}
 		}
 	}
 
@@ -59,13 +67,18 @@ export default class ProfileInfo extends HTMLElement {
 		if (!userData) return;
 		const userEmail = await getUserEmail();
 		if (!userEmail) return;
+		const profileImageUrl = await getProfileImageUrl(appState.user);
 
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `
                 <section class="container">
 					<section class="profile">
 						<div class="profile-image">
-							<img src="https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" alt="Profile Picture">
+							<img src="${
+								profileImageUrl
+									? profileImageUrl
+									: 'https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg'
+							}" alt="Profile Picture">
 							<div class="overlay">
 								<span>Change Photo</span>
 							</div>

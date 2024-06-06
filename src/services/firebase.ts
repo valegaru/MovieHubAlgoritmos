@@ -7,7 +7,7 @@ import { deleteDoc } from 'firebase/firestore';
 import { ListDocument } from '../types/list';
 import Firebase from './firebase';
 import { appState } from '../store';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyDKlhRev5ZTVC9nGqXyT4qBi0WxSqs1gHE',
@@ -368,12 +368,48 @@ export const getUserEmail = (): Promise<string | null> => {
 	});
 };
 
-export const uploadFile = async (file: File) => {
-	const storageRef = ref(storage, 'imgsProfile/' + file.name);
-	uploadBytes(storageRef, file).then((snapshot) => {
+export const uploadFile = async (file: File, id: string) => {
+	try {
+		const storageRef = ref(storage, 'imgsProfile/' + id);
+		await uploadBytes(storageRef, file);
 		console.log('Foto de perfil cambiada exitosamente');
-	});
+	} catch (error) {
+		console.error('Error al subir la foto de perfil:', error);
+	}
 };
+
+export const getFile = async () => {
+	const routeName = localStorage.getItem('imgProfile');
+	const storageRef = ref(storage, 'imgsProfile/' + routeName);
+	getDownloadURL(ref(storageRef))
+		.then((url) => {
+			const xhr = new XMLHttpRequest();
+			xhr.responseType = 'blob';
+			xhr.onload = (event) => {
+				const blob = xhr.response;
+			};
+			xhr.open('GET', url);
+			xhr.send();
+
+			console.log(url);
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+};
+
+export const getProfileImageUrl = async (userId: string): Promise<string | null> => {
+	try {
+		console.log('Intentando obtener la imagen de perfil para el ID de usuario:', userId);
+		const storageRef = ref(storage, 'imgsProfile/' + userId);
+		const url = await getDownloadURL(storageRef);
+		return url;
+	} catch (error) {
+		console.error('Error al obtener la URL de la imagen de perfil:', error);
+		return null;
+	}
+};
+
 export default {
 	addMovie,
 	getMovie,
@@ -388,4 +424,6 @@ export default {
 	getUserData,
 	getMovieListener,
 	uploadFile,
+	getFile,
+	getProfileImageUrl,
 };
