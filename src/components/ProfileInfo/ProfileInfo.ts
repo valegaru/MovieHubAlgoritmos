@@ -16,6 +16,28 @@ export default class ProfileInfo extends HTMLElement {
 	attachEventListeners() {
 		const form = this.shadowRoot?.querySelector('form');
 		form?.addEventListener('submit', this.handleSubmit.bind(this));
+
+		const nameInput = this.shadowRoot?.querySelector('#name') as HTMLInputElement;
+		nameInput?.addEventListener('change', this.validateName.bind(this));
+
+		const mobileInput = this.shadowRoot?.querySelector('#mobile') as HTMLInputElement;
+		mobileInput?.addEventListener('change', this.validateMobile.bind(this));
+	}
+
+	validateName(e: any) {
+		const name = e?.target?.value;
+		const nameRegex = /^[A-Za-z\s]+$/;
+		if (!nameRegex.test(name)) {
+			alert('Name must contain only letters.');
+		}
+	}
+
+	validateMobile(e: any) {
+		const mobile = e?.target?.value;
+		const mobileRegex = /^\+\d+$/;
+		if (!mobileRegex.test(mobile)) {
+			alert('Mobile number must start with "+" followed by country code and number.');
+		}
 	}
 
 	async handleSubmit(event: Event) {
@@ -30,9 +52,26 @@ export default class ProfileInfo extends HTMLElement {
 			mobilenumber: mobileInput?.value,
 		};
 
-		if (userId) {
+		if (userId && this.isFormValid(updatedData)) {
 			await updateUser(userId, updatedData);
 		}
+	}
+
+	isFormValid(data: { username: string; mobilenumber: string }) {
+		const nameRegex = /^[A-Za-z\s]+$/;
+		const mobileRegex = /^\+\d+$/;
+
+		if (!nameRegex.test(data.username)) {
+			alert('Name must contain only letters.');
+			return false;
+		}
+
+		if (!mobileRegex.test(data.mobilenumber)) {
+			alert('Mobile number must start with "+" followed by country code and number.');
+			return false;
+		}
+
+		return true;
 	}
 
 	async render() {
