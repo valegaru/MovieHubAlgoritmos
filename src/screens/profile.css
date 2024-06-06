@@ -26,9 +26,8 @@ my-yourcontributions {
 	margin-bottom: 80px;
 	display: block;
 	margin: 20px auto; /* Centrar el botón */
-	border: 2px solid white;
 	background-color: rgba(250, 149, 59, 1);
-	border-radius: 3px;
+	border-radius: 10px;
 	padding: 10px 20px; /* Tamaño ajustado */
 	min-width: 200px; /* Ancho ajustado */
 	cursor: pointer;
@@ -45,8 +44,8 @@ my-yourcontributions {
 
 	my-profile,
 	my-yourcontributions {
-		width: 100%; /* Asegura que ocupen todo el ancho disponible */
-		max-width: 400px; /* Define un ancho máximo para mantener una buena apariencia */
-		margin: 10px auto; /* Centra los componentes horizontalmente */
+		width: 100%;
+		max-width: 400px;
+		margin: 10px auto;
 	}
 }
