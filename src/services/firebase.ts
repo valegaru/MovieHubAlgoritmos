@@ -410,6 +410,26 @@ export const getProfileImageUrl = async (userId: string): Promise<string | null>
 	}
 };
 
+export const getFavoriteMoviesListener = (userId: string, cb: (movies: DataShapeMovie[]) => void) => {
+	// Obtener la referencia del documento del usuario
+	const userRef = doc(db, 'users', userId);
+
+	// Obtener la referencia de la colección 'Favorites' dentro del documento del usuario
+	const favoritesCollectionRef = collection(userRef, 'Favorites');
+
+	// Usar onSnapshot para suscribirse a los cambios en tiempo real
+	onSnapshot(favoritesCollectionRef, (querySnapshot) => {
+		// Transformar los datos de los documentos en un array de películas
+		const favoriteMovies: DataShapeMovie[] = querySnapshot.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		})) as DataShapeMovie[];
+
+		// Llamar al callback con los datos transformados
+		cb(favoriteMovies);
+	});
+};
+
 export default {
 	addMovie,
 	getMovie,

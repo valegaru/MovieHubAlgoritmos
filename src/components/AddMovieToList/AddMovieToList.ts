@@ -4,6 +4,7 @@ import { MovieCard } from '../exports';
 import { addObserver, appState, dispatch } from '../../store';
 import { GetMovies } from '../../store/actions';
 import { navigate } from '../../store/actions';
+import { getMovieListener } from '../../services/firebase';
 
 class AddMovieToList extends HTMLElement {
 	constructor() {
@@ -17,23 +18,27 @@ class AddMovieToList extends HTMLElement {
 
 	async render() {
 		if (this.shadowRoot) {
-			const movies: DataShapeMovie[] = appState.movielist;
+			getMovieListener((movies:any)=>{
+				while(movies.firstChild){
+					movies.removeChild(movies.firstChild);
+				}
 			const styles = document.createElement('style');
 			styles.textContent = css;
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot!.innerHTML = `
                 <section id="cards">
                     ${movies
 											.map(
-												(movie) => `
+												(movie:any) => `
                             <my-moviecardadd image="${movie.image}" uid="${movie.id}" categories="${movie.categories}" utitle="${movie.title}" director="${movie.director}" release_date="${movie.release_date}" cast="${movie.cast}" crew="${movie.crew}" image_sec="${movie.image_sec}" description="${movie.description}" catch_phrase="${movie.catch_phrase}"></my-moviecardadd>
                         `
 											)
 											.join('')}
                 </section>
             `;
-			this.shadowRoot.appendChild(styles);
+			this.shadowRoot!.appendChild(styles);
 		}
-	}
+	)};
+}
 }
 
 customElements.define('my-addmovietolist', AddMovieToList);

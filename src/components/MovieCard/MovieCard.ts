@@ -1,4 +1,4 @@
-import { addFavorites, removeFavorite } from '../../services/firebase';
+import { addFavorites, getFavoriteMovies, getFavoriteMoviesListener, removeFavorite } from '../../services/firebase';
 import { appState, dispatch } from '../../store';
 import {
 	SaveMovieCast,
@@ -18,7 +18,7 @@ import { DataShapeMovie } from '../../types/movies';
 import styles from './MovieCard.css';
 
 export enum Attribute {
-	'image' = 'image', //from data
+	'image' = 'image',
 	'uid' = 'uid',
 	'categories' = 'categories',
 	'utitle' = 'utitle',
@@ -50,7 +50,7 @@ class MovieCard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-		this.isLiked = true; // Inicialmente se muestra el botón de "Dislike"
+		this.isLiked = false; // Inicialmente se muestra el botón de "Dislike"
 	}
 
 	static get observedAttributes() {
@@ -82,8 +82,25 @@ class MovieCard extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		this.initializeListener();
+	}
 
-		//HACER CLICK en el ojo y su label para ver los detalles de la peli
+	initializeListener() {
+		const userId = appState.user;
+		getFavoriteMoviesListener(userId, (favoriteMovies: DataShapeMovie[]) => {
+			this.updateFavoriteStatus(favoriteMovies);
+		});
+	}
+
+	updateFavoriteStatus(favoriteMovies: DataShapeMovie[]) {
+		const isFavorite = favoriteMovies.some((movie) => movie.id === this.uid);
+		const likeButton = this.shadowRoot?.querySelector('.like') as HTMLImageElement;
+		const dislikeButton = this.shadowRoot?.querySelector('.dislike') as HTMLImageElement;
+		if (likeButton && dislikeButton) {
+			likeButton.style.display = isFavorite ? 'inline' : 'none';
+			dislikeButton.style.display = isFavorite ? 'none' : 'inline';
+		}
+		this.isLiked = isFavorite;
 	}
 
 	render() {
@@ -99,8 +116,8 @@ class MovieCard extends HTMLElement {
                             <img class="details"src="https://img.icons8.com/ios-glyphs/30/FFFFFF/visible--v1.png" alt="eye icon"/></a>
                         <p>View details</p>
                     </section>
-                    <img class="dislike"  src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="hear icon empty"/>
-                    <img class="like"  src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="heart icon full"/>
+                    <img class="dislike" src="https://img.icons8.com/ios/50/FFFFFF/like--v1.png" alt="heart icon empty" />
+                    <img class="like" src="https://img.icons8.com/ios-filled/50/FFFFFF/like--v1.png" alt="heart icon full" />
                     <p>Like</p>
                 </section>
             </div>
@@ -119,19 +136,11 @@ class MovieCard extends HTMLElement {
 				dispatch(SaveMovieImageSec(this.image_sec));
 				dispatch(SaveMovieDescription(this.description));
 				dispatch(SaveMovieCatchPhrase(this.catch_phrase));
-				//dispatch(SaveTitleCategory(this.name));
 			});
 
 			// Obtener referencias a los botones de "like" y "dislike"
 			const likeButton = this.shadowRoot.querySelector('.like') as HTMLImageElement;
 			const dislikeButton = this.shadowRoot.querySelector('.dislike') as HTMLImageElement;
-
-			// Verificar si la película está en la colección de favoritos
-			const isFavorite = appState.favlist.some((movie: DataShapeMovie) => movie.id === this.uid);
-
-			// Mostrar el botón correcto según la condición
-			likeButton.style.display = isFavorite ? 'inline' : 'none';
-			dislikeButton.style.display = isFavorite ? 'none' : 'inline';
 
 			// Agregar listeners a los botones
 			likeButton.addEventListener('click', async () => {
@@ -154,7 +163,7 @@ class MovieCard extends HTMLElement {
 				const userId = appState.user;
 				try {
 					await addFavorites(userId, this.uid ? this.uid : '', {
-						id: this.uid || '', // Firebase generará automáticamente el ID
+						id: this.uid || '',
 						image: this.image || '',
 						categories: this.categories ? this.categories.split(',') : [],
 						title: this.utitle || '',
