@@ -176,9 +176,9 @@ class MovieCard extends HTMLElement {
 						catch_phrase: this.catch_phrase || '',
 						idUser: this.idUser || '',
 					});
-					console.log('Película guardada en Favorites');
+
 				} catch (error) {
-					console.error('Error al guardar la película en Favorites', error);
+					
 				}
 
 				// Actualizar la vista

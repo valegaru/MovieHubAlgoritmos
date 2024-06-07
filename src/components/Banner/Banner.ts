@@ -1,5 +1,4 @@
 import styles from './Banner.css';
-import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 export enum Attribute {
 	'section_title' = 'section_title',

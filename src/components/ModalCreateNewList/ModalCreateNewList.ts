@@ -92,18 +92,18 @@ export default class ModalCreateNewList extends HTMLElement {
 				if (listName.trim() !== '' && listImage.trim() !== '') {
 					// Guardar el nombre de la lista
 					dispatch({ action: 'SaveCurrentNewListName', payload: listName });
-					console.log('namelist', appState.currentnewlistname);
+
 					// Guardar la imagen de la lista
 					dispatch({ action: 'SaveCurrentNewListImage', payload: listImage });
-					console.log('imagelist', appState.currentnewlistimage);
+
 
 					// Llamar a la acción addListAndGetId de Firebase
 					const newListId = await Firebase.addListAndGetId(appState.user, listName, listImage, []);
-					console.log('New List ID:', newListId);
+
 
 					// Guardar el ID de la lista
 					dispatch({ action: 'SaveCurrentNewListId', payload: newListId });
-					console.log('idlist', appState.currentnewlistid);
+					
 
 					// Limpiar los campos después de enviar
 					(this.shadowRoot?.querySelector('#name-list') as HTMLInputElement).value = '';

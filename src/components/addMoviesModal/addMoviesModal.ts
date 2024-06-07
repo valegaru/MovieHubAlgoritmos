@@ -1,4 +1,3 @@
-import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 import css from './addMoviesModal.css';
 
