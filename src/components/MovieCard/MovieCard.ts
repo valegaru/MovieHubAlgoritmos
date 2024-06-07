@@ -148,7 +148,7 @@ class MovieCard extends HTMLElement {
 				const userId = appState.user;
 				try {
 					await removeFavorite(userId, this.uid || '');
-					console.log('Película eliminada de Favorites');
+					
 				} catch (error) {
 					console.error('Error al eliminar la película de Favorites', error);
 				}
@@ -178,7 +178,7 @@ class MovieCard extends HTMLElement {
 					});
 
 				} catch (error) {
-					
+
 				}
 
 				// Actualizar la vista
