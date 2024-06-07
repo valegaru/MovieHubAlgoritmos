@@ -6,7 +6,6 @@ import { Banner } from '../components/exports';
 import { ModalCreateNewList } from '../components/exports';
 import { appState } from '../store/index';
 import styles from './mylists.css';
-import { DataShapeLists } from '../services/dataLists';
 import List from '../components/List/List';
 import { UserMovieList } from '../services/getDataUserMovieLists';
 
@@ -59,14 +58,10 @@ export class MyLists extends HTMLElement {
 					dispatch({ action: 'SaveCurrentNewListImage', payload: list.image });
 					// Guardar el ID de la lista
 					dispatch({ action: 'SaveCurrentNewListId', payload: myid });
-					console.log('idlist', appState.currentnewlistid);
-					console.log('listname', appState.currentnewlistname);
-					console.log('listimage', appState.currentnewlistimage);
 
 					// Obtener el contenido de la lista y despachar la acción
 					const action4 = await GetContentLists(appState.user, myid);
 					dispatch(action4);
-					console.log('contentfromclick', appState.listcontent);
 
 					dispatch(navigate('LISTCONTENT'));
 				});

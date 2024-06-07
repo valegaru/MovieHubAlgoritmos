@@ -1,7 +1,3 @@
-//esto es un modal que va a aparecer cuando se le de click a un boton flotante
-//aqui tiene que ir un formulario de la informacion necesaria para crear una pelicula, osea un forumalrio que tenga toda la ifno que vez cuando le das click a una pelicula.
-//la asignacion de categoria se hara a traves de checkboxes
-import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 import css from './addMoviesModal.css';
 
@@ -12,7 +8,7 @@ import { appState } from '../../store';
 const formData: Omit<DataShapeMovie, 'id'> = {
 	title: '',
 	image: '',
-	categories: [], //puede tener los stirng que quiera dentro de categories, es decir asignarle las categorias que uno quiera
+	categories: [],
 	director: '',
 	release_date: '',
 	cast: '',
@@ -73,10 +69,7 @@ class AddMoviesModal extends HTMLElement {
 
 	async render() {
 		if (this.shadowRoot) {
-			// Se comprueba si el shadowRoot está disponible
-
-			// Se establece la estructura HTML del modal
-			this.shadowRoot.innerHTML = /*html*/ `
+			this.shadowRoot.innerHTML = `
 				<section class= "container">
 
 					<button id = "ButtonModal">+</button>
@@ -158,12 +151,10 @@ class AddMoviesModal extends HTMLElement {
 		</section>
 		</section>
       `;
-			// Se añade el CSS al shadowRoot
 			const cssAddMovie = this.ownerDocument.createElement('style');
 			cssAddMovie.innerHTML = css;
 			this.shadowRoot?.appendChild(cssAddMovie);
-			//se pone el ! para decirle que si existe y no salga como null
-			// Se obtienen referencias a los elementos del DOM
+
 			const modal = this.shadowRoot.querySelector('.modalContainer')! as HTMLDivElement;
 
 			const span = this.shadowRoot.querySelector('.close')!;
@@ -177,11 +168,9 @@ class AddMoviesModal extends HTMLElement {
 					modal.style.display = 'none';
 				}
 			});
-			// const body = this.shadowRoot.querySelector('.body')! as HTMLDivElement;
 			const button = this.shadowRoot.querySelector('#ButtonModal')!;
 			button.addEventListener('click', (event) => {
 				modal.style.display = 'block';
-				// body.style.overflow = 'hidden';
 			});
 
 			//TITLE
@@ -204,7 +193,7 @@ class AddMoviesModal extends HTMLElement {
 			const inputCast = this.shadowRoot.querySelector('#castMovie')!;
 			inputCast.addEventListener('change', this.changeCast);
 
-			//Cast
+			//Crew
 			const inputCrew = this.shadowRoot.querySelector('#crewMovie')!;
 			inputCrew.addEventListener('change', this.changeCrew);
 
@@ -236,7 +225,6 @@ class AddMoviesModal extends HTMLElement {
 							formData.categories.splice(index, 1);
 						}
 					}
-					console.log('Arreglo de categorías actualizado:', formData.categories);
 				});
 			});
 
@@ -267,8 +255,6 @@ class AddMoviesModal extends HTMLElement {
 
 				// Reiniciar el arreglo categories
 				formData.categories = [];
-
-				console.log('Formulario enviado y campos limpiados');
 			});
 		}
 	}

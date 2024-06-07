@@ -32,7 +32,6 @@ export const createUser = (formData: any) => {
 			//Primer paso es obtener el id
 			const user = userCredential.user;
 			userId = user.uid;
-			console.log(user.uid);
 
 			//Segundo paso es agregar un documento con más info bajo ese id
 			try {
@@ -42,7 +41,6 @@ export const createUser = (formData: any) => {
 					username: formData.name,
 					mobilenumber: formData.mobile,
 				};
-				console.log(data);
 				await setDoc(where, data);
 				alert('Se creó el usuario');
 			} catch (error) {
@@ -75,7 +73,6 @@ export const logIn = (formData: any) => {
 		.then(async (userCredential) => {
 			//Primer paso es obtener el id
 			const user = userCredential.user;
-			console.log(user.uid);
 			alert('Bienvenido de vuelta');
 		})
 		.catch((error: any) => {
@@ -117,7 +114,7 @@ export const addMovie = async (movie: Omit<DataShapeMovie, 'id'>) => {
 	try {
 		const where = collection(db, 'movies');
 		await addDoc(where, movie);
-		console.log('se añadió con éxito');
+
 	} catch (error) {
 		console.error(error);
 	}
@@ -156,9 +153,9 @@ export const addFavorites = async (userId: string, movieId: string, movie: DataS
 		// Agregar la película a la colección 'Favorites' con el movieId especificado
 		await setDoc(doc(favoritesCollectionRef, movieId), movie);
 
-		console.log('Película agregada exitosamente a la colección "Favorites" del usuario', userId);
+
 	} catch (error) {
-		console.error('Error al agregar película a la colección "Favorites" del usuario', userId, error);
+
 	}
 };
 
@@ -219,7 +216,6 @@ export const addListAndGetId = async (
 
 		// Obtener el ID del nuevo documento de lista
 		const newListId = newListDocRef.id;
-		console.log('Lista agregada exitosamente para el usuario', userId, 'con ID:', newListId);
 
 		// Crear la colección 'content' dentro del documento de la lista recién creada
 		const contentCollectionRef = collection(newListDocRef, 'content');
@@ -254,9 +250,9 @@ export const addMovieToList = async (userId: string, listId: string, movieData: 
 		// Agregar la película como un nuevo documento en la colección 'content'
 		await addDoc(contentCollectionRef, movieData);
 
-		console.log('Película agregada exitosamente a la lista', listId);
+
 	} catch (error) {
-		console.error('Error al agregar la película a la lista', listId, error);
+
 		throw error;
 	}
 };
@@ -279,7 +275,7 @@ export const getUserMovieLists = async (userId: string) => {
 			userMovieLists.push({ id: doc.id, ...data });
 		});
 
-		console.log(userMovieLists);
+
 		return userMovieLists;
 	} catch (error) {
 		console.error('Error al obtener las listas de películas del usuario', userId, error);
@@ -372,9 +368,9 @@ export const uploadFile = async (file: File, id: string) => {
 	try {
 		const storageRef = ref(storage, 'imgsProfile/' + id);
 		await uploadBytes(storageRef, file);
-		console.log('Foto de perfil cambiada exitosamente');
+
 	} catch (error) {
-		console.error('Error al subir la foto de perfil:', error);
+
 	}
 };
 
@@ -391,7 +387,7 @@ export const getFile = async () => {
 			xhr.open('GET', url);
 			xhr.send();
 
-			console.log(url);
+		
 		})
 		.catch((error) => {
 			console.error(error);
@@ -400,13 +396,12 @@ export const getFile = async () => {
 
 export const getProfileImageUrl = async (userId: string): Promise<string | null> => {
 	try {
-		console.log('Intentando obtener la imagen de perfil para el ID de usuario:', userId);
+
 		const storageRef = ref(storage, 'imgsProfile/' + userId);
 		const url = await getDownloadURL(storageRef);
 		return url;
 	} catch (error) {
-		console.error('Error al obtener la URL de la imagen de perfil:', error);
-		return null;
+				return null;
 	}
 };
 

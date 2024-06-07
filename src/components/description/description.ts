@@ -24,19 +24,19 @@ export default class DescriptionMovie extends HTMLElement {
 		return Object.keys(attrs);
 	}
 
-	// Método llamado cuando se cambia un atributo observado
+
 	attributeChangedCallback(
 		propName: AttributeDescriptionMovie,
 		oldValue: string | undefined,
 		newValue: string | undefined
 	) {
-		// Actualización del valor del atributo en la instancia
+
 		switch (propName) {
 			default:
 				this[propName] = newValue;
 				break;
 		}
-		// Se vuelve a renderizar el componente
+		
 		this.render();
 	}
 
@@ -45,9 +45,9 @@ export default class DescriptionMovie extends HTMLElement {
 	}
 
 	render() {
-		// Verificar si existe el shadowRoot
+
 		if (this.shadowRoot) {
-			// Se establece la estructura HTML del componente
+
 			this.shadowRoot.innerHTML = `
 			<section>
 			<b><p>${this.catch_phrase || ''}</p></b>
@@ -55,7 +55,7 @@ export default class DescriptionMovie extends HTMLElement {
       </section>
       `;
 		}
-		// Se crea un elemento <style> para aplicar los estilos CSS
+
 		const cssDescriptionMovie = this.ownerDocument.createElement('style');
 		cssDescriptionMovie.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssDescriptionMovie);

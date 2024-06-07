@@ -30,24 +30,8 @@ class Navbar extends HTMLElement {
 			listsLink.addEventListener('click', async () => {
 				const action3 = await GetLists(appState.user);
 				dispatch(action3);
-				console.log('listas', appState.usermovielists);
+		
 				dispatch(navigate('MYLISTS'));
-			});
-		}
-
-		//HACER CLICK EN Create account Desde la barra nav
-		const signLink = this.shadowRoot?.querySelector('#signin');
-		if (signLink) {
-			signLink.addEventListener('click', () => {
-				dispatch(navigate('SIGNIN'));
-			});
-		}
-
-		//HACER CLICK EN LOGIN Desde la barra nav
-		const loginLink = this.shadowRoot?.querySelector('#login');
-		if (loginLink) {
-			loginLink.addEventListener('click', () => {
-				dispatch(navigate('LOGIN'));
 			});
 		}
 
@@ -63,11 +47,6 @@ class Navbar extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			const nav = document.createElement('nav');
-
-			const input = document.createElement('input');
-			input.className = 'barra';
-			input.type = 'text';
-			//input.placeholder = 'Enter movie name';
 
 			const pages = document.createElement('section');
 			pages.className = 'pages';
@@ -91,7 +70,6 @@ class Navbar extends HTMLElement {
 			profileLink.addEventListener('click', async () => {
 				const action4 = await getMovieProfileAction(appState.user);
 				dispatch(action4);
-				console.log('movies profile', appState.movieprofile);
 
 				dispatch(navigate('PROFILE'));
 			});

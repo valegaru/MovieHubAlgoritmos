@@ -1,4 +1,0 @@
-const createList = {
-	name: '',
-	background: '',
-};

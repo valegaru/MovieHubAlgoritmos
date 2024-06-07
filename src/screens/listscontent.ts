@@ -15,16 +15,6 @@ export class ListContent extends HTMLElement {
 		this.render();
 	}
 
-	// 	async connectedCallback() {
-	// 	// Comprobar si el contenido de la lista ya está cargado
-	// 	if (!appState.listcontent || appState.listcontent.length === 0) {
-	// 		const action4 = await GetContentLists('8Ff0fUFnkPYot7FEJt8u', appState.currentnewlistid);
-	// 		dispatch(action4);
-	// 		console.log('content', appState.listcontent);
-	// 	}
-	// 	this.render();
-	// }
-
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = /*html*/ `

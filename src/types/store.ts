@@ -1,4 +1,3 @@
-//aqui no habia
 import { UserMovieList } from '../services/getDataUserMovieLists';
 import { ListDocument } from './list';
 import { DataShapeMovie } from './movies';
@@ -81,5 +80,3 @@ export interface GetMoviesProfileAction {
 }
 
 export type Actions = GetMoviesAction | ScreenActions | GetFavoritesAction | GetListsAction| ContentGetListsAction|MoviesProfileActions;
-
-//

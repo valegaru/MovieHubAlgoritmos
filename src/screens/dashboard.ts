@@ -1,14 +1,12 @@
-//esta es la pantalla de la segunda entrega
 import { addObserver, dispatch } from '../store/index';
-import { GetMovies, navigate } from '../store/actions';
+import { navigate } from '../store/actions';
 import { DataShapeMovie } from '../types/movies';
 import Firebase from '../services/firebase';
 import '../components/exports';
 import MoviesCards, { Attribute } from '../components/MovieCard/MovieCard';
 import styles from './dashboard.css';
 import { ModalCreateNewList } from '../components/exports';
-//aca importo Nav
-//aca importo banner
+
 
 export class Dashboard extends HTMLElement {
 	constructor() {
@@ -29,7 +27,6 @@ export class Dashboard extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			//el contenido dle banner se esta renderizando por encima de el del modal
 			this.shadowRoot.innerHTML = /*html*/ `
 			<body>
       <my-banner message="Track films you've watched. Save those you want to see. Tell your friends what's good."

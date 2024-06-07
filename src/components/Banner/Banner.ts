@@ -1,5 +1,4 @@
 import styles from './Banner.css';
-import ButtonCustom, { AttributeButton } from '../ButtonCustom/ButtonCustom';
 
 export enum Attribute {
 	'section_title' = 'section_title',
@@ -29,15 +28,12 @@ class Banner extends HTMLElement {
 		return Object.keys(attrs);
 	}
 
-	// Método llamado cuando se cambia un atributo observado
 	attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined) {
-		// Actualización del valor del atributo en la instancia
 		switch (propName) {
 			default:
 				this[propName] = newValue;
 				break;
 		}
-		// Se vuelve a renderizar el componente
 		this.render();
 	}
 
@@ -46,9 +42,7 @@ class Banner extends HTMLElement {
 	}
 
 	render() {
-		// Verificar si existe el shadowRoot
 		if (this.shadowRoot) {
-			// Se establece la estructura HTML del componente
 			let htmlContent = `
 			<section id="allbanner" style="background-image: url('${this.image || "https://pbs.twimg.com/media/GJ331yEWQAAtUzN.jpg "}');">
             <custom-navbar></custom-navbar>

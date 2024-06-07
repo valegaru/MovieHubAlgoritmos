@@ -31,14 +31,14 @@ export class LogIn extends HTMLElement {
 			});
 		}
 
-		// Agregar listeners a los inputs y enlazarlos al contexto de la instancia de SignIn
+
 		const emailInput = this.shadowRoot?.querySelector('input[name="email"]');
 		emailInput?.addEventListener('change', this.changeEmail.bind(this));
 
 		const passwordInput = this.shadowRoot?.querySelector('input[name="password"]');
 		passwordInput?.addEventListener('change', this.changePassword.bind(this));
 
-		// // Agregar listener al botón de submit y enlazarlo al contexto de la instancia de SignIn
+		
 		const submitButton = this.shadowRoot?.querySelector('#send');
 		submitButton?.addEventListener('click', this.submitForm.bind(this));
 	}

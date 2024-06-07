@@ -20,12 +20,10 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import { GetFavorites, GetLists, GetMovies, getMovieProfileAction } from './store/actions';
+import { GetLists, getMovieProfileAction } from './store/actions';
 import { Favorites } from './screens/favorites';
 import { ListContent } from './screens/listscontent';
 import { getMovieProfile } from './services/firebase';
-//aca importo Nav
-//aca importo banner
 
 class AppContainer extends HTMLElement {
 	constructor() {
@@ -51,28 +49,21 @@ class AppContainer extends HTMLElement {
 
 		if (appState.user) {
 			try {
-				//const action = await GetMovies();
-				//dispatch(action);
-
-				//const action2 = await GetFavorites(appState.user);
-				//dispatch(action2);
-				//console.log('favorites', appState.favlist);
 
 				const action3 = await GetLists(appState.user);
 				dispatch(action3);
-				console.log('listas', appState.usermovielists);
 
 				const action4 = await getMovieProfileAction(appState.user);
 				dispatch(action4);
-				console.log('movies profile', appState.movieprofile);
+
 			} catch (error) {
-				console.error('Error fetching data:', error);
+
 			}
 
-			console.log('id usuario', appState.user);
+
 			this.render();
 		} else {
-			console.error('No user logged in');
+			
 		}
 	}
 
@@ -136,11 +127,3 @@ class AppContainer extends HTMLElement {
 }
 
 customElements.define('app-container', AppContainer);
-
-//<my-actionandicon label="hola" description_icon="hola2" icon_url="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png" link="https://img.icons8.com/ios-filled/50/FB953C/delete-sign--v1.png"></my-actionandicon>
-//<my-filters label="FILTERS"></my-filters>
-//<my-figuremovie poster=""></my-figuremovie>
-//<my-descriptionmovie description=""></my-descriptionmovie>
-//<my-extrainfo section_title="hola" content="adios"></my-extrainfo>
-//<my-sessionform utitle="hello" email="adios" password="hola"></my-sessionform>
-//<my-submitandterms btn_text="adios" message='hello'></my-submitandterms>
