@@ -1,5 +1,5 @@
 import { addObserver, dispatch } from '../store/index';
-import { GetMovies, navigate } from '../store/actions';
+import { navigate } from '../store/actions';
 import { DataShapeMovie } from '../types/movies';
 import Firebase from '../services/firebase';
 import '../components/exports';

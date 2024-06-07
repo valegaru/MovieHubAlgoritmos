@@ -4,7 +4,7 @@ import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { Attribute as AttributeMovie } from '../MovieCard/MovieCard';
 import { addObserver, appState, dispatch } from '../../store';
-import { GetMovies, SaveImageCategory, SaveTitleCategory, navigateCategory } from '../../store/actions';
+import { SaveImageCategory, SaveTitleCategory, navigateCategory } from '../../store/actions';
 import { navigate } from '../../store/actions';
 export enum Attribute {
 	'name' = 'name',

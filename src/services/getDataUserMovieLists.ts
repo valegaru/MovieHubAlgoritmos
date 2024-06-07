@@ -12,7 +12,6 @@ export interface UserMovieList {
 export async function getDataUserMovieList(userId: string): Promise<UserMovieList[]> {
 	try {
 		const movielists = await Firebase.getUserMovieLists(userId);
-		console.log(movielists);
 		return movielists || []; // Si movielists es undefined, devolvemos un array vacío
 	} catch (error) {
 		console.error(error);

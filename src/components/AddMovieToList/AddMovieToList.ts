@@ -1,8 +1,7 @@
-import css from './AddMovieToList.css'; 
+import css from './AddMovieToList.css';
 import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { addObserver, appState, dispatch } from '../../store';
-import { GetMovies } from '../../store/actions';
 import { navigate } from '../../store/actions';
 import { getMovieListener } from '../../services/firebase';
 

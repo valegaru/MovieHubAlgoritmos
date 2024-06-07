@@ -20,7 +20,7 @@ import { NewList } from './screens/newlist';
 import { Profile } from './screens/profile';
 import './components/exports';
 import MoviesCards, { Attribute } from './components/MovieCard/MovieCard';
-import { GetFavorites, GetLists, GetMovies, getMovieProfileAction } from './store/actions';
+import { GetLists, getMovieProfileAction } from './store/actions';
 import { Favorites } from './screens/favorites';
 import { ListContent } from './screens/listscontent';
 import { getMovieProfile } from './services/firebase';

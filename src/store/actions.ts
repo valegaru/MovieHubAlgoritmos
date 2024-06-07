@@ -1,7 +1,5 @@
 import { getMovieProfile } from '../services/firebase';
-import { getDataFavoriteMovies } from '../services/getDataFavorites';
 import { getDataMoviesProfile } from '../services/getDataMovieProfile';
-import { getDataMovies } from '../services/getDataMovies';
 import { getDataUserMovieListContent } from '../services/getDataUserMovieListContent';
 import { getDataUserMovieList } from '../services/getDataUserMovieLists';
 import {
@@ -123,13 +121,6 @@ export const SaveMovieCatchPhrase = (catchphrase: any) => {
 	};
 };
 
-export const GetMovies = async (): Promise<GetMoviesAction> => {
-	const dataMovies = await getDataMovies();
-	return {
-		action: MoviesActions.GET,
-		payload: dataMovies,
-	};
-};
 
 export const SaveCurrentNewListName = (name: any) => {
 	return {
@@ -152,13 +143,6 @@ export const SaveCurrentNewListId = (id: any) => {
 	};
 };
 
-export const GetFavorites = async (userId: string): Promise<GetFavoritesAction> => {
-	const dataFavorites = await getDataFavoriteMovies(userId);
-	return {
-		action: FavoritesActions.GET2,
-		payload: dataFavorites,
-	};
-};
 
 export const GetLists = async (userId: string): Promise<GetListsAction> => {
 	const dataLists = await getDataUserMovieList(userId);
