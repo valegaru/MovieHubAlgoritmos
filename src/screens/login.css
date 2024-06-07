@@ -105,9 +105,9 @@ button:hover {
 	border-radius: 5px;
 	box-sizing: border-box; /* Modelo de caja */
 }
-#form {
+/*#form {
 	width: 80%;
-}
+}*/
 #my-sessionform ::placeholder {
 	color: rgba(30, 21, 22, 1);
 }
