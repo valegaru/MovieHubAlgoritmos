@@ -6,7 +6,6 @@ import { Banner } from '../components/exports';
 import { ModalCreateNewList } from '../components/exports';
 import { appState } from '../store/index';
 import styles from './mylists.css';
-import { DataShapeLists } from '../services/dataLists';
 import List from '../components/List/List';
 import { UserMovieList } from '../services/getDataUserMovieLists';
 
