@@ -4,7 +4,13 @@ import SearchIcon from '../../../assets/search.svg';
 import { DataShapeNavMenu } from '../../../services/navMenu';
 import { navMenu } from '../../../services/navMenu';
 import { addObserver, dispatch } from '../../../store';
-import { SaveImageCategory, SaveTitleCategory, navigate } from '../../../store/actions';
+import {
+	GetLists,
+	SaveImageCategory,
+	SaveTitleCategory,
+	getMovieProfileAction,
+	navigate,
+} from '../../../store/actions';
 import { appState } from '../../../store';
 import { navigateCategory } from '../../../store/actions';
 
@@ -21,7 +27,10 @@ class Navbar extends HTMLElement {
 		//HACER CLICK EN LISTS Desde la barra nav
 		const listsLink = this.shadowRoot?.querySelector('.pages a.navigate-list');
 		if (listsLink) {
-			listsLink.addEventListener('click', () => {
+			listsLink.addEventListener('click', async () => {
+				const action3 = await GetLists(appState.user);
+				dispatch(action3);
+				console.log('listas', appState.usermovielists);
 				dispatch(navigate('MYLISTS'));
 			});
 		}
@@ -79,7 +88,11 @@ class Navbar extends HTMLElement {
 			profileLink.textContent = 'profile';
 			pages.appendChild(profileLink);
 
-			profileLink.addEventListener('click', () => {
+			profileLink.addEventListener('click', async () => {
+				const action4 = await getMovieProfileAction(appState.user);
+				dispatch(action4);
+				console.log('movies profile', appState.movieprofile);
+
 				dispatch(navigate('PROFILE'));
 			});
 

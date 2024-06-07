@@ -94,12 +94,12 @@ export default class ProfileInfo extends HTMLElement {
 		const mobileRegex = /^\+\d+$/;
 
 		if (data.username && !nameRegex.test(data.username)) {
-			alert('Name must contain only letters.');
+			alert('Debe ser alfanumérico');
 			return false;
 		}
 
 		if (data.mobilenumber && !mobileRegex.test(data.mobilenumber)) {
-			alert('Mobile number must start with "+" followed by country code and number.');
+			alert('Tiene que tener un prefijo');
 			return false;
 		}
 
@@ -133,7 +133,7 @@ export default class ProfileInfo extends HTMLElement {
 						<section class="form-group">
 							<label for="name">Name</label>
 							<br>
-							<input type="text" id="name" name="name" placeholder="${userData.username}">
+							<input type="text" id="name" name="name"  placeholder="${userData.username}">
 						</section>
 						<section class="form-group">
 							<label for="mobile">Mobile Number</label>
@@ -143,12 +143,12 @@ export default class ProfileInfo extends HTMLElement {
 						<section class="form-group">
 							<label for="email">Email</label>
 							<br>
-							<input type="email" id="email" name="email" value="${userEmail}" readonly>
+							<input type="email" id="email" name="email" title="No se puede editar el correo" value="${userEmail}" readonly>
 						</section>
 						<section class="form-group">
 							<label for="password">Password</label>
 							<br>
-							<input type="password" id="password" name="password" value="••••••••" readonly>
+							<input type="password" id="password" name="password" title="No se puede editar la contraseña" value="••••••••" readonly>
 						</section>
 						<section class="form-actions">
 							<br>

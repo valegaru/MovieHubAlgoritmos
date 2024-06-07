@@ -54,9 +54,9 @@ class AppContainer extends HTMLElement {
 				//const action = await GetMovies();
 				//dispatch(action);
 
-				const action2 = await GetFavorites(appState.user);
-				dispatch(action2);
-				console.log('favorites', appState.favlist);
+				//const action2 = await GetFavorites(appState.user);
+				//dispatch(action2);
+				//console.log('favorites', appState.favlist);
 
 				const action3 = await GetLists(appState.user);
 				dispatch(action3);

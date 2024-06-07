@@ -8,20 +8,14 @@
 }
 
 #favoriteMovies {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 2%;
 }
 
 movie-card:host {
 	width: calc((100% / 6) - 2%);
 	margin-bottom: 20px;
-
-	@media (max-width: 576px) {
-		width: calc((100% / 2) - 2%);
-		margin-bottom: 4%;
-	}
 }
 
 a {
@@ -34,15 +28,22 @@ h1 {
 	color: white;
 	font-family: 'Cairo', sans-serif;
 	margin-bottom: 40px;
+}
 
-	@media (max-width: 767px) {
-		h1 {
-			font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
-		}
+@media screen and (max-width: 767px) {
+	h1 {
+		font-size: 5vw; /* Tamaño de fuente más grande para pantallas pequeñas */
+	}
 
-		movie-card {
-			width: calc((100% / 2) - 2%); /* Ancho para mostrar dos columnas */
-			margin-bottom: 4%; /* Espacio máximo entre las filas */
-		}
+	movie-card {
+		width: 100%; /* Espacio máximo entre las filas */
+	}
+
+	#favoriteMovies {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		width: 90%;
+		margin: 0 auto;
 	}
 }

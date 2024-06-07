@@ -87,6 +87,9 @@ input {
 }
 
 @media screen and (max-width: 767px) {
+	#main {
+		width: 80%;
+	}
 	#my-sessionform input {
 		font-size: 14px;
 	}
