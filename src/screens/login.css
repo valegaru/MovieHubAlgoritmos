@@ -133,6 +133,9 @@ button:hover {
 	#my-sessionform h1 {
 		font-size: 2rem; /* Reduce el tamaño de fuente del título en dispositivos más pequeños */
 	}
+	#form {
+		width: 80%;
+	}
 }
 
 #my-submitandterms a {
