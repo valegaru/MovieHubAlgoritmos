@@ -1,4 +1,3 @@
-// aqui no habia nada
 export enum PersistanceKeys {
 	'STORE' = 'STORE',
 }

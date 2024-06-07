@@ -10,10 +10,10 @@ onAuthStateChanged(auth, (user) => {
 	if (user) {
 		user.uid !== null ? dispatch(setUserCredentials(user.uid)) : '';
 		dispatch(navigate('DASHBOARD'));
-		console.log(user);
+
 	} else {
 		dispatch(navigate('LOGIN'));
-		console.log('no hay usuario logueado');
+		
 	}
 });
 
