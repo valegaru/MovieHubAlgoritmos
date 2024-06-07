@@ -1,4 +1,4 @@
-import css from './AddMovieToList.css'; // Asegúrate de tener el archivo CSS correspondiente
+import css from './AddMovieToList.css'; 
 import { DataShapeMovie } from '../../types/movies';
 import { MovieCard } from '../exports';
 import { addObserver, appState, dispatch } from '../../store';
